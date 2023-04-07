@@ -27,7 +27,7 @@ export default function SignupForm() {
         agreement: acceptedTerms,
       });
       console.log("Response data:", response.data);
-      setResponseMessage(`Account created: ${response.data.data.id}`);
+      setResponseMessage(`Account created successfully`);
     } catch (error) {
       setResponseMessage(`Error: ${JSON.stringify(error.response.data)}`);
     }
