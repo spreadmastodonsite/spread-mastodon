@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import axios from "axios";
 
 export default function SignupForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -26,8 +28,9 @@ export default function SignupForm() {
         ...data,
         agreement: acceptedTerms,
       });
-      console.log("Response data:", response.data);
-      setResponseMessage(`Account created successfully`);
+
+      setResponseMessage(`Account created: ${response.data.id}`);
+      router.push("/follow-suggestions");
     } catch (error) {
       setResponseMessage(`Error: ${JSON.stringify(error.response.data)}`);
     }

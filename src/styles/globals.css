@@ -88,9 +88,6 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: Helvetica, sans-serif;
 }
 
@@ -105,8 +102,11 @@ a {
   }
 }
 
-main {
+body > * {
   width: 500px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
@@ -156,6 +156,17 @@ label {
   display: block;
 }
 
+h2 {
+  margin-top: 30px;
+}
+ul {
+  margin: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
 button {
   width: 100%;
   padding: 1rem;
@@ -169,4 +180,5 @@ button {
   cursor: pointer;
   background-color: #006699;
   color: #fff;
+  margin-top: 20px;
 }
