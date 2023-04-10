@@ -12,7 +12,7 @@ export default function FollowSuggestions() {
   const suggestedUsers = [
     { id: "13179", username: "Mastodon", url: "https://mastodon.social/@Mastodon" },
     { id: "1", username: "Gargron", url: "https://mastodon.social/@Gargron" },
-    { id: "110159296321902051", username: "tpitre", url: "https://mastodon.social/@tpitre" },
+    { id: "109373774912342849", username: "wonderofscience", url: "https://mastodon.social/@wonderofscience" },
   ];
 
   const handleEmailChange = (e) => {

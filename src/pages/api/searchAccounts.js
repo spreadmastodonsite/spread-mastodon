@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export default async function searchAccounts(req, res) {
-  console.log("MASTODON_INSTANCE:", process.env.MASTODON_INSTANCE);
+  console.log("MASTODON_INSTANCE_URL:", process.env.MASTODON_INSTANCE);
 
   const { searchTerm } = req.query;
 
   try {
     const response = await axios.get(
-      `https://${process.env.MASTODON_INSTANCE}/api/v1/accounts/search?q=${searchTerm}`,
+      `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/search?q=${searchTerm}`,
       {
         headers: {
           "Authorization": `Bearer ${process.env.MASTODON_ACCESS_TOKEN}`,
