@@ -9,6 +9,7 @@ export default function FollowSuggestions() {
   const [validationMessage, setValidationMessage] = useState("");
   const [validatedEmail, setValidatedEmail] = useState(false);
 
+  // Suggested users to follow on signup success. Add more if you want!
   const suggestedUsers = [
     { id: "13179", username: "Mastodon", url: "https://mastodon.social/@Mastodon" },
     { id: "1", username: "Gargron", url: "https://mastodon.social/@Gargron" },
@@ -50,6 +51,9 @@ export default function FollowSuggestions() {
         targetAccountId,
       });
 
+      // @TODO: This message is still displaying success even if the user isn't
+      // authenticated and follow fails. The user needs to be authenticated for
+      // the follow to work.
       alert(`You are now following ${username}`);
     } catch (error) {
       alert(`Error: ${JSON.stringify(error.response.data)}`);
@@ -61,8 +65,7 @@ export default function FollowSuggestions() {
       <h1>Follow Suggestions</h1>
       <p>
         Please check your email and click the confirmation link. Once
-        confirmed, click the button below and log in to authenticate and view suggested users to
-        follow.
+        confirmed, click the button below and log in to authenticate and view suggested users to follow.
       </p>
       <button onClick={() => setValidatedEmail(true)}>I have validated my email, proceed</button>
       {validatedEmail && (
@@ -86,7 +89,7 @@ export default function FollowSuggestions() {
                 onChange={handlePasswordChange}
               />
             </div>
-            <button type="submit">Log in & Authenticate</button>
+            <button type="submit">Log in &amp; Authenticate</button>
           </form>
           {validationMessage && <div>{validationMessage}</div>}
           {/* Render the suggested users list */}
@@ -97,7 +100,6 @@ export default function FollowSuggestions() {
                 <li key={user.id}>
                   <a href={user.url} target="_blank" rel="noopener noreferrer">{user.username}</a>{" "}
                   <button onClick={() => followUser(user.id, user.username)}>Follow</button>
-
                 </li>
               ))}
             </ul>
