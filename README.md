@@ -14,6 +14,12 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Mastodon Account Details
+
+Navigate to http://localhost:3000/api/searchAccounts?searchTerm=[name-of-account] to get the account details of a Mastodon account, where `[name-of-account]` is the name of the account you want to search for. For example, to search for the account `@Gargron`, you would navigate to http://localhost:3000/api/searchAccounts?searchTerm=Gargron.
+
+## Other Next.js Stuff
+
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
