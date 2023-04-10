@@ -41,16 +41,16 @@ export default function FollowSuggestions() {
     }
   };
 
-  const followUser = async (targetAccountId) => {
+  const followUser = async (targetAccountId, username) => {
     const accessToken = sessionStorage.getItem("accessToken");
 
     try {
-      const response = await axios.post("/api/follow", {
+      await axios.post("/api/follow", {
         accessToken,
         targetAccountId,
       });
 
-      alert(`You are now following ${response.data.data.acct}`);
+      alert(`You are now following ${username}`);
     } catch (error) {
       alert(`Error: ${JSON.stringify(error.response.data)}`);
     }
@@ -96,7 +96,8 @@ export default function FollowSuggestions() {
               {suggestedUsers.map((user) => (
                 <li key={user.id}>
                   <a href={user.url} target="_blank" rel="noopener noreferrer">{user.username}</a>{" "}
-                  <button onClick={() => followUser(user.id)}>Follow</button>
+                  <button onClick={() => followUser(user.id, user.username)}>Follow</button>
+
                 </li>
               ))}
             </ul>

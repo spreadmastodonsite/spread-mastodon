@@ -29,7 +29,7 @@ export default function SignupForm() {
         agreement: acceptedTerms,
       });
 
-      setResponseMessage(`Account created: ${response.data.id}`);
+      setResponseMessage(`Account created successfully`);
       router.push("/follow-suggestions");
     } catch (error) {
       setResponseMessage(`Error: ${JSON.stringify(error.response.data)}`);
