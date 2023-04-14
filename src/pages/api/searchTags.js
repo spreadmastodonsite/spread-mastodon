@@ -3,11 +3,11 @@ import axios from 'axios';
 export default async function searchAccounts(req, res) {
   console.log('MASTODON_INSTANCE_URL:', process.env.MASTODON_INSTANCE);
 
-  const { searchTerm } = req.query;
+  const { tagName } = req.query;
 
   try {
     const response = await axios.get(
-      `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/search?q=${searchTerm}`,
+      `${process.env.MASTODON_INSTANCE_URL}/api/v1/timelines/tag/${tagName}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.MASTODON_ACCESS_TOKEN}`,

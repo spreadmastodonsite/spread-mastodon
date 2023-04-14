@@ -18,6 +18,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Navigate to http://localhost:3000/api/searchAccounts?searchTerm=[name-of-account] to get the account details of a Mastodon account, where `[name-of-account]` is the name of the account you want to search for. For example, to search for the account `@Gargron`, you would navigate to http://localhost:3000/api/searchAccounts?searchTerm=Gargron.
 
+## Mastodon Tag Details
+
+Navigate to http://localhost:3000/api/searchTags?tagName=[name-of-tag] to get the tag details of a Mastodon tag, where `[name-of-tag]` is the name of the tag you want to search for. For example, to search for the tag `movies`, you would navigate to http://localhost:3000/api/searchTags?tagName=movies.
+
 ## Other Next.js Stuff
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
