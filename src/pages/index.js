@@ -40,7 +40,7 @@ export default function Home() {
 
       <main>
         <div className="content u-text-align--center">
-          <img src="/mastodon.svg" alt="Logo goes here" />
+          {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
           <h1>Welcome to your Better Social Home</h1>
           <p>
             We can help you easily join Mastodon, enrich your experience if
