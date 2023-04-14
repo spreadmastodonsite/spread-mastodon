@@ -1,0 +1,21 @@
+/* Button */
+
+.c-button {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+  border-radius: var(--border-radius--sm);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.c-button--primary {
+  background-color: var(--c-primary);
+}
+
+.c-button--primary:hover {
+  filter: brightness(85%);
+}
