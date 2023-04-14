@@ -44,8 +44,8 @@ export default function Home() {
           <h1>Welcome to your Better Social Home</h1>
           <p>
             We can help you easily join Mastodon, enrich your experience if
-            you've already joined, and share Mastodon with your friends and
-            social networks.
+            you`&apos;`ve already joined, and share Mastodon with your friends
+            and social networks.
           </p>
         </div>
 
