@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-export default function authenticateUser() {
+export default function AuthenticateUser() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,7 +37,7 @@ export default function authenticateUser() {
 
   return (
     <div>
-      <h1>Authenticate</h1>
+      <h1>Authenticate Account</h1>
       <p>
         Please check your email and click the confirmation link. Once confirmed,
         click the button below and log in to authenticate and view suggested
@@ -76,6 +76,7 @@ export default function authenticateUser() {
           {validationMessage && <div>{validationMessage}</div>}
         </>
       )}
+      <button onClick={() => router.push('/')}>Back to Signup</button>
     </div>
   );
 }
