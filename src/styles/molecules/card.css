@@ -12,3 +12,7 @@
   text-align: center;
   border-radius: var(--border-radius);
 }
+
+.c-card__title {
+  flex: 1 0 auto;
+}

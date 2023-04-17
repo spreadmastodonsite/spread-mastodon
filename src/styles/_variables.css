@@ -44,9 +44,11 @@
   --space-2xl: calc(var(--space) * 2); /* 32px */
   --space-3xl: calc(var(--space) * 3); /* 48px */
 
-  --max-width: 1100px;
+  --grid-gap: var(--space);
+
   --border-radius--sm: var(--space-2xs);
   --border-radius: var(--space-sm);
+  --max-width: 1100px;
 
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',

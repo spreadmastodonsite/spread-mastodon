@@ -8,6 +8,9 @@
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
 
+@import url('./layout/grid.css');
+@import url('./layout/gridItem.css');
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -1,0 +1,48 @@
+.l-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: row;
+  gap: var(--grid-gap);
+}
+
+.l-grid__column--xs {
+  --column-size: 200px;
+}
+
+.l-grid__column--sm {
+  --column-size: 200px;
+}
+
+.l-grid__column--md {
+  --column-size: 250px;
+}
+
+.l-grid__column--lg {
+  --column-size: 300px;
+}
+
+.l-grid__column--xl {
+  --column-size: 400px;
+}
+
+.l-grid__column--2xl {
+  --column-size: 500px;
+}
+
+.l-grid--autoFit {
+  grid-template-columns: repeat(auto-fit, minmax(var(--column-size), 1fr));
+}
+
+.l-grid--autoFill {
+  grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
+}
+
+.l-grid--3up {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media all and (min-width: 768px) {
+  .l-grid--3up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
