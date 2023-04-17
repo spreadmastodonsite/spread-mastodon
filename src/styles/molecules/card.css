@@ -1,0 +1,18 @@
+/* Card */
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  padding-top: var(--space-lg);
+  padding-right: var(--space);
+  padding-bottom: var(--space-lg);
+  padding-left: var(--space);
+  background-color: var(--secondary-background);
+  text-align: center;
+  border-radius: var(--border-radius);
+}
+
+.c-card__title {
+  flex: 1 0 auto;
+}
