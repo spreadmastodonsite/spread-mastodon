@@ -5,42 +5,46 @@ import axios from 'axios';
 export default function FollowSuggestions() {
   const router = useRouter();
 
-  // Suggested users to follow on signup success. Add more if you want!
-  const suggestedUsers = [
+  // ! Need an admin token to get the ID of the tag
+  const suggestedTags = [
     {
-      id: '13179',
-      username: 'Mastodon',
-      url: 'https://mastodon.social/@Mastodon',
+      id: 3,
+      name: 'throwbackthursday',
+      url: 'https://mastodon.social/tags/throwbackthursday',
     },
-    { id: '1', username: 'Gargron', url: 'https://mastodon.social/@Gargron' },
     {
-      id: '109373774912342849',
-      username: 'wonderofscience',
-      url: 'https://mastodon.social/@wonderofscience',
+      id: 4,
+      name: 'marvel',
+      url: 'https://mastodon.social/tags/marvel',
+    },
+    {
+      id: 5,
+      name: 'movies',
+      url: 'https://mastodon.social/tags/movies',
     },
   ];
 
-  const followUser = async (targetAccountId, username) => {
+  const followUser = async (targetTagId, username) => {
     const accessToken = sessionStorage.getItem('accessToken');
 
     try {
       await axios.post('/api/follow', {
         accessToken,
-        targetAccountId,
+        targetTagId,
       });
 
       // @TODO: This message is still displaying success even if the user isn't
       // authenticated and follow fails. The user needs to be authenticated for
       // the follow to work.
-      alert(`You are now following ${username}`);
+      alert(`You are now following #${username}`);
     } catch (error) {
-      alert(`Error: ${JSON.stringify(error.response.data)}`);
+      alert(`Error: ${JSON.stringify(error.response.data.error)}`);
     }
   };
 
   return (
     <div>
-      <h1>Follow Suggestions</h1>
+      <h1>Follow Topics</h1>
       <p>
         Please check your email and click the confirmation link. Once confirmed,
         click the button below and log in to authenticate and view suggested
@@ -48,21 +52,20 @@ export default function FollowSuggestions() {
       </p>
       {/* Render the suggested users list */}
       <div>
-        <h2>Suggested Users</h2>
+        <h2>Suggested Topics</h2>
         <ul>
-          {suggestedUsers.map((user) => (
-            <li key={user.id}>
-              <a href={user.url} target="_blank" rel="noopener noreferrer">
-                {user.username}
+          {suggestedTags.map((tag) => (
+            <li key={tag.id}>
+              <a href={tag.url} target="_blank" rel="noopener noreferrer">
+                {tag.name}
               </a>{' '}
-              <button onClick={() => followUser(user.id, user.username)}>
+              <button onClick={() => followUser(tag.id, tag.name)}>
                 Follow
               </button>
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={() => router.push('/follow-tags')}>Follow Tags</button>
       <button onClick={() => router.push('/')}>Back to Signup</button>
     </div>
   );
