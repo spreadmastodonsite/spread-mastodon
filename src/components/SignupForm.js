@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
-import axios from "axios";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 export default function SignupForm() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function SignupForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [responseMessage, setResponseMessage] = useState("");
+  const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleCheckboxChange = (e) => {
@@ -19,23 +19,22 @@ export default function SignupForm() {
 
   const onSubmit = async (data) => {
     if (!acceptedTerms) {
-      setResponseMessage("Error: Please accept the Terms of Service");
+      setResponseMessage('Error: Please accept the Terms of Service');
       return;
     }
 
     try {
-      const response = await axios.post("/api/signup", {
+      const response = await axios.post('/api/signup', {
         ...data,
         agreement: acceptedTerms,
       });
 
       setResponseMessage(`Account created successfully`);
-      router.push("/follow-suggestions");
+      router.push('/authenticate');
     } catch (error) {
       setResponseMessage(`Error: ${JSON.stringify(error.response.data)}`);
     }
   };
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,7 +43,7 @@ export default function SignupForm() {
         <input
           id="email"
           type="email"
-          {...register("email", { required: "Email is required" })}
+          {...register('email', { required: 'Email is required' })}
         />
         {errors.email && <span>{errors.email.message}</span>}
       </div>
@@ -53,7 +52,7 @@ export default function SignupForm() {
         <input
           id="username"
           type="text"
-          {...register("username", { required: "Username is required" })}
+          {...register('username', { required: 'Username is required' })}
         />
         {errors.username && <span>{errors.username.message}</span>}
       </div>
@@ -62,7 +61,7 @@ export default function SignupForm() {
         <input
           id="password"
           type="password"
-          {...register("password", { required: "Password is required" })}
+          {...register('password', { required: 'Password is required' })}
         />
         {errors.password && <span>{errors.password.message}</span>}
       </div>

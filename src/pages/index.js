@@ -1,27 +1,58 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import SignupForm from '../components/SignupForm';
+import Head from 'next/head';
+import Card from '@/components/molecules/Card';
+import Grid from '@/components/layout/Grid';
+import GridItem from '@/components/layout/GridItem';
+
+import { homepageCardData as cardData } from '/data/content';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Mastodon Signup</title>
-        <meta name="description" content="Mastodon account signup using Next.js, React and Mastodon API" />
+        <meta
+          name="description"
+          content="Mastodon account signup using Next.js, React and Mastodon API"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Mastodon Account Signup
-        </h1>
+      <main>
+        <Grid className="u-text-align--center">
+          <GridItem columnStart={4} columnEnd={10}>
+            {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
+            <h1>Welcome to your Better Social Home</h1>
+            <p>
+              We can help you easily join Mastodon, enrich your experience if
+              you&apos;ve already joined, and share Mastodon with your friends
+              and social networks.
+            </p>
+          </GridItem>
+        </Grid>
 
-        <SignupForm />
+        {/* Might make a Grid/Flex component going forward depending on other pages */}
+        <Grid variant="autoFit">
+          {cardData.map((card) => (
+            <Card
+              key={card.title}
+              title={card.title}
+              description={card.description}
+              icon={card.icon}
+              link={card.link}
+              linkText={card.linkText}
+            />
+          ))}
+        </Grid>
+
+        <Grid>
+          <GridItem columnStart={5} columnEnd={9}>
+            <p className="u-text-align--center">
+              This site is not affiliated with Mastodon 9GMBH. © 2023 Spread
+              Mastodon. All Rights Reserved.
+            </p>
+          </GridItem>
+        </Grid>
       </main>
-
-      <footer className={styles.footer}>
-
-      </footer>
     </div>
-  )
+  );
 }
