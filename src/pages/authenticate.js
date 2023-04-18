@@ -29,7 +29,6 @@ export default function AuthenticateUser() {
 
       return response.data.data.access_token;
     } catch (error) {
-      console.log(error.response.data);
       throw new Error(
         `Error authenticating account: ${JSON.stringify(
           error.response.data.error.error_description,
@@ -57,6 +56,7 @@ export default function AuthenticateUser() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const accessToken = await authenticateUser(email, password);
       await verifyUserAccount(accessToken);
@@ -66,6 +66,7 @@ export default function AuthenticateUser() {
     } catch (error) {
       setValidationMessage(error.message);
     }
+
     setLoading(false);
   };
 
