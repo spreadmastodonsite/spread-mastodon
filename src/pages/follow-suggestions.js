@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
+import Link from 'next/link';
 
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
@@ -65,7 +66,7 @@ export default function FollowSuggestions() {
   };
 
   return (
-    <div>
+    <main>
       <h1>Follow Suggestions</h1>
       <p>
         Please check your email and click the confirmation link. Once confirmed,
@@ -78,9 +79,9 @@ export default function FollowSuggestions() {
         <ul>
           {suggestedUsers.map((user) => (
             <li key={user.id}>
-              <a href={user.url} target="_blank" rel="noopener noreferrer">
+              <Link href={user.url} target="_blank" rel="noopener noreferrer">
                 {user.username}
-              </a>{' '}
+              </Link>{' '}
               <Button
                 onClick={() => followUser(user.id, user.username)}
                 text="Follow user"
@@ -107,6 +108,6 @@ export default function FollowSuggestions() {
       )}
       <Button link="follow-tags" text="Follow Tags" />
       <Button link="Back to Signup" text="Back to Signup" />
-    </div>
+    </main>
   );
 }
