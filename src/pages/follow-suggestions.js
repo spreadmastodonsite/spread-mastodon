@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import axios from 'axios';
+import Button from '@/components/molecules/Button';
 
 export default function FollowSuggestions() {
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [followedUsers, setFollowedUsers] = useState([]);
 
   // Suggested users to follow on signup success. Add more if you want!
   const suggestedUsers = [
@@ -20,22 +22,46 @@ export default function FollowSuggestions() {
     },
   ];
 
+  const followAllUsers = async () => {
+    const accessToken = sessionStorage.getItem('accessToken');
+
+    setLoading(true);
+    try {
+      const followPromises = suggestedUsers.map(async (user) => {
+        await axios.post('/api/follow', {
+          accessToken,
+          targetAccountId: user.id,
+        });
+        return user.username;
+      });
+
+      const followedUsernames = await Promise.all(followPromises);
+      setFollowedUsers(followedUsernames);
+
+      alert(`You are now following ${followedUsernames.join(', ')}`);
+    } catch (error) {
+      alert(`Error: ${JSON.stringify(error.response.data.error.error)}`);
+    }
+
+    setLoading(false);
+  };
+
   const followUser = async (targetAccountId, username) => {
     const accessToken = sessionStorage.getItem('accessToken');
 
+    setLoading(true);
     try {
       await axios.post('/api/follow', {
         accessToken,
         targetAccountId,
       });
 
-      // @TODO: This message is still displaying success even if the user isn't
-      // authenticated and follow fails. The user needs to be authenticated for
-      // the follow to work.
       alert(`You are now following ${username}`);
     } catch (error) {
-      alert(`Error: ${JSON.stringify(error.response.data)}`);
+      alert(`Error: ${JSON.stringify(error.response.data.error.error)}`);
     }
+
+    setLoading(false);
   };
 
   return (
@@ -55,15 +81,32 @@ export default function FollowSuggestions() {
               <a href={user.url} target="_blank" rel="noopener noreferrer">
                 {user.username}
               </a>{' '}
-              <button onClick={() => followUser(user.id, user.username)}>
-                Follow
-              </button>
+              <Button
+                onClick={() => followUser(user.id, user.username)}
+                text="Follow user"
+                loading={loading}
+              />
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={() => router.push('/follow-tags')}>Follow Tags</button>
-      <button onClick={() => router.push('/')}>Back to Signup</button>
+      <Button
+        onClick={followAllUsers}
+        text="Follow all users"
+        loading={loading}
+      />
+      {followedUsers.length > 0 && (
+        <div>
+          <h2>Followed Users</h2>
+          <ul>
+            {followedUsers.map((username) => (
+              <li key={username}>{username}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <Button link="follow-tags" text="Follow Tags" />
+      <Button link="Back to Signup" text="Back to Signup" />
     </div>
   );
 }
