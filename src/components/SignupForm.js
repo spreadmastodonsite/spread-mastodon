@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Button from './molecules/Button';
 
 export default function SignupForm() {
   const router = useRouter();
@@ -9,17 +10,28 @@ export default function SignupForm() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const password = watch('password', '');
+  const verifyPassword = watch('verifyPassword', '');
+  const [loading, setLoading] = useState(false);
 
   const handleCheckboxChange = (e) => {
     setAcceptedTerms(e.target.checked);
   };
 
   const onSubmit = async (data) => {
+    setLoading(true);
+
     if (!acceptedTerms) {
       setResponseMessage('Error: Please accept the Terms of Service');
+      return;
+    }
+
+    if (password !== verifyPassword) {
+      setResponseMessage('Error: Passwords do not match');
       return;
     }
 
@@ -32,7 +44,17 @@ export default function SignupForm() {
       setResponseMessage(`Account created successfully`);
       router.push('/authenticate');
     } catch (error) {
-      setResponseMessage(`Error: ${JSON.stringify(error.response.data)}`);
+      setResponseMessage(
+        `Error: ${JSON.stringify(error.response.data.error.error)}`,
+      );
+    }
+
+    setLoading(false);
+  };
+
+  const checkPasswordsMatch = () => {
+    if (password !== verifyPassword) {
+      return <span>Passwords do not match</span>;
     }
   };
 
@@ -65,6 +87,15 @@ export default function SignupForm() {
         />
         {errors.password && <span>{errors.password.message}</span>}
       </div>
+      <div>
+        <label htmlFor="verifyPassword">Verify Password:</label>
+        <input
+          id="verifyPassword"
+          type="password"
+          {...register('verifyPassword', { required: 'Password is required' })}
+        />
+        {checkPasswordsMatch()}
+      </div>
 
       <div className="c-agreement">
         <label htmlFor="agreement">
@@ -79,7 +110,7 @@ export default function SignupForm() {
       </div>
 
       <div>
-        <button type="submit">Sign up</button>
+        <Button loading={loading} type="submit" text="Sign up" />
       </div>
       {responseMessage && <div>{responseMessage}</div>}
     </form>
