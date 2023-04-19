@@ -4,6 +4,8 @@ import axios from 'axios';
 import Button from '@/components/molecules/Button';
 import Link from 'next/link';
 
+import { followSuggestionsData as data } from '/data/followSuggestions';
+
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
   const [followedUsers, setFollowedUsers] = useState([]);
@@ -67,15 +69,11 @@ export default function FollowSuggestions() {
 
   return (
     <main>
-      <h1>Follow Suggestions</h1>
-      <p>
-        Please check your email and click the confirmation link. Once confirmed,
-        click the button below and log in to authenticate and view suggested
-        users to follow.
-      </p>
+      <h1>{data.heading.text}</h1>
+      <p>{data.subHeading.text}</p>
       {/* Render the suggested users list */}
       <div>
-        <h2>Suggested Users</h2>
+        <h2>{data.secondHeading.text}</h2>
         <ul>
           {suggestedUsers.map((user) => (
             <li key={user.id}>
@@ -84,7 +82,7 @@ export default function FollowSuggestions() {
               </Link>{' '}
               <Button
                 onClick={() => followUser(user.id, user.username)}
-                text="Follow user"
+                text={data.followUserButton.text + ' ' + user.username}
                 loading={loading}
               />
             </li>
@@ -93,7 +91,7 @@ export default function FollowSuggestions() {
       </div>
       <Button
         onClick={followAllUsers}
-        text="Follow all users"
+        text={data.followAllButton.text}
         loading={loading}
       />
       {followedUsers.length > 0 && (
@@ -107,7 +105,7 @@ export default function FollowSuggestions() {
         </div>
       )}
       <Button link="follow-tags" text="Follow Tags" />
-      <Button link="Back to Signup" text="Back to Signup" />
+      <Button link="/" text={data.backToHomeButton.text} />
     </main>
   );
 }

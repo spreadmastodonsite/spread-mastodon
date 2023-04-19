@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Button from '@/components/molecules/Button';
+
+import { authenticateData as data } from '../../data/authenticate';
 
 export default function AuthenticateUser() {
   const router = useRouter();
@@ -37,15 +40,9 @@ export default function AuthenticateUser() {
 
   return (
     <div>
-      <h1>Authenticate Account</h1>
-      <p>
-        Please check your email and click the confirmation link. Once confirmed,
-        click the button below and log in to authenticate and view suggested
-        users to follow.
-      </p>
-      <button onClick={() => setValidatedEmail(true)}>
-        I have validated my email, proceed
-      </button>
+      <h1>{data.heading.text} </h1>
+      <p>{data.subHeading.text}</p>
+      <Button onClick={() => setValidatedEmail(true)} text={data.button.text} />
       {validatedEmail && (
         <>
           <form onSubmit={handleSubmit}>
@@ -76,7 +73,7 @@ export default function AuthenticateUser() {
           {validationMessage && <div>{validationMessage}</div>}
         </>
       )}
-      <button onClick={() => router.push('/')}>Back to Signup</button>
+      <Button link="/" text="Back to Signup" />
     </div>
   );
 }
