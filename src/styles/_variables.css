@@ -22,7 +22,8 @@
     'Cantarell';
 
   /* ** font weight ** */
-  --font-bold: 700;
+  --font-semibold: 600;
+  --font-extrabold: 800;
   --font-normal: 400;
 
   /* ** Font size ** */
@@ -31,23 +32,26 @@
   --font-size: 1rem; /* 16px */
   --font-size-lg: calc(var(--font-size) * 1.25); /* 20px */
   --font-size-xl: calc(var(--font-size) * 1.5); /* 24px */
-  --font-size-2xl: calc(var(--font-size) * 2); /* 32px */
-  --font-size-3xl: calc(var(--font-size) * 3); /* 48px */
+  --font-size-2xl: calc(var(--font-size) * 1.75); /* 28px */
+  --font-size-3xl: calc(var(--font-size) * 2.375); /* 38px */
+  --font-size-4xl: calc(var(--font-size) * 2.75); /* 44px */
+  --font-size-xxl: calc(var(--font-size) * 5.125); /* 82px */
 
   /* ***** Spacing ***** */
-  --space-2xs: calc(var(--space) * 0.25); /* 4px */
+  --space-2xs: calc(var(--space) * 0.1875); /* 3px */
   --space-xs: calc(var(--space) * 0.5); /* 8px */
   --space-sm: calc(var(--space) * 0.75); /* 12px */
   --space: 1rem; /* 16px */
   --space-lg: calc(var(--space) * 1.25); /* 20px */
   --space-xl: calc(var(--space) * 1.5); /* 24px */
   --space-2xl: calc(var(--space) * 2); /* 32px */
-  --space-3xl: calc(var(--space) * 3); /* 48px */
+  --space-3xl: calc(var(--space) * 3.25); /* 52px */
+  --space-4xl: calc(var(--space) * 3.625); /* 58px */
 
   --grid-gap: var(--space);
 
   --border-radius--sm: var(--space-2xs);
-  --border-radius: var(--space-sm);
+  --border-radius: var(--space);
   --max-width: 1100px;
 
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',

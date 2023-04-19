@@ -13,3 +13,8 @@
 .text-primary {
   color: var(--c-primary);
 }
+
+.text-large {
+  font-size: var(--font-size-3xl);
+  line-height: 3rem;
+}

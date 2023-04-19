@@ -19,17 +19,21 @@ export default function Home() {
 
 			<main className="c-container">
 				<Grid className="u-text-align--center">
-					<GridItem columnStart={3} columnEnd={11}>
-						<img className="c-logo" src="/FPO-logo.png" alt="REPLACE LOGO" />
+					<GridItem columnStart={1} columnEnd={13}>
+						<img
+							className="c-logo"
+							src="/-e-SpreadMastodon_Logo.png"
+							alt="Spread Mastodon - Take Back Social"
+						/>
 						<h1>
 							Welcome to your <span className="text-primary">Better</span>
 							<br />
 							Social Home
 						</h1>
-						<p>
-							We can help you easily join Mastodon,
+						<p className="text-large">
+							We can help you easily join Mastodon, enrich your
 							<br />
-							enrich your experience if you&apos;ve already joined, and share
+							experience if you&apos;ve already joined, and share
 							<br />
 							Mastodon with your friends and social networks.
 						</p>
@@ -37,22 +41,24 @@ export default function Home() {
 				</Grid>
 
 				{/* Might make a Grid/Flex component going forward depending on other pages */}
-				<Grid variant="autoFit">
-					{cardData.map((card) => (
-						<Card
-							key={card.title}
-							title={card.title}
-							description={card.description}
-							icon={card.icon}
-							link={card.link}
-							linkText={card.linkText}
-						/>
-					))}
-				</Grid>
+				<div className="c-card__container">
+					<Grid variant="autoFit">
+						{cardData.map((card) => (
+							<Card
+								key={card.title}
+								title={card.title}
+								description={card.description}
+								icon={card.icon}
+								link={card.link}
+								linkText={card.linkText}
+							/>
+						))}
+					</Grid>
+				</div>
 
 				<footer>
 					<Grid>
-						<GridItem columnStart={5} columnEnd={9}>
+						<GridItem columnStart={4} columnEnd={10}>
 							<p className="u-text-align--center">
 								This site is not affiliated with Mastodon 9GMBH.
 								<br />© 2023 Spread Mastodon. All Rights Reserved.

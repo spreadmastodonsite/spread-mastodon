@@ -1,18 +1,24 @@
 /* Card */
 
+.c-card__container {
+  padding: var(--space-3xl) 0;
+}
+
 .c-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space);
-  padding-top: var(--space-lg);
-  padding-right: var(--space-3xl);
-  padding-bottom: var(--space-lg);
-  padding-left: var(--space-3xl);
+  gap: var(--space-3xl);
+  padding: var(--space-3xl);
   background-color: var(--secondary-background);
   text-align: center;
   border-radius: var(--border-radius);
 }
 
-.c-card__title {
-  flex: 1 0 auto;
+.c-card__content {
+  padding: 0 var(--space-2xl);
+}
+
+.c-card__description {
+  font-size: 1.2rem;
+  padding: var(--space-3xl) var(--space-2xl) 0;
 }

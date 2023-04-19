@@ -24,17 +24,17 @@ body {
 }
 
 main {
-  max-width: 1440px;
-  padding: 0 50px;
+  max-width: 1750px;
+  padding: var(--space-4xl) var(--space-4xl) var(--space-2xl);
   margin-left: auto;
   margin-right: auto;
 }
 
 h1 {
-  font-size: 3.7rem;
-  font-weight: 700;
+  font-size: var(--font-size-xxl);
+  font-weight: 600;
   margin: 1.5rem 0;
-  line-height: 4.3rem;
+  line-height: 5.625rem;
 }
 
 p {
@@ -89,7 +89,9 @@ label {
 }
 
 h2 {
-  margin-top: 30px;
+  font-size: var(--font-size-4xl);
+  line-height: 3.4375rem;
+  font-weight: 500;
 }
 
 ul {
@@ -108,18 +110,19 @@ li {
 
 /* Footer */
 footer p {
-  font-size: .8rem;
+  font-size: var(--space-xl);
+  line-height: var(--space-2xl);
 }
 
 /* Container */
 .c-container {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   align-content: space-around;
 }
 
 /* Logo */
 .c-logo {
-  width: 541px;
+  width: 560px;
   height: auto;
 }
