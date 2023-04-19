@@ -1,11 +1,11 @@
 :root {
   /* ***** Colors ***** */
-  --c-purple-500: #6364ff;
+  --c-purple-500: #6363ff;
 
   /* ** util colors ** */
   --c-white: #ffffff;
-  --c-black-300: #282c37;
-  --c-black-500: #191b22;
+  --c-black-300: #1a1a22;
+  --c-black-500: #0b0c10;
 
   /* ** theme colors ** */
   --c-primary: var(--c-purple-500);

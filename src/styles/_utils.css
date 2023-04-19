@@ -9,3 +9,7 @@
 .u-text-align--right {
   text-align: right;
 }
+
+.text-primary {
+  color: var(--c-primary);
+}

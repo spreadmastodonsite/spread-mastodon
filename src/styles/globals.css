@@ -19,23 +19,26 @@
 
 body {
   background: var(--primary-background);
-}
-
-body > * {
-  margin-top: 10%;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
   max-width: 1440px;
-  padding: 0 20px;
+  padding: 0 50px;
   margin-left: auto;
   margin-right: auto;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 3.7rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
+  line-height: 4.3rem;
+}
+
+p {
+  font-size: 1.4rem;
 }
 
 input {
@@ -101,4 +104,22 @@ li {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space);
+}
+
+/* Footer */
+footer p {
+  font-size: .8rem;
+}
+
+/* Container */
+.c-container {
+  height: 100vh;
+  display: grid;
+  align-content: space-around;
+}
+
+/* Logo */
+.c-logo {
+  width: 541px;
+  height: auto;
 }
