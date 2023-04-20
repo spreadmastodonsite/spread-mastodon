@@ -5,6 +5,7 @@ export default function Button({
   className,
   text,
   variant = 'primary',
+  type,
   link,
   onClick,
   ...props
@@ -15,7 +16,7 @@ export default function Button({
 
   const handleClick = () => {
     if (onClick) {
-      onClick(e);
+      onClick();
     }
   };
 
@@ -27,7 +28,11 @@ export default function Button({
           {text}{' '}
         </Link>
       ) : (
-        <button className={componentClassName} onClick={handleClick} {...props}>
+        <button
+          type={type}
+          className={componentClassName}
+          onClick={handleClick}
+          {...props}>
           {text}
         </button>
       )}
