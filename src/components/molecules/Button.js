@@ -5,6 +5,7 @@ export default function Button({
   className,
   text,
   variant = 'primary',
+  type,
   link,
   onClick,
   loading = false,
@@ -29,7 +30,11 @@ export default function Button({
           {content}
         </Link>
       ) : (
-        <button className={componentClassName} onClick={handleClick} {...props}>
+        <button
+          type={type}
+          className={componentClassName}
+          onClick={handleClick}
+          {...props}>
           {content}
         </button>
       )}
