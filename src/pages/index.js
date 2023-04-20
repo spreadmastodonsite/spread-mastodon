@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Head from 'next/head';
 import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
@@ -16,7 +17,6 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
