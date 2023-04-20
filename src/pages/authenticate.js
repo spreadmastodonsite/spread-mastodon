@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
+import { authenticateData as data } from '../../data/authenticate';
+
 export default function AuthenticateUser() {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -74,12 +76,8 @@ export default function AuthenticateUser() {
     <div>
       {verifiedAndAuthenticated === false ? (
         <>
-          <h1>Authenticate Account</h1>
-          <p>
-            Please check your email and click the confirmation link. Once
-            confirmed, click the button below and log in to authenticate and
-            view suggested users to follow.
-          </p>
+          <h1>{data.heading.text} </h1>
+          <p>{data.subHeading.text}</p>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Email:</label>

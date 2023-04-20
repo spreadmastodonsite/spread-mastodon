@@ -97,8 +97,30 @@ li {
   margin: 5px 0;
 }
 
-.card__row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space);
+.c-heading-one__special {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-heading-one__special span {
+  display: inline-block;
+}
+
+.c-heading-one__rotate {
+  display: inline-block;
+  animation: rotateText 3s linear infinite;
+  color: var(--c-primary);
+}
+
+@keyframes rotateText {
+  0% {
+    transform: translateY(-30px);
+  }
+  25% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

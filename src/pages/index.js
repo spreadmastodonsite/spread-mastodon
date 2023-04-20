@@ -1,11 +1,23 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 
-import { homepageCardData as cardData } from '/data/content';
+import { homepageData } from '/data/homepage.js';
 
 export default function Home() {
+  const [rotateIndex, setRotateIndex] = useState(0);
+  const heading = homepageData.heading;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotateIndex((index) => (index + 1) % heading.textRotate.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <Head>
@@ -21,18 +33,23 @@ export default function Home() {
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
             {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
-            <h1>Welcome to your Better Social Home</h1>
-            <p>
-              We can help you easily join Mastodon, enrich your experience if
-              you&apos;ve already joined, and share Mastodon with your friends
-              and social networks.
-            </p>
+            <h1 className="c-heading-one__special">
+              <div>
+                <span>{heading.textOne} </span>{' '}
+                <span className="c-heading-one__rotate">
+                  {' '}
+                  {heading.textRotate[rotateIndex]}
+                </span>{' '}
+              </div>
+              <span>{heading.textTwo}</span>
+            </h1>
+            <p>{homepageData.subHeading.text}</p>
           </GridItem>
         </Grid>
 
         {/* Might make a Grid/Flex component going forward depending on other pages */}
         <Grid variant="autoFit">
-          {cardData.map((card) => (
+          {homepageData.cards.map((card) => (
             <Card
               key={card.title}
               title={card.title}
@@ -47,8 +64,7 @@ export default function Home() {
         <Grid>
           <GridItem columnStart={5} columnEnd={9}>
             <p className="u-text-align--center">
-              This site is not affiliated with Mastodon 9GMBH. © 2023 Spread
-              Mastodon. All Rights Reserved.
+              {homepageData.disclaimer.text}
             </p>
           </GridItem>
         </Grid>
