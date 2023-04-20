@@ -10,7 +10,9 @@ export default function AuthenticateUser() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
-  const [validatedEmail, setValidatedEmail] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
+    useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,37 +22,69 @@ export default function AuthenticateUser() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const authenticateUser = async (email, password) => {
     try {
       const response = await axios.post('/api/authenticate', {
         email,
         password,
       });
 
-      // Store the access token for future authenticated requests
-      sessionStorage.setItem('accessToken', response.data.data.access_token);
-
-      setValidationMessage('Authenticated successfully');
+      return response.data.data.access_token;
     } catch (error) {
-      setValidationMessage(`Error: ${JSON.stringify(error.response.data)}`);
+      throw new Error(
+        `Error authenticating account: ${JSON.stringify(
+          error.response.data.error.error_description,
+        )}`,
+      );
     }
+  };
+
+  const verifyUserAccount = async (accessToken) => {
+    try {
+      const response = await axios.get(
+        `/api/verifyAccount?accessToken=${accessToken}`,
+      );
+
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        `Error verifying account: ${JSON.stringify(
+          error.response.data.error.error,
+        )}`,
+      );
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const accessToken = await authenticateUser(email, password);
+      await verifyUserAccount(accessToken);
+
+      setValidationMessage('Verified and authenticated successfully');
+      setVerifiedAndAuthenticated(true);
+    } catch (error) {
+      setValidationMessage(error.message);
+    }
+
+    setLoading(false);
   };
 
   return (
     <div>
-      <h1>{data.heading.text} </h1>
-      <p>{data.subHeading.text}</p>
-      <Button onClick={() => setValidatedEmail(true)} text={data.button.text} />
-      {validatedEmail && (
+      {verifiedAndAuthenticated === false ? (
         <>
+          <h1>{data.heading.text} </h1>
+          <p>{data.subHeading.text}</p>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Email:</label>
               <input
                 id="email"
                 type="email"
+                required
                 value={email}
                 onChange={handleEmailChange}
               />
@@ -60,17 +94,26 @@ export default function AuthenticateUser() {
               <input
                 id="password"
                 type="password"
+                required
                 value={password}
                 onChange={handlePasswordChange}
               />
             </div>
-            <button
-              onClick={() => router.push('/follow-suggestions')}
-              type="submit">
-              Log in &amp; Authenticate
-            </button>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <p>
+                {validationMessage && <div>{validationMessage}</div>}
+                <Button type="submit" text="Log in &amp; Authenticate" />
+              </p>
+            )}
           </form>
-          {validationMessage && <div>{validationMessage}</div>}
+        </>
+      ) : (
+        <>
+          <h1>Authenticated and Verified!</h1>
+          <p>View suggested users to follow.</p>
+          <Button link="/follow-suggestions" text="Who to Follow" />
         </>
       )}
       <Button link="/" text="Back to Signup" />
