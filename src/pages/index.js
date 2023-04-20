@@ -4,11 +4,11 @@ import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 
-import { homepageData } from '/data/homepage.js';
+import { homepageData as data } from '/data/homepage.js';
 
 export default function Home() {
   const [rotateIndex, setRotateIndex] = useState(0);
-  const heading = homepageData.heading;
+  const heading = data.heading;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,11 +21,8 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Mastodon Signup</title>
-        <meta
-          name="description"
-          content="Mastodon account signup using Next.js, React and Mastodon API"
-        />
+        <title>{data.metaData.title}</title>
+        <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -43,13 +40,13 @@ export default function Home() {
               </div>
               <span>{heading.textTwo}</span>
             </h1>
-            <p>{homepageData.subHeading.text}</p>
+            <p>{data.subHeading.text}</p>
           </GridItem>
         </Grid>
 
         {/* Might make a Grid/Flex component going forward depending on other pages */}
         <Grid variant="autoFit">
-          {homepageData.cards.map((card) => (
+          {data.cards.map((card) => (
             <Card
               key={card.title}
               title={card.title}
@@ -63,9 +60,7 @@ export default function Home() {
 
         <Grid>
           <GridItem columnStart={5} columnEnd={9}>
-            <p className="u-text-align--center">
-              {homepageData.disclaimer.text}
-            </p>
+            <p className="u-text-align--center">{data.disclaimer.text}</p>
           </GridItem>
         </Grid>
       </main>

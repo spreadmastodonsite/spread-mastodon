@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
@@ -74,49 +75,56 @@ export default function AuthenticateUser() {
 
   return (
     <div>
-      {verifiedAndAuthenticated === false ? (
-        <>
-          <h1>{data.heading.text} </h1>
-          <p>{data.subHeading.text}</p>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <p>
-                {validationMessage && <div>{validationMessage}</div>}
-                <Button type="submit" text="Log in &amp; Authenticate" />
-              </p>
-            )}
-          </form>
-        </>
-      ) : (
-        <>
-          <h1>Authenticated and Verified!</h1>
-          <p>View suggested users to follow.</p>
-          <Button link="/follow-suggestions" text="Who to Follow" />
-        </>
-      )}
-      <Button link="/" text="Back to Signup" />
+      <Head>
+        <title>{data.metaData.title}</title>
+        <meta name={data.metaData.name} content={data.metaData.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main>
+        {verifiedAndAuthenticated === false ? (
+          <>
+            <h1>{data.heading.text} </h1>
+            <p>{data.subHeading.text}</p>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="email">Email:</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+              </div>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <p>
+                  {validationMessage && <div>{validationMessage}</div>}
+                  <Button type="submit" text="Log in &amp; Authenticate" />
+                </p>
+              )}
+            </form>
+          </>
+        ) : (
+          <>
+            <h1>Authenticated and Verified!</h1>
+            <p>View suggested users to follow.</p>
+            <Button link="/follow-suggestions" text="Who to Follow" />
+          </>
+        )}
+        <Button link="/" text="Back to Signup" />
+      </main>
     </div>
   );
 }
