@@ -16,7 +16,7 @@ export default function Home() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [heading.textRotate.length]);
 
   return (
     <div>
