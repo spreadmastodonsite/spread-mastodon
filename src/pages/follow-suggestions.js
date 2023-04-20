@@ -104,7 +104,7 @@ export default function FollowSuggestions() {
           </ul>
         </div>
       )}
-      <Button link="follow-tags" text="Follow Tags" />
+      <Button link="/follow-tags" text="Follow Tags" />
       <Button link="/" text={data.backToHomeButton.text} />
     </main>
   );

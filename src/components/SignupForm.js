@@ -70,6 +70,15 @@ export default function SignupForm() {
         {errors.email && <span>{errors.email.message}</span>}
       </div>
       <div>
+        <label htmlFor="displayName">Display Name:</label>
+        <input
+          id="displayName"
+          type="text"
+          {...register('displayName', { required: 'Display Name is required' })}
+        />
+        {errors.displayName && <span>{errors.displayName.message}</span>}
+      </div>
+      <div>
         <label htmlFor="username">Username:</label>
         <input
           id="username"
