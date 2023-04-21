@@ -5,8 +5,10 @@ export default function Button({
   className,
   text,
   variant = 'primary',
+  type,
   link,
   onClick,
+  loading = false,
   ...props
 }) {
   const componentClassName = cx('c-button', className, {
@@ -15,20 +17,25 @@ export default function Button({
 
   const handleClick = () => {
     if (onClick) {
-      onClick(e);
+      onClick();
     }
   };
+
+  const content = loading ? 'Loading...' : text;
 
   return (
     <>
       {link ? (
         <Link className={componentClassName} href={link} {...props}>
-          {' '}
-          {text}{' '}
+          {content}
         </Link>
       ) : (
-        <button className={componentClassName} onClick={handleClick} {...props}>
-          {text}
+        <button
+          type={type}
+          className={componentClassName}
+          onClick={handleClick}
+          {...props}>
+          {content}
         </button>
       )}
     </>
