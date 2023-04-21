@@ -13,7 +13,9 @@ export default function Card({
 
 	return (
 		<div className={componentClassName}>
-			<div className="c-card__icon">{icon}</div>
+			<div className="c-card__icon">
+				<img src={icon} alt={title} />
+			</div>
 			<h2 className="c-card__title">{title}</h2>
 			<div className="c-card__content">
 				<Button text={linkText} link={link} />
