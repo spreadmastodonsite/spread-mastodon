@@ -10,6 +10,7 @@
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font: inherit;
+  font-weight: var(--font-semibold);
 }
 
 .c-button--primary {

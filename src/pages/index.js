@@ -10,16 +10,16 @@ export default function Home() {
 	const [rotateIndex, setRotateIndex] = useState(0);
 	const heading = homepageData.heading;
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setRotateIndex((index) => (index + 1) % heading.textRotate.length);
-		}, 3000);
+	// useEffect(() => {
+	// 	const interval = setInterval(() => {
+	// 		setRotateIndex((index) => (index + 1) % heading.textRotate.length);
+	// 	}, 3000);
 
-		return () => clearInterval(interval);
-	}, []);
+	// 	return () => clearInterval(interval);
+	// }, []);
 
 	return (
-		<div>
+		<div className="content-wrapper">
 			<Head>
 				<title>Mastodon Signup</title>
 				<meta
@@ -31,9 +31,13 @@ export default function Home() {
 
 			<main>
 				<Grid className="u-text-align--center">
-					<GridItem columnStart={4} columnEnd={10}>
-						{/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
-						<h1 className="c-heading-one__special">
+					<GridItem columnStart={2} columnEnd={12}>
+						<img
+							src="/-e-SpreadMastodon_Logo.png"
+							alt="Spread Mastodon | Take Back Social"
+							className="c-logo"
+						/>
+						<h1 className="c-heading-one__special u-heading--xxl">
 							<div>
 								<span>{heading.textOne} </span>{" "}
 								<span className="c-heading-one__rotate">
@@ -43,12 +47,14 @@ export default function Home() {
 							</div>
 							<span>{heading.textTwo}</span>
 						</h1>
-						<p>{homepageData.subHeading.text}</p>
+					</GridItem>
+					<GridItem columnStart={4} columnEnd={10}>
+						<p className="u-body--lg">{homepageData.subHeading.text}</p>
 					</GridItem>
 				</Grid>
 
 				{/* Might make a Grid/Flex component going forward depending on other pages */}
-				<Grid variant="autoFit">
+				<Grid variant="autoFit" className="c-card__container">
 					{homepageData.cards.map((card) => (
 						<Card
 							key={card.title}
@@ -60,15 +66,18 @@ export default function Home() {
 						/>
 					))}
 				</Grid>
-
+			</main>
+			<footer>
 				<Grid>
 					<GridItem columnStart={5} columnEnd={9}>
-						<p className="u-text-align--center">
+						<p className="u-text-align--center u-body--sm">
 							{homepageData.disclaimer.text}
+							<br />
+							{homepageData.disclaimer.copyright}
 						</p>
 					</GridItem>
 				</Grid>
-			</main>
+			</footer>
 		</div>
 	);
 }

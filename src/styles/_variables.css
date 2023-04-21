@@ -5,7 +5,7 @@
   /* ** util colors ** */
   --c-white: #ffffff;
   --c-black-300: #191b22;
-  --c-black-500: #0d0e13;
+  --c-black-500: #0b0c15;
 
   /* ** theme colors ** */
   --c-primary: var(--c-purple-500);
@@ -31,28 +31,29 @@
   --font-size-sm: calc(var(--font-size) * 0.75); /* 12px */
   --font-size: 1rem; /* 16px */
   --font-size-lg: calc(var(--font-size) * 1.25); /* 20px */
-  --font-size-xl: calc(var(--font-size) * 1.5); /* 24px */
-  --font-size-2xl: calc(var(--font-size) * 1.75); /* 28px */
-  --font-size-3xl: calc(var(--font-size) * 2.375); /* 38px */
-  --font-size-4xl: calc(var(--font-size) * 2.75); /* 44px */
-  --font-size-xxl: calc(var(--font-size) * 5.125); /* 82px */
+  --font-size-2lg: calc(var(--font-size) * 1.5); /* 24px */
+  --font-size-xl: calc(var(--font-size) * 1.75); /* 28px */
+  --font-size-2xl: calc(var(--font-size) * 2); /* 32px */
+  --font-size-3xl: calc(var(--font-size) * 2.5); /* 40px */
+  --font-size-4xl: calc(var(--font-size) * 3); /* 48px */
+  --font-size-xxl: calc(var(--font-size) * 3.75); /* 60px */
+  --font-size-2xxl: calc(var(--font-size) * 4.25); /* 68px */
 
   /* ***** Spacing ***** */
-  --space-2xs: calc(var(--space) * 0.1875); /* 3px */
-  --space-xs: calc(var(--space) * 0.5); /* 8px */
-  --space-sm: calc(var(--space) * 0.75); /* 12px */
-  --space: 1rem; /* 16px */
-  --space-lg: calc(var(--space) * 1.25); /* 20px */
-  --space-xl: calc(var(--space) * 1.5); /* 24px */
-  --space-2xl: calc(var(--space) * 2); /* 32px */
-  --space-3xl: calc(var(--space) * 3.25); /* 52px */
-  --space-4xl: calc(var(--space) * 3.625); /* 58px */
+  --space-xs: calc(var(--space) * 0.25); /* 5px */
+  --space-sm: calc(var(--space) * 0.5); /* 10px */
+  --space-md: calc(var(--space) * 0.75); /* 15px */
+  --space: 1rem; /* 20px */
+  --space-lg: calc(var(--space) * 1.25); /* 25px */
+  --space-2lg: calc(var(--space) * 2); /* 40px */
+  --space-xl: calc(var(--space) * 3); /* 60px */
+  --space-xxl: calc(var(--space) * 4); /* 80px */
 
-  --grid-gap: var(--space);
+  --grid-gap: var(--space-lg);
 
-  --border-radius--sm: var(--space-2xs);
-  --border-radius: var(--space);
-  --max-width: 1100px;
+  --border-radius--sm: var(--space-xs);
+  --border-radius: var(--space-md);
+  --max-width: 1280px;
 
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',

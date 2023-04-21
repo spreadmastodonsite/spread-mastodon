@@ -1,3 +1,61 @@
+/* Headings */
+
+.u-heading--xs {
+  font-size: var(--font-size-xs);
+}
+
+.u-heading--sm {
+  font-size: var(--font-size-s);
+}
+
+.u-heading--md {
+  font-size: var(--font-size-m);
+}
+
+.u-heading--lg {
+  font-size: var(--font-size-l);
+}
+
+.u-heading--xl {
+  font-size: var(--font-size-xl);
+}
+
+.u-heading--xxl {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-lg);
+}
+
+
+/* Text */
+
+.u-body-copy {
+  font-size: var(--font-size-lg);
+  line-height: 145%;
+  font-weight: var(--font-normal)
+}
+
+.u-body--lg {
+  font-size: var(--font-size-2lg);
+  line-height: 145%;
+  font-weight: var(--font-normal)
+}
+
+.u-body--sm {
+  font-size: var(--font-size);
+  line-height: 145%;
+  font-weight: var(--font-normal)
+}
+
+
+/* Font Weights */
+.u-normal {
+  font-weight: var(--font-normal);
+}
+
+
+/* Positioning */
+
 .u-text-align--center {
   text-align: center;
 }
@@ -8,13 +66,4 @@
 
 .u-text-align--right {
   text-align: right;
-}
-
-.text-primary {
-  color: var(--c-primary);
-}
-
-.text-large {
-  font-size: var(--font-size-3xl);
-  line-height: 3rem;
 }

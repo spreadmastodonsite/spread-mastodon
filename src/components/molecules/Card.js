@@ -16,10 +16,10 @@ export default function Card({
 			<div className="c-card__icon">
 				<img src={icon} alt={title} />
 			</div>
-			<h2 className="c-card__title">{title}</h2>
+			<h2 className="u-heading--xl u-normal">{title}</h2>
 			<div className="c-card__content">
 				<Button text={linkText} link={link} />
-				<p className="c-card__description">{description}</p>
+				<p className="u-body-copy">{description}</p>
 			</div>
 		</div>
 	);
