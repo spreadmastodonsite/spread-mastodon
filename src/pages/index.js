@@ -7,16 +7,7 @@ import GridItem from '@/components/layout/GridItem';
 import { homepageData } from '/data/homepage.js';
 
 export default function Home() {
-  const [rotateIndex, setRotateIndex] = useState(0);
   const heading = homepageData.heading;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotateIndex((index) => (index + 1) % heading.textRotate.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div>
@@ -35,11 +26,15 @@ export default function Home() {
             {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
             <h1 className="c-heading-one__special">
               <div>
-                <span>{heading.textOne} </span>{' '}
-                <span className="c-heading-one__rotate">
-                  {' '}
-                  {heading.textRotate[rotateIndex]}
-                </span>{' '}
+                <p>{heading.textOne}{' '}
+                <span className="c-heading-one__animation">
+                  {heading.textRotate.map((text) => {
+                    return (
+                      <span key={text} className="c-heading-one__rotate">{text}</span>
+                    )
+                  })}
+                </span>
+                </p>
               </div>
               <span>{heading.textTwo}</span>
             </h1>
