@@ -4,6 +4,9 @@
 @import url('./_fonts.css');
 @import url('./_utils.css');
 
+/* Atoms */
+@import url('./atoms/icon.css');
+
 /* Molecules */
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
