@@ -1,8 +1,8 @@
 export const homepageData = {
   heading: {
     textOne: 'Welcome to your',
-    textRotate: ['Better', 'Wholesome', 'Whimsical'],
-    textTwo: 'Social Home',
+    textRotate: ['better', 'wholesome', 'whimsical'],
+    textTwo: 'social home',
   },
   subHeading: {
     text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon with your friends and social networks.",
