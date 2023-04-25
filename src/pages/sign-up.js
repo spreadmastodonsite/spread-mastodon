@@ -14,13 +14,11 @@ export default function SignUp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Mastodon Account Signup</h1>
+      <main>
+        <h1 className="u-text-align--center">Mastodon Account Signup</h1>
 
         <SignupForm />
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   );
 }

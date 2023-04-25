@@ -10,14 +10,6 @@ export default function Home() {
   const [rotateIndex, setRotateIndex] = useState(0);
   const heading = data.heading;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotateIndex((index) => (index + 1) % heading.textRotate.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [heading.textRotate.length]);
-
   return (
     <div>
       <Head>
@@ -32,11 +24,18 @@ export default function Home() {
             {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
             <h1 className="c-heading-one__special">
               <div>
-                <span>{heading.textOne} </span>{' '}
-                <span className="c-heading-one__rotate">
-                  {' '}
-                  {heading.textRotate[rotateIndex]}
-                </span>{' '}
+                <p>
+                  {heading.textOne}{' '}
+                  <span className="c-heading-one__animation">
+                    {heading.textRotate.map((text) => {
+                      return (
+                        <span key={text} className="c-heading-one__rotate">
+                          {text}
+                        </span>
+                      );
+                    })}
+                  </span>
+                </p>
               </div>
               <span>{heading.textTwo}</span>
             </h1>
@@ -51,7 +50,9 @@ export default function Home() {
               key={card.title}
               title={card.title}
               description={card.description}
-              icon={card.icon}
+              iconName={card.icon}
+              iconWidth={card.iconWidth}
+              iconHeight={card.iconHeight}
               link={card.link}
               linkText={card.linkText}
             />
