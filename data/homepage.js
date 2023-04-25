@@ -19,7 +19,7 @@ export const homepageData = {
       title: 'Already have a Mastodon account?',
       description: 'Discover how to maximize your experience.',
       icon: '🤘',
-      link: '/follow-suggestions',
+      link: '/enhance-account',
       linkText: 'Enrich',
     },
     {
