@@ -49,7 +49,9 @@ export default function Home() {
               key={card.title}
               title={card.title}
               description={card.description}
-              icon={card.icon}
+              iconName={card.icon}
+              iconWidth={card.iconWidth}
+              iconHeight={card.iconHeight}
               link={card.link}
               linkText={card.linkText}
             />
