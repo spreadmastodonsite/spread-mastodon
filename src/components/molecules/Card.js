@@ -1,11 +1,14 @@
 import cx from 'classnames';
 import Button from './Button';
+import Icon from '../atoms/icon';
 
 export default function Card({
   className,
   title,
   description,
-  icon,
+  iconName,
+  iconWidth,
+  iconHeight,
   link,
   linkText,
 }) {
@@ -13,7 +16,12 @@ export default function Card({
 
   return (
     <div className={componentClassName}>
-      <div className="c-card__icon">{icon}</div>
+      <Icon
+        className="c-card__icon"
+        iconName={iconName}
+        width={iconWidth}
+        height={iconHeight}
+      />
       <h2 className="c-card__title">{title}</h2>
       <Button text={linkText} link={link} />
       <p className="c-card__description">{description}</p>
