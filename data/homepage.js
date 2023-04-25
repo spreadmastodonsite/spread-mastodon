@@ -1,4 +1,10 @@
 export const homepageData = {
+  metaData: {
+    title: 'Mastodon Signup',
+    name: 'Mastodon Signup',
+    description:
+      'Mastodon account signup using Next.js, React and Mastodon API',
+  },
   heading: {
     textOne: 'Welcome to your',
     textRotate: ['better', 'wholesome', 'whimsical'],

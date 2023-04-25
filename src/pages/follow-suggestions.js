@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 import Link from 'next/link';
@@ -68,44 +68,51 @@ export default function FollowSuggestions() {
   };
 
   return (
-    <main>
-      <h1>{data.heading.text}</h1>
-      <p>{data.subHeading.text}</p>
-      {/* Render the suggested users list */}
-      <div>
-        <h2>{data.secondHeading.text}</h2>
-        <ul>
-          {suggestedUsers.map((user) => (
-            <li key={user.id}>
-              <Link href={user.url} target="_blank" rel="noopener noreferrer">
-                {user.username}
-              </Link>{' '}
-              <Button
-                onClick={() => followUser(user.id, user.username)}
-                text={data.followUserButton.text + ' ' + user.username}
-                loading={loading}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Button
-        onClick={followAllUsers}
-        text={data.followAllButton.text}
-        loading={loading}
-      />
-      {followedUsers.length > 0 && (
+    <div>
+      <Head>
+        <title>{data.metaData.title}</title>
+        <meta name={data.metaData.name} content={data.metaData.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main>
+        <h1>{data.heading.text}</h1>
+        <p>{data.subHeading.text}</p>
+        {/* Render the suggested users list */}
         <div>
-          <h2>Followed Users</h2>
+          <h2>{data.secondHeading.text}</h2>
           <ul>
-            {followedUsers.map((username) => (
-              <li key={username}>{username}</li>
+            {suggestedUsers.map((user) => (
+              <li key={user.id}>
+                <Link href={user.url} target="_blank" rel="noopener noreferrer">
+                  {user.username}
+                </Link>{' '}
+                <Button
+                  onClick={() => followUser(user.id, user.username)}
+                  text={data.followUserButton.text + ' ' + user.username}
+                  loading={loading}
+                />
+              </li>
             ))}
           </ul>
         </div>
-      )}
-      <Button link="/follow-tags" text="Follow Tags" />
-      <Button link="/" text={data.backToHomeButton.text} />
-    </main>
+        <Button
+          onClick={followAllUsers}
+          text={data.followAllButton.text}
+          loading={loading}
+        />
+        {followedUsers.length > 0 && (
+          <div>
+            <h2>Followed Users</h2>
+            <ul>
+              {followedUsers.map((username) => (
+                <li key={username}>{username}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <Button link="/follow-tags" text="Follow Tags" />
+        <Button link="/" text={data.backToHomeButton.text} />
+      </main>
+    </div>
   );
 }

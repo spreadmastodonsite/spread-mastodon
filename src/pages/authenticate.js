@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
@@ -104,6 +105,11 @@ export default function AuthenticateUser() {
 
   return (
     <div>
+      <Head>
+        <title>{data.metaData.title}</title>
+        <meta name={data.metaData.name} content={data.metaData.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <main>
         {verifiedAndAuthenticated || storedAccessToken ? (
           // If already authenticated, display appropriate message
