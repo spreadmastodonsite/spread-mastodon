@@ -11,6 +11,9 @@
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
 
+/* Components */
+@import url('./components/nav.css');
+
 @import url('./layout/grid.css');
 @import url('./layout/gridItem.css');
 
