@@ -14,10 +14,10 @@
 
 .u-nav-button__line {
   display: block;
-  width: 32px;
+  width: var(--space-2xl);
   height: 3px;
   background-color: var(--c-white);
-  border-radius: 4px;
+  border-radius: var(--border-radius--sm);
   margin-bottom: var( --space-2xs);
   transition: all 0.5s ease-out;
 }
@@ -53,6 +53,6 @@
 
 .u-nav-menu__list {
   list-style: none;
-  padding: 3rem 0 0;
+  padding: var(--space-3xl) 0 0;
   margin: 0;
 }
