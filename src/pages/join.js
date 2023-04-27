@@ -25,14 +25,14 @@ export default function Join() {
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
             {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
-            <h1 className="c-heading-one__special">
+            <h1 className="c-animated-header">
               <div>
                 <p>
                   {heading.textOne}{' '}
                   <span className="c-heading-one__animation">
                     {heading.textRotate.map((text) => {
                       return (
-                        <span key={text} className="c-heading-one__rotate">
+                        <span key={text} className="c-animated-header--rotate">
                           {text}
                         </span>
                       );

@@ -1,15 +1,12 @@
 import Head from 'next/head';
-import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-import AnimatedHeader from '@/components/atoms/animatedHeader';
-
+import Card from '@/components/molecules/Card';
+import Button from '@/components/molecules/Button';
 import { disclaimer } from '../../data/universal';
-import { homepageData as data } from '/data/homepage.js';
+import { moreWaysToShareData as data } from '../../data/moreWaysToShare';
 
-export default function Home() {
-  const heading = data.heading;
-
+export default function MoreWaysToShare() {
   return (
     <div>
       <Head>
@@ -17,27 +14,22 @@ export default function Home() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
-            {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
-            <AnimatedHeader
-              textOne={heading.textOne}
-              textTwo={heading.textTwo}
-              textRotate={heading.textRotate}
-            />
-            <p>{data.subHeading.text}</p>
+            <h1>{data.heading.text}</h1>
+            <h2>{data.subHeading.text}</h2>
           </GridItem>
         </Grid>
-
-        {/* Might make a Grid/Flex component going forward depending on other pages */}
-        <Grid variant="autoFit">
-          {data.cards.map((card) => (
+        <Grid
+          variant="autoFit"
+          itemMinWidth="xl"
+          className="u-text-align--center">
+          {data.cards.map((card, i) => (
             <Card
-              key={card.title}
+              key={card.title + i}
+              className="u-card__more-ways-to-share"
               title={card.title}
-              description={card.description}
               iconName={card.icon}
               iconWidth={card.iconWidth}
               iconHeight={card.iconHeight}
@@ -46,10 +38,9 @@ export default function Home() {
             />
           ))}
         </Grid>
-
-        <Grid>
+        <Grid className="u-text-align--center">
           <GridItem columnStart={5} columnEnd={9}>
-            <p className="u-text-align--center">{disclaimer}</p>
+            <Button text={data.ctaButton.text} link={data.ctaButton.link} />
           </GridItem>
         </Grid>
       </main>

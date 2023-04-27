@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export default async function follow(req, res) {
-  const { accessToken, targetTagId } = req.body;
+  const { accessToken, tagName } = req.body;
 
   try {
     const response = await axios.post(
-      `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/${targetTagId}/follow`,
+      `${process.env.MASTODON_INSTANCE_URL}/api/v1/tags/${tagName}/follow`,
       {},
       {
         headers: {

@@ -11,20 +11,24 @@ export default function Card({
   iconHeight,
   link,
   linkText,
+  children,
 }) {
   const componentClassName = cx('c-card', className, {});
 
   return (
     <div className={componentClassName}>
-      <Icon
-        className="c-card__icon"
-        iconName={iconName}
-        width={iconWidth}
-        height={iconHeight}
-      />
-      <h2 className="c-card__title">{title}</h2>
-      <Button text={linkText} link={link} />
-      <p className="c-card__description">{description}</p>
+      {iconName && (
+        <Icon
+          className="c-card__icon"
+          iconName={iconName}
+          width={iconWidth}
+          height={iconHeight}
+        />
+      )}
+      {title && <h2 className="c-card__title">{title}</h2>}
+      {linkText && <Button text={linkText} link={link} />}
+      {description && <p className="c-card__description">{description}</p>}
+      {children}
     </div>
   );
 }
