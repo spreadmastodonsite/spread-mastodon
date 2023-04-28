@@ -4,8 +4,6 @@ import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
-import { authenticateData as data } from '../../data/authenticate';
-
 export default function AuthenticateUser() {
   const router = useRouter();
 
@@ -54,7 +52,13 @@ export default function AuthenticateUser() {
       );
 
       return response.data;
+      return response.data;
     } catch (error) {
+      throw new Error(
+        `Error verifying account: ${JSON.stringify(
+          error.response.data.error.error,
+        )}`,
+      );
       throw new Error(
         `Error verifying account: ${JSON.stringify(
           error.response.data.error.error,
