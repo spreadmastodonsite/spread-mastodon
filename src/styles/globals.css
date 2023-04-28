@@ -25,23 +25,17 @@
 
 body {
   background: var(--primary-background);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-primary);
+  line-height: 140%;
 }
 
-body > * {
-  margin-top: 10%;
-}
-
-main {
-  max-width: 1440px;
-  padding: 0 20px;
+.content-wrapper {
+  max-width: var(--max-width);
+  padding: var(--space-2lg);
   margin-left: auto;
   margin-right: auto;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
 }
 
 input {
@@ -80,6 +74,15 @@ label {
   margin-right: 10px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 140%;
+}
+
 .c-agreement label {
   display: block;
   margin-bottom: 6px;
@@ -89,10 +92,6 @@ label {
   font-size: 0.8rem;
   color: #666;
   display: block;
-}
-
-h2 {
-  margin-top: 30px;
 }
 
 ul {
@@ -106,6 +105,7 @@ li {
 .c-animated-header {
   display: flex;
   flex-direction: column;
+  line-height: 70px;
 }
 
 .c-animated-header p {
@@ -160,4 +160,10 @@ li {
   100% {
     opacity: 0;
   }
+}
+
+/* Logo */
+.c-logo {
+  width: 375px;
+  margin-bottom: var(--space-xxl);
 }

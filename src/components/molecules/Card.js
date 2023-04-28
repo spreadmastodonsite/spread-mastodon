@@ -17,18 +17,23 @@ export default function Card({
 
   return (
     <div className={componentClassName}>
-      {iconName && (
-        <Icon
-          className="c-card__icon"
-          iconName={iconName}
-          width={iconWidth}
-          height={iconHeight}
-        />
-      )}
-      {title && <h2 className="c-card__title">{title}</h2>}
-      {linkText && <Button text={linkText} link={link} />}
-      {description && <p className="c-card__description">{description}</p>}
-      {children}
+      <div className="c-card__icon">
+        {/* <img src={icon} alt={title} /> */}
+        {iconName && (
+          <Icon
+            className="c-card__icon"
+            iconName={iconName}
+            width={iconWidth}
+            height={iconHeight}
+          />
+        )}
+      </div>
+      {title && <h2 className="u-heading--xl u-normal">{title}</h2>}
+      <div className="c-card__content">
+        {linkText && <Button text={linkText} link={link} />}
+        {description && <p className="u-body-copy">{description}</p>}
+        {children}
+      </div>
     </div>
   );
 }
