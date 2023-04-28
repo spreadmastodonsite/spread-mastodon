@@ -112,6 +112,7 @@ li {
 }
 
 .c-heading-one__rotate {
+  position: absolute;
   display: inline-block;
   animation: rotateText 12s linear infinite;
   color: var(--c-primary);
@@ -128,8 +129,8 @@ li {
 
 @keyframes rotateText {
   0% { opacity: 0; }
-  2% { opacity: 0; transform: translateY(-10px) skewX(-5deg); }
-  5% { opacity: 1; transform: translateY(0px); }
+  1% { opacity: 0; transform: translateY(-10px) skewX(-5deg); }
+  3% { opacity: 1; transform: translateY(0px); }
 	27% { opacity: 1; transform: translateY(0px); }
   30% { opacity: 0; transform: translateY(10px) skewX(3deg); }
   80% { opacity: 0; }
