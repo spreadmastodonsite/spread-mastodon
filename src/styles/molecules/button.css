@@ -4,13 +4,13 @@
   display: inline-block;
   width: 100%;
   padding: 1rem;
-  margin-top: 20px;
   color: #fff;
   text-align: center;
   border-radius: var(--border-radius--sm);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font: inherit;
+  font-weight: var(--font-semibold);
 }
 
 .c-button--primary {
