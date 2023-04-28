@@ -8,26 +8,13 @@ export default function AnimatedHeader({
   textTwo,
   ...props
 }) {
-  const [rotateIndex, setRotateIndex] = useState(0);
-
   const componentClassName = cx('c-animated-header', className, {});
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotateIndex((index) => (index + 1) % textRotate.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <h1 className={componentClassName}>
       <div>
         {textOne && <span>{textOne} </span>}
-        <span className="c-animated-header--rotate">
-          {' '}
-          {textRotate[rotateIndex]}
-        </span>{' '}
+        <span className="c-animated-header--rotate"> {textRotate}</span>{' '}
       </div>
       {textTwo && <span>{textTwo}</span>}
     </h1>
