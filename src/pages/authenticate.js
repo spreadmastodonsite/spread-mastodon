@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
@@ -7,21 +8,27 @@ import { authenticateData as data } from '../../data/authenticate';
 
 export default function AuthenticateUser() {
   const router = useRouter();
+
+  // Declare state variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
     useState(false);
+  const [storedAccessToken, setStoredAccessToken] = useState('');
 
+  // Handle email input change
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
+  // Handle password input change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
+  // Authenticate the user with the provided email and password
   const authenticateUser = async (email, password) => {
     try {
       const response = await axios.post('/api/authenticate', {
@@ -39,6 +46,7 @@ export default function AuthenticateUser() {
     }
   };
 
+  // Verify the user's account with the provided access token
   const verifyUserAccount = async (accessToken) => {
     try {
       const response = await axios.get(
@@ -55,6 +63,20 @@ export default function AuthenticateUser() {
     }
   };
 
+  // Handle form submission success
+  const handleSubmitSuccess = async (accessToken) => {
+    // Store the access token in session storage
+    sessionStorage.setItem('accessToken', accessToken);
+    // Set the validation message and authenticated state
+    setValidationMessage(
+      'Verified and authenticated successfully if you do not advance to the next page please click the button below',
+    );
+    setVerifiedAndAuthenticated(true);
+    // Redirect to the follow suggestions page
+    router.push('/follow-suggestions');
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -63,8 +85,8 @@ export default function AuthenticateUser() {
       const accessToken = await authenticateUser(email, password);
       await verifyUserAccount(accessToken);
 
-      setValidationMessage('Verified and authenticated successfully');
-      setVerifiedAndAuthenticated(true);
+      // Call the handle submit success function
+      handleSubmitSuccess(accessToken);
     } catch (error) {
       setValidationMessage(error.message);
     }
@@ -72,51 +94,72 @@ export default function AuthenticateUser() {
     setLoading(false);
   };
 
+  // Get the access token from session storage on component mount
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      setStoredAccessToken(accessToken);
+    }
+    console.log('storedAccessToken', storedAccessToken);
+  }, [storedAccessToken]);
+
   return (
     <div>
-      {verifiedAndAuthenticated === false ? (
-        <>
-          <h1>{data.heading.text} </h1>
-          <p>{data.subHeading.text}</p>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <p>
-                {validationMessage && <div>{validationMessage}</div>}
-                <Button type="submit" text="Log in &amp; Authenticate" />
-              </p>
+      <Head>
+        <title>{data.metaData.title}</title>
+        <meta name={data.metaData.name} content={data.metaData.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main>
+        {verifiedAndAuthenticated || storedAccessToken ? (
+          // If already authenticated, display appropriate message
+          <>
+            {storedAccessToken && !validationMessage && (
+              <div>It looks like you have already been verified!</div>
             )}
-          </form>
-        </>
-      ) : (
-        <>
-          <h1>Authenticated and Verified!</h1>
-          <p>View suggested users to follow.</p>
-          <Button link="/follow-suggestions" text="Who to Follow" />
-        </>
-      )}
-      <Button link="/" text="Back to Signup" />
+            {validationMessage && <div>{validationMessage}</div>}
+            <Button link="/follow-suggestions" text="Who to Follow" />
+          </>
+        ) : (
+          // If not authenticated, display login form
+          <>
+            <h1>{data.heading.text} </h1>
+            <p>{data.subHeading.text}</p>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="email">Email:</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+              </div>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                // Shows the validation message if there the page doesn't redirect
+                <p>
+                  {validationMessage && <div>{validationMessage}</div>}
+                  <Button type="submit" text="Log in &amp; Authenticate" />
+                </p>
+              )}
+            </form>
+          </>
+        )}
+        <Button link="/" text="Back to Signup" />
+      </main>
     </div>
   );
 }

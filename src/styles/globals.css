@@ -4,9 +4,15 @@
 @import url('./_fonts.css');
 @import url('./_utils.css');
 
+/* Atoms */
+@import url('./atoms/icon.css');
+
 /* Molecules */
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
+
+/* Components */
+@import url('./components/nav.css');
 
 @import url('./layout/grid.css');
 @import url('./layout/gridItem.css');
@@ -92,32 +98,43 @@ li {
 }
 
 .c-heading-one__special {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   line-height: 70px;
 }
 
-.c-heading-one__special span {
-  display: inline-block;
+.c-heading-one__special p {
+  transform: translateX(-7%);
+}
+
+.c-heading-one__animation {
+  
+  position: relative;
 }
 
 .c-heading-one__rotate {
   display: inline-block;
-  /* animation: rotateText 3s linear infinite; */
+  animation: rotateText 12s linear infinite;
   color: var(--c-primary);
+  text-indent: 10px;
+}
+
+.c-heading-one__rotate:nth-child(2) {
+  animation-delay: 4s; 
+}
+
+.c-heading-one__rotate:nth-child(3) {
+  animation-delay: 8s; 
 }
 
 @keyframes rotateText {
-  0% {
-    transform: translateY(-30px);
-  }
-  25% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { opacity: 0; }
+  2% { opacity: 0; transform: translateY(-10px) skewX(-5deg); }
+  5% { opacity: 1; transform: translateY(0px); }
+	27% { opacity: 1; transform: translateY(0px); }
+  30% { opacity: 0; transform: translateY(10px) skewX(3deg); }
+  80% { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 /* Logo */

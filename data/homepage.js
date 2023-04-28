@@ -1,4 +1,10 @@
 export const homepageData = {
+	metaData: {
+		title: "Mastodon Signup",
+		name: "Mastodon Signup",
+		description:
+			"Mastodon account signup using Next.js, React and Mastodon API",
+	},
 	heading: {
 		textOne: "Welcome to your",
 		textRotate: ["Better", "Wholesome", "Whimsical"],
@@ -11,23 +17,29 @@ export const homepageData = {
 		{
 			title: "Don't have a Mastodon account?",
 			description: "Create an account in under a minute.",
-			icon: "/-e-join_icon.png",
+			icon: "join",
+			iconWidth: "74",
+			iconHeight: "74",
 			link: "/sign-up",
 			linkText: "Join",
 		},
 		{
 			title: "Already have a Mastodon account?",
 			description: "Discover how to maximize your experience.",
-			icon: "/-e-enrich_icon.png",
+			icon: "enrich",
+			iconWidth: "74",
+			iconHeight: "74",
 			link: "/follow-suggestions",
 			linkText: "Enrich",
 		},
 		{
 			title: "Want to help grow Mastodon?",
 			description: "Help your friends and social networks join you.",
-			icon: "/-e-share_icon.png",
+			icon: "share",
 			link: "/",
-			linkText: "Share",
+			iconWidth: "74",
+			iconHeight: "55",
+			linkText: "share",
 		},
 	],
 	disclaimer: {
