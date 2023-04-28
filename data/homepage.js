@@ -39,7 +39,7 @@ export const homepageData = {
 			link: "/",
 			iconWidth: "74",
 			iconHeight: "55",
-			linkText: "share",
+			linkText: "Share",
 		},
 	],
 	disclaimer: {

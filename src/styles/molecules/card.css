@@ -12,6 +12,7 @@
   padding: var(--space-2lg);
   background-color: var(--secondary-background);
   border-radius: var(--border-radius);
+  text-align: center;
 }
 
 .c-card__content {
