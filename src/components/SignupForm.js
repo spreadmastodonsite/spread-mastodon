@@ -53,7 +53,6 @@ export default function SignupForm() {
 
       setAccountCreated(true);
       setResponseMessage(`Account created successfully`);
-      router.push('/authenticate');
     } catch (error) {
       setResponseMessage(
         `Error: ${JSON.stringify(error.response.data.error.error)}`,
@@ -82,10 +81,10 @@ export default function SignupForm() {
           </div>
         </GridItem>
         <GridItem columnStart={4} columnEnd={7}>
-          <Button link="/enhance-account" text="Enhance Your Account Now!" />
+          <Button link="/enhance-account" text="Add Your Profile Basics!" />
         </GridItem>
         <GridItem columnStart={7} columnEnd={10}>
-          <Button link="/" text="Help Your Friends Find you on Mastodon" />
+          <Button variant="secondary" link="/" text="Skip This Step for Now" />
         </GridItem>
       </Grid>
     </div>

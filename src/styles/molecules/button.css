@@ -7,15 +7,21 @@
   color: #fff;
   text-align: center;
   border-radius: var(--border-radius--sm);
+  border: solid 3px transparent;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font: inherit;
   font-weight: var(--font-semibold);
-  border: none;
 }
 
 .c-button--primary {
   background-color: var(--c-primary);
+}
+
+.c-button--secondary {
+  background-color: var(--c-secondary-background);
+  border: solid 3px var(--c-primary);
+  color: var(--c-primary);
 }
 
 .c-button--primary:hover {
