@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export default async function updateAccount(req, res) {
   const { header, avatar, bio, accessToken } = req.body;
-  console.log(header)
   try {
     const response = await axios.patch(
       `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/update_credentials`,
@@ -17,8 +16,6 @@ export default async function updateAccount(req, res) {
         },
       },
     );
-
-    console.log('success', avatar);
 
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {

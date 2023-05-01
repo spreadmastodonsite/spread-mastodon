@@ -33,7 +33,6 @@ export default function UpdateAccount() {
         header: BgBase64
       });
     } catch (error) {
-      console.log(error.response.data);
     }
 
     setLoading(false);
