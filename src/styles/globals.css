@@ -10,18 +10,14 @@
 /* Molecules */
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
+@import url('./molecules/stepperHeader.css');
+@import url('./molecules/signupForm.css');
 
 /* Components */
 @import url('./components/nav.css');
 
 @import url('./layout/grid.css');
 @import url('./layout/gridItem.css');
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 
 body {
   background: var(--primary-background);
@@ -31,35 +27,57 @@ body {
   line-height: 140%;
 }
 
+.l-main {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-top: var(--space-xl);
+  border-radius: var(--border-radius--lg);
+}
+
+.c-page__interior .l-main {
+  background: var(--secondary-background);
+  margin-bottom: var(--space-4xl);
+  padding-right: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  padding-left: var(--space-2xl);
+}
+
+.l-footer {
+  padding-bottom: var(--space-xl);
+}
+
 .content-wrapper {
   max-width: var(--max-width);
-  padding: var(--space-2lg);
+  padding: 0 var(--space-xl);
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Logo */
+.c-logo {
+  width: 400px;
+  margin-bottom: var(--space-4xl);
+}
+
+.c-page__interior .c-logo {
+  width: 375px;
+  margin-bottom: var(--space-xl);
+}
+
 input {
   width: 100%;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  padding-left: var(--space-lg);
+  border-radius: var(--border-radius--sm);
   border: 1px solid rgba(var(--foreground-rgb), 0.2);
-  background: #eee;
-  color: inherit;
+  background: var(--c-white);
+  color: #222;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   outline: none;
   transition: all 0.2s ease-in-out;
-}
-
-@media (prefers-color-scheme: dark) {
-  input {
-    color: #222;
-  }
-}
-
-form div {
-  margin-top: 15px;
 }
 
 label {
@@ -100,6 +118,9 @@ ul {
 
 li {
   margin: 5px 0;
+}
+
+p {
 }
 
 .c-animated-header {
@@ -160,10 +181,4 @@ li {
   100% {
     opacity: 0;
   }
-}
-
-/* Logo */
-.c-logo {
-  width: 375px;
-  margin-bottom: var(--space-xxl);
 }
