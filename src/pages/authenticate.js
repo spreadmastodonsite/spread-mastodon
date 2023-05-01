@@ -5,6 +5,7 @@ import axios from 'axios';
 import Button from '@/components/molecules/Button';
 
 import { authenticateData as data } from '../../data/authenticate';
+import Grid from '@/components/layout/Grid';
 
 export default function AuthenticateUser() {
   const router = useRouter();
@@ -110,7 +111,7 @@ export default function AuthenticateUser() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="l-main">
         {verifiedAndAuthenticated || storedAccessToken ? (
           // If already authenticated, display appropriate message
           <>

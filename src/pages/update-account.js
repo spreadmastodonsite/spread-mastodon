@@ -42,7 +42,7 @@ export default function UpdateAccount() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="l-main">
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
             <h1>Adding Your Profile Picture and Bio</h1>

@@ -34,7 +34,7 @@ export default function FollowSuggestions() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="l-main">
         <h1>{data.heading.text} </h1>
         <p>{data.subHeading.text}</p>
         <div>

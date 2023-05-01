@@ -3,7 +3,6 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/molecules/Card';
 import Button from '@/components/molecules/Button';
-import { disclaimer } from '../../data/universal';
 import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
 
 export default function MoreWaysToEnhance() {
@@ -14,7 +13,7 @@ export default function MoreWaysToEnhance() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="l-main">
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
             <h1>{data.heading.text}</h1>
