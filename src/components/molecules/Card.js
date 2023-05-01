@@ -12,13 +12,15 @@ export default function Card({
   link,
   linkText,
   children,
+  contentSize,
 }) {
-  const componentClassName = cx('c-card', className, {});
+  const componentClassName = cx('c-card', className, {
+    [`c-card--${contentSize}`]: contentSize,
+  });
 
   return (
     <div className={componentClassName}>
       <div className="c-card__icon">
-        {/* <img src={icon} alt={title} /> */}
         {iconName && (
           <Icon
             className="c-card__icon"
@@ -28,7 +30,7 @@ export default function Card({
           />
         )}
       </div>
-      {title && <h2 className="u-heading--xl u-normal">{title}</h2>}
+      {title && <h2 className="c-card__title ">{title}</h2>}
       <div className="c-card__content">
         {linkText && <Button text={linkText} link={link} />}
         {description && <p className="u-body-copy">{description}</p>}
