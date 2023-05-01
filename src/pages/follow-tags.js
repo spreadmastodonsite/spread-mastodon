@@ -9,21 +9,21 @@ import Button from '@/components/molecules/Button';
 export default function FollowSuggestions() {
   const router = useRouter();
 
-  const followUser = async (targetTagId, username) => {
+  const followUser = async (tagName) => {
     const accessToken = sessionStorage.getItem('accessToken');
 
     try {
-      await axios.post('/api/followTags', {
+      await axios.post('/api/followTag', {
         accessToken,
-        targetTagId,
+        tagName,
       });
 
       // @TODO: This message is still displaying success even if the user isn't
       // authenticated and follow fails. The user needs to be authenticated for
       // the follow to work.
-      alert(`You are now following #${username}`);
+      alert(`You are now following #${tagName}`);
     } catch (error) {
-      alert(`Error: ${JSON.stringify(error.response.data.error.error)}`);
+      alert(`Error: ${JSON.stringify(error.response)}`);
     }
   };
 
@@ -42,9 +42,9 @@ export default function FollowSuggestions() {
             {data.secondHeading.text} ({data.suggestTags.length})
           </h2>
           {data.suggestTags.map((topic, i) => (
-            <>
+            <div key={i + topic.category}>
               <p>{topic.category} </p>
-              <ul key={i + topic.category}>
+              <ul>
                 {topic.tags.map((tag) => (
                   <li key={tag.id}>
                     <Link
@@ -54,13 +54,13 @@ export default function FollowSuggestions() {
                       {tag.name}
                     </Link>{' '}
                     <Button
-                      onClick={() => followUser(tag.id, tag.name)}
+                      onClick={() => followUser(tag.name)}
                       text={`Follow ${tag.name}`}
                     />
                   </li>
                 ))}
               </ul>
-            </>
+            </div>
           ))}
         </div>
         <Button link="/" text="homepage" />
