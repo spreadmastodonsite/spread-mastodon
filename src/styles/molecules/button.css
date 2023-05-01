@@ -11,6 +11,7 @@
   cursor: pointer;
   font: inherit;
   font-weight: var(--font-semibold);
+  border: none;
 }
 
 .c-button--primary {
