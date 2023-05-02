@@ -1,5 +1,5 @@
 .u-nav-wrapper {
-  overflow: hidden;
+  position: relative;
 }
 
 .u-nav-button {
