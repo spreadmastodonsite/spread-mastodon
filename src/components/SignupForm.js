@@ -103,6 +103,9 @@ export default function SignupForm() {
               id="email"
               type="email"
               placeholder="Email Address"
+              className={`c-signup-form__input ${
+                errors.email && 'c-signup-form__input--error'
+              } `}
               {...register('email', { required: 'Email is required' })}
             />
             {errors.email && <span>{errors.email.message}</span>}
@@ -115,6 +118,9 @@ export default function SignupForm() {
               id="displayName"
               type="text"
               placeholder="Display Name"
+              className={`c-signup-form__input ${
+                errors.displayName && 'c-signup-form__input--error'
+              } `}
               {...register('displayName')}
             />
             {errors.displayName && <span>{errors.displayName.message}</span>}
@@ -127,6 +133,9 @@ export default function SignupForm() {
               id="username"
               type="text"
               placeholder="username@mastodon.social"
+              className={`c-signup-form__input ${
+                errors.username && 'c-signup-form__input--error'
+              } `}
               {...register('username', { required: 'Username is required' })}
             />
             {errors.username && <span>{errors.username.message}</span>}
@@ -139,6 +148,9 @@ export default function SignupForm() {
               id="password"
               type="password"
               placeholder="Password"
+              className={`c-signup-form__input ${
+                errors.password && 'c-signup-form__input--error'
+              } `}
               {...register('password', { required: 'Password is required' })}
             />
             {errors.password && <span>{errors.password.message}</span>}
@@ -154,6 +166,9 @@ export default function SignupForm() {
               {...register('confirmPassword', {
                 required: 'Password is required',
               })}
+              className={`c-signup-form__input ${
+                errors.confirmPassword && 'c-signup-form__input--error'
+              } `}
             />
             {checkPasswordsMatch()}
           </GridItem>
