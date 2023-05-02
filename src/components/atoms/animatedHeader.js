@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import cx from 'classnames';
 
 export default function AnimatedHeader({
@@ -11,7 +10,7 @@ export default function AnimatedHeader({
   const componentClassName = cx('c-animated-header', className, {});
 
   return (
-    <h1 className={componentClassName}>
+    <h1 className={componentClassName} {...props}>
       <div>
         {textOne && <span>{textOne} </span>}
         <span className="c-animated-header--rotate"> {textRotate}</span>{' '}

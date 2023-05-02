@@ -11,7 +11,15 @@ export const joinData = {
     textRotate: ['better', 'ad-free', 'open'],
     textTwo: 'social home',
   },
-  subHeading: {
-    text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon with your friends and social networks.",
-  },
+  cards: [
+    {
+      title:
+        'Ready to join millions of people connecting, building, and creating a better social space in two quick steps?',
+      icon: 'join',
+      iconWidth: '100',
+      iconHeight: '113',
+      link: '/sign-up',
+      linkText: `Let's do it`,
+    },
+  ],
 };

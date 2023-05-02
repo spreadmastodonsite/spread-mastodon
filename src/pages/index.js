@@ -1,10 +1,10 @@
 import Head from 'next/head';
+import Footer from '@/components/molecules/footer';
 import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
 
-import { disclaimer } from '../../data/universal';
 import { homepageData as data } from '/data/homepage.js';
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="l-main">
         <Grid className="u-text-align--center">
           <GridItem columnStart={2} columnEnd={12}>
             <img
@@ -27,7 +27,7 @@ export default function Home() {
               className="c-logo"
             />
             <AnimatedHeader
-              className="u-heading--xxl"
+              className="u-heading--3xl"
               textOne={heading.textOne}
               textTwo={heading.textTwo}
               textRotate={heading.textRotate}
@@ -54,17 +54,6 @@ export default function Home() {
           ))}
         </Grid>
       </main>
-      <footer>
-        <Grid>
-          <GridItem columnStart={5} columnEnd={9}>
-            <p className="u-text-align--center u-body--sm">
-              {data.disclaimer.text}
-              <br />
-              {data.disclaimer.copyright}
-            </p>
-          </GridItem>
-        </Grid>
-      </footer>
     </div>
   );
 }

@@ -1,0 +1,44 @@
+/* Stepper Header */
+
+.c-stepper-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+  padding-bottom: var(--space-xl);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+@media all and (min-width: 1080px) {
+  .c-stepper-header {
+    gap: var(--space-xl);
+    flex-direction: row;
+  }
+}
+
+.c-stepper-header__icon {
+  position: relative;
+}
+
+@media all and (min-width: 1080px) {
+  .c-stepper-header__icon {
+    position: absolute;
+    left: 0;
+  }
+}
+
+.c-stepper-header__content {
+  text-align: center;
+}
+
+.c-stepper-header__heading {
+  margin-bottom: var(--space);
+}
+
+.c-stepper-header__hr {
+  margin-bottom: var(--space-2xl);
+  color: #1f2023;
+}

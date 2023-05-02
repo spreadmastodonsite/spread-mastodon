@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import cx from 'classnames';
 import Button from './molecules/Button';
 import Grid from './layout/Grid';
 import GridItem from './layout/GridItem';
@@ -20,8 +21,12 @@ export default function SignupForm() {
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');
-  const verifyPassword = watch('verifyPassword', '');
+  const confirmPassword = watch('confirmPassword', '');
   const [loading, setLoading] = useState(false);
+
+  const componentClassName = cx('c-signup-form', {
+    [`c-signup-form-${accountCreated}`]: accountCreated,
+  });
 
   const handleCheckboxChange = (e) => {
     setAcceptedTerms(e.target.checked);
@@ -35,7 +40,7 @@ export default function SignupForm() {
       return;
     }
 
-    if (password !== verifyPassword) {
+    if (password !== confirmPassword) {
       setResponseMessage('Error: Passwords do not match');
       return;
     }
@@ -48,7 +53,6 @@ export default function SignupForm() {
 
       setAccountCreated(true);
       setResponseMessage(`Account created successfully`);
-      router.push('/authenticate');
     } catch (error) {
       setResponseMessage(
         `Error: ${JSON.stringify(error.response.data.error.error)}`,
@@ -59,83 +63,102 @@ export default function SignupForm() {
   };
 
   const checkPasswordsMatch = () => {
-    if (password !== verifyPassword) {
+    if (password !== confirmPassword) {
       return <span>Passwords do not match</span>;
     }
   };
 
   return accountCreated ? (
-    <div className="u-text-align--center">
-      <h2>
-        Confirmed: Welcome to <br /> Mastodon,{' '}
-        {displayName ? displayName : username}!
-      </h2>
-      <p>You are in! So What’s Next?</p>
-      <Grid variant="autofit">
+    <div className={componentClassName}>
+      <Grid>
+        <GridItem columnStart={4} columnEnd={10}>
+          <div className="u-text-align--center">
+            <h2>
+              Confirmed: Welcome to <br /> Mastodon,{' '}
+              {displayName ? displayName : username}!
+            </h2>
+            <p>You are in! So What’s Next?</p>
+          </div>
+        </GridItem>
         <GridItem columnStart={4} columnEnd={7}>
-          <Button link="/enhance-account" text="Enhance Your Account Now!" />
+          <Button link="/enhance-account" text="Add Your Profile Basics!" />
         </GridItem>
         <GridItem columnStart={7} columnEnd={10}>
-          <Button link="/" text="Help Your Friends Find you on Mastodon" />
+          <Button variant="secondary" link="/" text="Skip This Step for Now" />
         </GridItem>
       </Grid>
     </div>
   ) : (
-    <div>
-      <p className="u-text-align--center">
+    <div className={componentClassName}>
+      <p className="u-heading--lg u-text-align--center">
         Join the Whole Mastodon Network via this Trusted Community Server
       </p>
-      <Grid>
-        <GridItem columnStart={5} columnEnd={9}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                id="email"
-                type="email"
-                {...register('email', { required: 'Email is required' })}
-              />
-              {errors.email && <span>{errors.email.message}</span>}
-            </div>
-            <div>
-              <label htmlFor="displayName">Display Name:</label>
-              <input
-                id="displayName"
-                type="text"
-                {...register('displayName')}
-              />
-              {errors.displayName && <span>{errors.displayName.message}</span>}
-            </div>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <input
-                id="username"
-                type="text"
-                {...register('username', { required: 'Username is required' })}
-              />
-              {errors.username && <span>{errors.username.message}</span>}
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                id="password"
-                type="password"
-                {...register('password', { required: 'Password is required' })}
-              />
-              {errors.password && <span>{errors.password.message}</span>}
-            </div>
-            <div>
-              <label htmlFor="verifyPassword">Verify Password:</label>
-              <input
-                id="verifyPassword"
-                type="password"
-                {...register('verifyPassword', {
-                  required: 'Password is required',
-                })}
-              />
-              {checkPasswordsMatch()}
-            </div>
+      <form className="c-signup-form__form" onSubmit={handleSubmit(onSubmit)}>
+        <Grid className="c-grid__signup-form">
+          <GridItem columnStart={5} columnEnd={9}>
+            <label className="u-visually-hidden" htmlFor="email">
+              Email:
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email Address"
+              {...register('email', { required: 'Email is required' })}
+            />
+            {errors.email && <span>{errors.email.message}</span>}
+          </GridItem>
+          <GridItem columnStart={5} columnEnd={9}>
+            <label className="u-visually-hidden" htmlFor="displayName">
+              Display Name:
+            </label>
+            <input
+              id="displayName"
+              type="text"
+              placeholder="Display Name"
+              {...register('displayName')}
+            />
+            {errors.displayName && <span>{errors.displayName.message}</span>}
+          </GridItem>
+          <GridItem columnStart={5} columnEnd={9}>
+            <label className="u-visually-hidden" htmlFor="username">
+              Username:
+            </label>
+            <input
+              id="username"
+              type="text"
+              placeholder="username@mastodon.social"
+              {...register('username', { required: 'Username is required' })}
+            />
+            {errors.username && <span>{errors.username.message}</span>}
+          </GridItem>
+          <GridItem columnStart={5} columnEnd={9}>
+            <label className="u-visually-hidden" hidden htmlFor="password">
+              Password:
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              {...register('password', { required: 'Password is required' })}
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+          </GridItem>
+          <GridItem columnStart={5} columnEnd={9}>
+            <label className="u-visually-hidden" htmlFor="confirmPassword">
+              Confirm Password:
+            </label>
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              {...register('confirmPassword', {
+                required: 'Password is required',
+              })}
+            />
+            {checkPasswordsMatch()}
+          </GridItem>
 
+          <GridItem columnStart={4} columnEnd={11}>
             <div className="c-agreement">
               <label htmlFor="agreement">
                 <input
@@ -143,20 +166,20 @@ export default function SignupForm() {
                   type="checkbox"
                   onChange={handleCheckboxChange}
                 />
-                I accept the Terms of Service
+                I have read and agree with the community server rules and
+                privacy policies.
               </label>
               {!acceptedTerms && (
                 <span>Please accept the Terms of Service</span>
               )}
             </div>
-
-            <div>
-              <Button loading={loading} type="submit" text="Sign up" />
-            </div>
+          </GridItem>
+          <GridItem columnStart={5} columnEnd={9}>
+            <Button loading={loading} type="submit" text="Sign up" />
             {responseMessage && <div>{responseMessage}</div>}
-          </form>
-        </GridItem>
-      </Grid>
+          </GridItem>
+        </Grid>
+      </form>
     </div>
   );
 }

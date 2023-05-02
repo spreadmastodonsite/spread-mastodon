@@ -1,0 +1,35 @@
+/* Signup Form */
+
+.c-signup-form__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--space-xl);
+}
+
+.c-signup-form__form > * {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  padding-left: var(--space-lg);
+  border-radius: var(--border-radius--sm);
+  border: 1px solid rgba(var(--foreground-rgb), 0.2);
+  background: var(--c-white);
+  color: #222;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.c-agreement input {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
