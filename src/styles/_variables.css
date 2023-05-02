@@ -1,5 +1,6 @@
 :root {
   /* ***** Colors ***** */
+  --c-purple-300: #8c8dff;
   --c-purple-500: #6364ff;
 
   /* ** util colors ** */
@@ -10,7 +11,7 @@
   /* ** theme colors ** */
   --c-primary: var(--c-purple-500);
 
-  /* ** tier 3 colors ** */
+  /* ** tier 2 colors ** */
   --body-color: var(--c-white);
   --heading-color: var(--c-white);
   --link-color: var(--c-primary);

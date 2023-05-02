@@ -70,7 +70,7 @@ input {
   padding-bottom: var(--space-md);
   padding-left: var(--space-lg);
   border-radius: var(--border-radius--sm);
-  border: 1px solid rgba(var(--foreground-rgb), 0.2);
+  border: 1px solid transparent;
   background: var(--c-white);
   color: #222;
   font-family: inherit;
@@ -78,6 +78,11 @@ input {
   font-weight: inherit;
   outline: none;
   transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+input:active {
+  outline: 3px solid var(--c-purple-500);
 }
 
 label {
