@@ -13,7 +13,13 @@ export default function AnimatedHeader({
     <h1 className={componentClassName} {...props}>
       <div>
         {textOne && <span>{textOne} </span>}
-        <span className="c-animated-header--rotate"> {textRotate}</span>{' '}
+        {console.log(textRotate)}
+        {textRotate.map(text => {
+          return ( 
+            <span key={text} className="c-animated-header--rotate"> {text}</span>
+          )
+        })}
+        {' '}
       </div>
       {textTwo && <span>{textTwo}</span>}
     </h1>
