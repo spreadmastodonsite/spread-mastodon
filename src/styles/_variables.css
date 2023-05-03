@@ -6,6 +6,7 @@
   --c-white: #ffffff;
   --c-black-300: #12141c;
   --c-black-500: #0b0c15;
+  --c-gray: #191b22;
 
   /* ** theme colors ** */
   --c-primary: var(--c-purple-500);

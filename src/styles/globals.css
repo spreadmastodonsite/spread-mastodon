@@ -12,6 +12,7 @@
 @import url('./molecules/card.css');
 @import url('./molecules/stepperHeader.css');
 @import url('./molecules/signupForm.css');
+@import url('./molecules/profile.css');
 
 /* Components */
 @import url('./components/nav.css');
@@ -64,7 +65,7 @@ body {
   margin-bottom: var(--space-xl);
 }
 
-input {
+input, textarea {
   width: 100%;
   padding-top: var(--space-md);
   padding-bottom: var(--space-md);
