@@ -15,8 +15,9 @@ export default function Button({
     [`c-button--${variant}`]: variant,
   });
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (onClick) {
+      e.preventDefault();
       onClick();
     }
   };

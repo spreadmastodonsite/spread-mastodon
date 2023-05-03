@@ -4,6 +4,10 @@
 @import url('./_fonts.css');
 @import url('./_utils.css');
 
+/* Layout */
+@import url('./layout/grid.css');
+@import url('./layout/gridItem.css');
+
 /* Atoms */
 @import url('./atoms/icon.css');
 
@@ -16,9 +20,6 @@
 
 /* Components */
 @import url('./components/nav.css');
-
-@import url('./layout/grid.css');
-@import url('./layout/gridItem.css');
 
 body {
   background: var(--primary-background);
@@ -35,15 +36,16 @@ body {
   border-radius: var(--border-radius--lg);
 }
 
-.c-page__interior .l-main {
+.c-page__interior.l-main {
   background: var(--secondary-background);
   margin-bottom: var(--space-4xl);
   padding-right: var(--space-2xl);
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-2xl);
   padding-left: var(--space-2xl);
 }
 
 .l-footer {
+  padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
 
@@ -65,7 +67,8 @@ body {
   margin-bottom: var(--space-xl);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding-top: var(--space-md);
   padding-bottom: var(--space-md);
@@ -127,6 +130,7 @@ li {
 }
 
 p {
+  line-height: 140%;
 }
 
 .c-animated-header {

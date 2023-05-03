@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import SignupForm from '../components/SignupForm';
-
 import { signUpData as data } from '/data/signUp.js';
-import StepperHeader from '@/components/molecules/StepperHeader';
 
 export default function SignUp() {
   return (
@@ -20,14 +18,6 @@ export default function SignUp() {
       />
 
       <main className="l-main">
-        <StepperHeader
-          iconName="join"
-          iconWidth="75"
-          iconHeight="83"
-          heading={data.heading.text}
-          subHeading={data.subHeading.text}
-        />
-
         <SignupForm />
       </main>
     </div>

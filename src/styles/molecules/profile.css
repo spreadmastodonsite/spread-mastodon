@@ -1,8 +1,19 @@
-
 .c-profile-box {
   background-color: var(--c-gray);
-  padding: var(--space-4xl) 0;
-  margin: var(--space-3xl) 0;
+  padding: var(--space-3xl) var(--space-3xl) var(--space-4xl);
+  margin-top: 0;
+  margin-bottom: var(--space-3xl);
+  column-gap: var(--space-4xl);
+}
+
+@media (max-width: 1068px) {
+  .c-profile-box {
+    column-gap: 0;
+  }
+
+  .c-profile-box > .l-grid-item {
+    grid-column: 1 / -1;
+  }
 }
 
 .c-profile-box__card {
@@ -22,29 +33,94 @@
 
 .c-profile-box__card__meta {
   margin-top: calc(var(--space-3xl) * -1);
-  margin-left: var(--space-sm);
+  margin-left: var(--space-lg);
 }
 
-.c-profile-box__heading {
-  font-family: Manrope;
-  font-size: 22px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
+.c-profile-box__heading h2 {
+  font-weight: 400;
   line-height: 1.91;
   letter-spacing: normal;
   text-transform: uppercase;
   color: #656a79;
 }
 
+@media (max-width: 1068px) {
+  .c-profile-box__card {
+    margin-bottom: var(--space-lg);
+  }
+}
+
 .c-profile-box__card__data {
-  padding: 0 var(--space-sm) var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
+
+.c-profile-box__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 1068px) {
+  .c-profile-box__form {
+    gap: var(--space-md);
+  }
+}
+
+.c-profile-box input[type='file'] {
+  background: var(--c-purple-500);
+  color: var(--c-white);
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+.c-profile-box #bio {
+  height: 135px;
+}
+
+.c-profile-box__button {
+  padding-left: var(--space-2xl);
+  position: relative;
+}
+
+.c-profile-box__button::after {
+  position: absolute;
+  left: var(--space-md);
+  content: ' ';
+  height: 20px;
+  width: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .c-profile-box__avatar {
   margin-bottom: var(--space-md);
 }
 
+.c-profile-box__avatar .c-profile-box__button::after {
+  background-image: url('/assets/icons/join.png');
+}
+
 .c-profile-box__background {
   margin-bottom: var(--space-md);
+}
+
+.c-profile-box__background .c-profile-box__button::after {
+  background-image: url('/assets/icons/share.png');
+}
+
+.c-profile-box .c-button {
+  text-align: left;
+}
+
+.c-profile-box__buttons {
+  padding-right: var(--space-2xl);
+  padding-left: var(--space-2xl);
 }
