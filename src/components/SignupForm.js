@@ -81,7 +81,13 @@ export default function SignupForm() {
           </div>
         </GridItem>
         <GridItem columnStart={4} columnEnd={7}>
-          <Button link="/enhance-account" text="Add Your Profile Basics!" />
+          <Button
+            link={{
+              pathname: '/update-account',
+              query: { username: username, displayName: displayName },
+            }}
+            text="Add Your Profile Basics!"
+          />
         </GridItem>
         <GridItem columnStart={7} columnEnd={10}>
           <Button variant="secondary" link="/" text="Skip This Step for Now" />
@@ -93,7 +99,7 @@ export default function SignupForm() {
       <p className="u-heading--lg u-text-align--center">
         Join the Whole Mastodon Network via this Trusted Community Server
       </p>
-      <form className="c-signup-form__form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="c-form c-form__signup" onSubmit={handleSubmit(onSubmit)}>
         <Grid className="c-grid__signup-form">
           <GridItem columnStart={5} columnEnd={9}>
             <label className="u-visually-hidden" htmlFor="email">

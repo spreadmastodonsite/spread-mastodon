@@ -23,10 +23,12 @@ export default function Button({
 
   const content = loading ? 'Loading...' : text;
 
+  const linkProps = typeof link === 'string' ? { href: link } : link;
+
   return (
     <>
       {link ? (
-        <Link className={componentClassName} href={link} {...props}>
+        <Link className={componentClassName} {...linkProps} {...props}>
           {content}
         </Link>
       ) : (
