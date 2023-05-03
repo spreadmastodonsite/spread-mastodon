@@ -7,6 +7,10 @@ import GridItem from '@/components/layout/GridItem';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Image from 'next/image';
 import axios from 'axios';
+import Icon from '@/components/atoms/icon';
+
+import { updateAccountData as dataContent } from '../../data/updateAccount';
+import Link from 'next/link';
 
 export default function UpdateAccount() {
   const {
@@ -17,12 +21,16 @@ export default function UpdateAccount() {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [avatarSrc, setAvatarSrc] = useState('/missing.png');
+  const [avatarSrc, setAvatarSrc] = useState(
+    dataContent.defaultAvatarImage.src,
+  );
   const [base64, setbase64] = useState('');
-  const [backgroundSrc, setBackgroundSrc] = useState('/default-bg.png');
+  const [backgroundSrc, setBackgroundSrc] = useState(
+    dataContent.defaultBackgroundImage.src,
+  );
   const [BgBase64, setBgBase64] = useState('');
   const [user, setUser] = useState();
-  const [bio, setBio] = useState('Add your short bio here...');
+  const [bio, setBio] = useState(dataContent.bio.text);
 
   const updateBio = (event) => {
     setBio(event.target.value);
@@ -131,7 +139,34 @@ export default function UpdateAccount() {
         <main className="l-main c-page__interior">
           {success ? (
             <div>
-              <p>success</p>
+              <Grid className="c-grid__profile-success">
+                <GridItem columnStart={1} columnEnd={13}>
+                  <Icon iconName="check" width="100" height="100" />
+                </GridItem>
+                <GridItem columnStart={1} columnEnd={13}>
+                  <div className="c-profile-success__content u-text-align--center">
+                    <h2 className="c-profile-success__title u-heading--2xl">
+                      {dataContent.successHeading.textOne}
+                      <br />
+                      {user?.data?.username}!
+                    </h2>
+                    <p className="c-profile-success__sub-title">
+                      {dataContent.successSubHeading.text}{' '}
+                      <Link
+                        className="c-link"
+                        href={dataContent.successSubHeading.link.url}>
+                        {dataContent.successSubHeading.link.text}
+                      </Link>
+                    </p>
+                  </div>
+                </GridItem>
+              </Grid>
+              <div className="c-profile-success__buttons">
+                <Button
+                  link={dataContent.successButton.link}
+                  text={dataContent.successButton.text}
+                />
+              </div>
             </div>
           ) : (
             <>
@@ -139,8 +174,8 @@ export default function UpdateAccount() {
                 iconName="join"
                 iconWidth="75"
                 iconHeight="83"
-                heading={'Adding Your Profile Picture and Bio'}
-                subHeading={'(Step 2 of 2; Optional But Recommended)'}
+                heading={dataContent.heading.text}
+                subHeading={dataContent.subHeading.text}
               />
               <Grid>
                 <GridItem
@@ -189,7 +224,7 @@ export default function UpdateAccount() {
                       <form className="c-profile-box__form">
                         <div className="c-profile-box__avatar">
                           <label className="u-visually-hidden" for="avatar">
-                            Upload Your Avatar
+                            {dataContent.uploadAvatarButton.text}
                           </label>
                           <input
                             onChange={(e) => updateAvatar(e)}
@@ -200,14 +235,14 @@ export default function UpdateAccount() {
                           />
                           <Button
                             className="c-profile-box__button"
-                            text={'Upload Your Avatar'}
+                            text={dataContent.uploadAvatarButton.text}
                             onClick={handleAvatarButtonClick}
                           />
                           {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
                         </div>
                         <div className="c-profile-box__background">
                           <label className="u-visually-hidden" for="background">
-                            Upload Your Background Image
+                            {dataContent.uploadBackgroundButton.text}
                           </label>
                           <input
                             onChange={(e) => updateBackground(e)}
@@ -218,7 +253,7 @@ export default function UpdateAccount() {
                           />
                           <Button
                             className="c-profile-box__button"
-                            text={'Upload Your Background Image'}
+                            text={dataContent.uploadBackgroundButton.text}
                             onClick={handleBackgroundButtonClick}
                           />
                           {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}

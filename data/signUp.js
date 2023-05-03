@@ -16,7 +16,7 @@ export const signUpData = {
     text: 'Join the Whole Mastodon Network via this Trusted Community Server',
   },
   formButton: {
-    text: 'sign up',
+    text: 'Sign up',
   },
 
   // This is the data for the success page after the user has successfully signed up

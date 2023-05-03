@@ -105,7 +105,7 @@
 }
 
 .c-profile-box__avatar .c-profile-box__button::after {
-  background-image: url('/assets/icons/join.png');
+  background-image: url('/assets/icons/join.svg');
 }
 
 .c-profile-box__background {
@@ -113,7 +113,7 @@
 }
 
 .c-profile-box__background .c-profile-box__button::after {
-  background-image: url('/assets/icons/share.png');
+  background-image: url('/assets/icons/share.svg');
 }
 
 .c-profile-box .c-button {
@@ -123,4 +123,55 @@
 .c-profile-box__buttons {
   padding-right: var(--space-2xl);
   padding-left: var(--space-2xl);
+}
+
+.c-profile-success__content {
+  margin-bottom: var(--space-4xl);
+}
+
+.c-profile-success__title {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.c-profile-success__sub-title {
+  font-size: var(--font-size-2xl);
+}
+
+.c-profile-success__buttons {
+  display: flex;
+  justify-content: center;
+  margin-right: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+  margin-left: var(--space-xl);
+}
+.c-profile-success__buttons .c-button {
+  max-width: 550px;
+}
+
+@media all and (max-width: 768px) {
+  .c-profile-success__buttons {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.c-profile-box__buttons .c-button {
+  font-size: var(--font-size-lg);
+}
+
+@media all and (max-width: 768px) {
+  .c-profile-box__buttons .c-button {
+    font-size: var(--font-size-md);
+  }
+}
+
+.c-profile-success__buttons .c-button {
+  font-size: var(--font-size-lg);
+}
+
+@media all and (max-width: 768px) {
+  .c-profile-success__buttons .c-button {
+    font-size: var(--font-size-md);
+  }
 }

@@ -94,13 +94,13 @@ export default function SignupForm() {
       <Grid className="c-signup-success__buttons" variant="autoFit">
         {/* <Button link="/update-account" text="Add Your Profile Basics!" /> */}
         <Button
-          link={data.successButtonTwo.link}
-          text={data.successButtonTwo.text}
-        />
-        <Button
-          variant="secondary"
           link={data.successButtonOne.link}
           text={data.successButtonOne.text}
+        />
+        <Button
+          link={data.successButtonTwo.link}
+          text={data.successButtonTwo.text}
+          variant="secondary"
         />
       </Grid>
     </div>

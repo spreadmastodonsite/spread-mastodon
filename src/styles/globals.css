@@ -130,6 +130,12 @@ li {
   margin: 5px 0;
 }
 
+.c-link {
+  color: var(--c-purple-500);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
 .c-animated-header {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,16 @@
   margin-top: var(--space-xl);
 }
 
+.c-form__signup .c-button {
+  font-size: var(--font-size-lg);
+}
+
+@media all and (max-width: 768px) {
+  .c-form__signup .c-button {
+    font-size: var(--font-size-md);
+  }
+}
+
 .c-form__signup > * {
   width: 100%;
 }
