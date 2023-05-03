@@ -16,7 +16,6 @@ export default function SignUp() {
         alt="Spread Mastodon | Take Back Social"
         className="c-logo"
       />
-
       <main className="l-main">
         <SignupForm />
       </main>

@@ -16,10 +16,6 @@
   text-align: center;
 }
 
-.c-card__icon {
-  flex-grow: 1;
-}
-
 .c-card__title {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-bold);

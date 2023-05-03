@@ -15,7 +15,7 @@
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
 @import url('./molecules/stepperHeader.css');
-@import url('./molecules/signupForm.css');
+@import url('./molecules/signup.css');
 @import url('./molecules/profile.css');
 
 /* Components */
@@ -106,7 +106,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   line-height: 140%;
 }
 
@@ -127,10 +128,6 @@ ul {
 
 li {
   margin: 5px 0;
-}
-
-p {
-  line-height: 140%;
 }
 
 .c-animated-header {

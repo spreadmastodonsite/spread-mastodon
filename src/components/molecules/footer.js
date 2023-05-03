@@ -9,15 +9,11 @@ export default function Footer({ className }) {
 
   return (
     <footer className={componentClassName}>
-      <Grid>
-        <GridItem columnStart={5} columnEnd={9}>
-          <p className="u-font-weight--normal u-text-align--center u-body-copy">
-            {disclaimer.lineOne}
-            <br />
-            {disclaimer.lineTwo}
-          </p>
-        </GridItem>
-      </Grid>
+      <p className="u-font-weight--normal u-text-align--center u-body-copy">
+        {disclaimer.lineOne}
+        <br />
+        {disclaimer.lineTwo}
+      </p>
     </footer>
   );
 }
