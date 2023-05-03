@@ -16,6 +16,7 @@
   .c-stepper-header {
     gap: var(--space-xl);
     flex-direction: row;
+    padding-left: 73px;
   }
 }
 
@@ -35,7 +36,12 @@
 }
 
 .c-stepper-header__heading {
+  font-weight: var(--font-weight-normal);
   margin-bottom: var(--space);
+}
+
+.c-stepper-header__sub-heading {
+  font-size: var(--font-size-xl);
 }
 
 .c-stepper-header__hr {

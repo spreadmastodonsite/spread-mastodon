@@ -2,7 +2,6 @@ import Head from 'next/head';
 import SignupForm from '../components/SignupForm';
 
 import { signUpData as data } from '/data/signUp.js';
-import Icon from '@/components/atoms/icon';
 import StepperHeader from '@/components/molecules/StepperHeader';
 
 export default function SignUp() {
