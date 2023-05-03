@@ -99,7 +99,6 @@ export default function UpdateAccount() {
   useEffect(() => {
     setTimeout(() => {
       getAccount();
-      console.log(user)
     }, 500);
   }, []);
 
