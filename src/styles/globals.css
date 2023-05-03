@@ -134,8 +134,8 @@ p {
   line-height: 70px;
 }
 
-.c-animated-header p {
-  transform: translateX(-7%);
+.c-animated-header div {
+  transform: translateX(-11%);
 }
 
 .c-heading-one__animation {
@@ -146,7 +146,6 @@ p {
   position: absolute;
   display: inline;
   opacity: 0;
-  width: 100%;
   animation: rotateText 12s linear infinite;
   color: var(--c-primary);
   text-indent: 10px;
