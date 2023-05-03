@@ -124,10 +124,18 @@
   .c-grid__signup-form .l-grid-item {
     grid-column: 3 / 11;
   }
+
+  .c-grid__signup-success .l-grid-item {
+    grid-column: 2 / 12;
+  }
 }
 
 @media all and (max-width: 768px) {
   .c-grid__signup-form .l-grid-item {
+    grid-column: 1 / -1;
+  }
+
+  .c-grid__signup-success .l-grid-item {
     grid-column: 1 / -1;
   }
 }

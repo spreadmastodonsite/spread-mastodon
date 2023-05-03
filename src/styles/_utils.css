@@ -32,6 +32,12 @@
   line-height: 1.2;
 }
 
+@media all and (max-width: 768px) {
+  .u-heading--2xl {
+    font-size: var(--font-size-4xl);
+  }
+}
+
 .u-heading--3xl {
   font-size: var(--font-size-6xl);
   font-weight: var(--font-semibold);
