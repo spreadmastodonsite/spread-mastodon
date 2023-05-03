@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Head from 'next/head';
 import Button from '@/components//molecules/Button';
@@ -19,7 +19,31 @@ export default function UpdateAccount() {
   const [base64, setbase64] = useState('');
   const [backgroundSrc, setBackgroundSrc] = useState('/default-bg.png');
   const [BgBase64, setBgBase64] = useState('');
+  const [user, setUser] = useState();
+  const [bio, setBio] = useState('Add your short bio here...');
+
+  const updateBio = (event) => {
+    setBio(event.target.value);
+  }
+
   
+  const getAccount = async () => {
+    const accessToken = sessionStorage.getItem('accessToken');
+
+    try {
+      const response = await axios.get(
+        `/api/verifyAccount?accessToken=${accessToken}`,
+      );
+
+      setUser(response.data);
+    } catch (error) {
+      throw new Error(
+        `Error verifying account: ${JSON.stringify(
+          error.response.data.error.error,
+        )}`,
+      );
+    }
+  }
 
   const onSubmit = async (data) => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -72,6 +96,13 @@ export default function UpdateAccount() {
     getBgBase64(event.target.files[0])
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      getAccount();
+    }, 500);
+  }, []);
+
+
   return (
     <div>
       <Head>
@@ -83,58 +114,101 @@ export default function UpdateAccount() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="l-main">
-        <Grid className="u-text-align--center">
-          <GridItem columnStart={4} columnEnd={10}>
+        <Grid>
+          <GridItem columnStart={4} columnEnd={10} className="u-text-align--center">
             <h1>Adding Your Profile Picture and Bio</h1>
             <p>
               Now that you have an account, you can add a profile picture and
               bio to your account.
             </p>
           </GridItem>
-          <GridItem columnStart={4} columnEnd={10}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div>
-                <label htmlFor="bio">Bio:</label>
-                <input id="bio" type="textArea" {...register('bio')} />
-                {errors.bio && <span>{errors.bio.message}</span>}
-              </div>
-              <div>
-                <input
-                  onChange={(e) => updateAvatar(e)}
-                  accept="image/jpeg,image/png,image/gif,image/webp"
-                  type="file"
-                  name="avatar"
-                  id="avatar"
-                />  
-                <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span>
-                <Image
-                  src={avatarSrc}
-                  alt="avatar"
-                  width="200"
-                  height="200"
-                />
-              </div>
-              <div>
-                <input
-                  onChange={(e) => updateBackground(e)}
-                  accept="image/jpeg,image/png,image/gif,image/webp"
-                  type="file"
-                  name="background"
-                  id="backgroumd"
-                />  
-                <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span>
-                <Image
-                  src={backgroundSrc}
-                  alt="avatar"
-                  width="200"
-                  height="200"
-                />
-              </div>
-              <div>
-                <Button loading={loading} type="submit" text="Update" />
-              </div>
-            </form>
-          </GridItem>
+          <GridItem columnStart={2} columnEnd={12}>
+            <Grid className="c-profile-box">
+              <GridItem columnStart={2} columnEnd={7}>
+                <div className="c-profile-box__heading u-text-align--center">
+                  <h2>Profile Preview</h2>
+                </div>
+              </GridItem>
+              <GridItem columnStart={2} columnEnd={7}>
+                <div className="c-profile-box__card">
+                  <div className="c-profile-box__card__background">
+                    <img
+                      src={backgroundSrc}
+                      alt="avatar"
+                    />
+                  </div>
+                  <div className="c-profile-box__card__meta">
+                    
+                    <Image
+                      src={avatarSrc}
+                      alt="avatar"
+                      width="100"
+                      height="100"
+                    />
+                    <div className="c-profile-box__card__data">
+                      <div>
+                        {user?.data?.acct && <h4>{user.data.acct}</h4>}
+                        {user?.data?.username && <span>{user.data.username}</span>}
+                      </div>
+                      <div>
+                        <p>{bio}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </GridItem>
+              <GridItem columnStart={8} columnEnd={12}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="c-profile-box__avatar">
+                    <label for="avatar">Upload Your Avatar</label>
+                    <input
+                      onChange={(e) => updateAvatar(e)}
+                      accept="image/jpeg,image/png,image/gif,image/webp"
+                      type="file"
+                      name="avatar"
+                      id="avatar"
+                    />  
+                    {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
+                  </div>
+                  <div className="c-profile-box__background">
+                    <label for="background">Upload Your Background Image</label>
+                    <input
+                      onChange={(e) => updateBackground(e)}
+                      accept="image/jpeg,image/png,image/gif,image/webp"
+                      type="file"
+                      name="background"
+                      id="backgroumd"
+                    />  
+                    {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
+                  </div>
+                  <div>
+                    <label htmlFor="bio" aria-hidden>Bio</label>
+                    <textarea
+                      id="bio"
+                      type="textArea"
+                      placeholder="Add your short bio here..."
+                      onKeyDown={(e) => updateBio(e)}
+                      {...register('bio')}
+                    />
+                    {errors.bio && <span>{errors.bio.message}</span>}
+                  </div>
+                  <div>
+                    <Button loading={loading} type="submit" text="Update" />
+                  </div>
+                </form>
+                </GridItem>
+              </Grid>
+              <Grid>
+                <GridItem columnStart={2} columnEnd={6}>
+                  
+                </GridItem>
+                <GridItem columnStart={7} columnEnd={12}>
+                  <div>
+                    <Button href="/follow-tags" text="Skip This Step For Now" />
+                  </div>
+                </GridItem>
+              </Grid>
+            </GridItem>
         </Grid>
       </main>
     </div>

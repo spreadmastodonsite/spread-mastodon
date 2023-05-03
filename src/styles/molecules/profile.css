@@ -1,0 +1,50 @@
+
+.c-profile-box {
+  background-color: var(--c-gray);
+  padding: var(--space-4xl) 0;
+  margin: var(--space-3xl) 0;
+}
+
+.c-profile-box__card {
+  box-shadow: 2.2px 2px 24px 0 rgba(0, 0, 0, 0.89);
+}
+
+.c-profile-box__card__background {
+  background-color: var(--c-black-500);
+  min-height: 150px;
+}
+
+.c-profile-box__card__background img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 150px;
+}
+
+.c-profile-box__card__meta {
+  margin-top: calc(var(--space-3xl) * -1);
+  margin-left: var(--space-sm);
+}
+
+.c-profile-box__heading {
+  font-family: Manrope;
+  font-size: 22px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.91;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: #656a79;
+}
+
+.c-profile-box__card__data {
+  padding: 0 var(--space-sm) var(--space-sm);
+}
+
+.c-profile-box__avatar {
+  margin-bottom: var(--space-md);
+}
+
+.c-profile-box__background {
+  margin-bottom: var(--space-md);
+}
