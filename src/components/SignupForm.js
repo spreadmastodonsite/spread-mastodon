@@ -21,7 +21,7 @@ export default function SignupForm() {
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [accountCreated, setAccountCreated] = useState(true);
+  const [accountCreated, setAccountCreated] = useState(false);
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');
@@ -81,19 +81,27 @@ export default function SignupForm() {
         <GridItem columnStart={1} columnEnd={13}>
           <div className="c-signup-success__content u-text-align--center">
             <h2 className="c-signup-success__title u-heading--2xl">
-              Confirmed:
-              <br /> Welcome to Mastodon, {displayName ? displayName : username}
-              !
+              {data.successHeading.textOne}
+              <br /> {data.successHeading.textTwo}{' '}
+              {displayName ? displayName : username}!
             </h2>
             <p className="c-signup-success__sub-title">
-              You are in! So What’s Next?
+              {data.successSubHeading.text}
             </p>
           </div>
         </GridItem>
       </Grid>
       <Grid className="c-signup-success__buttons" variant="autoFit">
-        <Button link="/update-account" text="Add Your Profile Basics!" />
-        <Button variant="secondary" link="/" text="Skip This Step for Now" />
+        {/* <Button link="/update-account" text="Add Your Profile Basics!" /> */}
+        <Button
+          link={data.successButtonTwo.link}
+          text={data.successButtonTwo.text}
+        />
+        <Button
+          variant="secondary"
+          link={data.successButtonOne.link}
+          text={data.successButtonOne.text}
+        />
       </Grid>
     </div>
   ) : (
@@ -107,7 +115,7 @@ export default function SignupForm() {
       />
       <div className={componentClassName}>
         <p className="u-heading--lg u-text-align--center">
-          Join the Whole Mastodon Network via this Trusted Community Server
+          {data.description.text}
         </p>
         <form
           className="c-form c-form__signup"
@@ -208,7 +216,11 @@ export default function SignupForm() {
               </div>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
-              <Button loading={loading} type="submit" text="Sign up" />
+              <Button
+                loading={loading}
+                type="submit"
+                text={data.formButton.text}
+              />
               {responseMessage && <div>{responseMessage}</div>}
             </GridItem>
           </Grid>
