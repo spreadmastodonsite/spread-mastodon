@@ -133,7 +133,7 @@ li {
 }
 
 .c-link {
-  color: var(--c-purple-300);
+  color: var(--link-color);
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }

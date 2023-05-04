@@ -16,7 +16,7 @@
   /* ** tier 2 colors ** */
   --body-color: var(--c-white);
   --heading-color: var(--c-white);
-  --link-color: var(--c-primary);
+  --link-color: var(--c-purple-300);
   --primary-background: var(--c-black-300);
   --secondary-background: var(--c-black-500);
 
