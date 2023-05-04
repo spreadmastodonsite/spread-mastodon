@@ -1,11 +1,12 @@
 .u-nav-wrapper {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .u-nav-button {
-  position: absolute;
-  top: var(--space);
-  right: var(--space);
+  margin-top: var(--space);
+  margin-right: var(--space);
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -55,4 +56,22 @@
   list-style: none;
   padding: var(--space-4xl) 0 0;
   margin: 0;
+}
+
+.u-nav-account__menu {
+  position: absolute;
+  transform: translate(-50%, 8px);
+  background-color: var(--secondary-background);
+  box-shadow: 0 0 5px -1px rgba(255, 255, 255, 0.89);
+  height: 0;
+  overflow: hidden;
+  transition: all 0.32s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space);
+}
+
+.u-nav-account__menu--open {
+  height: 40px; 
 }
