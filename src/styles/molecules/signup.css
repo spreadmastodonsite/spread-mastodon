@@ -1,0 +1,65 @@
+/* Signup Form */
+
+.c-form__signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--space-xl);
+}
+
+.c-form__signup .c-button {
+  font-size: var(--font-size-lg);
+}
+
+@media all and (max-width: 768px) {
+  .c-form__signup .c-button {
+    font-size: var(--font-size-md);
+  }
+}
+
+.c-form__signup > * {
+  width: 100%;
+}
+
+.c-agreement input {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.c-signup-success__content {
+  margin-bottom: var(--space-4xl);
+}
+
+.c-signup-success__title {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.c-signup-success__sub-title {
+  font-size: var(--font-size-2xl);
+}
+
+.c-signup-success__buttons {
+  margin-right: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+  margin-left: var(--space-xl);
+}
+
+@media all and (max-width: 768px) {
+  .c-signup-success__buttons {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.c-signup-success__buttons .c-button {
+  font-size: var(--font-size-lg);
+}
+
+@media all and (max-width: 768px) {
+  .c-signup-success__buttons .c-button {
+    font-size: var(--font-size-md);
+  }
+}

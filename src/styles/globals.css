@@ -4,6 +4,10 @@
 @import url('./_fonts.css');
 @import url('./_utils.css');
 
+/* Layout */
+@import url('./layout/grid.css');
+@import url('./layout/gridItem.css');
+
 /* Atoms */
 @import url('./atoms/icon.css');
 
@@ -11,14 +15,11 @@
 @import url('./molecules/button.css');
 @import url('./molecules/card.css');
 @import url('./molecules/stepperHeader.css');
-@import url('./molecules/signupForm.css');
+@import url('./molecules/signup.css');
 @import url('./molecules/profile.css');
 
 /* Components */
 @import url('./components/nav.css');
-
-@import url('./layout/grid.css');
-@import url('./layout/gridItem.css');
 
 body {
   background: var(--primary-background);
@@ -35,15 +36,16 @@ body {
   border-radius: var(--border-radius--lg);
 }
 
-.c-page__interior .l-main {
+.c-page__interior.l-main {
   background: var(--secondary-background);
   margin-bottom: var(--space-4xl);
   padding-right: var(--space-2xl);
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-2xl);
   padding-left: var(--space-2xl);
 }
 
 .l-footer {
+  padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
 
@@ -65,7 +67,8 @@ body {
   margin-bottom: var(--space-xl);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding-top: var(--space-md);
   padding-bottom: var(--space-md);
@@ -103,7 +106,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   line-height: 140%;
 }
 
@@ -126,7 +130,10 @@ li {
   margin: 5px 0;
 }
 
-p {
+.c-link {
+  color: var(--c-purple-500);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .c-animated-header {
