@@ -17,6 +17,8 @@
 @import url('./molecules/stepperHeader.css');
 @import url('./molecules/signup.css');
 @import url('./molecules/profile.css');
+@import url('./molecules/apps.css');
+@import url('./molecules/explainer.css');
 
 /* Components */
 @import url('./components/nav.css');
@@ -131,7 +133,7 @@ li {
 }
 
 .c-link {
-  color: var(--c-purple-500);
+  color: var(--c-purple-300);
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
