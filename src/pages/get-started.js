@@ -4,13 +4,13 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
 
-import { joinData as data } from '/data/join.js';
+import { getStartedData as data } from '/data/getStarted.js';
 
 export default function Join() {
   const heading = data.heading;
 
   return (
-    <div className="content-wrapper c-page__join">
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
@@ -28,7 +28,6 @@ export default function Join() {
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}
-              textTwo={heading.textTwo}
               textRotate={heading.textRotate}
             />
           </GridItem>
