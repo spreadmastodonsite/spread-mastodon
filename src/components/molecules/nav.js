@@ -35,7 +35,13 @@ export default function Nav() {
       <div className='u-nav-wrapper'>
         {loggedIn && 
           <div className="u-nav-account">
-            <Icon className={`u-nav-button ${accountState && 'u-nav-account--open'}`} iconName="member" width="32" height="32" onClick={toggleAccount} />
+            <Icon
+              className={`u-nav-button ${accountState && 'u-nav-account--open'}`}
+              iconName="member"
+              width="32"
+              height="32"
+              onClick={toggleAccount}
+            />
             <div class={`u-nav-account__menu ${accountState && 'u-nav-account__menu--open'}`}>
               <Link href="/" onClick={LogOut}>Log out</Link>
             </div>
