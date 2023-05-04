@@ -4,7 +4,7 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
 
-import { joinData as data } from '/data/join.js';
+import { getStartedData as data } from '/data/getStarted.js';
 
 export default function Join() {
   const heading = data.heading;
@@ -28,7 +28,6 @@ export default function Join() {
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}
-              textTwo={heading.textTwo}
               textRotate={heading.textRotate}
             />
           </GridItem>
