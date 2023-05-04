@@ -8,7 +8,7 @@ export default function Icon({ className, iconName, width, height, ...props }) {
     <div className={componentClassName}>
       <Image
         className="c-icon__image"
-        src={`/assets/icons/${iconName}.png`}
+        src={`/assets/icons/${iconName}.svg`}
         alt={iconName}
         width={width}
         height={height}
