@@ -10,7 +10,7 @@ export default function Join() {
   const heading = data.heading;
 
   return (
-    <div className="content-wrapper c-page__join">
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />

@@ -4,7 +4,7 @@ import { signUpData as data } from '/data/signUp.js';
 
 export default function SignUp() {
   return (
-    <div className="content-wrapper c-page__interior">
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
@@ -16,7 +16,7 @@ export default function SignUp() {
         alt="Spread Mastodon | Take Back Social"
         className="c-logo"
       />
-      <main className="l-main">
+      <main className="l-main c-page__interior">
         <SignupForm />
       </main>
     </div>
