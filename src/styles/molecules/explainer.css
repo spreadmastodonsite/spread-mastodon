@@ -1,0 +1,57 @@
+/* Mastodon Explainer */
+
+.c-explainer--content {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  background-color: var(--primary-background);
+}
+
+.c-explainer--content > * {
+  max-width: 900px;
+  margin: var(--space-lg) auto 0;
+}
+
+.c-explainer--content .u-heading--lg {
+  margin-top: var(--space-4xl);
+}
+
+.c-explainer--content p {
+  font-size: var(--font-size-xl);
+}
+
+.c-explainer--content > figure {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+
+.c-explainer--content img {
+  border-radius: var(--border-radius);
+  margin: 0 auto;
+}
+
+.c-explainer__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.c-explainer__list-item {
+  display: flex;
+  align-items: center;
+}
+
+.c-explainer__list-item p {
+  flex: 1 0 auto;
+  text-align: center;
+}
+
+.c-button--explainer {
+  display: block;
+  max-width: 462px;
+  margin: 0 auto;
+}

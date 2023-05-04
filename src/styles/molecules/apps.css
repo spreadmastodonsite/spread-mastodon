@@ -1,0 +1,47 @@
+.c-apps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.c-apps--box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+
+.c-apps__app {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  gap: var(--space-2xl);
+  padding-top: var(--space-2xl);
+  padding-right: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  padding-left: var(--space-xl);
+  border: solid 4px vart(--c-black-200);
+}
+
+.c-apps__others .c-link {
+  font-size: var(--font-size-lg);
+}
+
+.c-app__content--button {
+  max-width: 230px;
+}
+
+.c-apps__others {
+  flex: 1 0 auto;
+  min-width: 335px;
+  padding-top: var(--space-2xl);
+  padding-right: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  padding-left: var(--space-xl);
+  border: solid 4px vart(--c-black-200);
+}
+
+.c-app__button {
+  max-width: 360px;
+  margin: 0 auto;
+}
