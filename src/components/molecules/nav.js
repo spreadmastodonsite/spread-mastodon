@@ -62,7 +62,7 @@ export default function Nav() {
                 <Link href="/privacy-policy" onClick={() => setMenuState(!menuState)}>Privacy Policy</Link>
               </li>
               <li className="u-nav-menu__list__item">
-                <a href="#">util page</a>
+                <a href="utils">util page</a>
               </li>
             </ul>
           </nav>
