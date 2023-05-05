@@ -35,16 +35,26 @@ export default function MastodonApps() {
           <div className="c-apps--box">
             <div className="c-apps__app">
               <Image
-                src="/assets/icecube.png"
+                src="/assets/apps/icecube.png"
                 alt="IceCube"
                 width="225"
                 height="225"
               />
               <div className="c-apps__app--content">
-                <h4>Ice Cubes for Mastodon</h4>
-                <p>A blazing fast Mastodon client Thomas Ricouard</p>
+                <h4 className="u-heading--xl">Ice Cubes for Mastodon</h4>
+                <p className="u-body-copy">
+                  A blazing fast Mastodon client <br /> Thomas Ricouard
+                </p>
                 <p>Designed for iPad</p>
-                <div className="ratings">4.8 • 926 Ratings</div>
+                <div className="c-apps__ratings u-body--sm">
+                  <Image
+                    className="c-apps__ratings--stars"
+                    src="/assets/apps/stars.png"
+                    width="73"
+                    height="11"
+                  />
+                  4.8 • 926 Ratings
+                </div>
                 <p>Free • Offers In-App Purchases</p>
                 <Button
                   className="c-app__content--button"
@@ -54,19 +64,19 @@ export default function MastodonApps() {
               </div>
             </div>
             <div className="c-apps__others">
-              <h4>Ice Cubes for Mastodon</h4>
-              <ul>
-                <li>
+              <h4 className="u-heading--xl">More Great Apps</h4>
+              <ul className="c-other-apps__list">
+                <li className="c-other-apps__list-item">
                   <a className="c-link" href="">
                     Other iOS apps
                   </a>
                 </li>
-                <li>
+                <li className="c-other-apps__list-item">
                   <a className="c-link" href="">
                     Mac Desktop apps
                   </a>
                 </li>
-                <li>
+                <li className="c-other-apps__list-item">
                   <a className="c-link" href="">
                     Android Apps
                   </a>
