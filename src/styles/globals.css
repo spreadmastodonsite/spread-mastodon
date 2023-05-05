@@ -22,6 +22,8 @@
 
 /* Components */
 @import url('./components/nav.css');
+@import url('./components/tooltip.css');
+@import url('./components/modal.css');
 
 body {
   background: var(--primary-background);

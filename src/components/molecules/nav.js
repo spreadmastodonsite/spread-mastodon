@@ -42,7 +42,7 @@ export default function Nav() {
               height="32"
               onClick={toggleAccount}
             />
-            <div class={`u-nav-account__menu ${accountState && 'u-nav-account__menu--open'}`}>
+            <div className={`u-nav-account__menu ${accountState && 'u-nav-account__menu--open'}`}>
               <Link href="/" onClick={LogOut}>Log out</Link>
             </div>
           </div>

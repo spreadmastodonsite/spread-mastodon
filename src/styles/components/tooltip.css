@@ -1,0 +1,29 @@
+.c-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.c-tooltip__box {
+  position: absolute;
+  background: var(--c-white);
+  color: var( --c-black-500);
+  padding: var(--space-sm);
+  top: calc(100% + var(--space-sm));
+  left: 50%;
+  min-width: 400px;
+  transform: translateX(-50%);
+}
+
+.c-tooltip__box:after {
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--c-white);
+}

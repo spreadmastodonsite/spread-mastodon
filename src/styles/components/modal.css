@@ -1,0 +1,27 @@
+.c-modal__box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 50%;
+  min-height: 50%;
+  background-color: var(--c-black-500);
+  box-shadow: 0 0 5px -1px rgba(255, 255, 255, 0.89);
+  transform: translate(-50%, -50%);
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-modal__heading {
+  cursor: pointer;
+}
+
+.c-modal__close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  transform: rotate(45deg);
+  cursor: pointer;
+}

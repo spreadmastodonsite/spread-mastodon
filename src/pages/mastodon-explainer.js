@@ -139,7 +139,7 @@ export default function MastodonExplainer() {
                 />
               </figure>
 
-              <p class="has-text-align-center">for K-pop fans</p>
+              <p className="has-text-align-center">for K-pop fans</p>
             </li>
             <li className="c-explainer__list-item">
               <figure>
@@ -152,7 +152,7 @@ export default function MastodonExplainer() {
                 />
               </figure>
 
-              <p class="has-text-align-center">
+              <p className="has-text-align-center">
                 for people from Bologna, Italy
               </p>
             </li>
@@ -168,7 +168,7 @@ export default function MastodonExplainer() {
                 />
               </figure>
 
-              <p class="has-text-align-center">for LGBT people in tech</p>
+              <p className="has-text-align-center">for LGBT people in tech</p>
             </li>
             <li className="c-explainer__list-item">
               <figure>
@@ -180,7 +180,7 @@ export default function MastodonExplainer() {
                   loading="lazy"
                 />
               </figure>
-              <p class="has-text-align-center">a catch-all Mastodon website</p>
+              <p className="has-text-align-center">a catch-all Mastodon website</p>
             </li>
           </ul>
 
