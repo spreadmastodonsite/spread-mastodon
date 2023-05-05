@@ -366,8 +366,8 @@ export const followSuggestionsData = {
         {
           id: '',
           username: 'joyannreid',
-url: 'https://masto.ai/@joyannreid',
-},
+          url: 'https://masto.ai/@joyannreid',
+        },
         {
           id: '',
           username: 'rbreich',
@@ -611,7 +611,7 @@ url: 'https://masto.ai/@joyannreid',
         {
           id: '',
           username: 'chrisgeidner',
-          url: 'https://journa.host/@chrisgeidner,
+          url: 'https://journa.host/@chrisgeidner',
         },
         {
           id: '',
@@ -745,8 +745,8 @@ url: 'https://masto.ai/@joyannreid',
         },
         {
           id: '',
-          username: 'davidho'
-          url: 'https://mastodon.world/@davidho'
+          username: 'davidho',
+          url: 'https://mastodon.world/@davidho',
         },
         {
           id: '',
