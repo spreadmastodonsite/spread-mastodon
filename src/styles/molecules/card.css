@@ -24,6 +24,7 @@
 .c-card__content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xl);
   padding: 0 43px;
 }
@@ -38,7 +39,6 @@
 }
 
 .c-card.c-card--large .c-card__content {
-  max-width: 336px;
   width: 100%;
   padding: 0;
 }
@@ -46,4 +46,9 @@
 .c-card.c-card--large .c-button {
   font-size: var(--font-size-xl);
   font-weight: var(--font-normal);
+  max-width: 336px;
+}
+
+.c-card--share p {
+  font-size: var(--font-size-xl);
 }

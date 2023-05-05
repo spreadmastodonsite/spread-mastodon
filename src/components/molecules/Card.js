@@ -32,8 +32,8 @@ export default function Card({
       </div>
       {title && <h2 className="c-card__title ">{title}</h2>}
       <div className="c-card__content">
-        {linkText && <Button text={linkText} link={link} />}
         {description && <p className="u-body-copy">{description}</p>}
+        {linkText && <Button text={linkText} link={link} />}
         {children}
       </div>
     </div>
