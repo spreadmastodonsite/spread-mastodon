@@ -4,154 +4,17 @@ import axios from 'axios';
 import Button from '@/components/molecules/Button';
 import Link from 'next/link';
 
-import { followSuggestionsData as data } from '/data/followSuggestions';
 import ToolTip from '@/components/molecules/ToolTip';
 import Modal from '@/components/molecules/Modal';
 import Grid from '@/components/layout/Grid';
 import Card from '@/components/molecules/Card';
 import GridItem from '@/components/layout/GridItem';
 
+import { followSuggestionsData as data } from '/data/followSuggestions';
+
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
   const [followedUsers, setFollowedUsers] = useState([]);
-
-  // Suggested users to follow on signup success. Add more if you want!
-  const suggestedUsers = [
-    {
-      id: '13179',
-      username: 'Mastodon',
-      url: 'https://mastodon.social/@Mastodon',
-    },
-    { id: '1', username: 'Gargron', url: 'https://mastodon.social/@Gargron' },
-    {
-      id: '109373774912342849',
-      username: 'wonderofscience',
-      url: 'https://mastodon.social/@wonderofscience',
-    },
-  ];
-
-  const categories = [
-    {
-      title: 'Popular Figures',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    },
-    {
-      title: 'Topic Curators',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    },
-    {
-      title: 'Columnists',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    },
-    {
-      title: 'News & Journalism',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    },
-    {
-      title: 'Tech',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    },
-    {
-      title: 'Medical & Covid',
-      accounts: [
-        {
-          id: '13179',
-          username: 'Mastodon',
-          url: 'https://mastodon.social/@Mastodon',
-        },
-        { 
-          id: '1',
-          username: 'Gargron',
-          url: 'https://mastodon.social/@Gargron'
-        },
-        {
-          id: '109373774912342849',
-          username: 'wonderofscience',
-          url: 'https://mastodon.social/@wonderofscience',
-        },  
-      ]
-    }
-  ];
 
   const followAllUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -185,6 +48,7 @@ export default function FollowSuggestions() {
       await axios.post('/api/follow', {
         accessToken,
         targetAccountId,
+        username,
       });
 
       alert(`You are now following ${username}`);
@@ -210,8 +74,8 @@ export default function FollowSuggestions() {
             <ToolTip
               label={data.subHeading.toolTip.label}
               value={data.subHeading.toolTip.value}
-            />
-            {' '}{data.subHeading.text}
+            />{' '}
+            {data.subHeading.text}
           </p>
         </div>
         {/* Render the suggested users list */}
@@ -220,29 +84,40 @@ export default function FollowSuggestions() {
             <GridItem columnStart={3} columnEnd={11}>
               <h2>{data.secondHeading.text}</h2>
               <Grid variant="3up">
-                {categories.map((category) => {
+                {data.categories.map((category) => {
                   return (
-                    <GridItem key={category.title} className="l-grid-item__auto">
+                    <GridItem
+                      key={category.title}
+                      className="l-grid-item__auto">
                       <Card>
-                      <Modal
-                        label={category.title}
-                        subLabel={`${category.accounts.length} Accounts`}
-                        value={category.accounts.map((user) => (
-                          <div key={user.id}>
-                            <Link href={user.url} target="_blank" rel="noopener noreferrer">
-                              {user.username}
-                            </Link>{' '}
-                            <Button
-                              onClick={() => followUser(user.id, user.username)}
-                              text={data.followUserButton.text + ' ' + user.username}
-                              loading={loading}
-                            />
-                          </div>
-                        ))}
-                      />
+                        <Modal
+                          label={category.title}
+                          subLabel={`${category.accounts.length} Accounts`}
+                          value={category.accounts.map((user) => (
+                            <div key={user.id}>
+                              <Link
+                                href={user.url}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                {user.username}
+                              </Link>{' '}
+                              <Button
+                                onClick={() =>
+                                  followUser(user.id, user.username)
+                                }
+                                text={
+                                  data.followUserButton.text +
+                                  ' ' +
+                                  user.username
+                                }
+                                loading={loading}
+                              />
+                            </div>
+                          ))}
+                        />
                       </Card>
                     </GridItem>
-                  )
+                  );
                 })}
               </Grid>
             </GridItem>
@@ -268,7 +143,7 @@ export default function FollowSuggestions() {
                 </ul>
               </div>
             )}
-          
+
             <Button
               link="/follow-tags"
               text="Follow Tags"
