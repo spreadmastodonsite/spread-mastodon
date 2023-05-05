@@ -98,6 +98,18 @@
   text-align: right;
 }
 
+.u-margin-bottom--sm {
+  margin-bottom: var(--space-sm);
+}
+
+.u-margin-bottom--md {
+  margin-bottom: var(--space-md);
+}
+
+.u-margin-bottom--lg {
+  margin-bottom: var(--space-lg);
+}
+
 .u-visually-hidden {
   position: absolute;
   width: 1px;

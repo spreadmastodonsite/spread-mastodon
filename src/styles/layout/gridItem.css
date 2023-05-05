@@ -1,9 +1,11 @@
-.l-grid-item {
-}
 /* sets all Grid items to full width on mobile screens */
 
 .l-grid-item {
   grid-column: 1 / -1;
+}
+
+.l-grid-item__auto {
+  grid-column: auto;
 }
 
 @media all and (min-width: 768px) {
