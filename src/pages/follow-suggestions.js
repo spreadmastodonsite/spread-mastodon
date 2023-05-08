@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import Button from '@/components/molecules/Button';
 import Link from 'next/link';
 
@@ -18,10 +18,32 @@ export default function FollowSuggestions() {
 
   const followAllUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
+    setLoading(true);
+    try {
+      const followPromises = data.suggestedUsers.map(async (category) => {
+        category.accounts.map(async (user) => {
+          await axios.post('/api/follow', {
+            accessToken,
+            targetAccountId: user.id,
+          });
+          return user.username;
+        });
+      });
+
+      alert(`You are now following everyone, good work`);
+    } catch (error) {
+      alert(`Error: ${JSON.stringify(error.response.data.error.error)}`);
+    }
+
+    setLoading(false);
+  };
+
+  const followAllCategoryUsers = async (category, accounts) => {
+    const accessToken = sessionStorage.getItem('accessToken');
 
     setLoading(true);
     try {
-      const followPromises = suggestedUsers.map(async (user) => {
+      const followPromises = accounts.map(async (user) => {
         await axios.post('/api/follow', {
           accessToken,
           targetAccountId: user.id,
@@ -33,16 +55,13 @@ export default function FollowSuggestions() {
       setFollowedUsers(followedUsernames);
 
       alert(`You are now following ${followedUsernames.join(', ')}`);
-    } catch (error) {
-      alert(`Error: ${JSON.stringify(error.response.data.error.error)}`);
-    }
+    } catch (error) {}
 
     setLoading(false);
   };
 
   const followUser = async (targetAccountId, username) => {
     const accessToken = sessionStorage.getItem('accessToken');
-
     setLoading(true);
     try {
       await axios.post('/api/follow', {
@@ -84,7 +103,7 @@ export default function FollowSuggestions() {
             <GridItem columnStart={3} columnEnd={11}>
               <h2>{data.secondHeading.text}</h2>
               <Grid variant="3up">
-                {data.categories.map((category) => {
+                {data.suggestedUsers.map((category) => {
                   return (
                     <GridItem
                       key={category.title}
@@ -113,8 +132,17 @@ export default function FollowSuggestions() {
                                 loading={loading}
                               />
                             </div>
-                          ))}
-                        />
+                          ))}>
+                          <Button
+                            text="follow all"
+                            onClick={() =>
+                              followAllCategoryUsers(
+                                category.title,
+                                category.accounts,
+                              )
+                            }
+                          />
+                        </Modal>
                       </Card>
                     </GridItem>
                   );
