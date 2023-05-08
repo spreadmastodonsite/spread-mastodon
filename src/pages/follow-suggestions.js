@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import axios, { all } from 'axios';
+import axios from 'axios';
 import Button from '@/components/molecules/Button';
 import Link from 'next/link';
 

@@ -13,10 +13,8 @@ export default async function follow(req, res) {
         },
       },
     );
-    console.log(response.data);
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {
-    console.log(error.response.data);
     res.status(400).json({ success: false, error: error.response.data });
   }
 }
