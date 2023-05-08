@@ -3,6 +3,7 @@ import Card from '@/components/molecules/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
+import Logo from '@/components/atoms/Logo';
 
 import { getStartedData as data } from '/data/getStarted.js';
 
@@ -20,11 +21,7 @@ export default function Join() {
       <main className="l-main">
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
-            <img
-              src="/-e-SpreadMastodon_Logo.png"
-              alt="Spread Mastodon | Take Back Social"
-              className="c-logo"
-            />
+            <Logo />
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}
