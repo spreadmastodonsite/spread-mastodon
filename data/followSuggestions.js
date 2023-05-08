@@ -19,7 +19,7 @@ export const followSuggestionsData = {
   followAllButton: { text: 'Follow All' },
   followUserButton: { text: 'Follow' },
   backToHomeButton: { text: 'Back to Home' },
-  categories: [
+  suggestedUsers: [
     {
       title: 'Top Posts and Follow Suggestions',
       accounts: [
@@ -64,7 +64,7 @@ export const followSuggestionsData = {
           url: 'https://flipboard.social/@CultureDesk',
         },
         {
-          id: '',
+          id: '109343462594602395',
           username: 'nickkristof',
           url: 'https://journa.host/@nickkristof',
         },
@@ -127,11 +127,6 @@ export const followSuggestionsData = {
           id: '109344790090422215',
           username: 'cardamomaddict',
           url: 'https://mstdn.ca/@cardamomaddict',
-        },
-        {
-          id: '109307256392023889',
-          username: 'pbump',
-          url: 'https://journa.host/@pbump',
         },
         {
           id: '109316184693884723',
@@ -359,22 +354,22 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@StevenBeschloss',
         },
         {
-          id: '',
+          id: '109208442152198181',
           username: 'dangillmor',
           url: 'https://mastodon.social/@dangillmor',
         },
         {
-          id: '',
+          id: '109375929821046765',
           username: 'joyannreid',
           url: 'https://masto.ai/@joyannreid',
         },
         {
-          id: '',
+          id: '109338501935306639',
           username: 'rbreich',
           url: 'https://masto.ai/@rbreich',
         },
         {
-          id: '',
+          id: '109413529045739394',
           username: 'Teri_Kanefield',
           url: 'https://law-and-politics.online/@Teri_Kanefield',
         },
@@ -384,57 +379,57 @@ export const followSuggestionsData = {
       title: 'Politics',
       accounts: [
         {
-          id: '',
+          id: '109253075745809751',
           username: 'GottaLaff',
           url: 'https://mastodon.social/@GottaLaff',
         },
         {
-          id: '',
+          id: '109293301835369091',
           username: 'juddlegum',
           url: 'https://journa.host/@juddlegum',
         },
         {
-          id: '',
+          id: '109299996650199026',
           username: 'marcelias',
           url: 'https://mas.to/@marcelias',
         },
         {
-          id: '',
+          id: '108196926365234436',
           username: 'Pwnallthethings',
           url: 'https://mastodon.social/@Pwnallthethings',
         },
         {
-          id: '',
+          id: '108228513830587471',
           username: 'emptywheel',
           url: 'https://mastodon.social/@emptywheel',
         },
         {
-          id: '',
+          id: '109339548387437209',
           username: 'BlackAzizAnansi',
           url: 'https://mas.to/@BlackAzizAnansi',
         },
         {
-          id: '',
+          id: '109326604553644091',
           username: 'RollingStone',
           url: 'https://mstdn.social/@RollingStone',
         },
         {
-          id: '',
+          id: '109355700962815786',
           username: 'georgetakei',
           url: 'https://universeodon.com/@georgetakei',
         },
         {
-          id: '',
+          id: '109365953730768772',
           username: 'ProPublica',
           url: 'https://newsie.social/@ProPublica',
         },
         {
-          id: '',
+          id: '109362540642740218',
           username: 'democracydocket',
           url: 'https://mas.to/@democracydocket',
         },
         {
-          id: '',
+          id: '11216',
           username: 'humanrightswatch',
           url: 'https://mastodon.online/@humanrightswatch',
         },
@@ -444,47 +439,47 @@ export const followSuggestionsData = {
       title: 'Culture',
       accounts: [
         {
-          id: '',
+          id: '109487087607040696',
           username: 'architecture',
           url: 'https://mastodon.social/@architecture',
         },
         {
-          id: '',
+          id: '110142049148273382',
           username: 'CultureDesk',
           url: 'https://flipboard.social/@CultureDesk',
         },
         {
-          id: '',
+          id: '109297280241538513',
           username: 'MarkRuffalo',
           url: 'https://mastodon.social/@MarkRuffalo',
         },
         {
-          id: '',
+          id: '109292929514346332',
           username: 'neilhimself',
           url: 'https://mastodon.social/@neilhimself',
         },
         {
-          id: '',
+          id: '109525994135133204',
           username: 'doctorow',
           url: 'https://mamot.fr/@doctorow',
         },
         {
-          id: '',
+          id: '109559120397807043',
           username: 'JamesGleick',
           url: 'https://zirk.us/@JamesGleick',
         },
         {
-          id: '',
+          id: '109263946013834096',
           username: 'jentaub',
           url: 'https://mstdn.social/@jentaub',
         },
         {
-          id: '',
+          id: '109314734084205147',
           username: 'mariapopova',
           url: 'https://indieweb.social/@mariapopova',
         },
         {
-          id: '',
+          id: '109362401574115942',
           username: 'longreads',
           url: 'https://mastodon.world/@longreads',
         },
@@ -494,17 +489,17 @@ export const followSuggestionsData = {
       title: 'Authors',
       accounts: [
         {
-          id: '',
+          id: '109292929514346332',
           username: 'neilhimself',
           url: 'https://mastodon.social/@neilhimself',
         },
         {
-          id: '',
+          id: '109243139631965273',
           username: 'jeffjarvis',
           url: 'https://mastodon.social/@jeffjarvis',
         },
         {
-          id: '',
+          id: '109263946013834096',
           username: 'jentaub',
           url: 'https://mstdn.social/@jentaub',
         },
@@ -514,67 +509,67 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@StevenBeschloss',
         },
         {
-          id: '',
+          id: '109292791986066871',
           username: 'glennf',
           url: 'https://twit.social/@glennf',
         },
         {
-          id: '',
+          id: '109242900938345669',
           username: 'design_law',
           url: 'https://mastodon.social/@design_law',
         },
         {
-          id: '',
+          id: '109208442152198181',
           username: 'dangillmor',
           url: 'https://mastodon.social/@dangillmor',
         },
         {
-          id: '',
+          id: '30437',
           username: 'gregpak',
           url: 'https://mastodon.social/@gregpak',
         },
         {
-          id: '',
+          id: '109240495129582918',
           username: 'mckra1g',
           url: 'https://mastodon.social/@mckra1g',
         },
         {
-          id: '',
+          id: '109243371263223446',
           username: 'jbf1755',
           url: 'https://mastodon.social/@jbf1755',
         },
         {
-          id: '',
+          id: '109287395830443240',
           username: 'Dahlialith',
           url: 'https://mstdn.social/@Dahlialith',
         },
         {
-          id: '',
+          id: '109307256392023889',
           username: 'pbump',
           url: 'https://journa.host/@pbump',
         },
         {
-          id: '',
+          id: '109384336686489395',
           username: 'grammargirl',
           url: 'https://zirk.us/@grammargirl',
         },
         {
-          id: '',
+          id: '109259960879305242',
           username: 'brendannyhan',
           url: 'https://mastodon.social/@brendannyhan',
         },
         {
-          id: '',
+          id: '109297646301926415',
           username: 'DavidCor',
           url: 'https://mastodon.social/@DavidCor',
         },
         {
-          id: '',
+          id: '109293344964694018',
           username: 'KeithDevlin',
           url: 'https://fediscience.org/@KeithDevlin',
         },
         {
-          id: '',
+          id: '109266741338442075',
           username: 'laseletzky',
           url: 'https://mastodon.online/@laseletzky',
         },
@@ -584,72 +579,67 @@ export const followSuggestionsData = {
       title: 'Activism and Advocacy',
       accounts: [
         {
-          id: '',
+          id: '109283969134372186',
           username: 'maxkennerly',
           url: 'https://mstdn.social/@maxkennerly',
         },
         {
-          id: '',
+          id: '109327177576996138',
           username: 'jensimmons',
           url: 'https://front-end.social/@jensimmons',
         },
         {
-          id: '',
+          id: '109244996610951348',
           username: 'Seldo',
           url: 'https://alpaca.gold/@Seldo',
         },
         {
-          id: '',
+          id: '109396992624471901',
           username: 'leigh',
           url: 'https://ottawa.place/@leigh',
         },
         {
-          id: '',
+          id: '109283715417948665',
           username: 'rabbijill',
           url: 'https://sfba.social/@rabbijill',
         },
         {
-          id: '',
+          id: '109304153022542825',
           username: 'chrisgeidner',
           url: 'https://journa.host/@chrisgeidner',
         },
         {
-          id: '',
+          id: '109293344964694018',
           username: 'KeithDevlin',
           url: 'https://fediscience.org/@KeithDevlin',
         },
         {
-          id: '',
+          id: '109339548387437209',
           username: 'BlackAzizAnansi',
           url: 'https://mas.to/@BlackAzizAnansi',
         },
         {
-          id: '',
+          id: '109246783472356848',
           username: 'ifilljustice',
           url: 'https://mastodon.social/@ifilljustice',
         },
         {
-          id: '',
+          id: '109287529362430935',
           username: 'timnitGebru',
           url: 'https://dair-community.social/@timnitGebru',
         },
         {
-          id: '',
-          username: 'maxkennerly',
-          url: 'https://mstdn.social/@maxkennerly',
-        },
-        {
-          id: '',
+          id: '109304464942897108',
           username: 'petergleick',
           url: 'https://fediscience.org/@petergleick',
         },
         {
-          id: '',
+          id: '109285286043964654',
           username: 'gregggonsalves',
           url: 'https://med-mastodon.com/@gregggonsalves',
         },
         {
-          id: '',
+          id: '109413529045739394',
           username: 'Teri_Kanefield',
           url: 'https://law-and-politics.online/@Teri_Kanefield',
         },
@@ -659,52 +649,52 @@ export const followSuggestionsData = {
       title: 'Law/Legal',
       accounts: [
         {
-          id: '',
+          id: '109299996650199026',
           username: 'marcelias',
           url: 'https://mas.to/@marcelias',
         },
         {
-          id: '',
+          id: '109263946013834096',
           username: 'jentaub',
           url: 'https://mstdn.social/@jentaub',
         },
         {
-          id: '',
+          id: '108228513830587471',
           username: 'emptywheel',
           url: 'https://mastodon.social/@emptywheel',
         },
         {
-          id: '',
+          id: '109242900938345669',
           username: 'design_law',
           url: 'https://mastodon.social/@design_law',
         },
         {
-          id: '',
+          id: '109246783472356848',
           username: 'ifilljustice',
           url: 'https://mastodon.social/@ifilljustice',
         },
         {
-          id: '',
+          id: '109406608173270687',
           username: 'benjaminwittes',
           url: 'https://thecooltable.wtf/@benjaminwittes',
         },
         {
-          id: '',
+          id: '109413529045739394',
           username: 'Teri_Kanefield',
           url: 'https://law-and-politics.online/@Teri_Kanefield',
         },
         {
-          id: '',
+          id: '109253338641498174',
           username: 'Popehat',
           url: 'https://mastodon.social/@Popehat',
         },
         {
-          id: '',
+          id: '109559120397807043',
           username: 'JamesGleick',
           url: 'https://zirk.us/@JamesGleick',
         },
         {
-          id: '',
+          id: '109373774912342849',
           username: 'wonderofscience',
           url: 'https://mastodon.social/@wonderofscience',
         },
@@ -714,47 +704,47 @@ export const followSuggestionsData = {
       title: 'Science',
       accounts: [
         {
-          id: '',
+          id: '109304464942897108',
           username: 'petergleick',
           url: 'https://fediscience.org/@petergleick',
         },
         {
-          id: '',
+          id: '109309232846995490',
           username: 'HelenBranswell',
           url: 'https://scicomm.xyz/@HelenBranswell',
         },
         {
-          id: '',
+          id: '109327696666079429',
           username: 'aetiology',
           url: 'https://med-mastodon.com/@aetiology',
         },
         {
-          id: '',
+          id: '109394737961509305',
           username: 'skrishna',
           url: 'https://wandering.shop/@skrishna',
         },
         {
-          id: '',
+          id: '109293344964694018',
           username: 'KeithDevlin',
           url: 'https://fediscience.org/@KeithDevlin',
         },
         {
-          id: '',
+          id: '109213822769588890',
           username: 'histoftech',
           url: 'https://mastodon.social/@histoftech',
         },
         {
-          id: '',
+          id: '109381158107488874',
           username: 'davidho',
           url: 'https://mastodon.world/@davidho',
         },
         {
-          id: '',
+          id: '109288676922109415',
           username: 'ct_bergstrom',
           url: 'https://fediscience.org/@ct_bergstrom',
         },
         {
-          id: '',
+          id: '110187684287763833',
           username: 'ScienceDesk',
           url: 'https://flipboard.social/@ScienceDesk',
         },
@@ -764,32 +754,32 @@ export const followSuggestionsData = {
       title: 'Mastodon tips and updates',
       accounts: [
         {
-          id: '',
+          id: '1323892',
           username: 'feditips',
           url: 'https://mstdn.social/@feditips',
         },
         {
-          id: '',
+          id: '1',
           username: 'Gargron',
           url: 'https://mastodon.social/@Gargron',
         },
         {
-          id: '',
+          id: '13179',
           username: 'Mastodon',
           url: 'https://mastodon.social/@Mastodon',
         },
+        // {
+        //   id: '',
+        //   username: 'mastodonmigration',
+        //   url: 'https://mastodon.online/@mastodonmigration',
+        // },
         {
-          id: '',
-          username: 'mastodonmigration',
-          url: 'https://mastodon.online/@mastodonmigration',
-        },
-        {
-          id: '',
+          id: '109648744105191077',
           username: 'fediversereport',
           url: 'https://mastodon.social/@fediversereport',
         },
         {
-          id: '',
+          id: '110217231232820633',
           username: 'spreadmastodon',
           url: 'https://mastodon.online/@spreadmastodon',
         },
