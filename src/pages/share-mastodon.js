@@ -32,8 +32,6 @@ export default function Join() {
               textRotate={heading.textRotate}
             />
           </GridItem>
-
-          {/* <p className="u-body--lg">{data.subHeading.text}</p> */}
         </Grid>
 
         <Grid variant="autoFit" className="c-card__container">
