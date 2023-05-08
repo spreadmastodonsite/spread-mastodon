@@ -5,7 +5,7 @@ export const shareMastonData = {
     description: 'Share Mastodon',
   },
   heading: {
-    textTwo: 'Mastodon!',
+    textOne: 'Mastodon!',
     textRotate: ['Share', 'Grow', 'Spread'],
   },
   cards: [

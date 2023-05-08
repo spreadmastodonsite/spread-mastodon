@@ -6,6 +6,7 @@ import Button from '@/components/molecules/Button';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
 
 import { shareMastonData as data } from '../../data/shareMastodon';
+import Logo from '@/components/atoms/Logo';
 
 export default function Join() {
   const heading = data.heading;
@@ -20,16 +21,13 @@ export default function Join() {
 
       <main className="l-main">
         <Grid className="u-text-align--center">
-          <GridItem columnStart={4} columnEnd={10}>
-            <img
-              src="/-e-SpreadMastodon_Logo.png"
-              alt="Spread Mastodon | Take Back Social"
-              className="c-logo"
-            />
+          <GridItem columnStart={1} columnEnd={13}>
+            <Logo />
             <AnimatedHeader
               className="u-heading--3xl"
-              textTwo={heading.textTwo}
+              textOne={heading.textOne}
               textRotate={heading.textRotate}
+              rotateLocation="before"
             />
           </GridItem>
         </Grid>

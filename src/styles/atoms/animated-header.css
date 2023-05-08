@@ -1,0 +1,129 @@
+.c-animated-header {
+  display: flex;
+  flex-direction: column;
+  line-height: 70px;
+}
+
+@media all and (max-width: 575px) {
+  .c-animated-header {
+    font-size: var(--font-size-5xl);
+    line-height: 55px;
+  }
+}
+
+.c-animated-header .c-animated-header--content {
+  transform: translateX(-11%);
+}
+
+/* .c-animated-header.c-animated-header--rotate-before
+  .c-animated-header--content {
+  transform: translateX(11%);
+} */
+
+@media all and (max-width: 786px) {
+  .c-animated-header.c-animated-header--all-rows .c-animated-header--content {
+    transform: translateX(0);
+    padding-bottom: 70px;
+  }
+}
+
+@media all and (max-width: 575px) {
+  .c-animated-header.c-animated-header--all-rows .c-animated-header--content {
+    transform: translateX(0);
+    padding-bottom: 55px;
+  }
+}
+
+.c-animated-header--rotate-newline .c-animated-header--content {
+  transform: translateX(0);
+  padding-bottom: 82px;
+}
+
+@media all and (max-width: 786px) {
+  .c-animated-header--rotate-newline .c-animated-header--content {
+    padding-bottom: 80px;
+  }
+}
+
+@media all and (max-width: 575px) {
+  .c-animated-header--rotate-newline .c-animated-header--content {
+    padding-bottom: 55px;
+  }
+}
+
+.c-animated-header--rotate-before .c-animated-header__text-one {
+  position: relative;
+  left: 25%;
+}
+
+.c-animated-header--rotate {
+  position: absolute;
+  display: inline;
+  opacity: 0;
+  animation: rotateText 12s linear infinite;
+  color: var(--c-primary);
+  text-indent: 10px;
+}
+
+.c-animated-header--rotate-before .c-animated-header--rotate {
+  right: 40%;
+}
+
+@media all and (max-width: 786px) {
+  .c-animated-header--all-rows .c-animated-header--rotate {
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    transform: translateX(-50%);
+  }
+}
+
+@media all and (max-width: 575px) {
+  .c-animated-header--rotate-newline .c-animated-header--rotate {
+    text-indent: 0;
+    font-size: var(--font-size-4xl);
+  }
+}
+
+.c-animated-header--rotate-newline .c-animated-header--rotate {
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.c-animated-header--rotate:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.c-animated-header--rotate:nth-child(3) {
+  animation-delay: 8s;
+}
+
+@keyframes rotateText {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 0;
+    transform: translateY(-10px) skewX(-5deg);
+  }
+  3% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  27% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(10px) skewX(3deg);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

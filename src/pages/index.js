@@ -20,13 +20,14 @@ export default function Home() {
 
       <main className="l-main">
         <Grid className="u-text-align--center">
-          <GridItem columnStart={2} columnEnd={12}>
+          <GridItem columnStart={1} columnEnd={13}>
             <Logo />
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}
               textTwo={heading.textTwo}
               textRotate={heading.textRotate}
+              rotateLocation="after"
             />
           </GridItem>
           <GridItem columnStart={4} columnEnd={10}>
