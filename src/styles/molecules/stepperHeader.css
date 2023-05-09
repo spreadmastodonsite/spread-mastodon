@@ -35,8 +35,9 @@
 }
 
 .c-stepper-header__heading {
-  font-weight: var(--font-weight-normal);
   margin-bottom: var(--space);
+  font-weight: var(--font-normal);
+  font-size: var(--font-size-4xl);
 }
 
 .c-stepper-header__sub-heading {

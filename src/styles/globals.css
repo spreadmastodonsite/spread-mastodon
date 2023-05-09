@@ -21,6 +21,7 @@
 @import url('./molecules/profile.css');
 @import url('./molecules/apps.css');
 @import url('./molecules/explainer.css');
+@import url('./molecules/moreWaysToShare.css');
 
 /* Components */
 @import url('./components/nav.css');
