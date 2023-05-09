@@ -178,13 +178,6 @@ export default function UpdateAccount() {
                 subHeading={dataContent.subHeading.text}
               />
               <Grid>
-                <GridItem
-                  columnStart={4}
-                  columnEnd={10}
-                  className="u-text-align--center">
-                  <h1></h1>
-                  <p></p>
-                </GridItem>
                 <GridItem columnStart={1} columnEnd={13}>
                   <Grid className="c-profile-box">
                     <GridItem columnStart={1} columnEnd={8}>

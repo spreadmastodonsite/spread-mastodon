@@ -12,6 +12,7 @@
 
   /* ** theme colors ** */
   --c-primary: var(--c-purple-500);
+  --c-secondary: var(--c-purple-300);
 
   /* ** tier 2 colors ** */
   --body-color: var(--c-white);

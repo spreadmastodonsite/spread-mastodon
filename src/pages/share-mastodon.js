@@ -46,7 +46,7 @@ export default function Join() {
               iconHeight={card.iconHeight}
               link={card.link}
               linkText={card.linkText}
-              contentSize="large"
+              variant="large"
             />
           ))}
         </Grid>
