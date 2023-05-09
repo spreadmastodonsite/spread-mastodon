@@ -5,9 +5,21 @@ export const followTagsData = {
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',
   },
-  heading: { text: 'Follow Topics' },
+  heading: { text: 'Getting Started on Mastodon: 2 of 4' },
+  heading2: { 
+    partOne: 'Follow',
+    toolTip: {
+      label: 'Topics',
+      value: 'Topics are selected based on most searched on Mastodon.'
+    },
+    partTwo: 'You Care About'
+  },
   subHeading: {
     text: 'Click the button below to view suggested topics to follow.',
+    toolTip: {
+      label: 'Notable',
+      value: 'Hashtabs selected based on popular accounts.'
+    }
   },
   secondHeading: { text: 'Suggested Topics' },
   followAllButton: { text: 'Follow All' },
@@ -44,6 +56,23 @@ export const followTagsData = {
         {
           name: 'golf',
           url: 'https://mastodon.social/tags/golf',
+        },
+      ],
+    },
+    ,{
+      category: 'News',
+      tags: [
+        {
+          name: 'News',
+          url: 'https://mastodon.social/tags/news',
+        },
+        {
+          name: 'Weather',
+          url: 'https://mastodon.social/tags/weather',
+        },
+        {
+          name: 'Politics',
+          url: 'https://mastodon.social/tags/Politics',
         },
       ],
     },

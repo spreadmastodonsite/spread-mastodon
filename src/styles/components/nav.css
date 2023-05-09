@@ -42,7 +42,8 @@
   height: 100vh;
   width: 250px;
   z-index: 99;
-  background-color: var(--secondary-background);
+  background-color: var(--c-black-600);
+  box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
   padding: var(--space);
   transform: translateX(100%);
   transition: all 0.5s ease-out;
