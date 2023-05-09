@@ -10,7 +10,6 @@ export default function Logo({ className }) {
       <Image
         src="/-e-SpreadMastodon_Logo.png"
         alt="Spread Mastodon Logo | Take Back Social"
-        className="c-logo"
         width="400"
         height="154"
       />
