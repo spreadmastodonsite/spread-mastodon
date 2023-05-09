@@ -63,27 +63,33 @@ export default function FollowSuggestions() {
           <h2>
             {data.secondHeading.text} ({data.suggestTags.length})
           </h2>
-          {data.suggestTags.map((topic, i) => (
-            <div key={i + topic.category}>
-              <p>{topic.category} </p>
-              <ul>
-                {topic.tags.map((tag) => (
-                  <li key={tag.id}>
-                    <Link
-                      href={tag.url}
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      {tag.name}
-                    </Link>{' '}
-                    <Button
-                      onClick={() => followUser(tag.name)}
-                      text={`Follow ${tag.name}`}
-                    />
-                  </li>
+          <Grid>
+            <GridItem columnStart={3} columnEnd={11}>
+              <Grid variant="3up">
+                {data.suggestTags.map((topic, i) => (
+                    <div key={i + topic.category}>
+                      <p>{topic.category} </p>
+                      <ul>
+                        {topic.tags.map((tag) => (
+                          <li key={tag.name}>
+                            <Link
+                              href={tag.url}
+                              target="_blank"
+                              rel="noopener noreferrer">
+                              {tag.name}
+                            </Link>{' '}
+                            <Button
+                              onClick={() => followUser(tag.name)}
+                              text={`Follow ${tag.name}`}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                 ))}
-              </ul>
-            </div>
-          ))}
+              </Grid>
+            </GridItem>
+          </Grid>
         </div>
         <Button link="/" text="homepage" />
       </main>
