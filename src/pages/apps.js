@@ -3,6 +3,7 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Button from '@/components/molecules/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
+import Logo from '@/components/atoms/Logo';
 
 import { appsData as data } from '/data/apps.js';
 import Image from 'next/image';
@@ -15,11 +16,7 @@ export default function MastodonApps() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img
-        src="/-e-SpreadMastodon_Logo.png"
-        alt="Spread Mastodon | Take Back Social"
-        className="c-logo"
-      />
+      <Logo />
       <main className="l-main c-page__interior">
         <StepperHeader
           iconName="enrich"

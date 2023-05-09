@@ -1,12 +1,11 @@
-import Head from 'next/head';
-import Grid from '@/components/layout/Grid';
-import GridItem from '@/components/layout/GridItem';
-import Button from '@/components/molecules/Button';
-import StepperHeader from '@/components/molecules/StepperHeader';
-
-import { explainerData as data } from '/data/explainer.js';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
+import Button from '@/components/molecules/Button';
+import StepperHeader from '@/components/molecules/StepperHeader';
+import Logo from '@/components/atoms/Logo';
+
+import { explainerData as data } from '/data/explainer.js';
 
 export default function MastodonExplainer() {
   return (
@@ -16,11 +15,7 @@ export default function MastodonExplainer() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img
-        src="/-e-SpreadMastodon_Logo.png"
-        alt="Spread Mastodon | Take Back Social"
-        className="c-logo"
-      />
+      <Logo />
       <main className="l-main c-page__interior">
         <StepperHeader
           iconName="join"
@@ -180,7 +175,9 @@ export default function MastodonExplainer() {
                   loading="lazy"
                 />
               </figure>
-              <p className="has-text-align-center">a catch-all Mastodon website</p>
+              <p className="has-text-align-center">
+                a catch-all Mastodon website
+              </p>
             </li>
           </ul>
 

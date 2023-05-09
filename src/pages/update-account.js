@@ -7,6 +7,7 @@ import GridItem from '@/components/layout/GridItem';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Image from 'next/image';
 import axios from 'axios';
+import Logo from '@/components/atoms/Logo';
 import Icon from '@/components/atoms/icon';
 
 import { updateAccountData as dataContent } from '../../data/updateAccount';
@@ -129,11 +130,7 @@ export default function UpdateAccount() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img
-        src="/-e-SpreadMastodon_Logo.png"
-        alt="Spread Mastodon | Take Back Social"
-        className="c-logo"
-      />
+      <Logo />
 
       <div>
         <main className="l-main c-page__interior">

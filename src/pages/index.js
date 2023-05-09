@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Footer from '@/components/molecules/footer';
 import Card from '@/components/molecules/Card';
+import Logo from '@/components/atoms/Logo';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import AnimatedHeader from '@/components/atoms/animatedHeader';
@@ -20,17 +20,14 @@ export default function Home() {
 
       <main className="l-main">
         <Grid className="u-text-align--center">
-          <GridItem columnStart={2} columnEnd={12}>
-            <img
-              src="/-e-SpreadMastodon_Logo.png"
-              alt="Spread Mastodon | Take Back Social"
-              className="c-logo"
-            />
+          <GridItem columnStart={1} columnEnd={13}>
+            <Logo />
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}
               textTwo={heading.textTwo}
               textRotate={heading.textRotate}
+              rotateLocation="after"
             />
           </GridItem>
           <GridItem columnStart={4} columnEnd={10}>

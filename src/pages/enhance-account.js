@@ -24,11 +24,11 @@ export default function Home() {
         <Grid className="u-text-align--center">
           <GridItem columnStart={4} columnEnd={10}>
             {/* <img src="/mastodon.svg" alt="Logo goes here" /> */}
-            <AnimatedHeader
+            {/* <AnimatedHeader
               textOne={heading.textOne}
               textTwo={heading.textTwo}
               textRotate={heading.textRotate}
-            />
+            /> */}
             <p>{enhanceAccountData.subHeading.text}</p>
           </GridItem>
         </Grid>

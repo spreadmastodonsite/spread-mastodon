@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Logo from '@/components/atoms/Logo';
 import SignupForm from '../components/SignupForm';
 import { signUpData as data } from '/data/signUp.js';
 
@@ -11,11 +12,7 @@ export default function SignUp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <img
-        src="/-e-SpreadMastodon_Logo.png"
-        alt="Spread Mastodon | Take Back Social"
-        className="c-logo"
-      />
+      <Logo />
       <main className="l-main c-page__interior">
         <SignupForm />
       </main>
