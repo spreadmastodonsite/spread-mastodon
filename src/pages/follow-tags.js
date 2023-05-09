@@ -5,6 +5,12 @@ import Head from 'next/head';
 import { followTagsData as data } from '../../data/followTags';
 import Link from 'next/link';
 import Button from '@/components/molecules/Button';
+import ToolTip from '@/components/molecules/ToolTip';
+import Modal from '@/components/molecules/Modal';
+import Grid from '@/components/layout/Grid';
+import Card from '@/components/molecules/Card';
+import GridItem from '@/components/layout/GridItem';
+
 
 export default function FollowSuggestions() {
   const router = useRouter();
@@ -35,8 +41,24 @@ export default function FollowSuggestions() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="l-main">
-        <h1>{data.heading.text} </h1>
-        <p>{data.subHeading.text}</p>
+        <div className="u-text-align--center">
+          <h1>{data.heading.text}</h1>
+          <h1>
+            {data.heading2.partOne}{' '}
+            <ToolTip
+              label={data.heading2.toolTip.label}
+              value={data.heading2.toolTip.value}
+            />{' '}
+            {data.heading2.partTwo}
+          </h1>
+          <p>
+            <ToolTip
+              label={data.subHeading.toolTip.label}
+              value={data.subHeading.toolTip.value}
+            />
+            {' '}{data.subHeading.text}
+          </p>
+        </div>
         <div>
           <h2>
             {data.secondHeading.text} ({data.suggestTags.length})
