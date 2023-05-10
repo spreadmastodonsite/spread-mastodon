@@ -1,7 +1,7 @@
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import markdown from './../../data/utils.md';
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from 'react-markdown';
 
 export default function Utils() {
   return (

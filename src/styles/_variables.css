@@ -54,6 +54,7 @@
   --space-2xl: calc(var(--space) * 2.5); /* 40px */
   --space-3xl: calc(var(--space) * 3); /* 48px */
   --space-4xl: calc(var(--space) * 4); /* 64px */
+  --space-5xl: calc(var(--space) * 5); /* 80px */
 
   --grid-gap: var(--space-lg);
 
