@@ -4,14 +4,15 @@
   left: 50%;
   min-width: 50%;
   min-height: 50%;
-  background-color: var(--c-black-500);
-  box-shadow: 0 0 5px -1px rgba(255, 255, 255, 0.89);
+  background-color: var(--c-black-300);
+  box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
   transform: translate(-50%, -50%);
   padding: var(--space-lg);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  z-index: 1000;
 }
 
 .c-modal__heading {

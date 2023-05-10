@@ -20,6 +20,33 @@ export default function Card({
     [`c-card--basic`]: variant === 'basic',
   });
 
+  const content = (
+    <div className="c-card__content">
+      {variant === 'basic' ? (
+        <>
+          {link && (
+            <Link className="c-card__link" href={link}>
+              {description}{' '}
+              <Icon
+                className="c-card__link-icon"
+                iconName="join"
+                width={16}
+                height={24}
+              />
+            </Link>
+          )}
+          {children}
+        </>
+      ) : (
+        <>
+          {description && <p className="u-body-copy">{description}</p>}
+          {linkText && <Button text={linkText} link={link} />}
+          {children}
+        </>
+      )}
+    </div>
+  );
+
   return (
     <div className={componentClassName}>
       {iconName && (
@@ -30,28 +57,11 @@ export default function Card({
             width={iconWidth}
             height={iconHeight}
           />
+          {children}
         </div>
       )}
       {title && <h2 className="c-card__title ">{title}</h2>}
-      <div className="c-card__content">
-        {variant === 'basic' ? (
-          <Link className="c-card__link" href={link}>
-            {description}{' '}
-            <Icon
-              className="c-card__link-icon"
-              iconName="join"
-              width={16}
-              height={24}
-            />
-          </Link>
-        ) : (
-          <>
-            {description && <p className="u-body-copy">{description}</p>}
-            {linkText && <Button text={linkText} link={link} />}
-            {children}
-          </>
-        )}
-      </div>
+      {content}
     </div>
   );
 }

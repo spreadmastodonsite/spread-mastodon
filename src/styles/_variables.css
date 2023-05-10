@@ -30,6 +30,7 @@
   --font-semibold: 600;
   --font-extrabold: 800;
   --font-normal: 400;
+  --font-bold: 700;
 
   /* ** Font size ** */
   --font-size-xs: calc(var(--font-size) * 0.5); /* 8px */
