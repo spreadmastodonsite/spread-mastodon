@@ -1,3 +1,15 @@
+/* Logo */
+.c-logo {
+  width: 400px;
+  margin-bottom: var(--space-4xl);
+  display: inline-block;
+}
+
+.c-page__interior .c-logo {
+  width: 375px;
+  margin-bottom: var(--space-xl);
+}
+
 .c-logo img {
   max-width: 100%;
   height: auto;

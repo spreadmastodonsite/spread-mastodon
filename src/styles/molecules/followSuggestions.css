@@ -1,0 +1,76 @@
+/* Follow suggestions */
+
+.c-follow-category__card {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.c-follow-category__card .c-card__content {
+  padding: 0;
+  width: 100%;
+}
+
+.c-follow-category {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c-follow-category--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+  text-align: left;
+}
+
+.c-follow-category__tool-tip {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: var(--space-sm);
+  color: var(--c-white);
+  background-color: var(--primary-background);
+}
+
+@media all and (max-width: 768px) {
+  .c-follow-category__tool-tip {
+    flex-direction: column;
+  }
+}
+
+.c-follow-category__info {
+  margin-bottom: var(--space-lg);
+}
+
+.c-follow-category .c-tooltip__box {
+  left: 0;
+  transform: translateX(0);
+  font-size: var(--font-size-md);
+}
+
+@media all and (max-width: 576px) {
+  .c-follow-category__card .c-tooltip__box:after {
+    left: 25%;
+  }
+}
+
+.c-follow-category__card .c-tooltip__box:after {
+  left: 12%;
+}
+
+.c-follow-category__card .c-tooltip__box {
+  min-width: 300px;
+}
+
+.c-follow-category__follow-selected {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-md);
+}
+
+.c-follow-category__button-row .c-button {
+  font-size: var(--font-size-lg);
+}
