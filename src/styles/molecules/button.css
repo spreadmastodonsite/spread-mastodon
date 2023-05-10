@@ -18,12 +18,16 @@
   background-color: var(--c-primary);
 }
 
+.c-button--primary:hover {
+  filter: brightness(85%);
+}
+
 .c-button--secondary {
   background-color: var(--c-secondary-background);
   border: solid 3px var(--c-primary);
   color: var(--c-primary);
 }
 
-.c-button--primary:hover {
+.c-button--secondary:hover {
   filter: brightness(85%);
 }

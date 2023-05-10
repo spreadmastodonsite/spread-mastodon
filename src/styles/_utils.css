@@ -110,6 +110,14 @@
   margin-bottom: var(--space-lg);
 }
 
+.u-margin-bottom--xl {
+  margin-bottom: var(--space-xl);
+}
+
+.u-margin-bottom--2xl {
+  margin-bottom: var(--space-2xl);
+}
+
 .u-visually-hidden {
   position: absolute;
   width: 1px;
@@ -120,4 +128,8 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.u-display--none {
+  display: none;
 }

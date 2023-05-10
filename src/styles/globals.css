@@ -11,6 +11,7 @@
 /* Atoms */
 @import url('./atoms/animated-header.css');
 @import url('./atoms/icon.css');
+@import url('./atoms/checkbox.css');
 @import url('./atoms/logo.css');
 
 /* Molecules */
@@ -21,11 +22,15 @@
 @import url('./molecules/profile.css');
 @import url('./molecules/apps.css');
 @import url('./molecules/explainer.css');
+@import url('./molecules/moreWaysToShare.css');
+@import url('./molecules/followSuggestions.css');
 
 /* Components */
 @import url('./components/nav.css');
 @import url('./components/tooltip.css');
 @import url('./components/modal.css');
+
+@import url(./markdown.css);
 
 body {
   background: var(--primary-background);
@@ -60,17 +65,6 @@ body {
   padding: 0 var(--space-xl);
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Logo */
-.c-logo {
-  width: 400px;
-  margin-bottom: var(--space-4xl);
-}
-
-.c-page__interior .c-logo {
-  width: 375px;
-  margin-bottom: var(--space-xl);
 }
 
 input,

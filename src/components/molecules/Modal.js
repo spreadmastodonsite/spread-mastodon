@@ -8,11 +8,16 @@ export default function Modal({
   value,
   subLabel,
   children,
+  toggleValue = false,
   ...props
 }) {
   const componentClassName = cx('c-modal', className, {});
 
-  const [toggleModal, setToggleModal] = React.useState(false);
+  const [toggleModal, setToggleModal] = React.useState(toggleValue);
+
+  React.useEffect(() => {
+    setToggleModal(toggleValue);
+  }, [toggleValue]);
 
   return (
     <div className={componentClassName} {...props}>

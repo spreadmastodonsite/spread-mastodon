@@ -22,7 +22,7 @@
   padding-right: var(--space-xl);
   padding-bottom: var(--space-2xl);
   padding-left: var(--space-xl);
-  border: solid 4px var(--c-black-200);
+  border: solid 4px var(--c-gray);
 }
 
 .c-apps__app img {
@@ -66,7 +66,7 @@
   padding-right: var(--space-xl);
   padding-bottom: var(--space-2xl);
   padding-left: var(--space-xl);
-  border: solid 4px var(--c-black-200);
+  border: solid 4px var(--c-gray);
 }
 
 @media all and (min-width: 768px) {

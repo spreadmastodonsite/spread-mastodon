@@ -1,0 +1,214 @@
+@media all and (max-width: 768px) {
+  .c-markdown {
+    padding-right: var(--space-xl);
+    padding-left: var(--space-xl);
+  }
+}
+
+.c-markdown h1 {
+  font-size: var(--font-size-7xl);
+  margin-bottom: var(--space-xl);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h1 {
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--space-lg);
+  }
+}
+
+.c-markdown h1 + p {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-4xl);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h1 + p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2xl);
+  }
+}
+
+.c-markdown h2 {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--space-md);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h2 {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+.c-markdown h3 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-md);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h3 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.c-markdown h4 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h4 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.c-markdown h5 {
+  font-size: var(--font-size);
+  margin-bottom: var(--space-md);
+}
+
+.c-markdown p {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.c-markdown a {
+  color: var(--c-primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.c-markdown a:hover {
+  filter: brightness(85%);
+}
+
+.c-markdown hr {
+  margin-bottom: var(--space-4xl);
+  border-radius: var(--border-radius--sm);
+  color: var(--c-primary);
+}
+
+.c-markdown ul {
+  margin-left: var(--space-2xl);
+}
+
+.c-markdown ol {
+  margin-left: var(--space-2xl);
+}
+
+.c-markdown ul > li::marker {
+  color: var(--c-primary);
+}
+
+.c-markdown li > p {
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size);
+}
+
+.c-markdown li > ul {
+  margin-top: 0;
+}
+
+.c-markdown li > ul > li {
+  list-style-type: disc;
+  font-size: var(--font-size);
+}
+
+.c-markdown ol {
+  margin-left: 0;
+}
+
+.c-markdown li > p {
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size);
+}
+
+.c-markdown li > ol {
+  margin-left: var(--space-2xl);
+  margin-top: 0;
+}
+
+.c-markdown li > ol > li {
+  list-style-type: disc;
+  font-size: var(--font-size);
+}
+
+.c-markdown ol > li > ol > li:marker {
+  color: var(--c-primary);
+}
+
+.c-markdown blockquote {
+  position: relative;
+  padding: var(--space-2xl) var(--space-5xl);
+  background-color: #0d0e25;
+  z-index: 1;
+  right: -1rem;
+  bottom: -1rem;
+}
+@media all and (max-width: 768px) {
+  .c-markdown blockquote {
+    padding: var(--space-xl) var(--space-3xl);
+  }
+}
+
+.c-markdown blockquote:after {
+  background-color: #34353b;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.c-markdown blockquote p {
+  position: relative;
+  z-index: 4;
+}
+
+.c-markdown blockquote p:first-of-type {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight--normal);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown blockquote p:first-of-type {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.c-markdown blockquote p:first-of-type::before {
+  font-size: 180px;
+  content: '“';
+  position: absolute;
+  color: var(--primary-background);
+  left: calc(var(--space-5xl) * -1);
+  top: var(--space-xl);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown blockquote p:first-of-type::before {
+    left: calc(var(--space-4xl) * -1);
+  }
+}
+
+.c-markdown blockquote p:first-of-type::after {
+  font-size: 180px;
+  content: '”';
+  position: absolute;
+  color: var(--primary-background);
+  right: calc(var(--space-3xl) * -1);
+  /* bottom: -35%; */
+  bottom: calc(var(--space-5xl) * -1);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown blockquote p:first-of-type::after {
+    right: calc(var(--space-xl) * -1);
+  }
+}

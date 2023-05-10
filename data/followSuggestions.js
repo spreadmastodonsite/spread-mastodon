@@ -5,20 +5,23 @@ export const followSuggestionsData = {
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',
   },
-  heading: { text: 'Getting Started On Mastodon: (1 of 4)' },
+  heading: { text: 'Getting Started On Mastodon' },
+  subHeading: { text: '(step 1 of 5)' },
   heading2: { text: 'Some Great Accounts to Follow Now!' },
-  subHeading: {
-    toolTip: {
-      label: 'Notable',
-      value:
-        'These are groups of popular accounts on various topics, all  actively posting on Mastodon that you can add to your account with one click.',
-    },
-    text: 'Accounts you May Be Interested In:',
+  toolTip: {
+    label: 'Notable',
+    value:
+      'These are groups of popular accounts on various topics, all  actively posting on Mastodon that you can add to your account with one click.',
   },
-  secondHeading: { text: 'Suggested Users' },
-  followAllButton: { text: 'Follow All' },
-  followUserButton: { text: 'Follow' },
-  backToHomeButton: { text: 'Back to Home' },
+  textCTA: { text: 'Accounts you May Be Interested In:' },
+  secondHeading: { text: 'Great Accounts to Follow Now!' },
+  explainerText:
+    'Because Mastodon doesn’t feed content with an algorithm, it’s important to follow more people than on other platforms. We suggest selecting and following all (you can always unfollow anyone later). ',
+  followAllSuccess: { text: 'You are now following all suggested users' },
+  followAllButton: { text: 'Follow All Users' },
+  followSelectedCategoriesButton: { text: 'Follow Selected Categories' },
+  nextStepButton: { text: 'Go to Step 2: Follow Topics', link: '/follow-tags' },
+  skipButton: { text: 'Skip This Step for Now', link: '/' },
   suggestedUsers: [
     {
       title: 'Top Posts and Follow Suggestions',
