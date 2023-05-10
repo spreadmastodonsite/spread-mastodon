@@ -121,6 +121,8 @@ export default function FollowSuggestions() {
         updatedCategories.splice(categoryIndex, 1);
       }
 
+      setToggleValue(false);
+
       // Return the updated categories array
       return updatedCategories;
     });
