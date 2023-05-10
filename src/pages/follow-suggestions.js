@@ -206,7 +206,7 @@ export default function FollowSuggestions() {
                               value={
                                 <div>
                                   <p>
-                                    Here's a list of users we think you'll enjoy
+                                    {`Here's a list of users we think you'll enjoy`}
                                   </p>
                                   <ul className="c-follow-category__tool-tip">
                                     {category.accounts.map((user) => (
