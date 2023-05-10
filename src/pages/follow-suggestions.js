@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Bottleneck from "bottleneck";
 import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
@@ -12,9 +13,15 @@ import GridItem from '@/components/layout/GridItem';
 
 import { followSuggestionsData as data } from '/data/followSuggestions';
 
+
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
   const [followedUsers, setFollowedUsers] = useState([]);
+
+  const limiter = new Bottleneck({
+    maxConcurrent: 150,
+    minTime: 50000
+  });
 
   const followAllUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -22,10 +29,10 @@ export default function FollowSuggestions() {
     try {
       const followPromises = data.suggestedUsers.map(async (category) => {
         category.accounts.map(async (user) => {
-          await axios.post('/api/follow', {
+          await limiter.schedule(() =>  axios.post('/api/follow', {
             accessToken,
             targetAccountId: user.id,
-          });
+          }));
           return user.username;
         });
       });
@@ -44,10 +51,10 @@ export default function FollowSuggestions() {
     setLoading(true);
     try {
       const followPromises = accounts.map(async (user) => {
-        await axios.post('/api/follow', {
+        await limiter.schedule(() =>  axios.post('/api/follow', {
           accessToken,
           targetAccountId: user.id,
-        });
+        }));
         return user.username;
       });
 
