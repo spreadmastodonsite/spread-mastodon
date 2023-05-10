@@ -93,6 +93,10 @@
   margin-left: var(--space-2xl);
 }
 
+.c-markdown ol {
+  margin-left: var(--space-2xl);
+}
+
 .c-markdown ul > li::marker {
   color: var(--c-primary);
 }
