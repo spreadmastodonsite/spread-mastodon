@@ -115,77 +115,73 @@ export default function AuthenticateUser() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="l-main c-page__interior">
-      <Grid className="c-grid__signup-success">
-        <GridItem columnStart={1} columnEnd={13}>
-          <Icon iconName="check" width="100" height="100" />
-        </GridItem>
-        <GridItem columnStart={1} columnEnd={13}>
-          <div className="c-signup-success__content u-text-align--center">
-            <h2 className="c-signup-success__title u-heading--2xl">
-            {data.confirmed.text}<br/>
-            {data.welcome.text}
-            {user}
-            </h2>
-            <p className="c-signup-success__sub-title">
-              {data.next.text}
-            </p>
-          </div>
-        </GridItem>
-      </Grid>
-      <Grid className="c-grid__signup-success">
-        <GridItem columnStart={2} columnEnd={7}>
-          {verifiedAndAuthenticated || storedAccessToken ? (
-            // If already authenticated, display appropriate message
-            <>
-              {/* {storedAccessToken && !validationMessage && (
-                <div>It looks like you have already been verified!</div>
-              )} */}
-              {validationMessage && <div>{validationMessage}</div>}
-              <Button link="/follow-suggestions" text={data.profile.text} />
-            </>
-          ) : (
-            // If not authenticated, display login form
-            <>
-              <h1>{data.heading.text} </h1>
-              <p>{data.subHeading.text}</p>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={handleEmailChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Password:</label>
-                  <input
-                    id="password"
-                    type="password"
-                    required
-                    value={password}
-                    onChange={handlePasswordChange}
-                  />
-                </div>
-                {loading ? (
-                  <div>Loading...</div>
-                ) : (
-                  // Shows the validation message if there the page doesn't redirect
-                  <p>
-                    {validationMessage && <div>{validationMessage}</div>}
-                    <Button type="submit" text="Log in &amp; Authenticate" />
-                  </p>
-                )}
-              </form>
-            </>
-          )}
-        </GridItem>
-        <GridItem columnStart={7} columnEnd={12}>
-          <Button variant="secondary" link="/" text={data.skip.text} />
-        </GridItem>
-      </Grid>
+        <Grid className="c-grid__signup-success">
+          <GridItem columnStart={1} columnEnd={13}>
+            <Icon iconName="check" width="100" height="100" />
+          </GridItem>
+          <GridItem columnStart={1} columnEnd={13}>
+            <div className="c-signup-success__content u-text-align--center">
+              <h2 className="c-signup-success__title u-heading--2xl">
+                {data.confirmed.text}
+                <br />
+                {data.welcome.text}
+                {user}
+              </h2>
+              <p className="c-signup-success__sub-title">{data.next.text}</p>
+            </div>
+          </GridItem>
+        </Grid>
+        <Grid className="c-grid__signup-success">
+          <GridItem columnStart={2} columnEnd={7}>
+            {verifiedAndAuthenticated || storedAccessToken ? (
+              // If already authenticated, display appropriate message
+              <>
+                {validationMessage && <div>{validationMessage}</div>}
+                <Button link="/follow-suggestions" text={data.profile.text} />
+              </>
+            ) : (
+              // If not authenticated, display login form
+              <>
+                <h1>{data.heading.text} </h1>
+                <p>{data.subHeading.text}</p>
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                      id="password"
+                      type="password"
+                      required
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+                  {loading ? (
+                    <div>Loading...</div>
+                  ) : (
+                    // Shows the validation message if there the page doesn't redirect
+                    <p>
+                      {validationMessage && <div>{validationMessage}</div>}
+                      <Button type="submit" text="Log in &amp; Authenticate" />
+                    </p>
+                  )}
+                </form>
+              </>
+            )}
+          </GridItem>
+          <GridItem columnStart={7} columnEnd={12}>
+            <Button variant="secondary" link="/" text={data.skip.text} />
+          </GridItem>
+        </Grid>
       </main>
     </div>
   );
