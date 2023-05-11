@@ -20,7 +20,7 @@ export const homepageData = {
       icon: 'join',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/sign-up',
+      link: '/join',
       linkText: 'Join',
     },
     {
