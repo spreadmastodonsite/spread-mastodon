@@ -19,7 +19,10 @@ export default function Checkbox({
   });
 
   const handleCheckboxChange = (event) => {
-    onChange(event);
+    if (onChange) {
+      onChange(event);
+    }
+
     setIsChecked(event.target.checked);
   };
 

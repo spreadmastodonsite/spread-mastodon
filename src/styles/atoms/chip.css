@@ -1,0 +1,40 @@
+.c-chip {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--c-secondary-background);
+  border: solid 3px var(--c-primary);
+  border-radius: var(--border-radius--sm);
+  transition: all 0.2s ease-in-out;
+  color: var(--c-white);
+  cursor: pointer;
+  font: inherit;
+  font-weight: var(--font-semibold);
+}
+
+.c-chip:hover {
+  filter: brightness(85%);
+}
+
+.c-chip--active {
+  background-color: var(--c-primary);
+  color: #fff;
+}
+
+.c-chip--active:hover {
+  filter: brightness(85%);
+}
+
+.c-chip__group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--space-lg);
+}
+
+.c-chip__group-item {
+  list-style: none;
+}
