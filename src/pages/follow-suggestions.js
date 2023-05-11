@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Bottleneck from 'bottleneck';
 import Head from 'next/head';
 import axios from 'axios';
 import Button from '@/components/molecules/Button';
@@ -23,7 +24,11 @@ export default function FollowSuggestions() {
   const [toggleValue, setToggleValue] = useState(false);
   const [checkedCategories, setCheckedCategories] = useState([]);
 
-  // Follow all users in all categories
+  const limiter = new Bottleneck({
+    maxConcurrent: 150,
+    minTime: 50000,
+  });
+
   const followAllUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
     setLoading(true);
@@ -34,10 +39,12 @@ export default function FollowSuggestions() {
         const categoryFollowPromises = category.accounts.map(async (user) => {
           try {
             // Follow the user using the API and return their username
-            await axios.post('/api/follow', {
-              accessToken,
-              targetAccountId: user.id,
-            });
+            await limiter.schedule(() =>
+              axios.post('/api/follow', {
+                accessToken,
+                targetAccountId: user.id,
+              }),
+            );
             return user.username;
           } catch (error) {
             // If an error occurs, reject the promise with the error message
@@ -73,10 +80,12 @@ export default function FollowSuggestions() {
           const categoryFollowPromises = category.accounts.map(async (user) => {
             try {
               // Follow the user using the API and return their username
-              await axios.post('/api/follow', {
-                accessToken,
-                targetAccountId: user.id,
-              });
+              await limiter.schedule(() =>
+                axios.post('/api/follow', {
+                  accessToken,
+                  targetAccountId: user.id,
+                }),
+              );
               return user.username;
             } catch (error) {
               // If an error occurs, reject the promise with the error message
