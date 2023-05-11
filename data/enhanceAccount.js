@@ -1,13 +1,7 @@
 export const enhanceAccountData = {
   heading: {
     textOne: 'You are in! Now what?',
-    textRotate: [
-      'Getting Started',
-      'Finding Friends',
-      'Following Hashtags',
-      'Finding Communities',
-      'Finding People to Follow',
-    ],
+    textRotate: ['Getting Started', 'Finding Friends', 'Following Hashtags'],
     textTwo: 'on Mastodon!',
   },
   subHeading: {

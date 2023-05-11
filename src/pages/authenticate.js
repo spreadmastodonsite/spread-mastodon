@@ -132,19 +132,29 @@ export default function AuthenticateUser() {
           </GridItem>
         </Grid>
         <Grid className="c-grid__signup-success">
-          <GridItem columnStart={2} columnEnd={7}>
+          <GridItem columnStart={3} columnEnd={11}>
             {verifiedAndAuthenticated || storedAccessToken ? (
               // If already authenticated, display appropriate message
               <>
                 {validationMessage && <div>{validationMessage}</div>}
-                <Button link="/follow-suggestions" text={data.profile.text} />
+                <p className="u-margin-bottom--2xl u-text-align--center u-body--lg">
+                  You are already authenticated as {user}. Please click a button
+                  below to continue.
+                </p>
+
+                <Button
+                  link="/follow-suggestions"
+                  text="Step 1: Follow Users"
+                />
               </>
             ) : (
               // If not authenticated, display login form
               <>
-                <h1>{data.heading.text} </h1>
-                <p>{data.subHeading.text}</p>
-                <form onSubmit={handleSubmit}>
+                <h2 className="c-signup-success__sub-title u-text-align--center">
+                  {data.heading.text}{' '}
+                </h2>
+                <p className="u-body--lg">{data.subHeading.text}</p>
+                <form className="c-authenticate-form" onSubmit={handleSubmit}>
                   <div>
                     <label htmlFor="email">Email:</label>
                     <input
@@ -171,15 +181,23 @@ export default function AuthenticateUser() {
                     // Shows the validation message if there the page doesn't redirect
                     <p>
                       {validationMessage && <div>{validationMessage}</div>}
-                      <Button type="submit" text="Log in &amp; Authenticate" />
+                      <Button
+                        className="c-button__auth"
+                        type="submit"
+                        text="Log in &amp; Authenticate"
+                      />
                     </p>
                   )}
                 </form>
               </>
             )}
           </GridItem>
-          <GridItem columnStart={7} columnEnd={12}>
-            <Button variant="secondary" link="/" text={data.skip.text} />
+          <GridItem columnStart={3} columnEnd={11}>
+            <Button
+              variant="secondary"
+              link={data.skip.link}
+              text={data.skip.text}
+            />
           </GridItem>
         </Grid>
       </main>

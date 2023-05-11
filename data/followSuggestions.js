@@ -21,7 +21,7 @@ export const followSuggestionsData = {
   followAllButton: { text: 'Follow All Users' },
   followSelectedCategoriesButton: { text: 'Follow Selected Categories' },
   nextStepButton: { text: 'Go to Step 2: Follow Topics', link: '/follow-tags' },
-  skipButton: { text: 'Skip This Step for Now', link: '/' },
+  skipButton: { text: 'Skip This Step for Now', link: '/follow-tags' },
   suggestedUsers: [
     {
       title: 'Top Posts and Follow Suggestions',

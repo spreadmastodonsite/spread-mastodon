@@ -24,6 +24,7 @@
 @import url('./molecules/explainer.css');
 @import url('./molecules/moreWaysToShare.css');
 @import url('./molecules/followSuggestions.css');
+@import url('./molecules/authenticateUserForm.css');
 
 /* Components */
 @import url('./components/nav.css');

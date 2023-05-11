@@ -8,7 +8,7 @@ import AnimatedHeader from '@/components/atoms/animatedHeader';
 import { shareMastonData as data } from '../../data/shareMastodon';
 import Logo from '@/components/atoms/Logo';
 
-export default function Join() {
+export default function shareMastodon() {
   const heading = data.heading;
 
   return (
