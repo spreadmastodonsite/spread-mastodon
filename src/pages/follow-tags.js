@@ -88,7 +88,6 @@ export default function FollowSuggestions() {
 
   useEffect(() => {
     setIsChipChecked(selectedTags.length > 0);
-    console.log(selectedTags)
   }, [selectedTags]);
 
   return (
