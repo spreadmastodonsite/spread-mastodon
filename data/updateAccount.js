@@ -34,7 +34,7 @@ export const updateAccountData = {
 
   // Content for the update account page after form submission
   successHeading: {
-    textOne: 'You Profile Is Set Up,',
+    textOne: 'Your Profile Is Set Up,',
   },
   successSubHeading: {
     text: 'Want to take it to the next level? The confirmation email you will receive from the Mastodon.Social server will link you to more ways to customize',

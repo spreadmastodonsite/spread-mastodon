@@ -23,13 +23,6 @@ export default function FindFriends() {
 
       <main className="l-main c-page__interior">
         <div>
-          {/* <GridItem columnStart={4} columnEnd={10}>
-            <h1>{data.heading.text}</h1>
-            <h2>{data.subHeading.text}</h2>
-          </GridItem>
-          <GridItem columnStart={4} columnEnd={10}>
-            <p>{data.description.text}</p>
-          </GridItem> */}
           <StepperHeader
             iconName="enrich"
             iconWidth="75"

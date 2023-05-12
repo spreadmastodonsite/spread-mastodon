@@ -278,7 +278,7 @@ export default function UpdateAccount() {
                     />
                     <Button
                       variant="secondary"
-                      link="/follow-tags"
+                      onClick={() => setSuccess(true)}
                       text="Skip This Step For Now"
                     />
                   </Grid>

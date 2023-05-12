@@ -16,6 +16,26 @@
   text-align: center;
 }
 
+.c-card--left {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.c-card--left .c-card__content {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.c-card--small {
+  padding: var(--space);
+}
+
+.c-card--small .c-card__content {
+  padding: var(--space) 0;
+  gap: var(--space-sm);
+}
+
 .c-card--basic {
   border: 2px solid var(--c-gray);
   border-radius: 0;
