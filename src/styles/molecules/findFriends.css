@@ -1,0 +1,32 @@
+.c-find-friends__grid {
+  gap: var(--space-2xl);
+}
+
+.c-find-friends__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.c-find-friends__card {
+  text-align: left;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.c-find-friends__card .c-card__content {
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: 0;
+}
+
+.c-find-friends__card-logo {
+  font-size: var(--font-size-6xl);
+  opacity: 0.5;
+  margin: 0;
+}
+
+.c-find-friends__card .c-button {
+  text-align: left;
+  margin-top: var(--space-lg);
+}

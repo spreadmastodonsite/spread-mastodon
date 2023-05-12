@@ -31,6 +31,7 @@
 @import url('./organisms/tagGroup.css');
 
 @import url('./molecules/authenticateUserForm.css');
+@import url('./molecules/findFriends.css');
 
 /* Components */
 @import url('./components/nav.css');
