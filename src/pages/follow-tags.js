@@ -59,15 +59,18 @@ export default function FollowSuggestions() {
     setIsChecked(!isChecked);
     setToggleValue(false);
 
-    if (checked && index === -1) {
+    // if checked add selected tags to the array 
+    if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
-    } else if (!checked && selectedTags.includes(tags)) {
+    } else if (!checked) {
       const updatedTags = [...selectedTags];
-      updatedTags.splice(index, 1);
-      setSelectedTags(updatedTags);
+      setSelectedTags(
+        updatedTags.filter(tag => {
+          return !tags.includes(tag);
+        })
+      );
     }
 
-    console.log(selectedTags);
   };
 
   const handleChipClick = (tag) => {
@@ -81,11 +84,11 @@ export default function FollowSuggestions() {
     }
     setToggleValue(false);
 
-    console.log(selectedTags);
   };
 
   useEffect(() => {
     setIsChipChecked(selectedTags.length > 0);
+    console.log(selectedTags)
   }, [selectedTags]);
 
   return (
