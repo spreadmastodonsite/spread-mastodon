@@ -13,6 +13,7 @@
 @import url('./atoms/icon.css');
 @import url('./atoms/checkbox.css');
 @import url('./atoms/logo.css');
+@import url('./atoms/chip.css');
 
 /* Molecules */
 @import url('./molecules/button.css');
@@ -24,6 +25,11 @@
 @import url('./molecules/explainer.css');
 @import url('./molecules/moreWaysToShare.css');
 @import url('./molecules/followSuggestions.css');
+@import url('./molecules/followTags.css');
+
+/* Organisms */
+@import url('./organisms/tagGroup.css');
+
 @import url('./molecules/authenticateUserForm.css');
 
 /* Components */

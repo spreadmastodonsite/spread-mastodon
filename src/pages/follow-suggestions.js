@@ -160,7 +160,7 @@ export default function FollowSuggestions() {
             heading={data.heading.text}
             subHeading={data.subHeading.text}
           />
-          <h1 className="u-heading--2xl">{data.secondHeading.text}</h1>
+          <h2 className="u-heading--2xl">{data.secondHeading.text}</h2>
           <div className="u-heading--xl c-follow-category__info ">
             <ToolTip
               iconWidth={24}

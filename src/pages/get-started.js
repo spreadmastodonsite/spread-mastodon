@@ -29,8 +29,6 @@ export default function Join() {
               rotateLocation="newline"
             />
           </GridItem>
-
-          {/* <p className="u-body--lg">{data.subHeading.text}</p> */}
         </Grid>
 
         <Grid variant="autoFit" className="c-card__container">

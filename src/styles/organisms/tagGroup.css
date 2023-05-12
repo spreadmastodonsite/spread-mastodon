@@ -1,0 +1,23 @@
+.tag-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  border: solid 4px #191b22;
+}
+
+.tag-group__category {
+  padding-top: var(--space-lg);
+  margin-left: var(--space-lg);
+  font-weight: var(--font-normal);
+}
+
+.tag-group__input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-2xl);
+  border-left: solid 4px #191b22;
+  flex-shrink: 0;
+}
