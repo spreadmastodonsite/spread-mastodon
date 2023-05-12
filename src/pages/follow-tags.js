@@ -12,6 +12,7 @@ import Card from '@/components/molecules/Card';
 import GridItem from '@/components/layout/GridItem';
 import Chip from '@/components/atoms/chip';
 import Checkbox from '@/components/atoms/checkbox';
+import StepperHeader from '@/components/molecules/StepperHeader';
 
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
@@ -96,57 +97,80 @@ export default function FollowSuggestions() {
       </Head>
       <main className="l-main">
         <div className="u-text-align--center">
-          <h1>{data.heading.text}</h1>
-          <h1>
-            {data.heading2.partOne}{' '}
+          <StepperHeader
+            iconName="enrich"
+            iconWidth="75"
+            iconHeight="83"
+            heading={data.heading.text}
+            subHeading={data.subHeading.text}
+          />
+
+          <h2 className="u-heading--2xl">{data.heading2.partOne}</h2>
+          <div className="u-heading--xl c-follow-category__info ">
             <ToolTip
+              iconWidth={24}
+              iconHeight={24}
               label={data.heading2.toolTip.label}
               value={data.heading2.toolTip.value}
-              iconHeight={24}
-              iconWidth={24}
             />{' '}
-            {data.heading2.partTwo}
-          </h1>
-        </div>
-        <div>
-          {data.suggestTags.map((topic, i) => (
-            <div key={i + topic.category}>
-              <div className="tag-group">
-                <div className="tag-group__content">
-                  <h3 className="tag-group__category u-heading--xl">
-                    {topic.category}{' '}
-                  </h3>
-                  <ul className="c-chip__group">
-                    {topic.tags.map((tag) => (
-                      <li className="c-chip__group-item" key={tag.name}>
-                        <Chip
-                          active={selectedTags.includes(tag.name)}
-                          text={tag.name}
-                          onClick={handleChipClick}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="tag-group__input">
-                  <span>Select All</span>
-                  <Checkbox
-                    label="Follow"
-                    name="follow"
-                    value="follow"
-                    checked={isChecked}
-                    onChange={(e) => handleCheckboxChange(topic, e)}
-                  />
+            <span>{data.heading2.partTwo}</span>
+          </div>
+          <div>
+            {data.suggestTags.map((topic, i) => (
+              <div key={i + topic.category}>
+                <div className="tag-group">
+                  <div className="tag-group__content">
+                    <h3 className="tag-group__category u-text-align--left u-heading--xl">
+                      {topic.category}{' '}
+                    </h3>
+                    <ul className="c-chip__group">
+                      {topic.tags.map((tag) => (
+                        <li className="c-chip__group-item" key={tag.name}>
+                          <Chip
+                            active={selectedTags.includes(tag.name)}
+                            text={tag.name}
+                            onClick={handleChipClick}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="tag-group__input">
+                    <span>Select All</span>
+                    <Checkbox
+                      label="Follow"
+                      name="follow"
+                      value="follow"
+                      checked={isChecked}
+                      onChange={(e) => handleCheckboxChange(topic, e)}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <Modal toggleValue={toggleValue}>
+            <h4>You are now following:</h4>
+            {followedTags}
+          </Modal>
+          <Button
+            className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"
+            onClick={followTags}
+            loading={loading}
+            text={data.followTagButton.text}
+          />
         </div>
-        <Modal toggleValue={toggleValue}>
-          <h4>You are now following:</h4>
-          {followedTags}
-        </Modal>
-        <Button onClick={followTags} loading={loading} text="Follow Selected" />
+        <Grid className="c-follow-category__button-row" variant="autoFit">
+          <Button
+            text={data.nextStepButton.text}
+            link={data.nextStepButton.link}
+          />
+          <Button
+            link={data.skipButton.link}
+            text={data.skipButton.text}
+            variant="secondary"
+          />
+        </Grid>
       </main>
     </div>
   );

@@ -106,8 +106,16 @@
   margin-bottom: var(--space-md);
 }
 
+.u-margin-top--md {
+  margin-top: var(--space-md);
+}
+
 .u-margin-bottom--lg {
   margin-bottom: var(--space-lg);
+}
+
+.u-margin-top--lg {
+  margin-top: var(--space-lg);
 }
 
 .u-margin-bottom--xl {

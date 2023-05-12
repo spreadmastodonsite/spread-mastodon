@@ -5,25 +5,29 @@ export const followTagsData = {
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',
   },
-  heading: { text: 'Getting Started on Mastodon: 2 of 4' },
-  heading2: {
-    partOne: 'Follow',
-    toolTip: {
-      label: 'Topics',
-      value: 'Topics are selected based on most searched on Mastodon.',
-    },
-    partTwo: 'You Care About',
-  },
+  heading: { text: 'Getting Started on Mastodon' },
   subHeading: {
-    text: 'Click the button below to view suggested topics to follow.',
+    text: '(Step 2 of 5)',
     toolTip: {
       label: 'Notable',
       value: 'Hashtabs selected based on popular accounts.',
     },
   },
+  heading2: {
+    partOne: 'Follow Topics You Care About',
+    toolTip: {
+      label: 'Notable',
+      value: 'Topics are selected based on most searched on Mastodon.',
+    },
+    partTwo: 'Hashtag Topics You May Be Interested In:',
+  },
   secondHeading: { text: 'Suggested Topics' },
-  followAllButton: { text: 'Follow All' },
-  followTagButton: { text: 'Follow' },
+  followTagButton: { text: 'Follow Selected Topics' },
+  nextStepButton: {
+    text: 'Go to Step 3: Find Your Twitter Friends',
+    link: '/find-friends',
+  },
+  skipButton: { text: 'Skip This Step for Now', link: '/apps' },
   suggestTags: [
     {
       category: 'Meeting New Mastodon Users',
