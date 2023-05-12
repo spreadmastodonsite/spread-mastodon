@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import Button from './Button';
+import Button from '../atoms/Button';
 import Icon from '../atoms/icon';
 import Link from 'next/link';
 
@@ -29,9 +29,9 @@ export default function Card({
               {description}{' '}
               <Icon
                 className="c-card__link-icon"
-                iconName="join"
-                width={16}
-                height={24}
+                iconName="caret-right"
+                width={24}
+                height={32}
               />
             </Link>
           )}

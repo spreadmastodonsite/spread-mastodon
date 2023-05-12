@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import axios from 'axios';
-import Button from '@/components/molecules/Button';
+import Button from '@/components/atoms/Button';
 
-import { authenticateData as data } from '../../data/authenticate';
+import { authenticateData as data } from '../../../data/authenticate';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-import Icon from '@/components/atoms/icon';
 
 export default function AuthenticateUserForm() {
   const router = useRouter();

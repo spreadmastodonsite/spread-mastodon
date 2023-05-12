@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Logo from '@/components/atoms/Logo';
-import SignupForm from '../components/SignupForm';
+import SignupForm from '../components/Organism/SignupForm';
 import { signUpData as data } from '/data/signUp.js';
 
 export default function SignUp() {

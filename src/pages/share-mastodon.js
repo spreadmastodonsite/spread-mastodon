@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Grid from '@/components/layout/Grid';
-import Card from '@/components/molecules/Card';
+import Card from '@/components/Organism/Card';
 import GridItem from '@/components/layout/GridItem';
-import Button from '@/components/molecules/Button';
-import AnimatedHeader from '@/components/atoms/animatedHeader';
+import Button from '@/components/atoms/Button';
+import AnimatedHeader from '@/components/molecules/animatedHeader';
 
 import { shareMastonData as data } from '../../data/shareMastodon';
 import Logo from '@/components/atoms/Logo';

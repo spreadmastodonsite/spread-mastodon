@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Head from 'next/head';
-import Button from '@/components//molecules/Button';
+import Button from '@/components/atoms/Button';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import StepperHeader from '@/components/molecules/StepperHeader';
@@ -213,7 +213,7 @@ export default function UpdateAccount() {
                     <GridItem columnStart={8} columnEnd={-1}>
                       <form className="c-profile-box__form">
                         <div className="c-profile-box__avatar">
-                          <label className="u-visually-hidden" for="avatar">
+                          <label className="u-visually-hidden" htmlFor="avatar">
                             {dataContent.uploadAvatarButton.text}
                           </label>
                           <input
@@ -231,7 +231,9 @@ export default function UpdateAccount() {
                           {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
                         </div>
                         <div className="c-profile-box__background">
-                          <label className="u-visually-hidden" for="background">
+                          <label
+                            className="u-visually-hidden"
+                            htmlFor="background">
                             {dataContent.uploadBackgroundButton.text}
                           </label>
                           <input

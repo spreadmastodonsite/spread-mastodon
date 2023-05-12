@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-import Card from '@/components/molecules/Card';
-import Button from '@/components/molecules/Button';
+import Card from '@/components/Organism/Card';
+import Button from '@/components/atoms/Button';
 
 import { findFriendsData as data } from '/data/findFriends.js';
 

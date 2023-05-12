@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
-import Button from '@/components/molecules/Button';
+import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
 

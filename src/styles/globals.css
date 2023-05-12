@@ -3,142 +3,39 @@
 @import url('./_reset.css');
 @import url('./_fonts.css');
 @import url('./_utils.css');
+@import url('./_foundation.css');
 
 /* Layout */
+@import url('./layout/general.css');
 @import url('./layout/grid.css');
 @import url('./layout/gridItem.css');
 
 /* Atoms */
-@import url('./atoms/animated-header.css');
 @import url('./atoms/icon.css');
 @import url('./atoms/checkbox.css');
 @import url('./atoms/logo.css');
 @import url('./atoms/chip.css');
+@import url('./atoms/button.css');
 
 /* Molecules */
-@import url('./molecules/button.css');
-@import url('./molecules/card.css');
+@import url('./molecules/animated-header.css');
 @import url('./molecules/stepperHeader.css');
-@import url('./molecules/signup.css');
-@import url('./molecules/profile.css');
-@import url('./molecules/apps.css');
-@import url('./molecules/explainer.css');
-@import url('./molecules/moreWaysToShare.css');
-@import url('./molecules/followSuggestions.css');
-@import url('./molecules/followTags.css');
 
 /* Organisms */
+@import url('./organisms/card.css');
 @import url('./organisms/tagGroup.css');
+@import url('./organisms/signup.css');
+@import url('./organisms/authenticateUserForm.css');
+@import url('./organisms/nav.css');
+@import url('./organisms/tooltip.css');
+@import url('./organisms/modal.css');
 
-@import url('./molecules/authenticateUserForm.css');
-
-/* Components */
-@import url('./components/nav.css');
-@import url('./components/tooltip.css');
-@import url('./components/modal.css');
+/* Pages */
+@import url('./pages/profile.css');
+@import url('./pages/apps.css');
+@import url('./pages/explainer.css');
+@import url('./pages/moreWaysToShare.css');
+@import url('./pages/followSuggestions.css');
+@import url('./pages/followTags.css');
 
 @import url(./markdown.css);
-
-body {
-  background: var(--primary-background);
-  color: #fff;
-  -webkit-font-smoothing: antialiased;
-  font-family: var(--font-primary);
-  line-height: 140%;
-}
-
-.l-main {
-  max-width: 1260px;
-  margin: 0 auto;
-  padding-top: var(--space-xl);
-  border-radius: var(--border-radius--lg);
-}
-
-.c-page__interior.l-main {
-  background: var(--secondary-background);
-  margin-bottom: var(--space-4xl);
-  padding-right: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
-  padding-left: var(--space-2xl);
-}
-
-.l-footer {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
-}
-
-.content-wrapper {
-  max-width: var(--max-width);
-  padding: 0 var(--space-xl);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding-top: var(--space-md);
-  padding-bottom: var(--space-md);
-  padding-left: var(--space-lg);
-  border-radius: var(--border-radius--sm);
-  border: 1px solid transparent;
-  background: var(--c-white);
-  color: #222;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  outline: none;
-  transition: all 0.2s ease-in-out;
-}
-
-input:focus,
-input:active {
-  outline: 3px solid var(--c-purple-500);
-}
-
-label {
-  display: inline-block;
-  margin-bottom: 4px;
-}
-
-.c-agreement input {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  line-height: 140%;
-}
-
-.c-agreement label {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.c-agreement span {
-  font-size: 0.8rem;
-  color: #666;
-  display: block;
-}
-
-ul {
-  margin: 20px;
-}
-
-li {
-  margin: 5px 0;
-}
-
-.c-link {
-  color: var(--link-color);
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
