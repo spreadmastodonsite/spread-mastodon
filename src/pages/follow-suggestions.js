@@ -172,9 +172,9 @@ export default function FollowSuggestions() {
           </div>
           <Grid className="u-margin-bottom--lg">
             <GridItem columnStart={1} columnEnd={13}>
-              <p className="u-body--lg u-margin-bottom--lg">
+              {/* <p className="u-body--lg u-margin-bottom--lg">
                 {data.explainerText}
-              </p>
+              </p> */}
             </GridItem>
             {!followedAllUsersSuccess && (
               <GridItem columnStart={5} columnEnd={9}>

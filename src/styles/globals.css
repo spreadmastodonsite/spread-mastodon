@@ -38,4 +38,6 @@
 @import url('./pages/followSuggestions.css');
 @import url('./pages/followTags.css');
 
+@import url('./molecules/findFriends.css');
+
 @import url(./markdown.css);
