@@ -1,12 +1,40 @@
 import * as React from 'react'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Icon from './../atoms/icon';
 import axios from 'axios';
+
+const menuList = [
+  {
+    title: 'Home',
+    url: '/'
+  },
+  {
+    title: 'Privacy Policy',
+    url: '/privacy-policy',
+    sub: [
+      {
+        title: 'lorem',
+        url: '/#',
+      },
+      {
+        title: 'lorem',
+        url: '/$',
+      }
+    ]
+  },
+  {
+    title: 'impsum',
+    url: '/#'
+  },
+]
 
 export default function Nav() {
   const [menuState, setMenuState] = React.useState(false);
   const [accountState, setAccountState] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const router = useRouter();
 
   const getAccount = () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -55,15 +83,22 @@ export default function Nav() {
         <div className={`u-nav-menu ${menuState && 'u-nav-menu--open'}`}>
           <nav>
             <ul className="u-nav-menu__list">
-              <li className="u-nav-menu__list__item">
-                <Link href="/" onClick={() => setMenuState(!menuState)}>Home</Link>
-              </li>
-              <li className="u-nav-menu__list__item">
-                <Link href="/privacy-policy" onClick={() => setMenuState(!menuState)}>Privacy Policy</Link>
-              </li>
-              <li className="u-nav-menu__list__item">
-                <a href="utils">util page</a>
-              </li>
+              {menuList.map(item => {
+                return (
+                  <li key={item.title} className={`u-nav-menu__list__item ${router.pathname === item.url ? 'u-nav-menu__list__item--active' : ''}`}>
+                    <Link href={item.url} onClick={() => setMenuState(!menuState)}>{item.title}</Link>
+                    {item.sub && <ul className="u-nav-menu__list__item__menu">
+                      {item.sub.map(subItem => {
+                        return (
+                          <li key={subItem.title} className={`u-nav-menu__list__item__sub ${router.pathname === subItem.url ? 'u-nav-menu__list__item--active' : ''}`}>
+                            <Link href={subItem.url} onClick={() => setMenuState(!menuState)}>{subItem.title}</Link>
+                          </li>
+                        )
+                      })}
+                    </ul>}
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </div>

@@ -30,6 +30,8 @@
 /* Organisms */
 @import url('./organisms/tagGroup.css');
 
+@import url('./molecules/authenticateUserForm.css');
+
 /* Components */
 @import url('./components/nav.css');
 @import url('./components/tooltip.css');

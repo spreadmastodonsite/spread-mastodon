@@ -6,6 +6,8 @@ import Button from '@/components/molecules/Button';
 
 import { authenticateData as data } from '../../data/authenticate';
 import Grid from '@/components/layout/Grid';
+import GridItem from '@/components/layout/GridItem';
+import Icon from '@/components/atoms/icon';
 
 export default function AuthenticateUser() {
   const router = useRouter();
@@ -18,6 +20,7 @@ export default function AuthenticateUser() {
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
     useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
+  const [user, setUser] = useState();
 
   // Handle email input change
   const handleEmailChange = (e) => {
@@ -53,7 +56,7 @@ export default function AuthenticateUser() {
       const response = await axios.get(
         `/api/verifyAccount?accessToken=${accessToken}`,
       );
-
+      setUser(response.data.data.acct);
       return response.data;
     } catch (error) {
       throw new Error(
@@ -100,9 +103,9 @@ export default function AuthenticateUser() {
     const accessToken = sessionStorage.getItem('accessToken');
     if (accessToken) {
       setStoredAccessToken(accessToken);
+      verifyUserAccount(accessToken);
     }
-    console.log('storedAccessToken', storedAccessToken);
-  }, [storedAccessToken]);
+  }, []);
 
   return (
     <div>
@@ -111,55 +114,92 @@ export default function AuthenticateUser() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="l-main">
-        {verifiedAndAuthenticated || storedAccessToken ? (
-          // If already authenticated, display appropriate message
-          <>
-            {storedAccessToken && !validationMessage && (
-              <div>It looks like you have already been verified!</div>
-            )}
-            {validationMessage && <div>{validationMessage}</div>}
-            <Button link="/follow-suggestions" text="Who to Follow" />
-          </>
-        ) : (
-          // If not authenticated, display login form
-          <>
-            <h1>{data.heading.text} </h1>
-            <p>{data.subHeading.text}</p>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-              </div>
-              {loading ? (
-                <div>Loading...</div>
-              ) : (
-                // Shows the validation message if there the page doesn't redirect
-                <p>
-                  {validationMessage && <div>{validationMessage}</div>}
-                  <Button type="submit" text="Log in &amp; Authenticate" />
+      <main className="l-main c-page__interior">
+        <Grid className="c-grid__signup-success">
+          <GridItem columnStart={1} columnEnd={13}>
+            <Icon iconName="check" width="100" height="100" />
+          </GridItem>
+          <GridItem columnStart={1} columnEnd={13}>
+            <div className="c-signup-success__content u-text-align--center">
+              <h2 className="c-signup-success__title u-heading--2xl">
+                {data.confirmed.text}
+                <br />
+                {data.welcome.text}
+                {user}
+              </h2>
+              <p className="c-signup-success__sub-title">{data.next.text}</p>
+            </div>
+          </GridItem>
+        </Grid>
+        <Grid className="c-grid__signup-success">
+          <GridItem columnStart={3} columnEnd={11}>
+            {verifiedAndAuthenticated || storedAccessToken ? (
+              // If already authenticated, display appropriate message
+              <>
+                {validationMessage && <div>{validationMessage}</div>}
+                <p className="u-margin-bottom--2xl u-text-align--center u-body--lg">
+                  You are already authenticated as {user}. Please click a button
+                  below to continue.
                 </p>
-              )}
-            </form>
-          </>
-        )}
-        <Button link="/" text="Back to Signup" />
+
+                <Button
+                  link="/follow-suggestions"
+                  text="Step 1: Follow Users"
+                />
+              </>
+            ) : (
+              // If not authenticated, display login form
+              <>
+                <h2 className="c-signup-success__sub-title u-text-align--center">
+                  {data.heading.text}{' '}
+                </h2>
+                <p className="u-body--lg">{data.subHeading.text}</p>
+                <form className="c-authenticate-form" onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                      id="password"
+                      type="password"
+                      required
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
+                  </div>
+                  {loading ? (
+                    <div>Loading...</div>
+                  ) : (
+                    // Shows the validation message if there the page doesn't redirect
+                    <p>
+                      {validationMessage && <div>{validationMessage}</div>}
+                      <Button
+                        className="c-button__auth"
+                        type="submit"
+                        text="Log in &amp; Authenticate"
+                      />
+                    </p>
+                  )}
+                </form>
+              </>
+            )}
+          </GridItem>
+          <GridItem columnStart={3} columnEnd={11}>
+            <Button
+              variant="secondary"
+              link={data.skip.link}
+              text={data.skip.text}
+            />
+          </GridItem>
+        </Grid>
       </main>
     </div>
   );

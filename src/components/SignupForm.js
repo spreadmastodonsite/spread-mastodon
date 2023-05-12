@@ -10,6 +10,7 @@ import GridItem from './layout/GridItem';
 import { signUpData as data } from '/data/signUp.js';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Icon from './atoms/icon';
+import AuthenticateUserForm from './authenticateUserForm';
 
 export default function SignupForm() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function SignupForm() {
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [accountCreated, setAccountCreated] = useState(false);
+  const [accountCreated, setAccountCreated] = useState(true);
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');
@@ -91,6 +92,7 @@ export default function SignupForm() {
           </div>
         </GridItem>
       </Grid>
+      <AuthenticateUserForm />
       <Grid className="c-signup-success__buttons" variant="autoFit">
         {/* <Button link="/update-account" text="Add Your Profile Basics!" /> */}
         <Button

@@ -1,0 +1,8 @@
+.c-authenticate-form {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.c-button__auth {
+  margin-top: var(--space-xl);
+}
