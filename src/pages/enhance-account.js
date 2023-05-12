@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import Card from '@/components/molecules/Card';
+import Card from '@/components/Organism/Card';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-import AnimatedHeader from '@/components/atoms/animatedHeader';
+import AnimatedHeader from '@/components/molecules/animatedHeader';
 import Logo from '@/components/atoms/Logo';
 
 import { EnhanceAccount as data } from '/data/enhanceAccount.js';

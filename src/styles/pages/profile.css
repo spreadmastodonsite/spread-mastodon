@@ -105,7 +105,7 @@
 }
 
 .c-profile-box__avatar .c-profile-box__button::after {
-  background-image: url('/assets/icons/join.svg');
+  background-image: url('/assets/icons/user.svg');
 }
 
 .c-profile-box__background {
@@ -113,7 +113,7 @@
 }
 
 .c-profile-box__background .c-profile-box__button::after {
-  background-image: url('/assets/icons/share.svg');
+  background-image: url('/assets/icons/folder.svg');
 }
 
 .c-profile-box .c-button {

@@ -1,0 +1,71 @@
+/* Misc/General */
+body {
+  background: var(--primary-background);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-primary);
+  line-height: 140%;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+  padding-left: var(--space-lg);
+  border-radius: var(--border-radius--sm);
+  border: 1px solid transparent;
+  background: var(--c-white);
+  color: #222;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+input:active {
+  outline: 3px solid var(--c-purple-500);
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.c-agreement input {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 140%;
+}
+
+.c-agreement label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.c-agreement span {
+  font-size: 0.8rem;
+  color: #666;
+  display: block;
+}
+
+ul {
+  margin: 20px;
+}
+
+li {
+  margin: 5px 0;
+}

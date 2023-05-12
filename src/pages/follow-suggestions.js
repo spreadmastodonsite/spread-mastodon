@@ -2,18 +2,18 @@ import { useState } from 'react';
 import Bottleneck from 'bottleneck';
 import Head from 'next/head';
 import axios from 'axios';
-import Button from '@/components/molecules/Button';
+import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
 
-import ToolTip from '@/components/molecules/ToolTip';
+import ToolTip from '@/components/Organism/ToolTip';
 import Grid from '@/components/layout/Grid';
-import Card from '@/components/molecules/Card';
+import Card from '@/components/Organism/Card';
 import GridItem from '@/components/layout/GridItem';
 
 import { followSuggestionsData as data } from '/data/followSuggestions';
 import Checkbox from '@/components/atoms/checkbox';
-import Modal from '@/components/molecules/Modal';
+import Modal from '@/components/Organism/Modal';
 
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);

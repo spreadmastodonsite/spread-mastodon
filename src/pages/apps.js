@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-import Button from '@/components/molecules/Button';
+import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
 
@@ -46,6 +46,7 @@ export default function MastodonApps() {
                 <div className="c-apps__ratings u-body--sm">
                   <Image
                     className="c-apps__ratings--stars"
+                    alt="4.8 stars"
                     src="/assets/apps/stars.png"
                     width="73"
                     height="11"

@@ -37,6 +37,10 @@
   gap: var(--space-xs);
 }
 
+.c-apps__app .c-apps__ratings--stars {
+  max-width: 73px;
+}
+
 .c-apps__others .c-link {
   font-size: var(--font-size-lg);
 }

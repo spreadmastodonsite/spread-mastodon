@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import cx from 'classnames';
-import Button from './molecules/Button';
-import Grid from './layout/Grid';
-import GridItem from './layout/GridItem';
+import Button from '../atoms/Button';
+import Grid from '../layout/Grid';
+import GridItem from '../layout/GridItem';
 
 import { signUpData as data } from '/data/signUp.js';
 import StepperHeader from '@/components/molecules/StepperHeader';
-import Icon from './atoms/icon';
+import Icon from '../atoms/icon';
 import AuthenticateUserForm from './authenticateUserForm';
 
 export default function SignupForm() {
@@ -22,7 +22,7 @@ export default function SignupForm() {
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [accountCreated, setAccountCreated] = useState(true);
+  const [accountCreated, setAccountCreated] = useState(false);
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');

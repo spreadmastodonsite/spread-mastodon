@@ -23,7 +23,7 @@ export default function ToolTip({
       <span className="c-tooltip__label">{label}</span>
       <Icon
         className="c-tooltip__icon"
-        iconName="share"
+        iconName="info"
         width={iconWidth}
         height={iconHeight}
       />

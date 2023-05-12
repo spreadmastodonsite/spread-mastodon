@@ -56,6 +56,7 @@
 
 .c-card__link-icon {
   display: inline-block;
+  padding-top: var(--space-xs);
 }
 
 .c-card--basic:focus-within .c-card__link,
