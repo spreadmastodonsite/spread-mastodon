@@ -6,7 +6,7 @@ export const homepageData = {
       'Mastodon account signup using Next.js, React and Mastodon API',
   },
   heading: {
-    textOne: 'Welcome to home',
+    textOne: 'Welcome to your',
     textRotate: ['Better', 'Ad-free', 'Open'],
     textTwo: 'Social Home',
   },
