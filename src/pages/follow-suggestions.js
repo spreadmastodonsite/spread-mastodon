@@ -25,8 +25,8 @@ export default function FollowSuggestions() {
   const [checkedCategories, setCheckedCategories] = useState([]);
 
   const limiter = new Bottleneck({
-    maxConcurrent: 150,
-    minTime: 50000,
+    maxConcurrent: 1,
+    minTime: 15,
   });
 
   const followAllUsers = async () => {
@@ -45,6 +45,7 @@ export default function FollowSuggestions() {
                 targetAccountId: user.id,
               }),
             );
+            console.log('user', user);
             return user.username;
           } catch (error) {
             // If an error occurs, reject the promise with the error message
@@ -189,78 +190,97 @@ export default function FollowSuggestions() {
             )}
           </Grid>
         </div>
-        {/* Rener the suggested users list */}
+        {/* Render the suggested users list */}
         <div className="u-margin-bottom--2xl">
-          <Grid
-            className="u-margin-bottom--xl"
-            variant="autoFit"
-            itemMinWidth="lg">
-            {followedAllUsersSuccess ? (
-              <div>
-                <p>{data.followAllSuccess.text}</p>
-                <p>{followedUsers}</p>
-              </div>
-            ) : (
-              <>
-                {data.suggestedUsers.map((category) => {
-                  return (
-                    <Card
-                      className="c-follow-category__card"
-                      key={category.title}
-                      variant="basic">
-                      <div className="c-follow-category">
-                        <div className="c-follow-category--content">
-                          <p>{category.title}</p>
-                          {loading === false ? (
-                            <ToolTip
-                              label={`${category.accounts.length} accounts`}
-                              value={
-                                <div>
-                                  <p>
-                                    {`Here's a list of users we think you'll enjoy`}
-                                  </p>
-                                  <ul className="c-follow-category__tool-tip">
-                                    {category.accounts.map((user) => (
-                                      <li key={user.id}>{user.username}</li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              }
-                              iconWidth={18}
-                              iconHeight={18}
+          {loading === true ? (
+            <Grid>
+              <GridItem>
+                <Card variant="basic">
+                  <div className="c-follow-category">
+                    <div className="c-follow-category--content">
+                      <p>
+                        This may take awhile if you followed a lot of accounts.
+                        Feel free to navigate away from this page.
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </GridItem>
+            </Grid>
+          ) : (
+            <>
+              <Grid
+                className="u-margin-bottom--xl"
+                variant="autoFit"
+                itemMinWidth="lg">
+                {followedAllUsersSuccess ? (
+                  <div>
+                    <p>{data.followAllSuccess.text}</p>
+                    <p>{followedUsers}</p>
+                  </div>
+                ) : (
+                  <>
+                    {data.suggestedUsers.map((category) => {
+                      return (
+                        <Card
+                          className="c-follow-category__card"
+                          key={category.title}
+                          variant="basic">
+                          <div className="c-follow-category">
+                            <div className="c-follow-category--content">
+                              <p>{category.title}</p>
+                              {loading === false ? (
+                                <ToolTip
+                                  label={`${category.accounts.length} accounts`}
+                                  value={
+                                    <div>
+                                      <p>
+                                        {`Here's a list of users we think you'll enjoy`}
+                                      </p>
+                                      <ul className="c-follow-category__tool-tip">
+                                        {category.accounts.map((user) => (
+                                          <li key={user.id}>{user.username}</li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  }
+                                  iconWidth={18}
+                                  iconHeight={18}
+                                />
+                              ) : (
+                                <p>...loading</p>
+                              )}
+                            </div>
+                            <Checkbox
+                              checked={isChecked}
+                              onChange={handleCheckboxChange}
+                              onClick={() => setIsChecked(!isChecked)}
+                              value={category.title}
+                              name={category.title}
                             />
-                          ) : (
-                            <p>...loading</p>
-                          )}
-                        </div>
-                        <Checkbox
-                          checked={isChecked}
-                          onChange={handleCheckboxChange}
-                          onClick={() => setIsChecked(!isChecked)}
-                          value={category.title}
-                          name={category.title}
-                        />
-                      </div>
-                    </Card>
-                  );
-                })}
-              </>
-            )}
-          </Grid>
-          <Modal toggleValue={toggleValue}>
-            <h4>You are now following:</h4>
-            {followedCatUsers}
-          </Modal>
-          <Button
-            className={
-              followedAllUsersSuccess
-                ? 'u-display--none'
-                : 'c-follow-category__follow-selected'
-            }
-            text={data.followSelectedCategoriesButton.text}
-            onClick={followAllCategoryUsers}
-            loading={loading}
-          />
+                          </div>
+                        </Card>
+                      );
+                    })}
+                  </>
+                )}
+              </Grid>
+              <Modal toggleValue={toggleValue}>
+                <h4>You are now following:</h4>
+                {followedCatUsers}
+              </Modal>
+              <Button
+                className={
+                  followedAllUsersSuccess
+                    ? 'u-display--none'
+                    : 'c-follow-category__follow-selected'
+                }
+                text={data.followSelectedCategoriesButton.text}
+                onClick={followAllCategoryUsers}
+                loading={loading}
+              />
+            </>
+          )}
         </div>
         <Grid className="c-follow-category__button-row" variant="autoFit">
           <Button

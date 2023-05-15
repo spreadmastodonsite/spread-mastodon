@@ -1,24 +1,26 @@
 import axios from 'axios';
-import Bottleneck from "bottleneck";
+import Bottleneck from 'bottleneck';
 
 const limiter = new Bottleneck({
-  maxConcurrent: 299,
-  minTime: 50000
+  maxConcurrent: 1,
+  minTime: 15,
 });
 
 export default async function follow(req, res) {
   const { accessToken, targetAccountId } = req.body;
 
   try {
-    const response = await limiter.schedule(() =>  axios.post(
-      `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/${targetAccountId}/follow`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+    const response = await limiter.schedule(() =>
+      axios.post(
+        `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/${targetAccountId}/follow`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      },
-    ));
+      ),
+    );
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {
     console.log(error.response.data);
