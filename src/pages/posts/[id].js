@@ -5,7 +5,6 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import rehypeSanitize from 'rehype-sanitize';
 
 const components = {
   tr: tr => {
