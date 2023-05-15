@@ -11,20 +11,6 @@ export const moreWaysToEnhanceData = {
   subHeading: {
     text: 'Here are All Our Tips and Ideas for Getting Started on Mastodon',
   },
-  // tabButtons: [
-  //   {
-  //     text: 'all',
-  //     link: '#',
-  //   },
-  //   {
-  //     text: 'Launches',
-  //     link: '#',
-  //   },
-  //   {
-  //     text: 'Integrations',
-  //     link: '#',
-  //   },
-  // ],
   cards: [
     {
       title: 'Welcome new users on Mastodon',
