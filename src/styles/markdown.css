@@ -212,3 +212,15 @@
     right: calc(var(--space-xl) * -1);
   }
 }
+
+.c-markdown .section-half {
+  display: grid;
+  grid-template-columns: 50% 50%;	
+  gap: 1rem;
+}
+
+.c-markdown .section-third {
+  display: grid;
+  grid-template-columns: 33.334% 66.667%;
+  gap: 1rem;
+}

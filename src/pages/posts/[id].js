@@ -4,6 +4,18 @@ import { Suspense } from 'react';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+
+const components = {
+  tr: tr => {
+    return (
+      <div className="two-column-layout">
+        {div.children}
+      </div>
+    )
+  }
+}
 
 export default function Post() {
   const [pageData, setPageData] = React.useState();
@@ -17,7 +29,13 @@ export default function Post() {
     <Grid>
       <GridItem columnStart={3} columnEnd={11}>
         <Suspense fallback={<div>Loading...</div>}>
-          <ReactMarkdown className="c-markdown">{pageData}</ReactMarkdown>
+          <ReactMarkdown
+            className="c-markdown"
+            components={components}
+            rehypePlugins={[rehypeRaw]}
+          >
+            {pageData}
+          </ReactMarkdown>
         </Suspense>
       </GridItem>
     </Grid>
