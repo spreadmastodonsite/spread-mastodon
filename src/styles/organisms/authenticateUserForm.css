@@ -6,3 +6,9 @@
 .c-button__auth {
   margin-top: var(--space-xl);
 }
+
+.c-enhance__auth {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
