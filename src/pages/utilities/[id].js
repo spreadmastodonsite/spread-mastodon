@@ -20,7 +20,7 @@ export default function Post() {
   const [pageData, setPageData] = React.useState();
   const router = useRouter();
   if (router.query.id) {
-    import(`./../../../data/posts/${router.query.id}.md`).then((res) =>
+    import(`./../../../data/utilities/${router.query.id}.md`).then((res) =>
       setPageData(res.default),
     );
   }

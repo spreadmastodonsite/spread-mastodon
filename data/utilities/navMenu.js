@@ -12,7 +12,7 @@ export const NavMenu = [
         url: '/#',
       },
       {
-        title: 'lorem',
+        title: 'lorem1',
         url: '/$',
       },
     ],
