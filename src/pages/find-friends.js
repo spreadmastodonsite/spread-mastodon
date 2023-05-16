@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 export default function FindFriends() {
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />

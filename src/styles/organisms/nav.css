@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .u-nav-button {
@@ -47,10 +49,12 @@
   padding: var(--space) 0 var(--space-4xl) var(--space-3xl);
   transform: translateX(100%);
   transition: all 0.5s ease-out;
+  opacity: 0;
 }
 
 .u-nav-menu--open {
   transform: translateX(0%);
+  opacity: 1;
 }
 
 .u-nav-menu__list {
@@ -110,5 +114,5 @@
 }
 
 .u-nav-account__menu--open {
-  height: 40px; 
+  height: 40px;
 }

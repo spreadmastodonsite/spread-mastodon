@@ -1,6 +1,5 @@
 /* Misc/General */
 body {
-  background: var(--primary-background);
   color: #fff;
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-primary);

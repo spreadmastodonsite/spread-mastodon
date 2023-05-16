@@ -13,6 +13,7 @@ import GridItem from '@/components/layout/GridItem';
 import Chip from '@/components/atoms/chip';
 import Checkbox from '@/components/atoms/checkbox';
 import StepperHeader from '@/components/molecules/StepperHeader';
+import Logo from '@/components/atoms/Logo';
 
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
@@ -59,18 +60,17 @@ export default function FollowSuggestions() {
     setIsChecked(!isChecked);
     setToggleValue(false);
 
-    // if checked add selected tags to the array 
+    // if checked add selected tags to the array
     if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
     } else if (!checked) {
       const updatedTags = [...selectedTags];
       setSelectedTags(
-        updatedTags.filter(tag => {
+        updatedTags.filter((tag) => {
           return !tags.includes(tag);
-        })
+        }),
       );
     }
-
   };
 
   const handleChipClick = (tag) => {
@@ -83,7 +83,6 @@ export default function FollowSuggestions() {
       setSelectedTags(updatedTags);
     }
     setToggleValue(false);
-
   };
 
   useEffect(() => {
@@ -91,13 +90,14 @@ export default function FollowSuggestions() {
   }, [selectedTags]);
 
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="l-main">
+      <Logo />
+      <main className="l-main c-page__interior">
         <div className="u-text-align--center">
           <StepperHeader
             iconName="enrich"

@@ -121,7 +121,7 @@ export default function UpdateAccount() {
   }, []);
 
   return (
-    <>
+    <div className="content-wrapper">
       <Head>
         <title>Mastodon Update Account</title>
         <meta
@@ -131,7 +131,6 @@ export default function UpdateAccount() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Logo />
-
       <div>
         <main className="l-main c-page__interior">
           {success ? (
@@ -288,6 +287,6 @@ export default function UpdateAccount() {
           )}
         </main>
       </div>
-    </>
+    </div>
   );
 }

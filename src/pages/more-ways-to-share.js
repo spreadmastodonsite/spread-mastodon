@@ -6,15 +6,17 @@ import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import { moreWaysToShareData as data } from '../../data/moreWaysToShare';
 import Link from 'next/link';
+import Logo from '@/components/atoms/Logo';
 
 export default function MoreWaysToShare() {
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Logo />
       <main className="l-main c-page__interior c-more-ways-to-share">
         <StepperHeader
           iconName="enrich"
