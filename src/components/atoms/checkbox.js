@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import cx from 'classnames';
 
@@ -12,7 +12,7 @@ export default function Checkbox({
   onChange,
   ...props
 }) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(checked);
 
   const componentClassName = cx('c-checkbox', className, {
     [`c-checkbox--checked`]: isChecked === true,
@@ -23,8 +23,14 @@ export default function Checkbox({
       onChange(event);
     }
 
-    setIsChecked(event.target.checked);
+    setIsChecked(!isChecked);
   };
+
+  useEffect(() => {
+    if(checked) {
+      setIsChecked(true);
+    }
+  }, [checked]);
 
   return (
     <label className={componentClassName}>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Bottleneck from 'bottleneck';
 import Head from 'next/head';
 import axios from 'axios';
@@ -20,53 +20,14 @@ export default function FollowSuggestions() {
   const [followedUsers, setFollowedUsers] = useState();
   const [followedCatUsers, setFollowedCatUsers] = useState();
   const [followedAllUsersSuccess, setFollowedAllUsersSuccess] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
   const [toggleValue, setToggleValue] = useState(false);
   const [checkedCategories, setCheckedCategories] = useState([]);
 
   const limiter = new Bottleneck({
     maxConcurrent: 1,
-    minTime: 15,
+    minTime: 30,
   });
-
-  const followAllUsers = async () => {
-    const accessToken = sessionStorage.getItem('accessToken');
-    setLoading(true);
-
-    try {
-      // Loop through each category in the data and create a list of promises to follow each user in the category
-      const followPromises = data.suggestedUsers.map(async (category) => {
-        const categoryFollowPromises = category.accounts.map(async (user) => {
-          try {
-            // Follow the user using the API and return their username
-            await limiter.schedule(() =>
-              axios.post('/api/follow', {
-                accessToken,
-                targetAccountId: user.id,
-              }),
-            );
-            console.log('user', user);
-            return user.username;
-          } catch (error) {
-            // If an error occurs, reject the promise with the error message
-            return Promise.reject(error.response.data.error.error);
-          }
-        });
-        // Wait for all promises to follow users in the category to resolve
-        return Promise.all(categoryFollowPromises);
-      });
-      // Wait for all promises to follow users in all categories to resolve
-      const followedUsernames = await Promise.all(followPromises);
-
-      // Indicate that all users were followed successfully and display a message with their usernames
-      setFollowedAllUsersSuccess(true);
-      setFollowedUsers(followedUsernames.flat().join(', '));
-    } catch (error) {
-      // If an error occurs, display an error message
-      alert(`Error: ${JSON.stringify(error)}`);
-    }
-    setLoading(false);
-  };
 
   // Follow all users in selected categories
   const followAllCategoryUsers = async () => {
@@ -113,7 +74,10 @@ export default function FollowSuggestions() {
   const handleCheckboxChange = (event) => {
     // Destructure the name and checked properties from the event target
     const { name, checked } = event.target;
-
+    setIsChecked([...isChecked, name]);
+    if(!checked) {
+      setIsChecked(isChecked.filter(item => item !== name));
+    }
     // Update the checkedCategories state based on the checkbox change
     setCheckedCategories((prevCategories) => {
       // Make a copy of the previous categories array
@@ -139,9 +103,12 @@ export default function FollowSuggestions() {
 
     // Stop the event from propagating further
     event.stopPropagation();
+  };
 
-    // Log the updated checkedCategories state (for debugging purposes)
-    console.log('checkedCategories', checkedCategories);
+  const handleSelectAll = () => {
+    const categories = data.suggestedUsers.map((category) => category.title);
+    setCheckedCategories(categories);
+    setIsChecked(categories)
   };
 
   return (
@@ -172,15 +139,11 @@ export default function FollowSuggestions() {
             <span>Accounts you May Be Interested In:</span>
           </div>
           <Grid className="u-margin-bottom--lg">
-            <GridItem columnStart={1} columnEnd={13}>
-              {/* <p className="u-body--lg u-margin-bottom--lg">
-                {data.explainerText}
-              </p> */}
-            </GridItem>
+            <GridItem columnStart={1} columnEnd={13}></GridItem>
             {!followedAllUsersSuccess && (
               <GridItem columnStart={5} columnEnd={9}>
                 <Button
-                  onClick={followAllUsers}
+                  onClick={handleSelectAll}
                   text={data.followAllButton.text}
                   loading={loading}
                   className="u-margin-bottom--md"
@@ -252,9 +215,8 @@ export default function FollowSuggestions() {
                               )}
                             </div>
                             <Checkbox
-                              checked={isChecked}
+                              checked={isChecked.includes(category.title)}
                               onChange={handleCheckboxChange}
-                              onClick={() => setIsChecked(!isChecked)}
                               value={category.title}
                               name={category.title}
                             />
