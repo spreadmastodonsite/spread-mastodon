@@ -30,7 +30,7 @@ export default function Home() {
               rotateLocation="after"
             />
           </GridItem>
-          <GridItem columnStart={4} columnEnd={10}>
+          <GridItem columnStart={2} columnEnd={12}>
             <p className="u-body--lg">{data.subHeading.text}</p>
           </GridItem>
         </Grid>
