@@ -7,7 +7,7 @@
   background-color: var(--c-black-300);
   box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
   transform: translate(-50%, -50%);
-  padding: var(--space-lg);
+  padding: var(--space-lg) var(--space-2xl);
   display: flex;
   align-items: center;
   flex-direction: column;

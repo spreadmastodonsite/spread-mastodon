@@ -24,6 +24,8 @@ export default function FollowSuggestions() {
   const [toggleValue, setToggleValue] = useState(false);
   const [checkedCategories, setCheckedCategories] = useState([]);
   const [hasAccessToken, setHasAccessToken] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const limiter = new Bottleneck({
     maxConcurrent: 1,
@@ -33,6 +35,13 @@ export default function FollowSuggestions() {
   // Follow all users in selected categories
   const followAllCategoryUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
+
+    if (checkedCategories.length === 0) {
+      setResponseMessage('Please select at least one category');
+      setToggleValue(true);
+      setFollowedCatUsers('');
+      return;
+    }
 
     setLoading(true);
     try {
@@ -66,7 +75,7 @@ export default function FollowSuggestions() {
       setToggleValue(true);
     } catch (error) {
       // If an error occurs, display an error message
-      alert(`Error: ${JSON.stringify(error)}`);
+      setErrorMessage(`Error: ${JSON.stringify(error)}`);
     }
     setLoading(false);
   };
@@ -183,8 +192,8 @@ export default function FollowSuggestions() {
                     <div className="c-follow-category">
                       <div className="c-follow-category--content">
                         <p>
-                          This may take awhile if you followed a lot of
-                          accounts. Feel free to navigate away from this page.
+                          This may take awhile. Feel free to navigate away from
+                          this page.
                         </p>
                       </div>
                     </div>
@@ -251,8 +260,15 @@ export default function FollowSuggestions() {
                   )}
                 </Grid>
                 <Modal toggleValue={toggleValue}>
-                  <h4>You are now following:</h4>
-                  {followedCatUsers}
+                  <h4>
+                    {responseMessage ? (
+                      <span>{responseMessage}</span>
+                    ) : (
+                      <span>You are now following:</span>
+                    )}
+                  </h4>
+                  {followedCatUsers && <p>{followedCatUsers}</p>}
+                  {errorMessage && <p>{errorMessage}</p>} {''}
                 </Modal>
                 <Button
                   className={

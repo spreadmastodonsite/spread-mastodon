@@ -15,7 +15,7 @@
   color: var(--c-white);
   background-color: var(--primary-background);
   padding: var(--space-md);
-  top: calc(100% + var(--space-sm));
+  top: calc(100% + 2px);
   left: 50%;
   border-radius: var(--border-radius);
   min-width: 400px;

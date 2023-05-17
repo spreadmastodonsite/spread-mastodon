@@ -1,14 +1,11 @@
-import { use, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
 import { followTagsData as data } from '../../data/followTags';
-import Link from 'next/link';
 import Button from '@/components/atoms/Button';
 import ToolTip from '@/components/Organism/ToolTip';
 import Modal from '@/components/Organism/Modal';
 import Grid from '@/components/layout/Grid';
-import Card from '@/components/Organism/Card';
 import GridItem from '@/components/layout/GridItem';
 import Chip from '@/components/atoms/chip';
 import Checkbox from '@/components/atoms/checkbox';
@@ -23,12 +20,21 @@ export default function FollowSuggestions() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [followedTags, setFollowedTags] = useState([]);
   const [hasAccessToken, setHasAccessToken] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
 
   const followTags = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
     const tagNames = selectedTags;
-    setLoading(true);
 
+    if (tagNames.length === 0) {
+      setResponseMessage('Please select at least one tag');
+      setToggleValue(true);
+      setFollowedTags('');
+      return;
+    }
+
+    setLoading(true);
     const tagsPromises = tagNames.map(async (tagName) => {
       try {
         const response = await axios.post('/api/followTag', {
@@ -37,18 +43,18 @@ export default function FollowSuggestions() {
         });
         return response.data;
       } catch (error) {
-        console.error('Error:', error);
-        return Promise.reject(error);
+        return Promise.reject(error.response.data.error.error);
       }
     });
 
     try {
       const results = await Promise.all(tagsPromises);
       const followedTags = results.map((result) => result.data.name);
+      setResponseMessage('');
       setFollowedTags(followedTags.join(', '));
       setToggleValue(true);
     } catch (error) {
-      console.error('Error:', error);
+      setErrorMessage(`Error: ${JSON.stringify(error)}`);
     }
     setLoading(false);
   };
@@ -176,8 +182,15 @@ export default function FollowSuggestions() {
               </div>
 
               <Modal toggleValue={toggleValue}>
-                <h4>You are now following:</h4>
-                {followedTags}
+                <h4>
+                  {responseMessage ? (
+                    <span>{responseMessage}</span>
+                  ) : (
+                    <span>You are now following:</span>
+                  )}
+                </h4>
+                {followedTags && <p>{followedTags}</p>}
+                {errorMessage && <p>{errorMessage}</p>} {''}
               </Modal>
               <Button
                 className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"

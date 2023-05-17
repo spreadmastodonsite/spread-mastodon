@@ -33,10 +33,6 @@ export const followTagsData = {
       category: 'Meeting New Mastodon Users',
       tags: [
         {
-          name: 'Introduction',
-          url: 'https://indieweb.social/tags/Introduction',
-        },
-        {
           name: 'Introductions',
           url: 'https://indieweb.social/tags/Introductions',
         },
