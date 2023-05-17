@@ -20,7 +20,7 @@ export default function FollowSuggestions() {
   const [followedUsers, setFollowedUsers] = useState();
   const [followedCatUsers, setFollowedCatUsers] = useState();
   const [followedAllUsersSuccess, setFollowedAllUsersSuccess] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
   const [toggleValue, setToggleValue] = useState(false);
   const [checkedCategories, setCheckedCategories] = useState([]);
 
@@ -48,7 +48,6 @@ export default function FollowSuggestions() {
                   targetAccountId: user.id,
                 }),
               );
-              console.log('user', user);
               return user.username;
             } catch (error) {
               // If an error occurs, reject the promise with the error message
@@ -75,7 +74,10 @@ export default function FollowSuggestions() {
   const handleCheckboxChange = (event) => {
     // Destructure the name and checked properties from the event target
     const { name, checked } = event.target;
-
+    setIsChecked([...isChecked, name]);
+    if(!checked) {
+      setIsChecked(isChecked.filter(item => item !== name));
+    }
     // Update the checkedCategories state based on the checkbox change
     setCheckedCategories((prevCategories) => {
       // Make a copy of the previous categories array
@@ -106,7 +108,7 @@ export default function FollowSuggestions() {
   const handleSelectAll = () => {
     const categories = data.suggestedUsers.map((category) => category.title);
     setCheckedCategories(categories);
-    setIsChecked(true);
+    setIsChecked(categories)
   };
 
   return (
@@ -213,7 +215,7 @@ export default function FollowSuggestions() {
                               )}
                             </div>
                             <Checkbox
-                              checked={isChecked}
+                              checked={isChecked.includes(category.title)}
                               onChange={handleCheckboxChange}
                               value={category.title}
                               name={category.title}
