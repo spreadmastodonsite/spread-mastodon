@@ -18,7 +18,13 @@
 }
 
 .l-grid__column--lg {
-  --column-size: 300px;
+  --column-size: 100%;
+}
+
+@media all and (min-width: 768px) {
+  .l-grid__column--lg {
+    --column-size: 300px;
+  }
 }
 
 .l-grid__column--xl {
