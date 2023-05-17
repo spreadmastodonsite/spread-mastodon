@@ -72,6 +72,10 @@
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-xl);
 }
+.c-markdown img {
+  max-width: 100%;
+  height: auto;
+}
 
 .c-markdown a {
   color: var(--c-primary);
@@ -215,12 +219,24 @@
 
 .c-markdown .section-half {
   display: grid;
-  grid-template-columns: 50% 50%;	
+  grid-template-columns: 50% 50%;
   gap: 1rem;
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown .section-half {
+    grid-template-columns: 100%;
+  }
 }
 
 .c-markdown .section-third {
   display: grid;
   grid-template-columns: 33.334% 66.667%;
   gap: 1rem;
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown .section-third {
+    grid-template-columns: 100%;
+  }
 }
