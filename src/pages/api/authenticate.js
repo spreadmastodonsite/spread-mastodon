@@ -7,6 +7,8 @@ export default async function handler(req, res) {
     const clientId = process.env.MASTODON_CLIENT_ID;
     const clientSecret = process.env.MASTODON_CLIENT_SECRET;
 
+    console.log(req.body);
+
     try {
       const response = await axios.post(`${instanceUrl}/oauth/token`, {
         grant_type: 'password',
