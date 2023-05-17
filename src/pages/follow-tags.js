@@ -21,6 +21,7 @@ export default function FollowSuggestions() {
   const [isChipChecked, setIsChipChecked] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [followedTags, setFollowedTags] = useState([]);
+  const [hasAccessToken, setHasAccessToken] = useState(false);
 
   const followTags = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -59,18 +60,17 @@ export default function FollowSuggestions() {
     setIsChecked(!isChecked);
     setToggleValue(false);
 
-    // if checked add selected tags to the array 
+    // if checked add selected tags to the array
     if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
     } else if (!checked) {
       const updatedTags = [...selectedTags];
       setSelectedTags(
-        updatedTags.filter(tag => {
+        updatedTags.filter((tag) => {
           return !tags.includes(tag);
-        })
+        }),
       );
     }
-
   };
 
   const handleChipClick = (tag) => {
@@ -83,8 +83,14 @@ export default function FollowSuggestions() {
       setSelectedTags(updatedTags);
     }
     setToggleValue(false);
-
   };
+
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      setHasAccessToken(true);
+    }
+  }, []);
 
   useEffect(() => {
     setIsChipChecked(selectedTags.length > 0);
@@ -117,50 +123,67 @@ export default function FollowSuggestions() {
             />{' '}
             <span>{data.heading2.partTwo}</span>
           </div>
-          <div>
-            {data.suggestTags.map((topic, i) => (
-              <div key={i + topic.category}>
-                <div className="tag-group">
-                  <div className="tag-group__content">
-                    <h3 className="tag-group__category u-text-align--left u-heading--xl">
-                      {topic.category}{' '}
-                    </h3>
-                    <ul className="c-chip__group">
-                      {topic.tags.map((tag) => (
-                        <li className="c-chip__group-item" key={tag.name}>
-                          <Chip
-                            active={selectedTags.includes(tag.name)}
-                            text={tag.name}
-                            onClick={handleChipClick}
-                          />
-                        </li>
-                      ))}
-                    </ul>
+          {!hasAccessToken ? (
+            <Grid className="u-margin-bottom--lg">
+              <GridItem columnStart={5} columnEnd={9}>
+                <Button
+                  text="Sign in"
+                  loading={loading}
+                  className="u-margin-bottom--md"
+                  variant="secondary"
+                  link="enhance-account"
+                />
+              </GridItem>
+            </Grid>
+          ) : (
+            <>
+              <div>
+                {data.suggestTags.map((topic, i) => (
+                  <div key={i + topic.category}>
+                    <div className="tag-group">
+                      <div className="tag-group__content">
+                        <h3 className="tag-group__category u-text-align--left u-heading--xl">
+                          {topic.category}{' '}
+                        </h3>
+                        <ul className="c-chip__group">
+                          {topic.tags.map((tag) => (
+                            <li className="c-chip__group-item" key={tag.name}>
+                              <Chip
+                                active={selectedTags.includes(tag.name)}
+                                text={tag.name}
+                                onClick={handleChipClick}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="tag-group__input">
+                        <span>Select All</span>
+                        <Checkbox
+                          label="Follow"
+                          name="follow"
+                          value="follow"
+                          checked={isChecked}
+                          onChange={(e) => handleCheckboxChange(topic, e)}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="tag-group__input">
-                    <span>Select All</span>
-                    <Checkbox
-                      label="Follow"
-                      name="follow"
-                      value="follow"
-                      checked={isChecked}
-                      onChange={(e) => handleCheckboxChange(topic, e)}
-                    />
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <Modal toggleValue={toggleValue}>
-            <h4>You are now following:</h4>
-            {followedTags}
-          </Modal>
-          <Button
-            className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"
-            onClick={followTags}
-            loading={loading}
-            text={data.followTagButton.text}
-          />
+
+              <Modal toggleValue={toggleValue}>
+                <h4>You are now following:</h4>
+                {followedTags}
+              </Modal>
+              <Button
+                className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"
+                onClick={followTags}
+                loading={loading}
+                text={data.followTagButton.text}
+              />
+            </>
+          )}
         </div>
         <Grid className="c-follow-category__button-row" variant="autoFit">
           <Button
