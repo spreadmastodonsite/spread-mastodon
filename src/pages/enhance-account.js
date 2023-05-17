@@ -116,7 +116,7 @@ export default function Join() {
       <main className="l-main">
         <Grid className="u-text-align--center">
           <GridItem columnStart={1} columnEnd={13}>
-            <Logo />
+            <Logo variant="large" />
             <AnimatedHeader
               className="u-heading--3xl"
               textOne={heading.textOne}

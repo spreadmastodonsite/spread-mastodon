@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import Icon from '../atoms/icon';
 import { NavMenu as data } from '../../../data/utilities/navMenu';
 
-
-
 export default function Nav() {
   const [menuState, setMenuState] = React.useState(false);
   const [accountState, setAccountState] = React.useState(false);
@@ -69,10 +67,10 @@ export default function Nav() {
         <div className={`u-nav-menu ${menuState && 'u-nav-menu--open'}`}>
           <nav>
             <ul className="u-nav-menu__list">
-              {data.map((item) => {
+              {data.map((item, i) => {
                 return (
                   <li
-                    key={item.title}
+                    key={item.title + i}
                     className={`u-nav-menu__list__item ${
                       router.pathname === item.url
                         ? 'u-nav-menu__list__item--active'
@@ -85,10 +83,10 @@ export default function Nav() {
                     </Link>
                     {item.sub && (
                       <ul className="u-nav-menu__list__item__menu">
-                        {item.sub.map((subItem) => {
+                        {item.sub.map((subItem, i) => {
                           return (
                             <li
-                              key={subItem.title}
+                              key={subItem.title + i}
                               className={`u-nav-menu__list__item__sub ${
                                 router.pathname === subItem.url
                                   ? 'u-nav-menu__list__item--active'

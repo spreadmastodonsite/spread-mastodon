@@ -8,6 +8,7 @@ import { authenticateData as data } from '../../data/authenticate';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Icon from '@/components/atoms/icon';
+import Logo from '@/components/atoms/Logo';
 
 export default function AuthenticateUser() {
   const router = useRouter();
@@ -108,12 +109,13 @@ export default function AuthenticateUser() {
   }, []);
 
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Logo />
       <main className="l-main c-page__interior">
         <Grid className="c-grid__signup-success">
           <GridItem columnStart={1} columnEnd={13}>

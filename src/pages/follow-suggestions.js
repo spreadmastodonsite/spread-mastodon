@@ -121,7 +121,7 @@ export default function FollowSuggestions() {
   }, []);
 
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />

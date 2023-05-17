@@ -4,17 +4,19 @@ import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/Organism/Card';
 import Button from '@/components/atoms/Button';
 import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
+import Logo from '@/components/atoms/Logo';
 
 export default function MoreWaysToEnhance() {
   return (
-    <div>
+    <div className="content-wrapper">
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Logo />
       <main className="l-main">
-        <Grid className="u-text-align--center">
+        <Grid className="u-text-align--center u-margin-bottom--xl">
           <GridItem columnStart={4} columnEnd={10}>
             <h1>{data.heading.text}</h1>
             <h2>{data.subHeading.text}</h2>
