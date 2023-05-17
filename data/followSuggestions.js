@@ -242,11 +242,6 @@ export const followSuggestionsData = {
           url: 'https://twit.social/@glennf',
         },
         {
-          id: '108194490378981827',
-          username: 'ernie',
-          url: 'https://writing.exchange/@ernie',
-        },
-        {
           id: '109641425792857880',
           username: 'DataDrivenMD',
           url: 'https://fedified.com/@DataDrivenMD',
@@ -532,11 +527,6 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@gregpak',
         },
         {
-          id: '109240495129582918',
-          username: 'mckra1g',
-          url: 'https://mastodon.social/@mckra1g',
-        },
-        {
           id: '109243371263223446',
           username: 'jbf1755',
           url: 'https://mastodon.social/@jbf1755',
@@ -771,11 +761,6 @@ export const followSuggestionsData = {
           username: 'Mastodon',
           url: 'https://mastodon.social/@Mastodon',
         },
-        // {
-        //   id: '',
-        //   username: 'mastodonmigration',
-        //   url: 'https://mastodon.online/@mastodonmigration',
-        // },
         {
           id: '109648744105191077',
           username: 'fediversereport',
