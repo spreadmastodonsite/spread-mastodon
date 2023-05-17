@@ -49,7 +49,6 @@ export default function FollowSuggestions() {
                   targetAccountId: user.id,
                 }),
               );
-              console.log('user', user);
               return user.username;
             } catch (error) {
               // If an error occurs, reject the promise with the error message
