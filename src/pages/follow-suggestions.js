@@ -23,6 +23,7 @@ export default function FollowSuggestions() {
   const [isChecked, setIsChecked] = useState([]);
   const [toggleValue, setToggleValue] = useState(false);
   const [checkedCategories, setCheckedCategories] = useState([]);
+  const [hasAccessToken, setHasAccessToken] = useState(false);
 
   const limiter = new Bottleneck({
     maxConcurrent: 1,
@@ -75,8 +76,8 @@ export default function FollowSuggestions() {
     // Destructure the name and checked properties from the event target
     const { name, checked } = event.target;
     setIsChecked([...isChecked, name]);
-    if(!checked) {
-      setIsChecked(isChecked.filter(item => item !== name));
+    if (!checked) {
+      setIsChecked(isChecked.filter((item) => item !== name));
     }
     // Update the checkedCategories state based on the checkbox change
     setCheckedCategories((prevCategories) => {
@@ -108,8 +109,16 @@ export default function FollowSuggestions() {
   const handleSelectAll = () => {
     const categories = data.suggestedUsers.map((category) => category.title);
     setCheckedCategories(categories);
-    setIsChecked(categories)
+    setIsChecked(categories);
   };
+
+  // Get the access token from session storage on component mount
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      setHasAccessToken(true);
+    }
+  }, []);
 
   return (
     <div>
@@ -139,111 +148,127 @@ export default function FollowSuggestions() {
             <span>Accounts you May Be Interested In:</span>
           </div>
           <Grid className="u-margin-bottom--lg">
-            <GridItem columnStart={1} columnEnd={13}></GridItem>
-            {!followedAllUsersSuccess && (
-              <GridItem columnStart={5} columnEnd={9}>
-                <Button
-                  onClick={handleSelectAll}
-                  text={data.followAllButton.text}
-                  loading={loading}
-                  className="u-margin-bottom--md"
-                  variant="secondary"
-                />
-              </GridItem>
-            )}
+            <GridItem columnStart={5} columnEnd={9}>
+              {!hasAccessToken ? (
+                <div>
+                  <Button
+                    text="Sign in"
+                    loading={loading}
+                    className="u-margin-bottom--md"
+                    variant="secondary"
+                    link="enhance-account"
+                  />
+                </div>
+              ) : (
+                !followedAllUsersSuccess && (
+                  <Button
+                    onClick={handleSelectAll}
+                    text={data.followAllButton.text}
+                    loading={loading}
+                    className="u-margin-bottom--md"
+                    variant="secondary"
+                  />
+                )
+              )}
+            </GridItem>
           </Grid>
         </div>
         {/* Render the suggested users list */}
-        <div className="u-margin-bottom--2xl">
-          {loading === true ? (
-            <Grid>
-              <GridItem>
-                <Card variant="basic">
-                  <div className="c-follow-category">
-                    <div className="c-follow-category--content">
-                      <p>
-                        This may take awhile if you followed a lot of accounts.
-                        Feel free to navigate away from this page.
-                      </p>
+        {hasAccessToken && (
+          <div className="u-margin-bottom--2xl">
+            {loading === true ? (
+              <Grid>
+                <GridItem>
+                  <Card variant="basic">
+                    <div className="c-follow-category">
+                      <div className="c-follow-category--content">
+                        <p>
+                          This may take awhile if you followed a lot of
+                          accounts. Feel free to navigate away from this page.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </GridItem>
-            </Grid>
-          ) : (
-            <>
-              <Grid
-                className="u-margin-bottom--xl"
-                variant="autoFit"
-                itemMinWidth="lg">
-                {followedAllUsersSuccess ? (
-                  <div>
-                    <p>{data.followAllSuccess.text}</p>
-                    <p>{followedUsers}</p>
-                  </div>
-                ) : (
-                  <>
-                    {data.suggestedUsers.map((category) => {
-                      return (
-                        <Card
-                          className="c-follow-category__card"
-                          key={category.title}
-                          variant="basic">
-                          <div className="c-follow-category">
-                            <div className="c-follow-category--content">
-                              <p>{category.title}</p>
-                              {loading === false ? (
-                                <ToolTip
-                                  label={`${category.accounts.length} accounts`}
-                                  value={
-                                    <div>
-                                      <p>
-                                        {`Here's a list of users we think you'll enjoy`}
-                                      </p>
-                                      <ul className="c-follow-category__tool-tip">
-                                        {category.accounts.map((user) => (
-                                          <li key={user.id}>{user.username}</li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  }
-                                  iconWidth={18}
-                                  iconHeight={18}
-                                />
-                              ) : (
-                                <p>...loading</p>
-                              )}
-                            </div>
-                            <Checkbox
-                              checked={isChecked.includes(category.title)}
-                              onChange={handleCheckboxChange}
-                              value={category.title}
-                              name={category.title}
-                            />
-                          </div>
-                        </Card>
-                      );
-                    })}
-                  </>
-                )}
+                  </Card>
+                </GridItem>
               </Grid>
-              <Modal toggleValue={toggleValue}>
-                <h4>You are now following:</h4>
-                {followedCatUsers}
-              </Modal>
-              <Button
-                className={
-                  followedAllUsersSuccess
-                    ? 'u-display--none'
-                    : 'c-follow-category__follow-selected'
-                }
-                text={data.followSelectedCategoriesButton.text}
-                onClick={followAllCategoryUsers}
-                loading={loading}
-              />
-            </>
-          )}
-        </div>
+            ) : (
+              <>
+                <Grid
+                  className="u-margin-bottom--xl"
+                  variant="autoFit"
+                  itemMinWidth="lg">
+                  {followedAllUsersSuccess ? (
+                    <div>
+                      <p>{data.followAllSuccess.text}</p>
+                      <p>{followedUsers}</p>
+                    </div>
+                  ) : (
+                    <>
+                      {data.suggestedUsers.map((category) => {
+                        return (
+                          <Card
+                            className="c-follow-category__card"
+                            key={category.title}
+                            variant="basic">
+                            <div className="c-follow-category">
+                              <div className="c-follow-category--content">
+                                <p>{category.title}</p>
+                                {loading === false ? (
+                                  <ToolTip
+                                    label={`${category.accounts.length} accounts`}
+                                    value={
+                                      <div>
+                                        <p>
+                                          {`Here's a list of users we think you'll enjoy`}
+                                        </p>
+                                        <ul className="c-follow-category__tool-tip">
+                                          {category.accounts.map((user) => (
+                                            <li key={user.id}>
+                                              {user.username}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    }
+                                    iconWidth={18}
+                                    iconHeight={18}
+                                  />
+                                ) : (
+                                  <p>...loading</p>
+                                )}
+                              </div>
+                              <Checkbox
+                                checked={isChecked.includes(category.title)}
+                                onChange={handleCheckboxChange}
+                                value={category.title}
+                                name={category.title}
+                              />
+                            </div>
+                          </Card>
+                        );
+                      })}
+                    </>
+                  )}
+                </Grid>
+                <Modal toggleValue={toggleValue}>
+                  <h4>You are now following:</h4>
+                  {followedCatUsers}
+                </Modal>
+                <Button
+                  className={
+                    followedAllUsersSuccess
+                      ? 'u-display--none'
+                      : 'c-follow-category__follow-selected'
+                  }
+                  text={data.followSelectedCategoriesButton.text}
+                  onClick={followAllCategoryUsers}
+                  loading={loading}
+                />
+              </>
+            )}
+          </div>
+        )}
+
         <Grid className="c-follow-category__button-row" variant="autoFit">
           <Button
             text={data.nextStepButton.text}

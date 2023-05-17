@@ -10,6 +10,12 @@ export const EnhanceAccount = {
     textOne: "You're in! Now What?",
     textRotate: ['Get Started', 'Follow People', 'Find Your Friends'],
   },
+  authHeader: {
+    text: 'Authenticate Account',
+  },
+  authSubHeading: {
+    text: 'Please sign in.',
+  },
   cards: [
     {
       title:
