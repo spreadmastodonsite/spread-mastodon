@@ -22,6 +22,10 @@ export default function Button({
     }
   };
 
+  const handleLinkClick = (e) => {
+    window.scroll.position.y = 0;
+  };
+
   const content = loading ? 'Loading...' : text;
 
   const linkProps = typeof link === 'string' ? { href: link } : link;
@@ -29,7 +33,12 @@ export default function Button({
   return (
     <>
       {link ? (
-        <Link className={componentClassName} {...linkProps} {...props}>
+        <Link
+          scroll={true}
+          className={componentClassName}
+          {...linkProps}
+          {...props}
+          onClick={handleLinkClick}>
           {content}
         </Link>
       ) : (

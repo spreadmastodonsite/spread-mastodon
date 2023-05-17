@@ -2,32 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Icon from '../atoms/icon';
-import axios from 'axios';
-
-const menuList = [
-  {
-    title: 'Home',
-    url: '/',
-  },
-  {
-    title: 'Privacy Policy',
-    url: '/privacy-policy',
-    sub: [
-      {
-        title: 'lorem',
-        url: '/#',
-      },
-      {
-        title: 'lorem',
-        url: '/$',
-      },
-    ],
-  },
-  {
-    title: 'impsum',
-    url: '/#',
-  },
-];
+import { NavMenu as data } from '../../../data/utilities/navMenu';
 
 export default function Nav() {
   const [menuState, setMenuState] = React.useState(false);
@@ -92,7 +67,7 @@ export default function Nav() {
         <div className={`u-nav-menu ${menuState && 'u-nav-menu--open'}`}>
           <nav>
             <ul className="u-nav-menu__list">
-              {menuList.map((item, i) => {
+              {data.map((item, i) => {
                 return (
                   <li
                     key={item.title + i}
