@@ -69,9 +69,9 @@ export default function FollowSuggestions() {
     // if checked add selected tags to the array
     if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
-      setIsChecked(false);
+      e.target.checked = true
     } else if (!checked) {
-      setIsChecked(true);
+      e.target.checked = false
       const updatedTags = [...selectedTags];
       setSelectedTags(
         updatedTags.filter((tag) => {
