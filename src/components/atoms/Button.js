@@ -23,10 +23,6 @@ export default function Button({
     }
   };
 
-  // const handleLinkClick = (e) => {
-  //   window.scroll.position.y = 0;
-  // };
-
   const content = loading ? 'Loading...' : text;
   const linkProps = typeof link === 'string' ? { href: link } : link;
 
