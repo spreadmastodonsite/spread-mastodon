@@ -8,7 +8,7 @@ export const joinData = {
   },
   heading: {
     textOne: 'Welcome to your',
-    textRotate: ['better', 'ad-free', 'open'],
+    textRotate: ['Better', 'Open', 'Add-Free'],
     textTwo: 'social home',
   },
   cards: [

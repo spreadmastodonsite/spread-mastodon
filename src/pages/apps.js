@@ -57,7 +57,8 @@ export default function MastodonApps() {
                 <Button
                   className="c-app__content--button"
                   text="View Details & install"
-                  link=""
+                  newTab={true}
+                  link="https://apps.apple.com/us/app/ice-cubes-for-mastodon/id6444915884"
                 />
               </div>
             </div>
@@ -65,17 +66,29 @@ export default function MastodonApps() {
               <h4 className="u-heading--xl">More Great Apps</h4>
               <ul className="c-other-apps__list">
                 <li className="c-other-apps__list-item">
-                  <a className="c-link" href="">
+                  <a
+                    className="c-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://joinmastodon.org/apps">
                     Other iOS apps
                   </a>
                 </li>
                 <li className="c-other-apps__list-item">
-                  <a className="c-link" href="">
+                  <a
+                    className="c-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://joinmastodon.org/apps">
                     Mac Desktop apps
                   </a>
                 </li>
                 <li className="c-other-apps__list-item">
-                  <a className="c-link" href="">
+                  <a
+                    className="c-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://joinmastodon.org/apps">
                     Android Apps
                   </a>
                 </li>

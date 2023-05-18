@@ -1,20 +1,20 @@
 .l-main {
   max-width: 1260px;
   margin: 0 auto;
-  padding-top: var(--space-xl);
+  padding-top: var(--space-lg);
   border-radius: var(--border-radius--lg);
 }
 
 .c-page__interior.l-main {
   background: var(--secondary-background);
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-lg);
   padding-right: var(--space-2xl);
   padding-bottom: var(--space-2xl);
   padding-left: var(--space-2xl);
 }
 
 .l-footer {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-xs);
   padding-bottom: var(--space-xl);
 }
 

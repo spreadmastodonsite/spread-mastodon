@@ -8,6 +8,7 @@ export default function Button({
   type,
   link,
   onClick,
+  newTab = false,
   loading = false,
   ...props
 }) {
@@ -22,25 +23,23 @@ export default function Button({
     }
   };
 
-  const handleLinkClick = (e) => {
-    window.scroll.position.y = 0;
-  };
-
   const content = loading ? 'Loading...' : text;
-
   const linkProps = typeof link === 'string' ? { href: link } : link;
+
+  const target = newTab ? '_blank' : '_self';
+  const rel = newTab ? 'noopener noreferrer' : '';
 
   return (
     <>
       {link ? (
-        <Link
-          scroll={true}
+        <a
+          target={target}
+          rel={rel}
           className={componentClassName}
           {...linkProps}
-          {...props}
-          onClick={handleLinkClick}>
+          {...props}>
           {content}
-        </Link>
+        </a>
       ) : (
         <button
           type={type}

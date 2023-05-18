@@ -35,7 +35,6 @@
 }
 
 .c-stepper-header__heading {
-  margin-bottom: var(--space);
   font-weight: var(--font-normal);
   font-size: var(--font-size-4xl);
 }

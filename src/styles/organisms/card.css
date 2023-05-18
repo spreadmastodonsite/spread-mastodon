@@ -1,7 +1,7 @@
 /* Card */
 
 .c-card__container {
-  padding: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
   justify-items: center;
 }
 
@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   padding: var(--space-xl);
   background-color: var(--secondary-background);
   border-radius: var(--border-radius);
@@ -48,6 +48,7 @@
 .c-card__title {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-bold);
+  line-height: 1.2;
 }
 
 .c-card--basic:focus-within,

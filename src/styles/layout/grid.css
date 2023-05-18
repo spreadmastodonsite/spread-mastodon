@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-auto-flow: row;
-  gap: var(--grid-gap);
+  column-gap: var(--grid-gap);
+  row-gap: var(--grid-gap-row);
 }
 
 .l-grid__column--xs {
