@@ -71,6 +71,7 @@ export default function FindFriends() {
                 </p>
                 <Button
                   link="https://whosum.com/assistant"
+                  newTab={true}
                   text="View details & Install"
                 />
               </Card>

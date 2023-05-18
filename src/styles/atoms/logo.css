@@ -1,7 +1,11 @@
 /* Logo */
 .c-logo {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
   display: inline-block;
+  margin-top: calc(var(--space-3xl) * -1);
+}
+.c-logo--small {
+  margin-top: calc(var(--space-xl) * -1);
 }
 
 .c-page__interior .c-logo {

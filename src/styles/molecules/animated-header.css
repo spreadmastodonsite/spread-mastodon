@@ -15,13 +15,13 @@
 
 /* Container for textOne and Rotate Text */
 .c-animated-header .c-animated-header--content {
-  transform: translateX(-11%);
+  transform: translateX(-10%);
 }
 
 /* Rotate Text before styles for content and textOne */
 .c-animated-header.c-animated-header--rotate-before
   .c-animated-header--content {
-  transform: translateX(0);
+  transform: translateX(-4%);
   display: grid;
   position: relative;
   grid-template-columns: repeat(2, 1fr);
@@ -68,7 +68,7 @@
 /* When there is only textOne and rotateText, pushes rotate text to a new */
 .c-animated-header--rotate-newline .c-animated-header--content {
   transform: translateX(0);
-  padding-bottom: 82px;
+  padding-bottom: 64px;
 }
 
 @media all and (max-width: 786px) {

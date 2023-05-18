@@ -1,6 +1,6 @@
 .c-profile-box {
   background-color: var(--c-gray);
-  padding: var(--space-3xl) var(--space-3xl) var(--space-4xl);
+  padding: var(--space-xl) var(--space-3xl) var(--space-4xl) var(--space-3xl);
   margin-top: 0;
   margin-bottom: var(--space-3xl);
   column-gap: var(--space-4xl);
@@ -126,12 +126,12 @@
 }
 
 .c-profile-success__content {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .c-profile-success__title {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xl);
 }
 
 .c-profile-success__sub-title {
@@ -142,7 +142,7 @@
   display: flex;
   justify-content: center;
   margin-right: var(--space-xl);
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-sm);
   margin-left: var(--space-xl);
 }
 .c-profile-success__buttons .c-button {

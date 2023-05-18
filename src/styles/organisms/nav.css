@@ -75,6 +75,11 @@
 
 .u-nav-menu__list__item a {
   padding: var(--space-xs);
+  transition: all 0.2s ease-in-out;
+}
+
+.u-nav-menu__list__item a:hover {
+  color: var(--link-color);
 }
 
 .u-nav-menu__list__item__menu {

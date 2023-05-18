@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Logo({ className, variant = 'small' }) {
-  const componentClassName = cx('c-logo', className, {});
+  const componentClassName = cx('c-logo', className, {
+    'c-logo--small': variant === 'small',
+  });
 
   return (
     <Link href="/" className={componentClassName}>

@@ -21,6 +21,6 @@ export const appsData = {
   // },
   ctaButton: {
     text: 'Want More Ideas?',
-    link: '#',
+    link: '/more-ways-to-enhance',
   },
 };

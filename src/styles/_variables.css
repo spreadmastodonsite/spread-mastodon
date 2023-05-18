@@ -3,7 +3,6 @@
   --c-purple-300: #8c8dff;
   --c-purple-500: #6364ff;
   --c-purple-600: #7a86e6;
-  
 
   /* ** util colors ** */
   --c-white: #ffffff;
@@ -60,6 +59,7 @@
   --space-5xl: calc(var(--space) * 5); /* 80px */
 
   --grid-gap: var(--space-lg);
+  --grid-gap-row: var(--space-lg);
 
   --border-radius--sm: var(--space-xs);
   --border-radius: var(--space-md);

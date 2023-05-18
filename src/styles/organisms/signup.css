@@ -34,12 +34,12 @@
 }
 
 .c-signup-success__content {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .c-signup-success__title {
   margin-top: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-lg);
 }
 
 .c-signup-success__sub-title {

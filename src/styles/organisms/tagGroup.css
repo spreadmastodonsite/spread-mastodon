@@ -3,6 +3,12 @@
   justify-content: space-between;
   margin-bottom: var(--space-lg);
   border: solid 4px #191b22;
+  transition: border 0.2s ease-in-out;
+}
+
+.tag-group:focus-within,
+.tag-group:hover {
+  border: 4px solid var(--c-primary);
 }
 
 .tag-group__category {
@@ -19,5 +25,11 @@
   gap: var(--space-sm);
   padding: var(--space-2xl);
   border-left: solid 4px #191b22;
+  transition: border-color 0.2s ease-in-out;
   flex-shrink: 0;
+}
+
+.tag-group:focus-within .tag-group__input,
+.tag-group:hover .tag-group__input {
+  border-color: var(--c-primary);
 }
