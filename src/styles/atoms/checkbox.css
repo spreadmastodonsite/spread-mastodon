@@ -8,6 +8,7 @@
   height: 23px;
   background-color: #eee;
   border-radius: 4px;
+  flex-shrink: 0;
 }
 
 .c-checkbox__input {

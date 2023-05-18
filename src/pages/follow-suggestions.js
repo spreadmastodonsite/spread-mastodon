@@ -14,6 +14,7 @@ import GridItem from '@/components/layout/GridItem';
 import { followSuggestionsData as data } from '/data/followSuggestions';
 import Checkbox from '@/components/atoms/checkbox';
 import Modal from '@/components/Organism/Modal';
+import Icon from '@/components/atoms/icon';
 
 export default function FollowSuggestions() {
   const [loading, setLoading] = useState(false);
@@ -219,6 +220,13 @@ export default function FollowSuggestions() {
                             className="c-follow-category__card"
                             key={category.title}
                             variant="basic">
+                            {category.icon && (
+                              <Icon
+                                width={28}
+                                height={28}
+                                iconName={category.icon}
+                              />
+                            )}
                             <div className="c-follow-category">
                               <div className="c-follow-category--content">
                                 <p>{category.title}</p>

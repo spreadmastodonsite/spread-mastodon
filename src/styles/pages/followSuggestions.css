@@ -6,8 +6,19 @@
 }
 
 .c-follow-category__card .c-card__content {
+  flex-direction: row;
+  gap: var(--space-lg);
+  align-items: flex-start;
   padding: 0;
   width: 100%;
+}
+
+@media all and (max-width: 576px) {
+  .c-follow-category__card .c-card__content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+  }
 }
 
 .c-follow-category {

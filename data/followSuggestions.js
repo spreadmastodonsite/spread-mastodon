@@ -25,6 +25,7 @@ export const followSuggestionsData = {
   suggestedUsers: [
     {
       title: 'Top Posts and Follow Suggestions',
+      icon: 'trophy',
       accounts: [
         {
           id: '109390969127442952',
@@ -49,7 +50,8 @@ export const followSuggestionsData = {
       ],
     },
     {
-      title: 'topic curators',
+      title: 'Topic Curators',
+      icon: 'scroll',
       accounts: [
         {
           id: '110101000248939313',
@@ -100,6 +102,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Columnist and News',
+      icon: 'newspaper-clipping',
       accounts: [
         {
           id: '109372627908158638',
@@ -140,6 +143,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'News and Journalism',
+      icon: 'microphone-stage',
       accounts: [
         {
           id: '109297938816143758',
@@ -200,6 +204,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Tech',
+      icon: 'command',
       accounts: [
         {
           id: '110140463417280023',
@@ -270,6 +275,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Medical and Covid',
+      icon: 'face-mask',
       accounts: [
         {
           id: '109285286043964654',
@@ -325,6 +331,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Media',
+      icon: 'television',
       accounts: [
         {
           id: '109243139631965273',
@@ -375,6 +382,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Politics',
+      icon: 'seal',
       accounts: [
         {
           id: '109253075745809751',
@@ -435,6 +443,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Culture',
+      icon: 'palette',
       accounts: [
         {
           id: '109487087607040696',
@@ -485,6 +494,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Authors',
+      icon: 'pen',
       accounts: [
         {
           id: '109292929514346332',
@@ -570,6 +580,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Activism and Advocacy',
+      icon: 'fist',
       accounts: [
         {
           id: '109283969134372186',
@@ -640,6 +651,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Law/Legal',
+      icon: 'scales',
       accounts: [
         {
           id: '109299996650199026',
@@ -695,6 +707,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Science',
+      icon: 'rocket',
       accounts: [
         {
           id: '109304464942897108',
@@ -745,6 +758,7 @@ export const followSuggestionsData = {
     },
     {
       title: 'Mastodon tips and updates',
+      icon: 'lightbulb',
       accounts: [
         {
           id: '1323892',
