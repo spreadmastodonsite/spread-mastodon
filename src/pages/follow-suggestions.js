@@ -192,10 +192,7 @@ export default function FollowSuggestions() {
                   <Card variant="basic">
                     <div className="c-follow-category">
                       <div className="c-follow-category--content">
-                        <p>
-                          This may take awhile. Feel free to navigate away from
-                          this page.
-                        </p>
+                        <p>{data.loadingExplainerText}</p>
                       </div>
                     </div>
                   </Card>

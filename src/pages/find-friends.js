@@ -36,26 +36,12 @@ export default function FindFriends() {
           <Grid className="u-margin-bottom--2xl c-find-friends__grid">
             <GridItem columnStart={2} columnEnd={8}>
               <div className="c-find-friends__content">
-                <p className="u-body--copy">
-                  Although Twitter has shut down most tools for discovering your
-                  Twitter friends on Mastodon, there is a browser extension that
-                  lets you index your Twitter followers, and then match them to
-                  Mastodon users.
-                </p>
-                <p className="u-body--copy">
-                  <strong>
-                    Once you install it, go to your Twitter followers, scan
-                    them, and then sync those to Mastodon users.
-                  </strong>
-                </p>
-                <p className="u-body--copy">
-                  <Link
-                    className="c-link"
-                    href="https://scafaria.com/whosum-and-the-mastodon-migration-3855788c6373">
-                    Find out more
-                  </Link>
-                  , and try it out today!
-                </p>
+                {data.paragraphs.map((paragraph, index) => (
+                  <div
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: paragraph.text }}
+                  />
+                ))}
               </div>
             </GridItem>
             <GridItem columnStart={8} columnEnd={12}>
