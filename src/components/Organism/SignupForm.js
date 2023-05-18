@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 import cx from 'classnames';
 import Button from '../atoms/Button';
@@ -13,7 +12,6 @@ import Icon from '../atoms/icon';
 import AuthenticateUserForm from './authenticateUserForm';
 
 export default function SignupForm() {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -39,7 +37,7 @@ export default function SignupForm() {
 
   const onSubmit = async (data) => {
     setLoading(true);
-
+    setResponseMessage(``);
     if (!acceptedTerms) {
       setResponseMessage('Error: Please accept the Terms of Service');
       return;
@@ -47,6 +45,7 @@ export default function SignupForm() {
 
     if (password !== confirmPassword) {
       setResponseMessage('Error: Passwords do not match');
+      setLoading(false);
       return;
     }
 
@@ -60,7 +59,10 @@ export default function SignupForm() {
       setResponseMessage(`Account created successfully`);
     } catch (error) {
       setResponseMessage(
-        `Error: ${JSON.stringify(error.response.data.error.error)}`,
+        `${JSON.stringify(error.response.data.error.error).replace(
+          /^Validation failed: /,
+          '',
+        )}`,
       );
     }
 
@@ -94,7 +96,6 @@ export default function SignupForm() {
       </Grid>
       <AuthenticateUserForm />
       <Grid className="c-signup-success__buttons" variant="autoFit">
-        {/* <Button link="/update-account" text="Add Your Profile Basics!" /> */}
         <Button
           link={data.successButtonOne.link}
           text={data.successButtonOne.text}
@@ -127,6 +128,11 @@ export default function SignupForm() {
               <label className="u-visually-hidden" htmlFor="email">
                 Email:
               </label>
+              {errors.email && (
+                <span className="u-margin-bottom--sm u-display--inline-block">
+                  {errors.email.message}
+                </span>
+              )}
               <input
                 id="email"
                 type="email"
@@ -136,12 +142,16 @@ export default function SignupForm() {
                 } `}
                 {...register('email', { required: 'Email is required' })}
               />
-              {errors.email && <span>{errors.email.message}</span>}
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" htmlFor="displayName">
                 Display Name:
               </label>
+              {errors.displayName && (
+                <span className="u-margin-bottom--sm u-display--inline-block">
+                  {errors.displayName.message}
+                </span>
+              )}
               <input
                 id="displayName"
                 type="text"
@@ -151,12 +161,16 @@ export default function SignupForm() {
                 } `}
                 {...register('displayName')}
               />
-              {errors.displayName && <span>{errors.displayName.message}</span>}
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" htmlFor="username">
                 Username:
               </label>
+              {errors.username && (
+                <span className="u-margin-bottom--sm u-display--inline-block">
+                  {errors.username.message}
+                </span>
+              )}
               <input
                 id="username"
                 type="text"
@@ -166,12 +180,16 @@ export default function SignupForm() {
                 } `}
                 {...register('username', { required: 'Username is required' })}
               />
-              {errors.username && <span>{errors.username.message}</span>}
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" hidden htmlFor="password">
                 Password:
               </label>
+              {errors.password && (
+                <span className="u-margin-bottom--sm u-display--inline-block">
+                  {errors.password.message}
+                </span>
+              )}
               <input
                 id="password"
                 type="password"
@@ -181,7 +199,6 @@ export default function SignupForm() {
                 } `}
                 {...register('password', { required: 'Password is required' })}
               />
-              {errors.password && <span>{errors.password.message}</span>}
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" htmlFor="confirmPassword">
@@ -223,7 +240,11 @@ export default function SignupForm() {
                 type="submit"
                 text={data.formButton.text}
               />
-              {responseMessage && <div>{responseMessage}</div>}
+              {responseMessage && (
+                <p className="u-margin-top--lg u-body--copy">
+                  {responseMessage}
+                </p>
+              )}
             </GridItem>
           </Grid>
         </form>

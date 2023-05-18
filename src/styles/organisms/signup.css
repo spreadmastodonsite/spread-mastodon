@@ -28,8 +28,13 @@
   margin-right: 10px;
 }
 
+.c-signup-form__input--error {
+  border-color: red;
+  border-width: 2px;
+}
+
 .c-signup-success__content {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .c-signup-success__title {

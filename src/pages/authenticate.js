@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -13,25 +14,17 @@ import Logo from '@/components/atoms/Logo';
 export default function AuthenticateUser() {
   const router = useRouter();
 
-  // Declare state variables
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
     useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
-
-  // Handle email input change
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  // Handle password input change
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   // Authenticate the user with the provided email and password
   const authenticateUser = async (email, password) => {
@@ -82,12 +75,11 @@ export default function AuthenticateUser() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     setLoading(true);
 
     try {
-      const accessToken = await authenticateUser(email, password);
+      const accessToken = await authenticateUser(data.email, data.password);
       await verifyUserAccount(accessToken);
 
       // Call the handle submit success function
@@ -95,7 +87,6 @@ export default function AuthenticateUser() {
     } catch (error) {
       setValidationMessage(error.message);
     }
-
     setLoading(false);
   };
 
@@ -138,7 +129,7 @@ export default function AuthenticateUser() {
             {verifiedAndAuthenticated || storedAccessToken ? (
               // If already authenticated, display appropriate message
               <>
-                {validationMessage && <div>{validationMessage}</div>}
+                {validationMessage && <p>{validationMessage}</p>}
                 <p className="u-margin-bottom--2xl u-text-align--center u-body--lg">
                   You are already authenticated as {user}. Please click a button
                   below to continue.
@@ -156,39 +147,77 @@ export default function AuthenticateUser() {
                   {data.heading.text}{' '}
                 </h2>
                 <p className="u-body--lg">{data.subHeading.text}</p>
-                <form className="c-authenticate-form" onSubmit={handleSubmit}>
-                  <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={handleEmailChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                      id="password"
-                      type="password"
-                      required
-                      value={password}
-                      onChange={handlePasswordChange}
-                    />
-                  </div>
+                <form
+                  className="c-authenticate-form"
+                  onSubmit={handleSubmit(onSubmit)}>
+                  <Grid className="c-grid__signup-form">
+                    <GridItem columnStart={2} columnEnd={12}>
+                      <label className="u-visually-hidden" htmlFor="email">
+                        Email:
+                      </label>
+                      {errors.email && (
+                        <span className="u-margin-bottom--sm u-display--inline-block">
+                          {errors.email.message}
+                        </span>
+                      )}
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        className={`c-signup-form__input ${
+                          errors.email && 'c-signup-form__input--error'
+                        }`}
+                        {...register('email', {
+                          required: 'Email is required',
+                        })}
+                      />
+                    </GridItem>
+                    <GridItem columnStart={2} columnEnd={12}>
+                      <label className="u-visually-hidden" htmlFor="password">
+                        Password:
+                      </label>
+                      {errors.password && (
+                        <span className="u-margin-bottom--sm u-display--inline-block">
+                          {errors.password.message}
+                        </span>
+                      )}
+                      <input
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        className={`c-signup-form__input ${
+                          errors.password && 'c-signup-form__input--error'
+                        }`}
+                        {...register('password', {
+                          required: 'Password is required',
+                        })}
+                      />
+                    </GridItem>
+                  </Grid>
                   {loading ? (
-                    <div>Loading...</div>
+                    <Grid>
+                      <GridItem columnStart={2} columnEnd={12}>
+                        <div>Loading...</div>
+                      </GridItem>
+                    </Grid>
                   ) : (
                     // Shows the validation message if there the page doesn't redirect
-                    <p>
-                      {validationMessage && <div>{validationMessage}</div>}
-                      <Button
-                        className="c-button__auth"
-                        type="submit"
-                        text="Log in &amp; Authenticate"
-                      />
-                    </p>
+                    <Grid>
+                      <GridItem columnStart={2} columnEnd={12}>
+                        <div>
+                          {validationMessage && (
+                            <p className="u-margin-top--lg u-body--copy">
+                              {validationMessage}
+                            </p>
+                          )}
+                        </div>
+                        <Button
+                          className="c-button__auth"
+                          type="submit"
+                          text="Log in &amp; Authenticate"
+                        />
+                      </GridItem>
+                    </Grid>
                   )}
                 </form>
               </>
