@@ -27,6 +27,6 @@
 }
 
 .c-find-friends__card .c-button {
-  text-align: left;
+  text-align: center;
   margin-top: var(--space-lg);
 }

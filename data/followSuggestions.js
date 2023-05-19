@@ -17,6 +17,8 @@ export const followSuggestionsData = {
   secondHeading: { text: 'Great Accounts to Follow Now!' },
   explainerText:
     'Because Mastodon doesn’t feed content with an algorithm, it’s important to follow more people than on other platforms. We suggest selecting and following all (you can always unfollow anyone later). ',
+  loadingExplainerText:
+    'This may take awhile. Feel free to navigate away from this page.',
   followAllSuccess: { text: 'You are now following all suggested users' },
   followAllButton: { text: 'Select All Categories' },
   followSelectedCategoriesButton: { text: 'Follow Selected Categories' },
