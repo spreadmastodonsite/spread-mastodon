@@ -47,6 +47,6 @@ export const moreWaysToShareData = {
   ],
   ctaButton: {
     text: 'View More',
-    link: '/even-more-ways-to-share',
+    link: '/more-ways-to-share',
   },
 };
