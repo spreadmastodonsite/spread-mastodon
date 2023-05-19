@@ -31,3 +31,8 @@
 .c-button--secondary:hover {
   filter: brightness(85%);
 }
+
+.c-button--small {
+  background-color: var(--c-primary);
+  padding: 0.25rem;
+}

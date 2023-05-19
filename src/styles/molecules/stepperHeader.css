@@ -35,6 +35,7 @@
 }
 
 .c-stepper-header__heading {
+  margin-bottom: var(--space-sm);
   font-weight: var(--font-normal);
   font-size: var(--font-size-4xl);
 }
@@ -46,4 +47,5 @@
 .c-stepper-header__hr {
   margin-bottom: var(--space-2xl);
   color: #1f2023;
+  opacity: 0.1;
 }

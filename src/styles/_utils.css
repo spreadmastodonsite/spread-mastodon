@@ -65,6 +65,12 @@
   font-weight: var(--font-normal);
 }
 
+.u-body--md {
+  font-size: var(--font-size-md);
+  line-height: 145%;
+  font-weight: var(--font-normal);
+}
+
 .u-body--sm {
   font-size: var(--font-size-sm);
   line-height: 145%;

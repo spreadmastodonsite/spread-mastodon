@@ -20,9 +20,15 @@
 
 .content-wrapper {
   max-width: var(--max-width);
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space);
   margin-left: auto;
   margin-right: auto;
+}
+
+@media all and (min-width: 768px) {
+  .content-wrapper {
+    padding: 0 var(--space-xl);
+  }
 }
 
 .c-link {

@@ -37,6 +37,7 @@
   --font-size-xs: calc(var(--font-size) * 0.5); /* 8px */
   --font-size-sm: calc(var(--font-size) * 0.75); /* 12px */
   --font-size: 1rem; /* 16px */
+  --font-size-md: calc(var(--font-size) * 1.13); /* 20px */
   --font-size-lg: calc(var(--font-size) * 1.25); /* 20px */
   --font-size-xl: calc(var(--font-size) * 1.5); /* 24px */
   --font-size-2xl: calc(var(--font-size) * 1.75); /* 28px */

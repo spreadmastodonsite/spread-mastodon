@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import Head from 'next/head';
+
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
-
 import Card from '@/components/Organism/Card';
 import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
 
 import { findFriendsData as data } from '/data/findFriends.js';
-import Link from 'next/link';
 
 export default function FindFriends() {
   return (
@@ -30,7 +29,7 @@ export default function FindFriends() {
             heading={data.heading.text}
             subHeading={data.subHeading.text}
           />
-          <p className="u-text-align--center u-body--lg u-margin-bottom--lg">
+          <p className="u-text-align--center u-body--lg u-margin-bottom--xl">
             {data.description.text}
           </p>
           <Grid className="u-margin-bottom--2xl c-find-friends__grid">
@@ -46,30 +45,31 @@ export default function FindFriends() {
             </GridItem>
             <GridItem columnStart={8} columnEnd={12}>
               <Card className="c-find-friends__card" variant="basic">
-                <span
-                  className="c-find-friends__card-logo u-heading--2xl"
-                  aria-hidden>
-                  + &#x3A3;
-                </span>
-                <h2 className="c-card__title ">Whosum Social Assistant</h2>
+                <img src="/whosum.png" alt="whosum" />
+                <h2 className="c-card__title">{data.appCard.title}</h2>
                 <p className="u-body--copy">
-                  Available for Chrome and Edge (Firefox coming soon).
+                  {data.appCard.description}
                 </p>
                 <Button
-                  link="https://whosum.com/assistant"
+                  link={data.appCard.buttonLink}
                   newTab={true}
-                  text="View details & Install"
+                  text={data.appCard.buttonText}
+                  variant="small"
                 />
               </Card>
             </GridItem>
           </Grid>
-          <Grid variant="autoFit">
-            <Button text={data.ctaButton.text} link={data.ctaButton.link} />
-            <Button
-              variant="secondary"
-              text={data.skipButton.text}
-              link={data.skipButton.link}
-            />
+          <Grid>
+            <GridItem columnStart={2} columnEnd={7}>
+              <Button text={data.ctaButton.text} link={data.ctaButton.link} />
+            </GridItem>
+            <GridItem columnStart={7} columnEnd={12}>
+              <Button
+                variant="secondary"
+                text={data.skipButton.text}
+                link={data.skipButton.link}
+              />
+            </GridItem>
           </Grid>
         </div>
       </main>
