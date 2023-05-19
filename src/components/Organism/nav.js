@@ -8,16 +8,24 @@ export default function Nav() {
   const [menuState, setMenuState] = React.useState(false);
   const [accountState, setAccountState] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedOut, setLoggedOut] = React.useState(false);
 
   const router = useRouter();
 
   const getAccount = () => {
-    const accessToken = sessionStorage.getItem('accessToken');
-    setLoggedIn(accessToken);
+    console.log('ran')
+    if (sessionStorage.getItem('accessToken')) {
+      setLoggedIn(true);
+    };
   };
 
   const LogOut = () => {
     sessionStorage.removeItem('accessToken');
+    setLoggedIn(false);
+    setLoggedOut(true);
+    setTimeout(() => {
+      setLoggedOut(false);
+    }, 1000);
   };
 
   const toggleAccount = () => {
@@ -29,10 +37,11 @@ export default function Nav() {
     setAccountState(false);
     setMenuState(!menuState);
   };
-
+  
   React.useEffect(() => {
+    router.events.on('routeChangeComplete', getAccount)
     getAccount();
-  }, []);
+  }, [router.events]);
   return (
     <div>
       <div className="u-nav-wrapper">
@@ -55,6 +64,11 @@ export default function Nav() {
                 Log out
               </Link>
             </div>
+          </div>
+        )}
+        {loggedOut && (
+          <div className="u-nav-logged-out">
+            <p>You have been logged out</p>
           </div>
         )}
         <button

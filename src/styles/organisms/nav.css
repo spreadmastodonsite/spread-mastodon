@@ -24,6 +24,11 @@
   transition: all 0.5s ease-out;
 }
 
+.u-nav-logged-out {
+  padding-top: var(--space-md);
+  margin-right: var(--space-lg);
+}
+
 .u-nav-button--open .u-nav-button__line:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
