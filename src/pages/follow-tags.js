@@ -70,7 +70,6 @@ export default function FollowSuggestions() {
     if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
       e.target.checked = true
-      
     } else if (!checked) {
       e.target.checked = false
       const updatedTags = [...selectedTags];
