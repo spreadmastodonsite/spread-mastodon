@@ -7,8 +7,8 @@ export const homepageData = {
   },
   heading: {
     textOne: 'Welcome to your',
-    textRotate: ['Open', 'Better', 'Ad-free'],
-    textTwo: 'Social Home',
+    textRotate: ['open', 'better', 'ad-free'],
+    textTwo: 'social home',
   },
   subHeading: {
     text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon with your friends and social networks.",
@@ -20,7 +20,7 @@ export const homepageData = {
       icon: 'join',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/join',
+      link: '/sign-up',
       linkText: 'Join',
     },
     {
@@ -29,7 +29,7 @@ export const homepageData = {
       icon: 'enrich',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/enhance-account',
+      link: '/follow-suggestions',
       linkText: 'Enrich',
     },
     {
