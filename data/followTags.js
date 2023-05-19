@@ -17,7 +17,7 @@ export const followTagsData = {
     partOne: 'Follow Topics You Care About',
     toolTip: {
       label: 'Notable',
-      value: 'Topics are selected based on most searched on Mastodon.',
+      value: 'Topics selected based on active and popular hashtags on the Mastodon network.',
     },
     partTwo: 'Hashtag Topics You May Be Interested In:',
   },
