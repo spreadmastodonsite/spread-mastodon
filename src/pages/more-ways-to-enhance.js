@@ -1,23 +1,13 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/Organism/Card';
 import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
 import Logo from '@/components/atoms/Logo';
+import { useRouter } from 'next/router';
 
 export default function MoreWaysToEnhance() {
-  const [origin, setOrigin] = useState();
-
   const router = useRouter();
-  const getOrigin = () => {
-    setOrigin(window.location.origin)
-  }
-
-  useEffect(() => {
-    getOrigin()
-  }, []);
   return (
     <div className="content-wrapper">
       <Head>
