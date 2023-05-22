@@ -112,7 +112,7 @@ export default function Join() {
   return (
     <div className="content-wrapper c-page__join">
       <Head>
-        <title>{data.metaData.title}</title>
+        <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href={data.metaData.icon} />
       </Head>

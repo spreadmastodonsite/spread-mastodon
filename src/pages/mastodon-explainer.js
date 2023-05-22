@@ -11,7 +11,7 @@ export default function MastodonExplainer() {
   return (
     <div className="content-wrapper">
       <Head>
-        <title>{data.metaData.title}</title>
+        <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
