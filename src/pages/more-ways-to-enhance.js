@@ -25,6 +25,7 @@ export default function MoreWaysToEnhance() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content={data.metaData.name} />
+        <meta property="og:description" content={data.metaData.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
         <meta property="og:image" content={`${origin}/spread_mastodon_share.jpg`} />
