@@ -163,23 +163,27 @@ export default function SignupForm() {
               />
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
-              <label className="u-visually-hidden" htmlFor="username">
-                Username:
-              </label>
-              {errors.username && (
-                <span className="u-margin-bottom--sm u-display--inline-block">
-                  {errors.username.message}
-                </span>
-              )}
-              <input
-                id="username"
-                type="text"
-                placeholder="username@mastodon.social"
-                className={`c-signup-form__input ${
-                  errors.username && 'c-signup-form__input--error'
-                } `}
-                {...register('username', { required: 'Username is required' })}
-              />
+              <div className="c-signup-form__input--with-float">
+                <label className="u-visually-hidden" htmlFor="username">
+                  Username:
+                </label>
+                {errors.username && (
+                  <span className="u-margin-bottom--sm u-display--inline-block">
+                    {errors.username.message}
+                  </span>
+                )}
+                <input
+                  id="username"
+                  type="text"
+                  placeholder="username"
+                  className={`c-signup-form__input ${
+                    errors.username && 'c-signup-form__input--error'
+                  } `}
+                  {...register('username', { required: 'Username is required' })}
+                />
+                <span className="label_input__append">@mastodon.social</span>
+              </div>
+              <span className="c-field-note">You can use letters, numbers, and underscores</span>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" hidden htmlFor="password">

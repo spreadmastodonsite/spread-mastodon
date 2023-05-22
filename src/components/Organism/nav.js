@@ -13,7 +13,6 @@ export default function Nav() {
   const router = useRouter();
 
   const getAccount = () => {
-    console.log('ran')
     if (sessionStorage.getItem('accessToken')) {
       setLoggedIn(true);
     };

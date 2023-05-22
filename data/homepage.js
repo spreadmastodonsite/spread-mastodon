@@ -44,6 +44,6 @@ export const homepageData = {
   ],
   disclaimer: {
     text: 'This site is not affiliated with Mastodon 9GMBH.',
-    copyright: '© 2023 Spread Mastodon. All Rights Reserved.',
+    copyright: '© 2023 Spread Mastodon.',
   },
 };

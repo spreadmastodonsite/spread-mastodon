@@ -33,6 +33,26 @@
   border-width: 2px;
 }
 
+.c-signup-form__input--with-float {
+  position: relative;
+}
+
+.c-signup-form__input--with-float .label_input__append {
+  position: absolute;
+  right: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  color: #222;
+  opacity: 0.7;
+}
+
+.c-field-note {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: var(--font-size);
+  margin-bottom: calc(var(--space-sm) * -1);
+}
+
 .c-signup-success__content {
   margin-bottom: var(--space-xl);
 }
