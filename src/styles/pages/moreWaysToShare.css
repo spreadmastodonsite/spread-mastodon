@@ -3,3 +3,24 @@
 .c-more-ways-to-share .l-grid {
   margin-top: var(--space-3xl);
 }
+
+.c-more-ways-to-share__card {
+  position: relative;
+}
+
+.c-more-ways-to-share__card:hover {
+  background-color: var(--c-purple-500);
+}
+
+.c-more-ways-to-share__card:hover .c-card__link {
+  color: var(--white);
+}
+
+.c-more-ways-to-share__card .c-card__link:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import cx from 'classnames';
 import Button from '../atoms/Button';
 import Icon from '../atoms/icon';
@@ -20,6 +21,8 @@ export default function Card({
     [`c-card--basic`]: variant === 'basic',
   });
 
+  const [isShown, setIsShown] = useState(false);
+
   const content = (
     <div className="c-card__content">
       {variant === 'basic' ? (
@@ -29,9 +32,9 @@ export default function Card({
               {description}{' '}
               <Icon
                 className="c-card__link-icon"
-                iconName="caret-right"
+                iconName={isShown ? "caret-right-white" : "caret-right"}
                 width={24}
-                height={32}
+                height={24}
               />
             </Link>
           )}
@@ -48,7 +51,11 @@ export default function Card({
   );
 
   return (
-    <div className={componentClassName}>
+    <div
+      className={componentClassName}
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+    >
       {iconName && (
         <div className="c-card__icon">
           <Icon

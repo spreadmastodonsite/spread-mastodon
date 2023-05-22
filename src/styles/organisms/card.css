@@ -78,6 +78,7 @@
 .c-card__link-icon {
   display: inline-block;
   padding-top: var(--space-xs);
+  position: absolute;
 }
 
 .c-card--basic:focus-within .c-card__link,

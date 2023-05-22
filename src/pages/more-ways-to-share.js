@@ -12,7 +12,7 @@ export default function MoreWaysToShare() {
   return (
     <div className="content-wrapper">
       <Head>
-        <title>Spread Mastodon - {data.metaData.title}</title>
+        <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -40,7 +40,7 @@ export default function MoreWaysToShare() {
           className="u-text-align--center">
           {data.cards.map((card, i) => (
             <Card
-              key={card.title + i}
+              key={card.description + i}
               className="c-more-ways-to-share__card"
               description={card.description}
               variant="basic"
