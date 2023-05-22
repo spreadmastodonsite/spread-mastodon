@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/Organism/Card';
@@ -7,8 +8,16 @@ import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
 import Logo from '@/components/atoms/Logo';
 
 export default function MoreWaysToEnhance() {
-  const router = useRouter();
+  const [origin, setOrigin] = useState();
 
+  const router = useRouter();
+  const getOrigin = () => {
+    setOrigin(window.location.origin)
+  }
+
+  useEffect(() => {
+    getOrigin()
+  }, []);
   return (
     <div className="content-wrapper">
       <Head>
@@ -18,10 +27,10 @@ export default function MoreWaysToEnhance() {
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="/spread_mastodon_share.jpg" />
+        <meta property="og:image" content={`${origin}/spread_mastodon_share.jpg`} />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="/spread_mastodon_share.jpg" />
+        <meta name="twitter:image" content={`${origin}/spread_mastodon_share.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
