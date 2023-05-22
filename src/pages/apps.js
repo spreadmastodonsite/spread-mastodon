@@ -79,8 +79,8 @@ export default function MastodonApps() {
                     className="c-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://joinmastodon.org/apps">
-                    Mac Desktop apps
+                    href="https://www.apple.com/us/search/mastodon?src=globalnav">
+                    Mac desktop apps
                   </a>
                 </li>
                 <li className="c-other-apps__list-item">
@@ -88,8 +88,8 @@ export default function MastodonApps() {
                     className="c-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://joinmastodon.org/apps">
-                    Android Apps
+                    href="https://play.google.com/store/search?q=mastodon&c=apps">
+                    Android apps
                   </a>
                 </li>
               </ul>
