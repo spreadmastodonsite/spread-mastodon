@@ -28,6 +28,15 @@
   margin-right: 10px;
 }
 
+.c-agreement a {
+  color: var(--c-purple-300);
+  transition: all 0.2s ease-in-out;
+}
+
+.c-agreement a:hover {
+  color: var(--c-purple-500);
+}
+
 .c-signup-form__input--error {
   border-color: red;
   border-width: 2px;

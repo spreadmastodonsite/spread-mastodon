@@ -3,6 +3,8 @@
   margin-bottom: var(--space-2xl);
   display: inline-block;
   margin-top: calc(var(--space-3xl) * -1);
+  position: relative;
+  z-index: 9999;
 }
 .c-logo--small {
   margin-top: calc(var(--space-xl) * -1);

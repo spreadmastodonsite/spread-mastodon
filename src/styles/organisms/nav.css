@@ -3,6 +3,7 @@
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
+  max-width: calc(var(--max-width) - var(--space-2xl));
 }
 
 .u-nav-button {
@@ -51,13 +52,13 @@
   background-color: var(--c-black-600);
   box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
   padding: var(--space) 0 var(--space-4xl) var(--space-3xl);
-  transform: translateX(100%);
+  transform: translateY(-100%);
   transition: all 0.5s ease-out;
   opacity: 0;
 }
 
 .u-nav-menu--open {
-  transform: translateX(0%);
+  transform: translateY(0%);
   opacity: 1;
 }
 

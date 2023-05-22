@@ -230,8 +230,7 @@ export default function SignupForm() {
                     type="checkbox"
                     onChange={handleCheckboxChange}
                   />
-                  I have read and agree with the community server rules and
-                  privacy policies.
+                  I have read and agree to the <a href="https://mastodon.social/privacy-policy">privacy policy</a> and <a href="https://mastodon.social/about">community server rules</a>.
                 </label>
                 {!acceptedTerms && (
                   <span>Please accept the Terms of Service</span>
