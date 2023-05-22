@@ -103,3 +103,8 @@
 .c-card--share p {
   font-size: var(--font-size-xl);
 }
+
+.share-block {
+  display: block;
+  margin-top: var(--space-lg);
+}

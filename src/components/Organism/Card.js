@@ -39,7 +39,7 @@ export default function Card({
         </>
       ) : (
         <>
-          {description && <p className="u-body-copy">{description}</p>}
+          {description && <p className="u-body-copy" dangerouslySetInnerHTML={{ __html: description }} />}
           {linkText && <Button text={linkText} link={link} />}
           {children}
         </>

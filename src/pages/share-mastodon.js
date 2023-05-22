@@ -5,7 +5,7 @@ import GridItem from '@/components/layout/GridItem';
 import Button from '@/components/atoms/Button';
 import AnimatedHeader from '@/components/molecules/animatedHeader';
 
-import { shareMastonData as data } from '../../data/shareMastodon';
+import { shareMastoData as data } from '../../data/shareMastodon';
 import Logo from '@/components/atoms/Logo';
 
 export default function shareMastodon() {
