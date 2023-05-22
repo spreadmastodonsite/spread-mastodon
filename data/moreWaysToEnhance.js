@@ -1,6 +1,6 @@
 export const moreWaysToEnhanceData = {
   metaData: {
-    title: 'More Ways to Enhance Your Account',
+    title: 'Spread Mastodon - More Ways to Enhance Your Account',
     name: 'More Ways to Enhance Your Account',
     description:
       'Here are All Our Tips and Ideas for Getting Started on Mastodon',

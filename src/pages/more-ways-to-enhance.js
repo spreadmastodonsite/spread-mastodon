@@ -1,18 +1,28 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/Organism/Card';
-import Button from '@/components/atoms/Button';
 import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
 import Logo from '@/components/atoms/Logo';
 
 export default function MoreWaysToEnhance() {
+  const router = useRouter();
+
   return (
     <div className="content-wrapper">
       <Head>
-        <title>Spread Mastodon - {data.metaData.title}</title>
+        <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={data.metaData.name} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={router.pathname} />
+        <meta property="og:image" content="/spread_mastodon_share.jpg" />
+        <meta name="twitter:title" content={data.metaData.name} />
+        <meta name="twitter:description" content={data.metaData.description} />
+        <meta name="twitter:image" content="/spread_mastodon_share.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
       <main className="l-main">
