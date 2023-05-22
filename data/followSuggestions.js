@@ -18,7 +18,7 @@ export const followSuggestionsData = {
   explainerText:
     'Because Mastodon doesn’t feed content with an algorithm, it’s important to follow more people than on other platforms. We suggest selecting and following all (you can always unfollow anyone later). ',
   loadingExplainerText:
-    'This may take awhile. Feel free to navigate away from this page.',
+    'It may take up to fifteen minutes for all selected accounts to display in your feed. Please feel free to continue to the next step.',
   followAllSuccess: { text: 'You are now following all suggested users' },
   followAllButton: { text: 'Select All Categories' },
   followSelectedCategoriesButton: { text: 'Follow Selected Categories' },

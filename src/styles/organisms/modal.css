@@ -2,8 +2,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 50%;
-  min-height: 50%;
+  min-width: 30%;
+  min-height: 30%;
   background-color: var(--c-black-300);
   box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
   transform: translate(-50%, -50%);

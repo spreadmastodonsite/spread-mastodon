@@ -182,15 +182,16 @@ export default function FollowSuggestions() {
               </div>
 
               <Modal toggleValue={toggleValue}>
-                <h4>
+                <h4 className="u-margin-bottom--sm">
                   {responseMessage ? (
                     <span>{responseMessage}</span>
                   ) : (
-                    <span>You are now following:</span>
+                    <span>Success! Your account is now following:</span>
                   )}
                 </h4>
-                {followedTags && <p>{followedTags}</p>}
+                {followedTags && <p className="u-capitalize u-margin-bottom--sm">{followedTags}</p>}
                 {errorMessage && <p>{errorMessage}</p>} {''}
+                <p>You will now see posts from the selected hashtag(s) in your main Mastodon feed. Find out more about how to <a href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">follow and unfollow hashtags.</a></p>
               </Modal>
               <Button
                 className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"

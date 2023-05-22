@@ -68,3 +68,7 @@ ul {
 li {
   margin: 5px 0;
 }
+
+.u-capitalize {
+  text-transform: capitalize;
+}
