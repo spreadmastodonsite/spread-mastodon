@@ -14,7 +14,7 @@ export const EnhanceAccount = {
     text: 'Authenticate Account',
   },
   authSubHeading: {
-    text: 'Please sign in.',
+    text: 'After you log in with your Mastodon account, we can help to set you up with great users and topics to follow, and help you find your Twitter follows on Mastodon! You can revoke this permission at any time by using the controls in the upper right to log out.',
   },
   cards: [
     {
