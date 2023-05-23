@@ -20,7 +20,7 @@ export default function SignupForm() {
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [accountCreated, setAccountCreated] = useState(true);
+  const [accountCreated, setAccountCreated] = useState(false);
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');
