@@ -72,9 +72,9 @@ export default function FollowSuggestions() {
     // if checked add selected tags to the array
     if (checked) {
       setSelectedTags([...selectedTags, ...tags]);
-      e.target.checked = true
+      e.target.checked = true;
     } else if (!checked) {
-      e.target.checked = false
+      e.target.checked = false;
       const updatedTags = [...selectedTags];
       setSelectedTags(
         updatedTags.filter((tag) => {
@@ -117,10 +117,16 @@ export default function FollowSuggestions() {
         <meta property="og:description" content={data.metaData.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          property="og:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
@@ -201,9 +207,21 @@ export default function FollowSuggestions() {
                     <span>Success! Your account is now following:</span>
                   )}
                 </h4>
-                {followedTags && <p className="u-capitalize u-margin-bottom--sm">{followedTags}</p>}
-                {errorMessage && <p>{errorMessage}</p>} {''}
-                <p>You will now see posts from the selected hashtag(s) in your main Mastodon feed. Find out more about how to <a href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">follow and unfollow hashtags.</a></p>
+                {followedTags && (
+                  <p className="u-capitalize u-margin-bottom--sm">
+                    {followedTags}
+                  </p>
+                )}
+                {errorMessage && <p className="c-error">{errorMessage}</p>} {''}
+                <p>
+                  You will now see posts from the selected hashtag(s) in your
+                  main Mastodon feed. Find out more about how to{' '}
+                  <a
+                    className="c-link"
+                    href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">
+                    follow and unfollow hashtags.
+                  </a>
+                </p>
               </Modal>
               <Button
                 className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"
