@@ -20,7 +20,7 @@ export default function SignupForm() {
   } = useForm();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [accountCreated, setAccountCreated] = useState(false);
+  const [accountCreated, setAccountCreated] = useState(true);
   const username = watch('username', '');
   const displayName = watch('displayName', '');
   const password = watch('password', '');
@@ -86,7 +86,7 @@ export default function SignupForm() {
             <h2 className="c-signup-success__title u-heading--2xl">
               {data.successHeading.textOne}
               <br /> {data.successHeading.textTwo}{' '}
-              {displayName ? displayName : username}!
+              {displayName ? displayName : username} Msteimel!
             </h2>
             <p className="c-signup-success__sub-title">
               {data.successSubHeading.text}
@@ -129,7 +129,7 @@ export default function SignupForm() {
                 Email:
               </label>
               {errors.email && (
-                <span className="u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
                   {errors.email.message}
                 </span>
               )}
@@ -148,7 +148,7 @@ export default function SignupForm() {
                 Display Name:
               </label>
               {errors.displayName && (
-                <span className="u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
                   {errors.displayName.message}
                 </span>
               )}
@@ -168,7 +168,7 @@ export default function SignupForm() {
                   Username:
                 </label>
                 {errors.username && (
-                  <span className="u-margin-bottom--sm u-display--inline-block">
+                  <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
                     {errors.username.message}
                   </span>
                 )}
@@ -179,18 +179,22 @@ export default function SignupForm() {
                   className={`c-signup-form__input ${
                     errors.username && 'c-signup-form__input--error'
                   } `}
-                  {...register('username', { required: 'Username is required' })}
+                  {...register('username', {
+                    required: 'Username is required',
+                  })}
                 />
                 <span className="label_input__append">@mastodon.social</span>
               </div>
-              <span className="c-field-note">You can use letters, numbers, and underscores</span>
+              <span className="c-field-note">
+                You can use letters, numbers, and underscores
+              </span>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <label className="u-visually-hidden" hidden htmlFor="password">
                 Password:
               </label>
               {errors.password && (
-                <span className="u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
                   {errors.password.message}
                 </span>
               )}
@@ -230,7 +234,15 @@ export default function SignupForm() {
                     type="checkbox"
                     onChange={handleCheckboxChange}
                   />
-                  I have read and agree to the <a href="https://mastodon.social/privacy-policy">privacy policy</a> and <a href="https://mastodon.social/about">community server rules</a>.
+                  I have read and agree to the{' '}
+                  <a href="https://mastodon.social/privacy-policy">
+                    privacy policy
+                  </a>{' '}
+                  and{' '}
+                  <a href="https://mastodon.social/about">
+                    community server rules
+                  </a>
+                  .
                 </label>
                 {!acceptedTerms && (
                   <span>Please accept the Terms of Service</span>
@@ -244,7 +256,7 @@ export default function SignupForm() {
                 text={data.formButton.text}
               />
               {responseMessage && (
-                <p className="u-margin-top--lg u-body--copy">
+                <p className="c-error u-margin-top--lg u-body--copy">
                   {responseMessage}
                 </p>
               )}

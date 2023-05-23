@@ -25,7 +25,7 @@ export const signUpData = {
     textTwo: 'Welcome to Mastodon,',
   },
   successSubHeading: {
-    text: 'You are in! So What’s Next?',
+    text: "You're in! So What's Next?",
   },
   successButtonOne: {
     text: 'Add Your Profile Basics!',
