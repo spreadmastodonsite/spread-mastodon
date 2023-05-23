@@ -240,3 +240,18 @@
     grid-template-columns: 100%;
   }
 }
+
+.c-markdown__share {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.c-markdown__share--item {
+  transition: filter 0.2s ease-in-out;
+}
+
+.c-markdown__share--item:hover {
+  filter: brightness(85%);
+}
