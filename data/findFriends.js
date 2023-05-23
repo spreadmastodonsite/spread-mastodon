@@ -20,10 +20,10 @@ export const findFriendsData = {
       text: `<p class="u-body--lg">Although Twitter has shut down most tools for discovering your Twitter friends on Mastodon, there is a browser extension that lets you index your Twitter followers, and then match them to Mastodon users.</p>`,
     },
     {
-      text: `<p class="u-body--md"><strong>Once you install it, go to your Twitter followers, scan them, and then sync those to Mastodon users.</strong></p>`,
+      text: `<p class="u-body--lg"><strong>Once you install it, go to your Twitter followers, scan them, and then sync those to Mastodon users.</strong></p>`,
     },
     {
-      text: `<p class="u-body--md">
+      text: `<p class="u-body--lg">
       <a
         class="c-link"
         href="https://scafaria.com/whosum-and-the-mastodon-migration-3855788c6373">
@@ -33,10 +33,10 @@ export const findFriendsData = {
     },
   ],
   appCard: {
-      title: 'Whosum Social Assistant',
-      description: 'Available for Chrome and Edge (Firefox coming soon).',
-      buttonText: 'View Details & Install',
-      buttonLink: 'https://whosum.com/assistant'
+    title: 'Whosum Social Assistant',
+    description: 'Available for Chrome and Edge (Firefox coming soon).',
+    buttonText: 'View Details & Install',
+    buttonLink: 'https://whosum.com/assistant',
   },
   ctaButton: {
     text: 'Go to Step 4: Mastodon Is Different',

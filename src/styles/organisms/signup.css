@@ -38,7 +38,7 @@
 }
 
 .c-signup-form__input--error {
-  border-color: red;
+  border-color: var(--c-error);
   border-width: 2px;
 }
 
@@ -53,6 +53,12 @@
   transform: translateY(-50%);
   color: #222;
   opacity: 0.7;
+}
+
+.c-signup-form__input--with-float
+  .c-input-error__message
+  ~ .label_input__append {
+  top: 70%;
 }
 
 .c-field-note {
@@ -96,4 +102,9 @@
   .c-signup-success__buttons .c-button {
     font-size: var(--font-size-md);
   }
+}
+
+.c-error,
+.c-input-error__message {
+  color: var(--c-error);
 }
