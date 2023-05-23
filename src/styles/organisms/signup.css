@@ -55,7 +55,9 @@
   opacity: 0.7;
 }
 
-.c-signup-form__input--with-float .c-input-error ~ .label_input__append {
+.c-signup-form__input--with-float
+  .c-input-error__message
+  ~ .label_input__append {
   top: 70%;
 }
 
@@ -104,7 +106,4 @@
 
 .c-error {
   color: var(--c-error);
-}
-
-.c-input-error {
 }

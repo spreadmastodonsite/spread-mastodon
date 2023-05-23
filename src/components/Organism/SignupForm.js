@@ -129,7 +129,7 @@ export default function SignupForm() {
                 Email:
               </label>
               {errors.email && (
-                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                   {errors.email.message}
                 </span>
               )}
@@ -148,7 +148,7 @@ export default function SignupForm() {
                 Display Name:
               </label>
               {errors.displayName && (
-                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                   {errors.displayName.message}
                 </span>
               )}
@@ -168,7 +168,7 @@ export default function SignupForm() {
                   Username:
                 </label>
                 {errors.username && (
-                  <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
+                  <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                     {errors.username.message}
                   </span>
                 )}
@@ -194,7 +194,7 @@ export default function SignupForm() {
                 Password:
               </label>
               {errors.password && (
-                <span className="c-input-error u-margin-bottom--sm u-display--inline-block">
+                <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                   {errors.password.message}
                 </span>
               )}
