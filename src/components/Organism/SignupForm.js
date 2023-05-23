@@ -86,7 +86,7 @@ export default function SignupForm() {
             <h2 className="c-signup-success__title u-heading--2xl">
               {data.successHeading.textOne}
               <br /> {data.successHeading.textTwo}{' '}
-              {displayName ? displayName : username} Msteimel!
+              {displayName ? displayName : username}!
             </h2>
             <p className="c-signup-success__sub-title">
               {data.successSubHeading.text}
