@@ -104,6 +104,7 @@
   }
 }
 
-.c-error {
+.c-error,
+.c-input-error__message {
   color: var(--c-error);
 }
