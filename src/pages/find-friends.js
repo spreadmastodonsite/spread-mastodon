@@ -23,10 +23,16 @@ export default function FindFriends() {
         <meta property="og:description" content={data.metaData.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          property="og:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
@@ -58,9 +64,7 @@ export default function FindFriends() {
               <Card className="c-find-friends__card" variant="basic">
                 <img src="/whosum.png" alt="whosum" />
                 <h2 className="c-card__title">{data.appCard.title}</h2>
-                <p className="u-body--copy">
-                  {data.appCard.description}
-                </p>
+                <p className="u-body--copy">{data.appCard.description}</p>
                 <Button
                   link={data.appCard.buttonLink}
                   newTab={true}
