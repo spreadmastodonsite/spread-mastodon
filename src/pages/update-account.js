@@ -12,6 +12,7 @@ import Icon from '@/components/atoms/icon';
 
 import { updateAccountData as dataContent } from '../../data/updateAccount';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function UpdateAccount() {
   const {
@@ -119,7 +120,7 @@ export default function UpdateAccount() {
       getAccount();
     }, 500);
   }, []);
-
+  const router = useRouter();
   return (
     <div className="content-wrapper">
       <Head>
@@ -129,6 +130,15 @@ export default function UpdateAccount() {
           content="Mastodon account signup using Next.js, React and Mastodon API"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={dataContent.metaData.name} />
+        <meta property="og:description" content={dataContent.metaData.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={router.pathname} />
+        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta name="twitter:title" content={dataContent.metaData.name} />
+        <meta name="twitter:description" content={dataContent.metaData.description} />
+        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
       <div>
