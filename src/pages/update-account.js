@@ -22,7 +22,7 @@ export default function UpdateAccount() {
     watch,
   } = useForm();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
   const [hasAccessToken, setHasAccessToken] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     dataContent.defaultAvatarImage.src,
@@ -319,12 +319,12 @@ export default function UpdateAccount() {
                         onClick={handleSubmit(onSubmit)}
                         loading={loading}
                         type="submit"
-                        text="Save and update your profile"
+                        text={dataContent.submitButton.text}
                       />
                       <Button
                         variant="secondary"
                         onClick={() => setSuccess(true)}
-                        text="Skip This Step For Now"
+                        text={dataContent.skipButton.text}
                       />
                     </Grid>
                   </GridItem>
