@@ -3,8 +3,7 @@ export const findFriendsData = {
     title:
       'Getting Started on Mastodon: 3 of 4: Find Twitter Friends on Mastodon',
     name: 'Find Twitter Friends on Mastodon',
-    description:
-      'Here is a great toolset to find your Twitter Friends On Mastodon',
+    description: 'A great toolset to find your Twitter friends on Mastodon:',
   },
   heading: {
     text: 'Getting Started on Mastodon',
@@ -13,7 +12,7 @@ export const findFriendsData = {
     text: `(Step 3 of 5)`,
   },
   description: {
-    text: 'Here is a great toolset to find your Twitter Friends On Mastodon',
+    text: 'A great toolset to find your Twitter friends on Mastodon:',
   },
   paragraphs: [
     {
@@ -27,9 +26,9 @@ export const findFriendsData = {
       <a
         class="c-link"
         href="https://scafaria.com/whosum-and-the-mastodon-migration-3855788c6373">
-        Find out more
+        Find out more,
       </a>
-      , and try it out today!</p>`,
+      and try it out today!</p>`,
     },
   ],
   appCard: {
@@ -44,6 +43,6 @@ export const findFriendsData = {
   },
   skipButton: {
     text: 'Skip this step',
-    link: '/apps',
+    link: '/mastodon-explainer',
   },
 };

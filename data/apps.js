@@ -8,7 +8,7 @@ export const appsData = {
     text: 'Getting Started on Mastodon',
   },
   subHeading: {
-    text: '(Step 4 of 4)',
+    text: '(Step 5 of 5)',
   },
   contentOne: {
     text: 'In addition to using a web-based interface, you can also use great apps.',

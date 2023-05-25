@@ -28,7 +28,7 @@ export const followTagsData = {
     text: 'Go to Step 3: Find Your Twitter Friends',
     link: '/find-friends',
   },
-  skipButton: { text: 'Skip This Step for Now', link: '/apps' },
+  skipButton: { text: 'Skip This Step for Now', link: '/find-friends' },
   suggestTags: [
     {
       category: 'Meeting New Mastodon Users',

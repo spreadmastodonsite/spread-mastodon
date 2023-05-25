@@ -6,7 +6,7 @@ export const shareMastoData = {
   },
   heading: {
     textOne: 'Mastodon!',
-    textRotate: ['Spread', 'Grow', 'Share'],
+    textRotate: ['Spread', 'Grow', 'Help'],
   },
   cards: [
     {
