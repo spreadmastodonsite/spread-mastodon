@@ -23,6 +23,7 @@ export default function UpdateAccount() {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [hasAccessToken, setHasAccessToken] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     dataContent.defaultAvatarImage.src,
   );
@@ -116,9 +117,19 @@ export default function UpdateAccount() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getAccount();
-    }, 500);
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      setHasAccessToken(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      setTimeout(() => {
+        getAccount();
+      }, 500);
+    }
   }, []);
   const router = useRouter();
   return (
@@ -131,13 +142,25 @@ export default function UpdateAccount() {
         />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content={dataContent.metaData.name} />
-        <meta property="og:description" content={dataContent.metaData.description} />
+        <meta
+          property="og:description"
+          content={dataContent.metaData.description}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          property="og:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:title" content={dataContent.metaData.name} />
-        <meta name="twitter:description" content={dataContent.metaData.description} />
-        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          name="twitter:description"
+          content={dataContent.metaData.description}
+        />
+        <meta
+          name="twitter:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
@@ -184,114 +207,128 @@ export default function UpdateAccount() {
                 subHeading={dataContent.subHeading.text}
               />
               <Grid>
-                <GridItem columnStart={1} columnEnd={13}>
-                  <Grid className="c-profile-box">
-                    <GridItem columnStart={1} columnEnd={8}>
-                      <div className="c-profile-box__heading u-text-align--center">
-                        <h2>Profile Preview</h2>
-                      </div>
-                    </GridItem>
-                    <GridItem columnStart={1} columnEnd={8}>
-                      <div className="c-profile-box__card">
-                        <div className="c-profile-box__card__background">
-                          <img src={backgroundSrc} alt="avatar" />
+                {!hasAccessToken ? (
+                  <GridItem columnStart={5} columnEnd={9}>
+                    <Button
+                      text="Sign in"
+                      loading={loading}
+                      className="u-margin-bottom--md"
+                      variant="secondary"
+                      link="authenticate"
+                    />
+                  </GridItem>
+                ) : (
+                  <GridItem columnStart={1} columnEnd={13}>
+                    <Grid className="c-profile-box">
+                      <GridItem columnStart={1} columnEnd={8}>
+                        <div className="c-profile-box__heading u-text-align--center">
+                          <h2>Profile Preview</h2>
                         </div>
-                        <div className="c-profile-box__card__meta">
-                          <Image
-                            src={avatarSrc}
-                            alt="avatar"
-                            width="100"
-                            height="100"
-                          />
-                          <div className="c-profile-box__card__data">
-                            <div>
-                              {user?.data?.acct && <h4>{user.data.acct}</h4>}
-                              {user?.data?.username && (
-                                <span>
-                                  @{user.data.username}@mastodon.social
-                                </span>
-                              )}
-                            </div>
-                            <div>
-                              <p>{bio}</p>
+                      </GridItem>
+                      <GridItem columnStart={1} columnEnd={8}>
+                        <div className="c-profile-box__card">
+                          <div className="c-profile-box__card__background">
+                            <img src={backgroundSrc} alt="avatar" />
+                          </div>
+                          <div className="c-profile-box__card__meta">
+                            <Image
+                              src={avatarSrc}
+                              alt="avatar"
+                              width="100"
+                              height="100"
+                            />
+                            <div className="c-profile-box__card__data">
+                              <div>
+                                {user?.data?.acct && <h4>{user.data.acct}</h4>}
+                                {user?.data?.username && (
+                                  <span>
+                                    @{user.data.username}@mastodon.social
+                                  </span>
+                                )}
+                              </div>
+                              <div>
+                                <p>{bio}</p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </GridItem>
-                    <GridItem columnStart={8} columnEnd={-1}>
-                      <form className="c-profile-box__form">
-                        <div className="c-profile-box__avatar">
-                          <label className="u-visually-hidden" htmlFor="avatar">
-                            {dataContent.uploadAvatarButton.text}
-                          </label>
-                          <input
-                            onChange={(e) => updateAvatar(e)}
-                            accept="image/jpeg,image/png,image/gif,image/webp"
-                            type="file"
-                            name="avatar"
-                            id="avatar"
-                          />
-                          <Button
-                            className="c-profile-box__button"
-                            text={dataContent.uploadAvatarButton.text}
-                            onClick={handleAvatarButtonClick}
-                          />
-                          {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
-                        </div>
-                        <div className="c-profile-box__background">
-                          <label
-                            className="u-visually-hidden"
-                            htmlFor="background">
-                            {dataContent.uploadBackgroundButton.text}
-                          </label>
-                          <input
-                            onChange={(e) => updateBackground(e)}
-                            accept="image/jpeg,image/png,image/gif,image/webp"
-                            type="file"
-                            name="background"
-                            id="background"
-                          />
-                          <Button
-                            className="c-profile-box__button"
-                            text={dataContent.uploadBackgroundButton.text}
-                            onClick={handleBackgroundButtonClick}
-                          />
-                          {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
-                        </div>
-                        <div>
-                          <label
-                            className="u-visually-hidden"
-                            htmlFor="bio"
-                            aria-hidden>
-                            Bio
-                          </label>
-                          <textarea
-                            id="bio"
-                            type="textArea"
-                            placeholder="Add your short bio here..."
-                            onKeyDown={(e) => updateBio(e)}
-                            {...register('bio')}
-                          />
-                          {errors.bio && <span>{errors.bio.message}</span>}
-                        </div>
-                      </form>
-                    </GridItem>
-                  </Grid>
-                  <Grid className="c-profile-box__buttons" variant="autoFit">
-                    <Button
-                      onClick={handleSubmit(onSubmit)}
-                      loading={loading}
-                      type="submit"
-                      text="Save and update your profile"
-                    />
-                    <Button
-                      variant="secondary"
-                      onClick={() => setSuccess(true)}
-                      text="Skip This Step For Now"
-                    />
-                  </Grid>
-                </GridItem>
+                      </GridItem>
+                      <GridItem columnStart={8} columnEnd={-1}>
+                        <form className="c-profile-box__form">
+                          <div className="c-profile-box__avatar">
+                            <label
+                              className="u-visually-hidden"
+                              htmlFor="avatar">
+                              {dataContent.uploadAvatarButton.text}
+                            </label>
+                            <input
+                              onChange={(e) => updateAvatar(e)}
+                              accept="image/jpeg,image/png,image/gif,image/webp"
+                              type="file"
+                              name="avatar"
+                              id="avatar"
+                            />
+                            <Button
+                              className="c-profile-box__button"
+                              text={dataContent.uploadAvatarButton.text}
+                              onClick={handleAvatarButtonClick}
+                            />
+                            {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
+                          </div>
+                          <div className="c-profile-box__background">
+                            <label
+                              className="u-visually-hidden"
+                              htmlFor="background">
+                              {dataContent.uploadBackgroundButton.text}
+                            </label>
+                            <input
+                              onChange={(e) => updateBackground(e)}
+                              accept="image/jpeg,image/png,image/gif,image/webp"
+                              type="file"
+                              name="background"
+                              id="background"
+                            />
+                            <Button
+                              className="c-profile-box__button"
+                              text={dataContent.uploadBackgroundButton.text}
+                              onClick={handleBackgroundButtonClick}
+                            />
+                            {/* <span className="hint">PNG, GIF or JPG. At most 2 MB. Will be downscaled to 1500x500px</span> */}
+                          </div>
+                          <div>
+                            <label
+                              className="u-visually-hidden"
+                              htmlFor="bio"
+                              aria-hidden>
+                              Bio
+                            </label>
+                            <textarea
+                              id="bio"
+                              type="textArea"
+                              placeholder="Add your short bio here..."
+                              onKeyDown={(e) => updateBio(e)}
+                              {...register('bio')}
+                            />
+                            {errors.bio && <span>{errors.bio.message}</span>}
+                          </div>
+                        </form>
+                      </GridItem>
+                    </Grid>
+                    <Grid className="c-profile-box__buttons" variant="autoFit">
+                      <Button
+                        onClick={handleSubmit(onSubmit)}
+                        loading={loading}
+                        type="submit"
+                        text="Save and update your profile"
+                      />
+                      <Button
+                        variant="secondary"
+                        onClick={() => setSuccess(true)}
+                        text="Skip This Step For Now"
+                      />
+                    </Grid>
+                  </GridItem>
+                )}
               </Grid>
             </>
           )}
