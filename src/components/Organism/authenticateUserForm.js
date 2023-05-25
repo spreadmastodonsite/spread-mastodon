@@ -124,9 +124,6 @@ export default function AuthenticateUserForm() {
               {data.heading.text}{' '}
             </h2>
             <div dangerouslySetInnerHTML={{ __html: data.subHeading.text }} />
-            {/* <p className="u-body--lg u-text-align--center">
-              {data.subHeading.text}
-            </p> */}
             <form className="c-authenticate-form" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email">Email:</label>
