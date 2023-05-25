@@ -231,7 +231,8 @@ export default function FollowSuggestions() {
                       {data.suggestedUsers.map((category) => {
                         return (
                           <Card
-                            className="c-follow-category__card"
+                            className={`c-follow-category__card`}
+                            active={isChecked.includes(category.title)}
                             key={category.title}
                             variant="basic">
                             {category.icon && (
