@@ -168,9 +168,9 @@ export default function Join() {
               <h2 className="c-signup-success__sub-title u-text-align--center">
                 {data.authHeader.text}{' '}
               </h2>
-              <p className="u-body--lg u-text-align--center">
-                {data.authSubHeading.text}
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.authSubHeading.text }}
+              />
               <form
                 className="c-authenticate-form"
                 onSubmit={handleSubmit(onSubmit)}>
@@ -238,7 +238,7 @@ export default function Join() {
                       <Button
                         className="c-button__auth"
                         type="submit"
-                        text="Log in &amp; Authenticate"
+                        text={data.submitButton.text}
                       />
                     </GridItem>
                   </Grid>
