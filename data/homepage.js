@@ -7,7 +7,7 @@ export const homepageData = {
   },
   heading: {
     textOne: 'Welcome to your',
-    textRotate: ['open', 'better', 'ad-free'],
+    textRotate: ['open', 'ad-free', 'better'],
     textTwo: 'social home',
   },
   subHeading: {
