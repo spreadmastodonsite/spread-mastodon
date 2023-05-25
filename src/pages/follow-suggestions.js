@@ -165,21 +165,24 @@ export default function FollowSuggestions() {
             subHeading={data.subHeading.text}
           />
           <h2 className="u-heading--2xl">{data.secondHeading.text}</h2>
-          <div className="u-heading--xl c-follow-category__info ">
+          <div className="u-heading--xl u-margin-bottom--lg">
             <ToolTip
               iconWidth={24}
               iconHeight={24}
               label={data.toolTip.label}
               value={data.toolTip.value}
             />{' '}
-            <span>Accounts you May Be Interested In:</span>
+            <span>{data.textCTA.text}</span>
           </div>
+          <p className="c-follow-category__info u-body--lg">
+            {data.explainerText}
+          </p>
           <Grid className="u-margin-bottom--lg">
             <GridItem columnStart={5} columnEnd={9}>
               {!hasAccessToken ? (
                 <div>
                   <Button
-                    text="Sign in"
+                    text="Sign In"
                     loading={loading}
                     className="u-margin-bottom--md"
                     variant="secondary"
@@ -250,9 +253,7 @@ export default function FollowSuggestions() {
                                     label={`${category.accounts.length} accounts`}
                                     value={
                                       <div>
-                                        <p>
-                                          {`Here's a list of users we think you'll enjoy`}
-                                        </p>
+                                        <p>{data.categoryTooltip.text}</p>
                                         <ul className="c-follow-category__tool-tip">
                                           {category.accounts.map((user) => (
                                             <li key={user.id}>
