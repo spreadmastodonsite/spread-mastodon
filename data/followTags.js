@@ -17,7 +17,8 @@ export const followTagsData = {
     partOne: 'Follow Topics You Care About',
     toolTip: {
       label: 'Notable',
-      value: 'Topics selected based on active and popular hashtags on the Mastodon network.',
+      value:
+        'Topics selected based on active and popular hashtags on the Mastodon network.',
     },
     partTwo: 'Hashtag Topics You May Be Interested In:',
   },
@@ -73,7 +74,7 @@ export const followTagsData = {
     },
     ,
     {
-      category: 'Music, TV,  Movies and Sports',
+      category: 'Music, TV, Movies, and Sports',
       tags: [
         {
           name: 'Music',
