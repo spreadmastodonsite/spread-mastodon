@@ -4,6 +4,7 @@ import GridItem from '@/components/layout/GridItem';
 import Card from '@/components/Organism/Card';
 import { moreWaysToEnhanceData as data } from '../../data/moreWaysToEnhance';
 import Logo from '@/components/atoms/Logo';
+import StepperHeader from '@/components/molecules/StepperHeader';
 import { useRouter } from 'next/router';
 
 export default function MoreWaysToEnhance() {
@@ -18,17 +19,29 @@ export default function MoreWaysToEnhance() {
         <meta property="og:description" content={data.metaData.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          property="og:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
-      <main className="l-main">
+      <main className="l-main c-page__interior c-more-ways-to-share">
+        <StepperHeader
+          iconName="enrich"
+          iconWidth="75"
+          iconHeight="83"
+          heading={data.heading.text}
+        />
         <Grid className="u-text-align--center u-margin-bottom--xl">
-          <GridItem columnStart={4} columnEnd={10}>
-            <h1>{data.heading.text}</h1>
+          <GridItem columnStart={1} columnEnd={13}>
+            <h1 className="u-margin-bottom--lg">{data.heading.text}</h1>
             <h2>{data.subHeading.text}</h2>
           </GridItem>
         </Grid>
@@ -39,11 +52,9 @@ export default function MoreWaysToEnhance() {
           {data.cards.map((card, i) => (
             <Card
               key={card.title + i}
-              className="u-card__more-ways-to-share"
-              title={card.title}
-              iconName={card.icon}
-              iconWidth={card.iconWidth}
-              iconHeight={card.iconHeight}
+              className="c-more-ways-to-share__card"
+              description={card.title}
+              variant="basic"
               link={card.link}
               linkText={card.linkText}
             />

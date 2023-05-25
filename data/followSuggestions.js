@@ -5,16 +5,16 @@ export const followSuggestionsData = {
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',
   },
-  heading: { text: 'Getting Started On Mastodon' },
-  subHeading: { text: '(step 1 of 5)' },
+  heading: { text: 'Getting Started on Mastodon' },
+  subHeading: { text: '(Step 1 of 5)' },
   heading2: { text: 'Some Great Accounts to Follow Now!' },
   toolTip: {
     label: 'Notable',
     value:
-      'These are groups of popular accounts on various topics, all  actively posting on Mastodon that you can add to your account with one click.',
+      'These are groups of popular accounts on various topics, all actively posting on Mastodon, that you can add to your account with one click.',
   },
-  textCTA: { text: 'Accounts you May Be Interested In:' },
   secondHeading: { text: 'Great Accounts to Follow Now!' },
+  textCTA: { text: 'Accounts you May Be Interested In:' },
   explainerText:
     'Because Mastodon doesn’t feed content with an algorithm, it’s important to follow more people than on other platforms. We suggest selecting and following all (you can always unfollow anyone later). ',
   loadingExplainerText:
@@ -23,6 +23,9 @@ export const followSuggestionsData = {
   followAllButton: { text: 'Select All Categories' },
   followSelectedCategoriesButton: { text: 'Follow Selected Categories' },
   nextStepButton: { text: 'Go to Step 2: Follow Topics', link: '/follow-tags' },
+  categoryTooltip: {
+    text: "Here's a list of users we think you'll enjoy:",
+  },
   skipButton: { text: 'Skip This Step for Now', link: '/follow-tags' },
   suggestedUsers: [
     {
@@ -759,7 +762,7 @@ export const followSuggestionsData = {
       ],
     },
     {
-      title: 'Mastodon tips and updates',
+      title: 'Mastodon Tips and Updates',
       icon: 'lightbulb',
       accounts: [
         {

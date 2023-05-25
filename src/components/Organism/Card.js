@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import cx from 'classnames';
 import Button from '../atoms/Button';
 import Icon from '../atoms/icon';
@@ -11,17 +11,24 @@ export default function Card({
   iconName,
   iconWidth,
   iconHeight,
+  active = false,
   link,
   linkText,
   children,
   variant,
 }) {
+  const [isShown, setIsShown] = useState(false);
+  const [isActivated, setIsActivated] = useState(active);
+
+  useEffect(() => {
+    setIsActivated(active);
+  }, [active]);
+
   const componentClassName = cx('c-card', className, {
     [`c-card--large`]: variant === 'large',
     [`c-card--basic`]: variant === 'basic',
+    [`c-card--active`]: isActivated,
   });
-
-  const [isShown, setIsShown] = useState(false);
 
   const content = (
     <div className="c-card__content">
@@ -32,7 +39,7 @@ export default function Card({
               {description}{' '}
               <Icon
                 className="c-card__link-icon"
-                iconName={isShown ? "caret-right-white" : "caret-right"}
+                iconName={isShown ? 'caret-right-white' : 'caret-right'}
                 width={24}
                 height={24}
               />
@@ -42,7 +49,12 @@ export default function Card({
         </>
       ) : (
         <>
-          {description && <p className="u-body-copy" dangerouslySetInnerHTML={{ __html: description }} />}
+          {description && (
+            <p
+              className="u-body-copy"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
           {linkText && <Button text={linkText} link={link} />}
           {children}
         </>
@@ -54,8 +66,7 @@ export default function Card({
     <div
       className={componentClassName}
       onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
-    >
+      onMouseLeave={() => setIsShown(false)}>
       {iconName && (
         <div className="c-card__icon">
           <Icon

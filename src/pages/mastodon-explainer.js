@@ -21,16 +21,22 @@ export default function MastodonExplainer() {
         <meta property="og:description" content={data.metaData.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          property="og:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
       <main className="l-main c-page__interior">
         <StepperHeader
-          iconName="join"
+          iconName="enrich"
           iconWidth="75"
           iconHeight="83"
           heading={data.heading.text}

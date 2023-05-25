@@ -17,7 +17,8 @@ export const followTagsData = {
     partOne: 'Follow Topics You Care About',
     toolTip: {
       label: 'Notable',
-      value: 'Topics selected based on active and popular hashtags on the Mastodon network.',
+      value:
+        'Topics selected based on active and popular hashtags on the Mastodon network.',
     },
     partTwo: 'Hashtag Topics You May Be Interested In:',
   },
@@ -27,7 +28,7 @@ export const followTagsData = {
     text: 'Go to Step 3: Find Your Twitter Friends',
     link: '/find-friends',
   },
-  skipButton: { text: 'Skip This Step for Now', link: '/apps' },
+  skipButton: { text: 'Skip This Step for Now', link: '/find-friends' },
   suggestTags: [
     {
       category: 'Meeting New Mastodon Users',
@@ -73,7 +74,7 @@ export const followTagsData = {
     },
     ,
     {
-      category: 'Music, TV,  Movies and Sports',
+      category: 'Music, TV, Movies, and Sports',
       tags: [
         {
           name: 'Music',

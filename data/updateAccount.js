@@ -6,9 +6,9 @@ export const updateAccountData = {
   },
   // Content for the update account form
   heading: {
-    text: 'Adding Your Profile Picture and Bio',
+    text: 'Adding Your Profile Images & Short Bio',
   },
-  subHeading: { text: '(Step 2 of 2; Optional But Recommended)' },
+  subHeading: { text: '(Step 2 of 2; Optional But Recommended)' },
   defaultAvatarImage: {
     src: '/missing.png',
   },
@@ -39,7 +39,7 @@ export const updateAccountData = {
   successSubHeading: {
     text: 'Want to take it to the next level? The confirmation email you will receive from the Mastodon.Social server will link you to more ways to customize',
     link: {
-      text: 'your profile',
+      text: 'your profile.',
       url: 'https://docs.joinmastodon.org/user/profile/',
     },
   },

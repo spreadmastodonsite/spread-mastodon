@@ -29,24 +29,5 @@ export const moreWaysToShareData = {
       link: '#',
       linkText: 'Share',
     },
-    {
-      description: 'Find who your friends follow on Mastodon',
-      link: '#',
-      linkText: 'Share',
-    },
-    {
-      description: 'Add you Mastodon account to your other social bios',
-      link: '#',
-      linkText: 'Share',
-    },
-    {
-      description: 'Woolly Mastodon App 1.0 launches',
-      link: '#',
-      linkText: 'Share',
-    },
   ],
-  ctaButton: {
-    text: 'View More',
-    link: '/more-ways-to-share',
-  },
 };

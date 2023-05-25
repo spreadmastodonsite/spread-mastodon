@@ -8,7 +8,7 @@ export const joinData = {
   },
   heading: {
     textOne: 'Welcome to your',
-    textRotate: ['Better', 'Open', 'Add-Free'],
+    textRotate: ['open', 'ad-free', 'better'],
     textTwo: 'social home',
   },
   cards: [
@@ -19,7 +19,7 @@ export const joinData = {
       iconWidth: '100',
       iconHeight: '113',
       link: '/sign-up',
-      linkText: `Let's do it`,
+      linkText: `Let's Do It`,
     },
   ],
 };

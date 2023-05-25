@@ -161,7 +161,9 @@ export default function AuthenticateUser() {
                 <h2 className="c-signup-success__sub-title u-text-align--center">
                   {data.heading.text}{' '}
                 </h2>
-                <p className="u-body--lg">{data.subHeading.text}</p>
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.subHeading.text }}
+                />
                 <form
                   className="c-authenticate-form"
                   onSubmit={handleSubmit(onSubmit)}>

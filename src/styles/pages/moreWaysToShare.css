@@ -13,7 +13,11 @@
 }
 
 .c-more-ways-to-share__card:hover .c-card__link {
-  color: var(--white);
+  color: var(--c-white);
+}
+
+.c-more-ways-to-share__card .c-icon__image {
+  filter: brightness(0) invert(1);
 }
 
 .c-more-ways-to-share__card .c-card__link:before {

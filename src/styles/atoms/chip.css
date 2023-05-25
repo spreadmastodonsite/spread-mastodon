@@ -3,7 +3,6 @@
   width: 100%;
   padding: 1rem;
   text-align: center;
-  background-color: var(--c-secondary-background);
   border: solid 3px var(--c-primary);
   border-radius: var(--border-radius--sm);
   transition: all 0.2s ease-in-out;

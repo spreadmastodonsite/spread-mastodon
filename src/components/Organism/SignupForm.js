@@ -186,7 +186,7 @@ export default function SignupForm() {
                 <span className="label_input__append">@mastodon.social</span>
               </div>
               <span className="c-field-note">
-                You can use letters, numbers, and underscores
+                You can use letters, numbers, and underscores.
               </span>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
@@ -244,9 +244,7 @@ export default function SignupForm() {
                   </a>
                   .
                 </label>
-                {!acceptedTerms && (
-                  <span>Please accept the Terms of Service</span>
-                )}
+                {!acceptedTerms && <span>{data.termsOfService.text}</span>}
               </div>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>

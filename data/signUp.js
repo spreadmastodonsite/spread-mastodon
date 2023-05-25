@@ -13,10 +13,13 @@ export const signUpData = {
     text: '(Step 1 of 2)',
   },
   description: {
-    text: 'Join the Whole Mastodon Network via this Trusted Community Server',
+    text: 'Join the whole Mastodon network via this Trusted community server.',
   },
   formButton: {
     text: 'Great, Let’s Get You Set Up',
+  },
+  termsOfService: {
+    text: 'Please accept the privacy policy and community server rules.',
   },
 
   // This is the data for the success page after the user has successfully signed up
@@ -25,10 +28,10 @@ export const signUpData = {
     textTwo: 'Welcome to Mastodon,',
   },
   successSubHeading: {
-    text: "You're in! So What's Next?",
+    text: "You're in! So what's next?",
   },
   successButtonOne: {
-    text: 'Add Your Profile Basics!',
+    text: 'Add Your Profile Basics',
     link: '/update-account',
   },
   successButtonTwo: {

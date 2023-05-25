@@ -7,14 +7,17 @@ export const EnhanceAccount = {
     icon: '/favicon.ico',
   },
   heading: {
-    textOne: "You're in! Now What?",
-    textRotate: ['Get Started', 'Follow People', 'Find Your Friends'],
+    textOne: "You're in! Now what?",
+    textRotate: ['Follow People', 'Find Your Friends', 'Get Started'],
   },
   authHeader: {
     text: 'Authenticate Account',
   },
   authSubHeading: {
-    text: 'After you log in with your Mastodon account, we can help to set you up with great users and topics to follow, and help you find your Twitter follows on Mastodon! You can revoke this permission at any time by using the controls in the upper right to log out.',
+    text: '<p class="u-body--lg u-text-align--center">Please check your email and click the Mastodon confirmation link. Once you get to this message - <i>Your email address has been successfully confirmed.</i> - come back to this window to continue through the steps.</p>',
+  },
+  submitButton: {
+    text: 'Log In & Authenticate',
   },
   cards: [
     {
@@ -24,7 +27,7 @@ export const EnhanceAccount = {
       iconWidth: '100',
       iconHeight: '113',
       link: '/follow-suggestions',
-      linkText: `Let's do it`,
+      linkText: `Let's Do It`,
     },
   ],
 };

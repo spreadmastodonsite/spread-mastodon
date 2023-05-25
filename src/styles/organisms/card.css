@@ -11,9 +11,30 @@
   align-items: center;
   gap: var(--space-lg);
   padding: var(--space-xl);
-  background-color: var(--secondary-background);
   border-radius: var(--border-radius);
   text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.c-card--active {
+  background-color: var(--c-primary);
+}
+
+.c-card--active:hover {
+  filter: brightness(85%);
+}
+
+.c-card .c-tooltip__label,
+.c-card .c-icon__image {
+  transition: all 0.2s ease-in-out;
+}
+
+.c-card--active .c-tooltip__label {
+  color: var(--c-white);
+}
+
+.c-card--active .c-icon__image {
+  filter: brightness(0) invert(1);
 }
 
 .c-card--left {
@@ -39,7 +60,7 @@
 .c-card--basic {
   border: 2px solid var(--c-gray);
   border-radius: 0;
-  transition: border 0.2s ease-in-out;
+
   justify-content: center;
   padding-top: var(--space-4xl);
   padding-bottom: var(--space-4xl);

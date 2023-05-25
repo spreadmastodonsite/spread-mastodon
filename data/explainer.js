@@ -5,10 +5,10 @@ export const explainerData = {
     description: 'Learn How Mastodon Is Different',
   },
   heading: {
-    text: 'Getting on Mastodon: 4 of 4:',
+    text: 'Getting Started on Mastodon',
   },
   subHeading: {
-    text: 'Learn How Mastodon Is Different',
+    text: '(Step 4 of 5)',
   },
   contentOne: {
     text: 'Using Mastodon is easier once you learn one big difference from other social media platforms: You can access it on thousands of different websites.',
@@ -20,7 +20,7 @@ export const explainerData = {
     text: 'Lots of people use it to talk to one another! It’s one big website, and the people who run it spend a lot of money to keep it going. Twitter uses advertising to pay the bills.',
   },
   ctaButton: {
-    text: 'Go to step 5: Get a Great App',
+    text: 'Go to Step 5.',
     link: '/apps',
   },
 };
