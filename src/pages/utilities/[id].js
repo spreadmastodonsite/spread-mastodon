@@ -46,6 +46,13 @@ export default function Post() {
           <ul className="c-markdown__share">
             <li className="c-markdown__share--item">
               <Link
+                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}
+                target="_blank">
+                <Icon iconName="mastodon-logo" width="28" height="28" />
+              </Link>
+            </li>
+            <li className="c-markdown__share--item">
+              <Link
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://spreadmastodon.org${asPath}`}
                 target="_blank">
                 <Icon iconName="facebook-logo" width="32" height="32" />

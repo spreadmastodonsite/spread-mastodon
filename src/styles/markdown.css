@@ -244,6 +244,7 @@
 .c-markdown__share {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: var(--space-xl);
   list-style: none;
 }
