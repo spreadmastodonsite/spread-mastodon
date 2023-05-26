@@ -14,19 +14,19 @@ export default async function authApp(req, res) {
           'Access-Control-Allow-Credential': true,
           'Access-Control-Allow-Origin': '*'
         },
-        redirect_uris: 'https://join-mastodon-poc.vercel.app/',
+        redirect_uris: 'https://join-mastodon-poc.vercel.app/callback',
         client_name: req.body.client_id,
-        force_login: true,
-        scopes: 'write:accounts',
-        website: 'https://join-mastodon-poc.vercel.app/'
+        website: 'https://join-mastodon-poc.vercel.app'
       },
     ).then(
       response => {
         const options = {
-          client_id: response.data.client_id,
+          client_id: '8mWB4ypeo5081BJnD6v0eEYrMqL2nMFN4y1QruVxTjs',
+          instance: response.data.name,
+          force_login: true,
           response_type: 'code',
-          redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
-          scope: 'write:accounts'
+          redirect_uri: 'https://join-mastodon-poc.vercel.app/',
+          scope: 'write:accounts+write:follows'
         }
         const queryString = Object.keys(options).map(key => `${key}=${encodeURIComponent(options[key])}`).join('&');
         const loginURI = `https://${response.data.name}/oauth/authorize?${queryString}`
