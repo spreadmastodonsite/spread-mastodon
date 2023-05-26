@@ -28,6 +28,7 @@ export default function Join() {
     useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
+  const [toggleForm, setToggleForm] = useState(false);
 
   // Handle email input change
   const handleEmailChange = (e) => {
@@ -102,6 +103,29 @@ export default function Join() {
     setLoading(false);
   };
 
+  const onAuthSubmit = async (data) => {
+    console.log(data)
+    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account'
+    try {
+      const response = await axios.post('/api/authapp', {
+        response_type: 'code',
+        client_id: data.server,
+        redirect_uri: redirectUrl
+      });
+
+      console.log(response);
+      window.location.href = response.data.data;
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw new Error(
+        `Error authenticating account: ${JSON.stringify(
+          error.response ? error.response.data : error.message,
+        )}`,
+      );
+    }
+  }  
+
   // Get the access token from session storage on component mount
   useEffect(() => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -169,6 +193,50 @@ export default function Join() {
               <div
                 dangerouslySetInnerHTML={{ __html: data.authSubHeading.text }}
               />
+              {toggleForm ? (
+                <form
+                  className="c-authenticate-form"
+                  onSubmit={handleSubmit(onAuthSubmit)}>
+                  <Grid className="c-grid__signup-form">
+                    <GridItem columnStart={2} columnEnd={12}>
+                        <span className="input-group-text">https://</span>
+                        <input
+                          required=""
+                          id="server"
+                          type="text"
+                          className="form-control"
+                          placeholder="mastodon.social"
+                          {...register('server', {
+                            required: 'Server is required',
+                          })}
+                        />
+                        <button className="btn btn-outline-secondary" type="submit" id="sign-in">Sign in</button>
+                      {/* <label className="u-visually-hidden" htmlFor="email">
+                        Email:
+                      </label>
+                      {errors.email && (
+                        <span className="u-margin-bottom--sm u-display--inline-block">
+                          {errors.email.message}
+                        </span>
+                      )}
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        className={`c-signup-form__input ${
+                          errors.email && 'c-signup-form__input--error'
+                        }`}
+                        {...register('email', {
+                          required: 'Email is required',
+                        })}
+                      /> */}
+                    </GridItem>
+                    <GridItem columnStart={2} columnEnd={12}>
+                      <div><p>Still need to authenticate <span onClick={() =>setToggleForm(false)}>Click here</span></p></div>
+                    </GridItem>
+                  </Grid>
+                </form>
+              ) : (
               <form
                 className="c-authenticate-form"
                 onSubmit={handleSubmit(onSubmit)}>
@@ -215,6 +283,9 @@ export default function Join() {
                       })}
                     />
                   </GridItem>
+                  <GridItem columnStart={2} columnEnd={12}>
+                    <div><p>Already have an account <span onClick={() => setToggleForm(true)}>Click here</span></p></div>
+                  </GridItem>
                 </Grid>
                 {loading ? (
                   <Grid>
@@ -242,6 +313,7 @@ export default function Join() {
                   </Grid>
                 )}
               </form>
+            )}
             </div>
           )}
         </Grid>
