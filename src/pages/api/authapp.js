@@ -14,7 +14,7 @@ export default async function authApp(req, res) {
           'Access-Control-Allow-Credential': true,
           'Access-Control-Allow-Origin': '*'
         },
-        redirect_uris: 'urn:ietf:wg:oauth:2.0:oob',
+        redirect_uris: 'https://join-mastodon-poc.vercel.app/',
         client_name: req.body.client_id,
         force_login: true,
         scopes: 'write:accounts',
@@ -22,19 +22,6 @@ export default async function authApp(req, res) {
       },
     ).then(
       response => {
-        console.log(response);
-        // return axios.get(
-        //   `${process.env.MASTODON_INSTANCE_URL}/oauth/authorize`,
-        //   {
-        //     headers: {
-        //       Authorization: `Bearer ${process.env.MASTODON_ACCESS_TOKEN}`,
-        //     },
-        //     redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
-        //     client_id: response.data.client_id,
-        //     response_type: 'code',
-        //     force_login: true
-        //   }
-        // )
         const options = {
           client_id: response.data.client_id,
           response_type: 'code',
