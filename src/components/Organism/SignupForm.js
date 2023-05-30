@@ -235,11 +235,17 @@ export default function SignupForm() {
                     onChange={handleCheckboxChange}
                   />
                   I have read and agree to the{' '}
-                  <a href="https://mastodon.social/privacy-policy">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://mastodon.social/privacy-policy">
                     privacy policy
                   </a>{' '}
                   and{' '}
-                  <a href="https://mastodon.social/about">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://mastodon.social/about">
                     community server rules
                   </a>
                   .

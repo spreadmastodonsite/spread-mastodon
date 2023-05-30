@@ -24,6 +24,8 @@ export const findFriendsData = {
     {
       text: `<p class="u-body--lg">
       <a
+      target="_blank"
+        rel="noopener noreferrer"
         class="c-link"
         href="https://scafaria.com/whosum-and-the-mastodon-migration-3855788c6373">
         Find out more,

@@ -46,22 +46,21 @@ export default function Post() {
           <ul className="c-markdown__share">
             <li className="c-markdown__share--item">
               <Link
-                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}
-                target="_blank">
+                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
                 <Icon iconName="mastodon-logo" width="28" height="28" />
               </Link>
             </li>
             <li className="c-markdown__share--item">
               <Link
-                href={`https://www.facebook.com/sharer/sharer.php?u=https://spreadmastodon.org${asPath}`}
-                target="_blank">
+                href={`https://www.facebook.com/sharer/sharer.php?u=https://spreadmastodon.org${asPath}`}>
+                rel
                 <Icon iconName="facebook-logo" width="32" height="32" />
               </Link>
             </li>
             <li className="c-markdown__share--item">
               <Link
-                href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}
-                target="_blank">
+                href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
+                rel
                 <Icon iconName="twitter-logo" width="32" height="32" />
               </Link>
             </li>

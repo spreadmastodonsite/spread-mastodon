@@ -207,6 +207,8 @@ export default function FollowSuggestions() {
                   main Mastodon feed. Find out more about how to{' '}
                   <a
                     className="c-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">
                     follow and unfollow hashtags
                   </a>
