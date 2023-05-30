@@ -20,8 +20,6 @@ export default function Join() {
     formState: { errors },
   } = useForm();
   // Declare state variables
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
@@ -31,16 +29,6 @@ export default function Join() {
   const [toggleForm, setToggleForm] = useState(false);
   //const [client, setClient] = useState();  
   const [pageLoading, setPageLoading] = useState(false);
-
-  // Handle email input change
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  // Handle password input change
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   // Authenticate the user with the provided email and password
   const authenticateUser = async (email, password) => {
