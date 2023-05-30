@@ -2,8 +2,7 @@ export const joinData = {
   metaData: {
     title: 'Join Mastodon',
     name: 'Join Mastodon',
-    description:
-      'Mastodon account signup using Next.js, React and Mastodon API',
+    description: 'Join Mastodon.Social and Join the Fediverse Social Network',
     icon: '/favicon.ico',
   },
   heading: {

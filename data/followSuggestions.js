@@ -2,8 +2,7 @@ export const followSuggestionsData = {
   metaData: {
     title: 'Mastodon Signup',
     name: 'Mastodon Signup',
-    description:
-      'Mastodon account signup using Next.js, React and Mastodon API',
+    description: 'Follow some great accounts to get started on Mastodon.',
   },
   heading: { text: 'Getting Started on Mastodon' },
   subHeading: { text: '(Step 1 of 5)' },

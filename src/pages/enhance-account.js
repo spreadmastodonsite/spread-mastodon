@@ -211,22 +211,11 @@ export default function Join() {
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <link rel="icon" href={data.metaData.icon} />
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta
-          property="og:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
-        />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta
-          name="twitter:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <main className="l-main">

@@ -12,7 +12,11 @@ export default function MastodonApps() {
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={data.metaData.name} />
+        <meta property="og:description" content={data.metaData.description} />
+        <meta property="og:url" content={router.pathname} />
+        <meta name="twitter:title" content={data.metaData.name} />
+        <meta name="twitter:description" content={data.metaData.description} />
       </Head>
       <Logo />
       <main className="l-main c-page__interior">
