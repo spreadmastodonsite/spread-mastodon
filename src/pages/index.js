@@ -17,14 +17,14 @@ export default function Home() {
       {/* q: can <Head/> take a spread prop? like ...data? */}
       {/*    */}
 
-      <Head {...data}>
+      <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
-        {/* <meta name={data.metaData.name} content={data.metaData.description} />
+        <meta name={data.metaData.name} content={data.metaData.description} />
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:description" content={data.metaData.description} />
         <meta property="og:url" content={router.pathname} />
         <meta name="twitter:title" content={data.metaData.name} />
-        <meta name="twitter:description" content={data.metaData.description} /> */}
+        <meta name="twitter:description" content={data.metaData.description} />
       </Head>
 
       <main className="l-main">
