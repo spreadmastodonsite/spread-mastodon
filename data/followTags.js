@@ -2,15 +2,14 @@ export const followTagsData = {
   metaData: {
     title: 'Mastodon Signup',
     name: 'Mastodon Signup',
-    description:
-      'Mastodon account signup using Next.js, React and Mastodon API',
+    description: 'Follow Topics You Care About',
   },
   heading: { text: 'Getting Started on Mastodon' },
   subHeading: {
     text: '(Step 2 of 5)',
     toolTip: {
       label: 'Notable',
-      value: 'Hashtabs selected based on popular accounts.',
+      value: 'Hashtags selected based on popular accounts.',
     },
   },
   heading2: {

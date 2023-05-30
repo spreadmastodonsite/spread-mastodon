@@ -2,8 +2,7 @@ export const getStartedData = {
   metaData: {
     title: 'Get Started',
     name: 'Get Started',
-    description:
-      'Mastodon account signup using Next.js, React and Mastodon API',
+    description: 'Get started on Mastodon with these simple steps.',
     icon: '/favicon.ico',
   },
   heading: {

@@ -11,16 +11,11 @@ export default function SignUp() {
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta property="og:image" content="/spread_mastodon_share.jpg" />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
-        <meta name="twitter:image" content="/spread_mastodon_share.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <Logo />

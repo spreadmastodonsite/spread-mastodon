@@ -3,7 +3,7 @@ export const authenticateData = {
     title: 'Mastodon Signup',
     name: 'Mastodon Signup',
     description:
-      'Mastodon account signup using Next.js, React and Mastodon API',
+      'Sign Up for Mastodon.Social and Join the Fediverse Social Network',
   },
   heading: { text: 'Authenticate Account' },
   confirmed: { text: 'Confirmed' },

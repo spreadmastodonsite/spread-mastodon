@@ -14,9 +14,6 @@ export default function Home() {
 
   return (
     <div className="content-wrapper">
-      {/* q: can <Head/> take a spread prop? like ...data? */}
-      {/*    */}
-
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
