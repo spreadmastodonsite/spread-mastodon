@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Head from 'next/head';
 import Button from '@/components/atoms/Button';
@@ -38,6 +38,13 @@ export default function UpdateAccount() {
   const updateBio = (event) => {
     setBio(event.target.value);
   };
+
+  // get the bio to update with useEffect
+  useEffect(() => {
+    if (bio !== dataContent.bio.text) {
+      setBio(watch('bio'));
+    }
+  }, [watch('bio')]);
 
   const getAccount = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
