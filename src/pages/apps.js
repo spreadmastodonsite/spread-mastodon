@@ -2,17 +2,23 @@ import Head from 'next/head';
 import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
+import { useRouter } from 'next/router';
 
 import { appsData as data } from '/data/apps.js';
 import Image from 'next/image';
 
 export default function MastodonApps() {
+  const router = useRouter();
   return (
     <div className="content-wrapper">
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={data.metaData.name} />
+        <meta property="og:description" content={data.metaData.description} />
+        <meta property="og:url" content={router.pathname} />
+        <meta name="twitter:title" content={data.metaData.name} />
+        <meta name="twitter:description" content={data.metaData.description} />
       </Head>
       <Logo />
       <main className="l-main c-page__interior">

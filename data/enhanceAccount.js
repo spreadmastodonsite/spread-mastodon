@@ -4,7 +4,6 @@ export const EnhanceAccount = {
     name: 'Join Mastodon',
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',
-    icon: '/favicon.ico',
   },
   heading: {
     textOne: "You're in! Now what?",

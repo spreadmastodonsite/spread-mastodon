@@ -1,7 +1,7 @@
 export const findFriendsData = {
   metaData: {
     title:
-      'Getting Started on Mastodon: 3 of 4: Find Twitter Friends on Mastodon',
+      'Getting Started on Mastodon: 3 of 5: Find Twitter Friends on Mastodon',
     name: 'Find Twitter Friends on Mastodon',
     description: 'A great toolset to find your Twitter friends on Mastodon:',
   },
@@ -24,6 +24,8 @@ export const findFriendsData = {
     {
       text: `<p class="u-body--lg">
       <a
+      target="_blank"
+        rel="noopener noreferrer"
         class="c-link"
         href="https://scafaria.com/whosum-and-the-mastodon-migration-3855788c6373">
         Find out more,

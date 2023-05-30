@@ -44,7 +44,7 @@ export default function UpdateAccount() {
     if (bio !== dataContent.bio.text) {
       setBio(watch('bio'));
     }
-  }, [watch('bio')]);
+  });
 
   const getAccount = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -142,33 +142,22 @@ export default function UpdateAccount() {
   return (
     <div className="content-wrapper">
       <Head>
-        <title>Mastodon Update Account</title>
+        <title>Spread Mastodon - {dataContent.metaData.title}</title>
         <meta
-          name="description"
-          content="Mastodon account signup using Next.js, React and Mastodon API"
+          name={dataContent.metaData.name}
+          content={dataContent.metaData.description}
         />
-        <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content={dataContent.metaData.name} />
         <meta
           property="og:description"
           content={dataContent.metaData.description}
         />
-        <meta property="og:type" content="article" />
         <meta property="og:url" content={router.pathname} />
-        <meta
-          property="og:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
-        />
         <meta name="twitter:title" content={dataContent.metaData.name} />
         <meta
           name="twitter:description"
           content={dataContent.metaData.description}
         />
-        <meta
-          name="twitter:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Logo />
       <div>
@@ -190,6 +179,8 @@ export default function UpdateAccount() {
                       {dataContent.successSubHeading.text}{' '}
                       <Link
                         className="c-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href={dataContent.successSubHeading.link.url}>
                         {dataContent.successSubHeading.link.text}
                       </Link>

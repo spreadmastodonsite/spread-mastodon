@@ -1,7 +1,7 @@
 export const explainerData = {
   metaData: {
-    title: 'Mastodon Explainer',
-    name: 'Mastodon Explainer',
+    title: 'How Mastodon Is Different',
+    name: 'How Mastodon Is Different',
     description: 'Learn How Mastodon Is Different',
   },
   heading: {
