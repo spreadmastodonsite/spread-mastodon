@@ -14,7 +14,7 @@ export const followSuggestionsData = {
       'These are groups of popular accounts on various topics, all actively posting on Mastodon, that you can add to your account with one click.',
   },
   secondHeading: { text: 'Great Accounts to Follow Now!' },
-  textCTA: { text: 'Accounts you May Be Interested In:' },
+  textCTA: { text: 'Accounts You May Be Interested In:' },
   explainerText:
     'Because Mastodon doesn’t feed content with an algorithm, it’s important to follow more people than on other platforms. We suggest selecting and following all (you can always unfollow anyone later). ',
   loadingExplainerText:

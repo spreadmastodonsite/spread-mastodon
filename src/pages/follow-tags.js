@@ -154,7 +154,7 @@ export default function FollowSuggestions() {
             <Grid className="u-margin-bottom--lg">
               <GridItem columnStart={5} columnEnd={9}>
                 <Button
-                  text="Sign in"
+                  text="Sign In"
                   loading={loading}
                   className="u-margin-bottom--md"
                   variant="secondary"
@@ -219,8 +219,9 @@ export default function FollowSuggestions() {
                   <a
                     className="c-link"
                     href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">
-                    follow and unfollow hashtags.
+                    follow and unfollow hashtags
                   </a>
+                  .
                 </p>
               </Modal>
               <Button

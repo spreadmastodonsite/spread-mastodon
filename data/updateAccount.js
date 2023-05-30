@@ -39,9 +39,10 @@ export const updateAccountData = {
   successSubHeading: {
     text: 'Want to take it to the next level? The confirmation email you will receive from the Mastodon.Social server will link you to more ways to customize',
     link: {
-      text: 'your profile.',
+      text: 'your profile',
       url: 'https://docs.joinmastodon.org/user/profile/',
     },
+    textTwo: '.',
   },
   successButton: {
     text: 'Enhance Your Account Now',

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Head from 'next/head';
 import Button from '@/components/atoms/Button';
@@ -22,7 +22,7 @@ export default function UpdateAccount() {
     watch,
   } = useForm();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [hasAccessToken, setHasAccessToken] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     dataContent.defaultAvatarImage.src,
@@ -38,6 +38,13 @@ export default function UpdateAccount() {
   const updateBio = (event) => {
     setBio(event.target.value);
   };
+
+  // get the bio to update with useEffect
+  useEffect(() => {
+    if (bio !== dataContent.bio.text) {
+      setBio(watch('bio'));
+    }
+  }, [watch('bio')]);
 
   const getAccount = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
@@ -186,6 +193,7 @@ export default function UpdateAccount() {
                         href={dataContent.successSubHeading.link.url}>
                         {dataContent.successSubHeading.link.text}
                       </Link>
+                      {dataContent.successSubHeading.textTwo}
                     </p>
                   </div>
                 </GridItem>
@@ -309,7 +317,11 @@ export default function UpdateAccount() {
                               onKeyDown={(e) => updateBio(e)}
                               {...register('bio')}
                             />
-                            {errors.bio && <span>{errors.bio.message}</span>}
+                            {errors.bio && (
+                              <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                                {errors.bio.message}
+                              </span>
+                            )}
                           </div>
                         </form>
                       </GridItem>

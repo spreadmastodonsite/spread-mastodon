@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -10,25 +11,19 @@ import GridItem from '@/components/layout/GridItem';
 export default function AuthenticateUserForm() {
   const router = useRouter();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   // Declare state variables
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
     useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
-
-  // Handle email input change
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  // Handle password input change
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   // Authenticate the user with the provided email and password
   const authenticateUser = async (email, password) => {
@@ -79,12 +74,11 @@ export default function AuthenticateUserForm() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     setLoading(true);
 
     try {
-      const accessToken = await authenticateUser(email, password);
+      const accessToken = await authenticateUser(data.email, data.password);
       await verifyUserAccount(accessToken);
 
       // Call the handle submit success function
@@ -92,7 +86,6 @@ export default function AuthenticateUserForm() {
     } catch (error) {
       setValidationMessage(error.message);
     }
-
     setLoading(false);
   };
 
@@ -124,39 +117,67 @@ export default function AuthenticateUserForm() {
               {data.heading.text}{' '}
             </h2>
             <div dangerouslySetInnerHTML={{ __html: data.subHeading.text }} />
-            <form className="c-authenticate-form" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-              </div>
+            <form
+              className="c-authenticate-form"
+              onSubmit={handleSubmit(onSubmit)}>
+              <Grid className="c-grid__signup-form">
+                <GridItem columnStart={2} columnEnd={12}>
+                  <label className="u-visually-hidden" htmlFor="email">
+                    Email:
+                  </label>
+                  {errors.email && (
+                    <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                      {errors.email.message}
+                    </span>
+                  )}
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Email Address"
+                    className={`c-signup-form__input ${
+                      errors.email && 'c-signup-form__input--error'
+                    }`}
+                    {...register('email', {
+                      required: 'Email is required',
+                    })}
+                  />
+                </GridItem>
+                <GridItem columnStart={2} columnEnd={12}>
+                  <label className="u-visually-hidden" htmlFor="password">
+                    Password:
+                  </label>
+                  {errors.password && (
+                    <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                      {errors.password.message}
+                    </span>
+                  )}
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    className={`c-signup-form__input ${
+                      errors.password && 'c-signup-form__input--error'
+                    }`}
+                    {...register('password', {
+                      required: 'Password is required',
+                    })}
+                  />
+                </GridItem>
+              </Grid>
               {loading ? (
                 <div>Loading...</div>
               ) : (
                 // Shows the validation message if there the page doesn't redirect
-                <>
-                  {validationMessage && <div>{validationMessage}</div>}
-                  <Button
-                    className="c-button__auth"
-                    type="submit"
-                    text="Log in &amp; Authenticate"
-                  />
-                </>
+                <Grid>
+                  <GridItem columnStart={2} columnEnd={12}>
+                    {validationMessage && <div>{validationMessage}</div>}
+                    <Button
+                      className="c-button__auth"
+                      type="submit"
+                      text={data.logInButton.text}
+                    />
+                  </GridItem>
+                </Grid>
               )}
             </form>
           </>
