@@ -179,6 +179,8 @@ export default function UpdateAccount() {
                       {dataContent.successSubHeading.text}{' '}
                       <Link
                         className="c-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href={dataContent.successSubHeading.link.url}>
                         {dataContent.successSubHeading.link.text}
                       </Link>
