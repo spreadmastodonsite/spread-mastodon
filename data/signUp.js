@@ -13,7 +13,7 @@ export const signUpData = {
     text: '(Step 1 of 2)',
   },
   description: {
-    text: 'Join the whole Mastodon network via this Trusted community server.',
+    text: 'Join the whole Mastodon network via this trusted community server.',
   },
   formButton: {
     text: 'Great, Let’s Get You Set Up',
