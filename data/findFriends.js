@@ -42,7 +42,7 @@ export const findFriendsData = {
     link: '/mastodon-explainer',
   },
   skipButton: {
-    text: 'Skip this step',
+    text: 'Skip This Step for Now',
     link: '/mastodon-explainer',
   },
 };

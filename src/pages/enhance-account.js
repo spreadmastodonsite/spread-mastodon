@@ -108,13 +108,13 @@ export default function Join() {
   };
 
   const onAuthSubmit = async (data) => {
-    window.localStorage.setItem('client', data.server);
-    const redirectUrl = 'http://localhost:3000/enhance-account'
+    window.localStorage.setItem('client', data.server);;
+    const redirectUrl = 'http://localhost:3000/enhance-account';
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
         client_id: data.server,
-        redirect_uri: redirectUrl
+        redirect_uri: redirectUrl,
       });
 
       console.log(response);
@@ -128,7 +128,7 @@ export default function Join() {
         )}`,
       );
     }
-  }  
+  };
 
   // Get the access token from session storage on component mount
   useEffect(() => {
@@ -294,90 +294,123 @@ export default function Join() {
                           })}
                         />
                         <button className="btn btn-outline-secondary" type="submit" id="sign-in">Sign in</button>
+                      {/* <label className="u-visually-hidden" htmlFor="email">
+                        Email:
+                      </label>
+                      {errors.email && (
+                        <span className="u-margin-bottom--sm u-display--inline-block">
+                          {errors.email.message}
+                        </span>
+                      )}
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        className={`c-signup-form__input ${
+                          errors.email && 'c-signup-form__input--error'
+                        }`}
+                        {...register('email', {
+                          required: 'Email is required',
+                        })}
+                      /> */}
                     </GridItem>
                     <GridItem columnStart={2} columnEnd={12}>
-                      <div><p>Still need to authenticate <span onClick={() =>setToggleForm(false)}>Click here</span></p></div>
+                      <div>
+                        <p>
+                          Still need to authenticate{' '}
+                          <span onClick={() => setToggleForm(false)}>
+                            Click here
+                          </span>
+                        </p>
+                      </div>
                     </GridItem>
                   </Grid>
                 </form>
               ) : (
-              <form
-                className="c-authenticate-form"
-                onSubmit={handleSubmit(onSubmit)}>
-                <Grid className="c-grid__signup-form">
-                  <GridItem columnStart={2} columnEnd={12}>
-                    <label className="u-visually-hidden" htmlFor="email">
-                      Email:
-                    </label>
-                    {errors.email && (
-                      <span className="u-margin-bottom--sm u-display--inline-block">
-                        {errors.email.message}
-                      </span>
-                    )}
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="Email Address"
-                      className={`c-signup-form__input ${
-                        errors.email && 'c-signup-form__input--error'
-                      }`}
-                      {...register('email', {
-                        required: 'Email is required',
-                      })}
-                    />
-                  </GridItem>
-                  <GridItem columnStart={2} columnEnd={12}>
-                    <label className="u-visually-hidden" htmlFor="password">
-                      Password:
-                    </label>
-                    {errors.password && (
-                      <span className="u-margin-bottom--sm u-display--inline-block">
-                        {errors.password.message}
-                      </span>
-                    )}
-                    <input
-                      id="password"
-                      type="password"
-                      placeholder="Password"
-                      className={`c-signup-form__input ${
-                        errors.password && 'c-signup-form__input--error'
-                      }`}
-                      {...register('password', {
-                        required: 'Password is required',
-                      })}
-                    />
-                  </GridItem>
-                  <GridItem columnStart={2} columnEnd={12}>
-                    <div><p>Already have an account <span onClick={() => setToggleForm(true)}>Click here</span></p></div>
-                  </GridItem>
-                </Grid>
-                {loading ? (
-                  <Grid>
+                <form
+                  className="c-authenticate-form"
+                  onSubmit={handleSubmit(onSubmit)}>
+                  <Grid className="c-grid__signup-form">
                     <GridItem columnStart={2} columnEnd={12}>
-                      <div>Loading...</div>
-                    </GridItem>
-                  </Grid>
-                ) : (
-                  // Shows the validation message if there the page doesn't redirect
-                  <Grid>
-                    <GridItem columnStart={2} columnEnd={12}>
-                      <div>
-                        {validationMessage && (
-                          <p className="c-error u-margin-top--lg u-body--copy">
-                            {validationMessage}
-                          </p>
-                        )}
-                      </div>
-                      <Button
-                        className="c-button__auth"
-                        type="submit"
-                        text={data.submitButton.text}
+                      <label className="u-visually-hidden" htmlFor="email">
+                        Email:
+                      </label>
+                      {errors.email && (
+                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                          {errors.email.message}
+                        </span>
+                      )}
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        className={`c-signup-form__input ${
+                          errors.email && 'c-signup-form__input--error'
+                        }`}
+                        {...register('email', {
+                          required: 'Email is required',
+                        })}
                       />
                     </GridItem>
+                    <GridItem columnStart={2} columnEnd={12}>
+                      <label className="u-visually-hidden" htmlFor="password">
+                        Password:
+                      </label>
+                      {errors.password && (
+                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                          {errors.password.message}
+                        </span>
+                      )}
+                      <input
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        className={`c-signup-form__input ${
+                          errors.password && 'c-signup-form__input--error'
+                        }`}
+                        {...register('password', {
+                          required: 'Password is required',
+                        })}
+                      />
+                    </GridItem>
+                    <GridItem columnStart={2} columnEnd={12}>
+                      <div>
+                        <p>
+                          Already have an account{' '}
+                          <span onClick={() => setToggleForm(true)}>
+                            Click here
+                          </span>
+                        </p>
+                      </div>
+                    </GridItem>
                   </Grid>
-                )}
-              </form>
-            )}
+                  {loading ? (
+                    <Grid>
+                      <GridItem columnStart={2} columnEnd={12}>
+                        <div>Loading...</div>
+                      </GridItem>
+                    </Grid>
+                  ) : (
+                    // Shows the validation message if there the page doesn't redirect
+                    <Grid>
+                      <GridItem columnStart={2} columnEnd={12}>
+                        <div>
+                          {validationMessage && (
+                            <p className="c-error u-margin-top--lg u-body--copy">
+                              {validationMessage}
+                            </p>
+                          )}
+                        </div>
+                        <Button
+                          className="c-button__auth"
+                          type="submit"
+                          text={data.submitButton.text}
+                        />
+                      </GridItem>
+                    </Grid>
+                  )}
+                </form>
+              )}
             </div>
           )}
         </Grid>

@@ -20,7 +20,7 @@ export const explainerData = {
     text: 'Lots of people use it to talk to one another! It’s one big website, and the people who run it spend a lot of money to keep it going. Twitter uses advertising to pay the bills.',
   },
   ctaButton: {
-    text: 'Go to Step 5.',
+    text: 'Go to Step 5: Get a Great App',
     link: '/apps',
   },
 };

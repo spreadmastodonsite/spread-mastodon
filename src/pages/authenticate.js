@@ -173,7 +173,7 @@ export default function AuthenticateUser() {
                         Email:
                       </label>
                       {errors.email && (
-                        <span className="u-margin-bottom--sm u-display--inline-block">
+                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                           {errors.email.message}
                         </span>
                       )}
@@ -194,7 +194,7 @@ export default function AuthenticateUser() {
                         Password:
                       </label>
                       {errors.password && (
-                        <span className="u-margin-bottom--sm u-display--inline-block">
+                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
                           {errors.password.message}
                         </span>
                       )}

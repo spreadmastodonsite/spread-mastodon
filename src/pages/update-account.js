@@ -22,7 +22,7 @@ export default function UpdateAccount() {
     watch,
   } = useForm();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [hasAccessToken, setHasAccessToken] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     dataContent.defaultAvatarImage.src,
@@ -186,6 +186,7 @@ export default function UpdateAccount() {
                         href={dataContent.successSubHeading.link.url}>
                         {dataContent.successSubHeading.link.text}
                       </Link>
+                      {dataContent.successSubHeading.textTwo}
                     </p>
                   </div>
                 </GridItem>
@@ -309,7 +310,11 @@ export default function UpdateAccount() {
                               onKeyDown={(e) => updateBio(e)}
                               {...register('bio')}
                             />
-                            {errors.bio && <span>{errors.bio.message}</span>}
+                            {errors.bio && (
+                              <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                                {errors.bio.message}
+                              </span>
+                            )}
                           </div>
                         </form>
                       </GridItem>
