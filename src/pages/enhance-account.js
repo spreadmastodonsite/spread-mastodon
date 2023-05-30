@@ -105,7 +105,7 @@ export default function Join() {
 
   const onAuthSubmit = async (data) => {
     console.log(data)
-    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account'
+    const redirectUrl = 'http://localhost:3000/enhance-account'
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
@@ -114,6 +114,7 @@ export default function Join() {
       });
 
       console.log(response);
+      
       window.location.href = response.data.data;
       return response;
     } catch (error) {
@@ -138,7 +139,7 @@ export default function Join() {
   return (
     <div className="content-wrapper c-page__join">
       <Head>
-        <title>Spread Mastodon - {data.metaData.title}</title>
+        <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
         <link rel="icon" href={data.metaData.icon} />
         <meta property="og:title" content={data.metaData.name} />
