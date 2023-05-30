@@ -96,6 +96,7 @@ export default function Join() {
   };
 
   const onAuthSubmit = async (data) => {
+
     window.localStorage.setItem('client', data.server);;
     const redirectUrl = 'http://localhost:3000/enhance-account';
     try {
@@ -106,7 +107,7 @@ export default function Join() {
       });
 
       console.log(response);
-      //window.location.href = response.data.data;
+      window.location.href = response.data.data;
       return response;
     } catch (error) {
       console.log(error);
