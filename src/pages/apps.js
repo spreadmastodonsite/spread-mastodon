@@ -2,11 +2,13 @@ import Head from 'next/head';
 import Button from '@/components/atoms/Button';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Logo from '@/components/atoms/Logo';
+import { useRouter } from 'next/router';
 
 import { appsData as data } from '/data/apps.js';
 import Image from 'next/image';
 
 export default function MastodonApps() {
+  const router = useRouter();
   return (
     <div className="content-wrapper">
       <Head>
