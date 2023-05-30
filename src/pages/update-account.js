@@ -41,10 +41,11 @@ export default function UpdateAccount() {
 
   // get the bio to update with useEffect
   useEffect(() => {
+    s;
     if (bio !== dataContent.bio.text) {
       setBio(watch('bio'));
     }
-  }, [watch('bio')]);
+  });
 
   const getAccount = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
