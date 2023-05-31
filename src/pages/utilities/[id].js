@@ -27,11 +27,11 @@ export default function Post() {
 
   return (
     <>
+      <div className="l-main">
+        <Logo variant="small" />
+      </div>
       <Grid>
-        <GridItem columnStart={3} columnEnd={11}>
-          <Logo variant="small" />
-        </GridItem>
-        <GridItem columnStart={3} columnEnd={11}>
+        <GridItem columnStart={1} columnEnd={13}>
           <Suspense fallback={<div>Loading...</div>}>
             <ReactMarkdown
               className="c-markdown l-main c-page__interior"
