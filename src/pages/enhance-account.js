@@ -120,9 +120,6 @@ export default function Join() {
   // Get the access token from session storage on component mount
   useEffect(() => {
     const client =  window.localStorage.getItem('client');
-    console.log(client);
-  
-    console.log(client,)
 
     const fetchAccessToken = async () => {
       try {
@@ -153,7 +150,7 @@ export default function Join() {
               })
             
             })
-            if (res.status == 200 && router.query.code) {
+            if (res.status == 200) {
               const data = await res.json();
               const accessToken = data.access_token;
     
@@ -174,34 +171,17 @@ export default function Join() {
       }
     };
 
-
-    // const verifyExternalAccount = async (accessToken) => {
-    //   try {
-    //     const response = await axios.post('/api/authapp', {
-    //       response_type: 'code',
-    //       client_id: client,
-    //       token: accessToken,
-    //     });
-
-    //     setUser(response.data.data.acct);
-    //     return response.data;
-    //   } catch (error) {
-    //     throw new Error(
-    //       `Error verifying account: ${JSON.stringify(
-    //         error.response.data.error.error,
-    //       )}`,
-    //     );
-    //   }
-    // };
     const accessToken = sessionStorage.getItem('accessToken');
 
     if (accessToken) {
       setStoredAccessToken(accessToken);
       verifyUserAccount(accessToken);
     } else {
-      fetchAccessToken();
+      setTimeout(() => {
+        fetchAccessToken();
+      }, 100);
     }
-  }, []);
+  }, [router]);
 
   return (
     <div className="content-wrapper c-page__join">
