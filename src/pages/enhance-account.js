@@ -29,6 +29,8 @@ export default function Join() {
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
   const [toggleForm, setToggleForm] = useState(false);
+  //const [client, setClient] = useState();  
+  const [pageLoading, setPageLoading] = useState(false);
 
   // Handle email input change
   const handleEmailChange = (e) => {
@@ -75,6 +77,8 @@ export default function Join() {
     }
   };
 
+  
+
   // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
     // Store the access token in session storage
@@ -104,7 +108,7 @@ export default function Join() {
   };
 
   const onAuthSubmit = async (data) => {
-    console.log(data)
+    window.localStorage.setItem('client', data.server);
     const redirectUrl = 'http://localhost:3000/enhance-account'
     try {
       const response = await axios.post('/api/authapp', {
@@ -114,8 +118,7 @@ export default function Join() {
       });
 
       console.log(response);
-      
-      window.location.href = response.data.data;
+      //window.location.href = response.data.data;
       return response;
     } catch (error) {
       console.log(error);
@@ -129,10 +132,89 @@ export default function Join() {
 
   // Get the access token from session storage on component mount
   useEffect(() => {
+    const client =  window.localStorage.getItem('client');
+    console.log(client);
+  
+    console.log(client,)
+
+    const fetchAccessToken = async () => {
+      try {
+        const response = await axios.post(
+          `https://${client}/api/v1/apps`,
+          {
+            redirect_uris: 'https://join-mastodon-poc.vercel.app/enhance-account',
+            client_name: client,
+            scopes: 'read write follow',
+            website: 'https://join-mastodon-poc.vercel.app',
+          },
+        ).then(
+          async response => {
+            console.log(response.data.client_id, response.data.client_secret, router.query.code)
+
+            const res = await fetch(`https://${client}/oauth/token`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                client_id: response.data.client_id,
+                client_secret: response.data.client_secret,
+                redirect_uri: '/enhance_account',
+                grant_type: 'authorization_code',
+                code: router.query.code,
+                scope: 'read write follow',
+              })
+            
+            })
+            console.log(res)
+            if (res.status == 200) {
+              const data = await res.json();
+              const accessToken = data.access_token;
+    
+              // Store the access token in your app's state or storage
+              // Here, we're storing it in local storage for simplicity
+              localStorage.setItem('access_token', accessToken);
+              sessionStorage.setItem('accessToken', accessToken);
+    
+              // Redirect the user to the desired route in your app
+              router.push('/enhance_account');
+            } else {
+              // Handle the case when the token exchange fails
+              console.error('Token exchange failed');
+            }
+          }
+        );
+      } catch (error) {
+        console.error('Error fetching access token', error);
+      }
+    };
+
+
+    // const verifyExternalAccount = async (accessToken) => {
+    //   try {
+    //     const response = await axios.post('/api/authapp', {
+    //       response_type: 'code',
+    //       client_id: client,
+    //       token: accessToken,
+    //     });
+
+    //     setUser(response.data.data.acct);
+    //     return response.data;
+    //   } catch (error) {
+    //     throw new Error(
+    //       `Error verifying account: ${JSON.stringify(
+    //         error.response.data.error.error,
+    //       )}`,
+    //     );
+    //   }
+    // };
     const accessToken = sessionStorage.getItem('accessToken');
+
     if (accessToken) {
       setStoredAccessToken(accessToken);
       verifyUserAccount(accessToken);
+    } else {
+      fetchAccessToken();
     }
   }, []);
 
@@ -212,25 +294,6 @@ export default function Join() {
                           })}
                         />
                         <button className="btn btn-outline-secondary" type="submit" id="sign-in">Sign in</button>
-                      {/* <label className="u-visually-hidden" htmlFor="email">
-                        Email:
-                      </label>
-                      {errors.email && (
-                        <span className="u-margin-bottom--sm u-display--inline-block">
-                          {errors.email.message}
-                        </span>
-                      )}
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="Email Address"
-                        className={`c-signup-form__input ${
-                          errors.email && 'c-signup-form__input--error'
-                        }`}
-                        {...register('email', {
-                          required: 'Email is required',
-                        })}
-                      /> */}
                     </GridItem>
                     <GridItem columnStart={2} columnEnd={12}>
                       <div><p>Still need to authenticate <span onClick={() =>setToggleForm(false)}>Click here</span></p></div>

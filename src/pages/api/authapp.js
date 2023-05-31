@@ -41,7 +41,7 @@ export default async function authApp(req, res) {
   //   .then((accessToken) => {
   //       console.log(`This is the access token. Save it!\n${accessToken}`)
   //   })
-  console.log(req.data );
+  console.log(req.body );
   try {
     const response = await axios.post(
       `https://${req.body.client_id}/api/v1/apps`,
@@ -62,7 +62,7 @@ export default async function authApp(req, res) {
             client_id: response.data.client_id,
             scopes: 'read write follow',
         })
-        res.status(200).json({ success: true, data: url });
+        res.status(200).json({ success: true, data: url, client:[ { id: response.data.client_id, secret: response.data.client_secret}] });
       }
     )
     // .then(
