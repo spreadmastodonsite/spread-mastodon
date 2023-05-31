@@ -161,6 +161,10 @@ export default function SignupForm() {
                 } `}
                 {...register('displayName')}
               />
+              <span className="c-field-note">
+                Your display name is shown to other users before your full
+                Mastodon address. It can be up to 30 characters.
+              </span>
             </GridItem>
             <GridItem columnStart={5} columnEnd={9}>
               <div className="c-signup-form__input--with-float">

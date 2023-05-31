@@ -1,3 +1,8 @@
+.c-markdown {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 @media all and (max-width: 768px) {
   .c-markdown {
     padding-right: var(--space-xl);
