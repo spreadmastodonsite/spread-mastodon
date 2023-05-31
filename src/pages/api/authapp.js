@@ -48,19 +48,19 @@ export default async function authApp(req, res) {
       {
         redirect_uris: 'https://join-mastodon-poc.vercel.app/enhance-account',
         client_name: req.body.client_id,
-        scopes: 'write follow',
+        scopes: 'read write follow',
         website: 'https://join-mastodon-poc.vercel.app',
       },
     ).then(
       response => {
         console.log('toekn', response.data)
-        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/authorize')
+        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/token')
         const url = oauth.getAuthorizeUrl({
             grant_type: 'authorization_code',
             redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
             response_type: 'code',
             client_id: response.data.client_id,
-            scopes: 'write follow',
+            scope: 'read write follow',
         })
         res.status(200).json({ success: true, data: url, client:[ { id: response.data.client_id, secret: response.data.client_secret}] });
       }

@@ -101,6 +101,7 @@ export default function Join() {
         response_type: 'code',
         client_id: data.server,
         redirect_uri: redirectUrl,
+        scope: 'read write follow'
       });
 
       console.log(response);
@@ -148,12 +149,11 @@ export default function Join() {
                 redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
                 grant_type: 'client_credentials',
                 code: router.query.code,
-                scope: 'read',
+                scope: 'read write follow',
               })
             
             })
-            console.log(res)
-            if (res.status == 200) {
+            if (res.status == 200 && router.query.code) {
               const data = await res.json();
               const accessToken = data.access_token;
     
