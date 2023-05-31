@@ -135,7 +135,7 @@ export default function Join() {
           async response => {
             console.log(response.data.client_id, response.data.client_secret, router.query.code)
 
-            const res = await fetch(`https:/${client}/oauth/token`, {
+            const res = await fetch(`https://${client}/oauth/token`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -175,14 +175,14 @@ export default function Join() {
 
     const accessToken = sessionStorage.getItem('accessToken');
 
-    if (accessToken) {
-      setStoredAccessToken(accessToken);
-      verifyUserAccount(accessToken);
-    } else {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (router.query.code) {
         fetchAccessToken();
-      }, 100);
-    }
+      } else if (accessToken) {
+        setStoredAccessToken(accessToken);
+        verifyUserAccount(accessToken);
+      }
+    }, 100);
   }, [router]);
 
   return (
