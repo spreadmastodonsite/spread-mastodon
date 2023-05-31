@@ -44,22 +44,22 @@ export default async function authApp(req, res) {
   console.log(req.body );
   try {
     const response = await axios.post(
-      `https://${req.body.client_id}/api/v1/apps`,
+      `https://join-mastodon-poc.vercel.app/api/v1/apps`,
       {
         redirect_uris: 'https://join-mastodon-poc.vercel.app/enhance-account',
-        client_name: req.body.client_id,
+        client_name: 'https://join-mastodon-poc.vercel.app',
         scopes: 'read write follow',
         website: 'https://join-mastodon-poc.vercel.app',
       },
     ).then(
       response => {
         console.log('toekn', response.data)
-        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/authorize')
+        const oauth = new OAuth2('HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI', 'BtkvsH8eIkeqzBCBlA9dFpWYN111bLi9BO0PmJqI4MI', `https://${req.body.client_id}`, null, '/oauth/authorize')
         const url = oauth.getAuthorizeUrl({
             grant_type: 'authorization_code',
             redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
             response_type: 'code',
-            client_id: response.data.client_id,
+            client_id: 'HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI',
             scope: 'read write follow',
         })
         res.status(200).json({ success: true, data: url, client:[ { id: response.data.client_id, secret: response.data.client_secret}] });

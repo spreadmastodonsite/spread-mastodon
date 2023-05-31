@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
+import { OAuth2 } from 'oauth'
 import axios from 'axios'; // Add this import statement
 import Head from 'next/head';
 import Card from '@/components/Organism/Card';
@@ -96,24 +97,43 @@ export default function Join() {
   const onAuthSubmit = async (data) => {
     window.localStorage.setItem('client', data.server);;
     const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
-    try {
-      const response = await axios.post('/api/authapp', {
-        response_type: 'code',
-        client_id: data.server,
-        redirect_uri: redirectUrl,
-        scope: 'read write follow'
-      });
+    // const oauth = new OAuth2('HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI', 'BtkvsH8eIkeqzBCBlA9dFpWYN111bLi9BO0PmJqI4MI', `https://${data.server}`, null, '/oauth/authorize')
+    // const url = oauth.getAuthorizeUrl({
+    //     redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
+    //     response_type: 'code',
+    //     client_id: 'HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI',
+    //     scope: 'read write follow',
+    // })
 
-      window.location.href = response.data.data;
-      return response;
-    } catch (error) {
-      console.log(error);
-      throw new Error(
-        `Error authenticating account: ${JSON.stringify(
-          error.response ? error.response.data : error.message,
-        )}`,
-      );
+    const options = {
+      client_id: 'HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI',
+      instance: data.server,
+      redirect_uri: redirectUrl,
+      response_type: 'code',
+      scope: 'read write follow'
     }
+    const queryString = Object.keys(options).map(key => `${key}=${encodeURIComponent(options[key])}`).join('&');
+    const url = `https://${data.server}/oauth/authorize?${queryString}`
+
+    window.location.href = url;
+    // try {
+    //   const response = await axios.post('/api/authapp', {
+    //     response_type: 'code',
+    //     client_id: data.server,
+    //     redirect_uri: redirectUrl,
+    //     scope: 'read write follow'
+    //   });
+
+    //   window.location.href = response.data.data
+    //   return response;
+    // } catch (error) {
+    //   console.log(error);
+    //   throw new Error(
+    //     `Error authenticating account: ${JSON.stringify(
+    //       error.response ? error.response.data : error.message,
+    //     )}`,
+    //   );
+    // }
   };
 
   // Get the access token from session storage on component mount
