@@ -1,6 +1,6 @@
 export const EnhanceAccount = {
   metaData: {
-    title: 'Join Mastodon',
+    title: 'Spread Mastodon - Join Mastodon',
     name: 'Join Mastodon',
     description:
       'Mastodon account signup using Next.js, React and Mastodon API',

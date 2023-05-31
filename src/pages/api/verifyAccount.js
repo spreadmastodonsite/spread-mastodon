@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
+    console.log(req)
     const { accessToken } = req.query;
     const instanceUrl = process.env.MASTODON_INSTANCE_URL;
 
