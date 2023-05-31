@@ -145,10 +145,10 @@ export default function Join() {
               body: JSON.stringify({
                 client_id: response.data.client_id,
                 client_secret: response.data.client_secret,
-                redirect_uri: '/enhance_account',
-                grant_type: 'authorization_code',
+                redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
+                grant_type: 'client_credentials',
                 code: router.query.code,
-                scope: 'read write follow',
+                scope: 'read',
               })
             
             })
@@ -163,7 +163,7 @@ export default function Join() {
               sessionStorage.setItem('accessToken', accessToken);
     
               // Redirect the user to the desired route in your app
-              router.push('/enhance_account');
+              router.push('/enhance-account');
             } else {
               // Handle the case when the token exchange fails
               console.error('Token exchange failed');
