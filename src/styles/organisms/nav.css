@@ -101,7 +101,8 @@
 }
 
 .u-nav-menu__list__item__sub {
-  padding: var(--space-xs);
+  padding-top: var(--space-xs);
+  padding-right: var(--space-lg);
   padding-left: var(--space-lg);
   display: inline-block;
   font-weight: var(--font-semibold);
