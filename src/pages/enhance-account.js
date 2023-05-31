@@ -159,9 +159,8 @@ export default function Join() {
     
               // Store the access token in your app's state or storage
               // Here, we're storing it in local storage for simplicity
-              localStorage.setItem('access_token', accessToken);
               sessionStorage.setItem('accessToken', accessToken);
-    
+              setVerifiedAndAuthenticated(true);
               // Redirect the user to the desired route in your app
               router.push('/enhance-account');
             } else {

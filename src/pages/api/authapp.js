@@ -48,7 +48,7 @@ export default async function authApp(req, res) {
       {
         redirect_uris: 'https://join-mastodon-poc.vercel.app/enhance-account',
         client_name: req.body.client_id,
-        scopes: 'read write follow',
+        scopes: 'write follow',
         website: 'https://join-mastodon-poc.vercel.app',
       },
     ).then(
@@ -60,7 +60,7 @@ export default async function authApp(req, res) {
             redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
             response_type: 'code',
             client_id: response.data.client_id,
-            scopes: 'read write follow',
+            scopes: 'write follow',
         })
         res.status(200).json({ success: true, data: url, client:[ { id: response.data.client_id, secret: response.data.client_secret}] });
       }
