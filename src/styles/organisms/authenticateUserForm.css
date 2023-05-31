@@ -12,3 +12,19 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.c-grid__auth-form__input {
+  position: relative;
+}
+
+.c-grid__auth-form__input input {
+  margin-left: 62px;
+  width: calc(100% - 62px);
+}
+
+.c-grid__auth-form__input span {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}

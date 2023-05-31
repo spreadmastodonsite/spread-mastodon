@@ -104,7 +104,6 @@ export default function Join() {
         scope: 'read write follow'
       });
 
-      console.log(response);
       window.location.href = response.data.data;
       return response;
     } catch (error) {
@@ -236,44 +235,27 @@ export default function Join() {
                 <form
                   className="c-authenticate-form"
                   onSubmit={handleSubmit(onAuthSubmit)}>
-                  <Grid className="c-grid__signup-form">
+                  <Grid className="c-grid__auth-form">
                     <GridItem columnStart={2} columnEnd={12}>
-                      <span className="input-group-text">https://</span>
-                      <input
-                        required=""
-                        id="server"
-                        type="text"
-                        className="form-control"
-                        placeholder="mastodon.social"
-                        {...register('server', {
-                          required: 'Server is required',
-                        })}
-                      />
+                      <div className="c-grid__auth-form__input">
+                        <span className="input-group-text">https://</span>
+                        <input
+                          required=""
+                          id="server"
+                          type="text"
+                          className="form-control"
+                          placeholder="mastodon.social"
+                          {...register('server', {
+                            required: 'Server is required',
+                          })}
+                        />
+                      </div>
                       <button
-                        className="btn btn-outline-secondary"
+                        className="c-button c-button--primary c-button__auth"
                         type="submit"
                         id="sign-in">
                         Sign in
                       </button>
-                      {/* <label className="u-visually-hidden" htmlFor="email">
-                        Email:
-                      </label>
-                      {errors.email && (
-                        <span className="u-margin-bottom--sm u-display--inline-block">
-                          {errors.email.message}
-                        </span>
-                      )}
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="Email Address"
-                        className={`c-signup-form__input ${
-                          errors.email && 'c-signup-form__input--error'
-                        }`}
-                        {...register('email', {
-                          required: 'Email is required',
-                        })}
-                      /> */}
                     </GridItem>
                     <GridItem columnStart={2} columnEnd={12}>
                       <div>
