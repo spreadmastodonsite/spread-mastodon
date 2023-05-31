@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    console.log(req)
+    console.log(req);
     const { accessToken } = req.query;
     const instanceUrl = process.env.MASTODON_INSTANCE_URL;
 
@@ -16,10 +16,11 @@ export default async function handler(req, res) {
         },
       );
 
+      console.log('verifyAccountAPI', response.data);
       res.status(200).json({ success: true, data: response.data });
     } catch (error) {
       res.status(400).json({ success: false, error: error.response.data });
-      console.log(error.response.data.error);
+      console.log('verifyAccountAPI', error.response.data.error);
     }
   } else {
     res.status(405).json({ success: false, message: 'Method not allowed' });

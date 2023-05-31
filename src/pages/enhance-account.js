@@ -54,7 +54,7 @@ export default function Join() {
         `/api/verifyAccount?accessToken=${accessToken}`,
       );
       setUser(response.data.data.acct);
-      console.log('verifyUserAccount', response.data.data.acct);
+      console.log('verifyUserAccount', response.data);
       return response.data;
     } catch (error) {
       console.log('verifyUserAccount', error.response.data.error);
@@ -125,6 +125,7 @@ export default function Join() {
       });
 
       window.location.href = response.data.data;
+      console.log(response.data.data);
       return response;
     } catch (error) {
       console.log(error);
@@ -202,6 +203,7 @@ export default function Join() {
       } else if (accessToken) {
         setStoredAccessToken(accessToken);
         verifyUserAccount(accessToken);
+        console.log('accessToken', accessToken);
       }
     }, 100);
   }, [router]);
