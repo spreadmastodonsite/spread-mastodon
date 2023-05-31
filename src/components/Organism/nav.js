@@ -20,6 +20,7 @@ export default function Nav() {
 
   const LogOut = () => {
     sessionStorage.removeItem('accessToken');
+    localStorage.removeItem('client');
     setLoggedIn(false);
     setLoggedOut(true);
     setTimeout(() => {

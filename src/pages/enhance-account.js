@@ -135,7 +135,7 @@ export default function Join() {
           async response => {
             console.log(response.data.client_id, response.data.client_secret, router.query.code)
 
-            const res = await fetch(`https://${client}/oauth/token`, {
+            const res = await fetch(`https://mastodon.social/oauth/token`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

@@ -54,7 +54,7 @@ export default async function authApp(req, res) {
     ).then(
       response => {
         console.log('toekn', response.data)
-        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/token')
+        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/authorize')
         const url = oauth.getAuthorizeUrl({
             grant_type: 'authorization_code',
             redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
