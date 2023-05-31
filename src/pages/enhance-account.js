@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
-import { OAuth2 } from 'oauth'
+import { OAuth2 } from 'oauth';
 import axios from 'axios'; // Add this import statement
 import Head from 'next/head';
 import Card from '@/components/Organism/Card';
@@ -54,8 +54,10 @@ export default function Join() {
         `/api/verifyAccount?accessToken=${accessToken}`,
       );
       setUser(response.data.data.acct);
+      console.log('verifyUserAccount', response.data.data.acct);
       return response.data;
     } catch (error) {
+      console.log('verifyUserAccount', error.response.data.error);
       throw new Error(
         `Error verifying account: ${JSON.stringify(
           error.response.data.error.error,
@@ -63,8 +65,6 @@ export default function Join() {
       );
     }
   };
-
-  
 
   // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
@@ -95,7 +95,7 @@ export default function Join() {
   };
 
   const onAuthSubmit = async (data) => {
-    window.localStorage.setItem('client', data.server);;
+    window.localStorage.setItem('client', data.server);
     const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
     // // const oauth = new OAuth2('HsvvdD-G0HFf595kHCK-gYgUFn7idGqwxpOuV56RzXI', 'BtkvsH8eIkeqzBCBlA9dFpWYN111bLi9BO0PmJqI4MI', `https://${data.server}`, null, '/oauth/authorize')
     // // const url = oauth.getAuthorizeUrl({
@@ -121,10 +121,10 @@ export default function Join() {
         response_type: 'code',
         client_id: data.server,
         redirect_uri: redirectUrl,
-        scope: 'read write follow'
+        scope: 'read write follow',
       });
 
-      window.location.href = response.data.data
+      window.location.href = response.data.data;
       return response;
     } catch (error) {
       console.log(error);
@@ -138,43 +138,46 @@ export default function Join() {
 
   // Get the access token from session storage on component mount
   useEffect(() => {
-    const client =  window.localStorage.getItem('client');
+    const client = window.localStorage.getItem('client');
 
     const fetchAccessToken = async () => {
       try {
-        const response = await axios.post(
-          `https://${client}/api/v1/apps`,
-          {
-            redirect_uris: 'https://join-mastodon-poc.vercel.app/enhance-account',
+        const response = await axios
+          .post(`https://${client}/api/v1/apps`, {
+            redirect_uris:
+              'https://join-mastodon-poc.vercel.app/enhance-account',
             client_name: client,
             scopes: 'read write follow',
             website: 'https://join-mastodon-poc.vercel.app',
-          },
-        ).then(
-          async response => {
-            console.log(response.data.client_id, response.data.client_secret, router.query.code)
+          })
+          .then(async (response) => {
+            console.log(
+              response.data.client_id,
+              response.data.client_secret,
+              router.query.code,
+            );
 
             const res = await fetch(`https://${client}/oauth/token`, {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
               },
               body: JSON.stringify({
                 client_id: response.data.client_id,
                 client_secret: response.data.client_secret,
-                redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
+                redirect_uri:
+                  'https://join-mastodon-poc.vercel.app/enhance-account',
                 grant_type: 'client_credentials',
                 code: router.query.code,
                 scope: 'read write follow',
-              })
-            
-            })
+              }),
+            });
 
-            console.log(res)
+            console.log(res);
             if (res.status == 200) {
               const data = await res.json();
               const accessToken = data.access_token;
-    
+
               // Store the access token in your app's state or storage
               // Here, we're storing it in local storage for simplicity
               sessionStorage.setItem('accessToken', accessToken);
@@ -185,8 +188,7 @@ export default function Join() {
               // Handle the case when the token exchange fails
               console.error('Token exchange failed');
             }
-          }
-        );
+          });
       } catch (error) {
         console.error('Error fetching access token', error);
       }
