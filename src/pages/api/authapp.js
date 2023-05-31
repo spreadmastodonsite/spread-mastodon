@@ -23,7 +23,25 @@ export default async function authApp(req, res) {
   //       clientId = res.client_id
   //       clientSecret = res.client_secret
 
-  const { tagName } = req.query;
+  //       return Mastodon.getAuthorizationUrl(clientId, clientSecret, `https://${req.body.client_id}`)
+  //   })
+  //   .then((url) => {
+  //       console.log('This is the authorization URL. Open it in your browser and authorize with your account!')
+  //       console.log(url)
+  //       require('child_process').exec(`start ${url}`);
+  //       return new Promise((resolve) => {
+  //           rl.question('Please enter the code from the website: ', (code) => {
+  //               resolve(code)
+  //               rl.close()
+  //           })
+  //       })
+  //   })
+  //   .then((code) => Mastodon.getAccessToken(clientId, clientSecret, code))
+  //   .catch((err) => console.error(err))
+  //   .then((accessToken) => {
+  //       console.log(`This is the access token. Save it!\n${accessToken}`)
+  //   })
+  console.log(req.body );
   try {
     const response = await axios.post(
       `https://${req.body.client_id}/api/v1/apps`,
@@ -35,19 +53,16 @@ export default async function authApp(req, res) {
       },
     ).then(
       response => {
-        const options = {
-          client_id: '8mWB4ypeo5081BJnD6v0eEYrMqL2nMFN4y1QruVxTjs',
-          instance: response.data.name,
-          force_login: true,
-          response_type: 'code',
-          redirect_uri: 'https://join-mastodon-poc.vercel.app/',
-          scope: 'write:accounts+write:follows'
-        }
-        const queryString = Object.keys(options).map(key => `${key}=${encodeURIComponent(options[key])}`).join('&');
-        const loginURI = `https://${response.data.name}/oauth/authorize?${queryString}`
-        console.log('response =========', response)
-        res.status(200).json({ success: true, data: loginURI });
-        //res.redirect(loginURI)
+        console.log('toekn', response.data)
+        const oauth = new OAuth2(response.data.client_id, response.data.client_secret, `https://${response.data.name}`, null, '/oauth/authorize')
+        const url = oauth.getAuthorizeUrl({
+            grant_type: 'authorization_code',
+            redirect_uri: 'https://join-mastodon-poc.vercel.app/enhance-account',
+            response_type: 'code',
+            client_id: response.data.client_id,
+            scopes: 'read write follow',
+        })
+        res.status(200).json({ success: true, data: url, client:[ { id: response.data.client_id, secret: response.data.client_secret}] });
       }
     )
     // .then(
