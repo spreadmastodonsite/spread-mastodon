@@ -26,7 +26,7 @@ export default function Post() {
   }
 
   return (
-    <>
+    <div className="content-wrapper">
       <div className="l-main">
         <Logo variant="small" />
       </div>
@@ -70,6 +70,6 @@ export default function Post() {
           </ul>
         </GridItem>
       </Grid>
-    </>
+    </div>
   );
 }
