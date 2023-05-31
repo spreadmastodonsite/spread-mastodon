@@ -27,8 +27,6 @@ export default function Join() {
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
   const [toggleForm, setToggleForm] = useState(false);
-  //const [client, setClient] = useState();  
-  const [pageLoading, setPageLoading] = useState(false);
 
   // Authenticate the user with the provided email and password
   const authenticateUser = async (email, password) => {
@@ -96,9 +94,8 @@ export default function Join() {
   };
 
   const onAuthSubmit = async (data) => {
-
-    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
     window.localStorage.setItem('client', data.server);;
+    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
@@ -260,18 +257,23 @@ export default function Join() {
                   onSubmit={handleSubmit(onAuthSubmit)}>
                   <Grid className="c-grid__signup-form">
                     <GridItem columnStart={2} columnEnd={12}>
-                        <span className="input-group-text">https://</span>
-                        <input
-                          required=""
-                          id="server"
-                          type="text"
-                          className="form-control"
-                          placeholder="mastodon.social"
-                          {...register('server', {
-                            required: 'Server is required',
-                          })}
-                        />
-                        <button className="btn btn-outline-secondary" type="submit" id="sign-in">Sign in</button>
+                      <span className="input-group-text">https://</span>
+                      <input
+                        required=""
+                        id="server"
+                        type="text"
+                        className="form-control"
+                        placeholder="mastodon.social"
+                        {...register('server', {
+                          required: 'Server is required',
+                        })}
+                      />
+                      <button
+                        className="btn btn-outline-secondary"
+                        type="submit"
+                        id="sign-in">
+                        Sign in
+                      </button>
                       {/* <label className="u-visually-hidden" htmlFor="email">
                         Email:
                       </label>
