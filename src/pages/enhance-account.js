@@ -142,6 +142,7 @@ export default function Join() {
     const client = window.localStorage.getItem('client');
 
     const fetchAccessToken = async () => {
+      console.log('fetchAccessToken');
       try {
         const response = await axios
           .post(`https://${client}/api/v1/apps`, {
@@ -174,7 +175,7 @@ export default function Join() {
               }),
             });
 
-            console.log(res);
+            console.log('words', res);
             if (res.status == 200) {
               const data = await res.json();
               const accessToken = data.access_token;
