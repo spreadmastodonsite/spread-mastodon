@@ -25,7 +25,6 @@ export default function Post() {
     );
   }
 
-  console.log(router.query.id);
   return (
     <>
       <Grid>
@@ -35,7 +34,7 @@ export default function Post() {
         <GridItem columnStart={3} columnEnd={11}>
           <Suspense fallback={<div>Loading...</div>}>
             <ReactMarkdown
-              className="c-markdown"
+              className="c-markdown l-main c-page__interior"
               components={components}
               rehypePlugins={[rehypeRaw]}>
               {pageData}
@@ -53,14 +52,12 @@ export default function Post() {
             <li className="c-markdown__share--item">
               <Link
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://spreadmastodon.org${asPath}`}>
-                rel
                 <Icon iconName="facebook-logo" width="32" height="32" />
               </Link>
             </li>
             <li className="c-markdown__share--item">
               <Link
                 href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
-                rel
                 <Icon iconName="twitter-logo" width="32" height="32" />
               </Link>
             </li>

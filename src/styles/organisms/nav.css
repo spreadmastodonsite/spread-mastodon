@@ -76,10 +76,15 @@
   flex-direction: column;
   font-weight: var(--font-semibold);
   font-size: var(--font-size-xl);
+  padding-top: var(--space-xs);
+}
+
+.u-nav-menu__list__item > a {
+  line-height: 1.1;
 }
 
 .u-nav-menu__list__item a {
-  padding: var(--space-xs);
+  padding-top: var(--space-xs);
   transition: all 0.2s ease-in-out;
 }
 
@@ -89,7 +94,7 @@
 
 .u-nav-menu__list__item__menu {
   list-style: none;
-  padding-top: var(--space);
+  padding-top: var(--space-xs);
   margin: 0;
   display: inline-flex;
   flex-direction: column;
@@ -97,7 +102,7 @@
 
 .u-nav-menu__list__item__sub {
   padding: var(--space-xs);
-  padding-left: var(--space-xl);
+  padding-left: var(--space-lg);
   display: inline-block;
   font-weight: var(--font-semibold);
   font-size: var(--font-size-lg);
