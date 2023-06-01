@@ -84,7 +84,7 @@ export default function Join() {
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
-        client_id: serverName,
+        serverName: serverName,
         redirect_uri: redirectUrl,
         scope: 'read write follow',
       });

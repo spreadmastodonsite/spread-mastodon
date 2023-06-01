@@ -3,16 +3,14 @@ import axios from 'axios';
 export default async function authApp(req, res) {
   console.log('🔥 req.body', req.body);
 
-  const redirectUri = 'https://join-mastodon-poc.vercel.app/finish-auth';
-  const clientName = 'Spread Mastodon Social';
+  const { serverName, redirect_uri } = req.body;
 
   try {
     const appRegistrationResponse = await axios.post(
       `https://mastodon.social/api/v1/apps`,
       {
-        redirect_uris: redirectUri,
-        client_name: clientName,
-        scopes: 'read write follow',
+        redirect_uris: redirect_uri,
+        client_name: serverName,
       }
     );
 
