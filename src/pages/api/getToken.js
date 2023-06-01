@@ -7,7 +7,7 @@ export default async function getToken(req, res) {
     const client_id = 'NRQIMMaWJPxCsFD6jZRSO-md9tb8VN8T6yKqJMhdcs4';
     const client_secret = 'w6VJzI-myOqf0oxDcdcEU58v26XMh4NKp2deQPTqcWA';
     const redirect_uri = 'https://join-mastodon-poc.vercel.app/finish-auth';
-    const grant_type = 'client_credentials';
+    const grant_type = 'authorization_code';
 
     const response = await axios.post('https://mastodon.social/oauth/token', {
       client_id,
