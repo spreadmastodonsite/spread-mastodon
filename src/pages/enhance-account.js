@@ -85,7 +85,7 @@ export default function Join() {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
         serverName: serverName,
-        redirect_uri: redirectUrl,
+        redirectUri: redirectUrl,
         scope: 'read write follow',
       });
       window.location.href = response.data.authorizationUrl;
