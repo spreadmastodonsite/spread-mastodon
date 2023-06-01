@@ -97,7 +97,7 @@ export default function Join() {
   // 1. this will give you the code to exchange for an access token
   const onAuthSubmit = async (data) => {
     window.localStorage.setItem('client', data.server);
-    const redirectUrl = 'http://localhost:3000/enhance-account';
+    const redirectUrl = 'https://mastodon.social/enhance-account';
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',

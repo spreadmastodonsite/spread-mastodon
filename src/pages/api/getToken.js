@@ -6,7 +6,7 @@ export default async function getToken(req, res) {
   try {
     const client_id = 'NRQIMMaWJPxCsFD6jZRSO-md9tb8VN8T6yKqJMhdcs4';
     const client_secret = 'w6VJzI-myOqf0oxDcdcEU58v26XMh4NKp2deQPTqcWA';
-    const redirect_uri = 'http://localhost:3000/finish-auth';
+    const redirect_uri = 'https://mastodon.social/finish-auth';
     const grant_type = 'client_credentials';
 
     const response = await axios.post('https://mastodon.social/oauth/token', {

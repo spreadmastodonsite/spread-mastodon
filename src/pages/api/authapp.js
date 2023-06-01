@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function authApp(req, res) {
-  const redirectUri = 'http://localhost:3000/finish-auth';
+  const redirectUri = 'https://mastodon.social/finish-auth';
   const clientName = 'Spread Mastodon Social';
 
   try {
