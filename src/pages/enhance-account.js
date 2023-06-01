@@ -88,6 +88,7 @@ export default function Join() {
         redirectUri: redirectUrl,
         scope: 'read write follow',
       });
+
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
       throw new Error(

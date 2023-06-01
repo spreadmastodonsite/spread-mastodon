@@ -23,7 +23,7 @@ export default async function authApp(req, res) {
 
     const authorizationUrl = `https://mastodon.social/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
       redirect_uri
-    )}&response_type=code&scope=read+write+follow`;
+    )}&response_type=code`;
 
     res.json({ authorizationUrl });
   } catch (error) {
