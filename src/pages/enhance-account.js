@@ -79,7 +79,7 @@ export default function Join() {
     console.log('🔥 serverName', serverName);
 
     window.localStorage.setItem('client', serverName);
-    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
+    const redirectUrl = 'https://join-mastodon-poc.vercel.app/finish-auth';
 
     try {
       const response = await axios.post('/api/authapp', {
