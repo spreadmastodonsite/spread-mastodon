@@ -13,7 +13,8 @@ export default async function verifyCredentials(req, res) {
         },
       }
     );
-    console.log('response: ', response.body);
+    console.log('🔥 response', response);
+    res.status(200).json({ success: true, data: response.data });
   } catch (error) {
     console.log('Error ❌: ', error.response.data.error);
   }

@@ -12,9 +12,9 @@ const FinishAuth = () => {
 
   const verifyUserAccount = async (accessToken) => {
     try {
-      await axios.post(`/api/verifyAccount`, { accessToken });
-      console.log('verifyUserAccount', response.data);
-      setUser(response.data.data.acct);
+      const res = await axios.post(`/api/verifyAccount`, { accessToken });
+      console.log('verifyUserAccount', res.data);
+      setUser(res.data);
       // return response.data;
     } catch (error) {
       throw new Error('Error verifying account:', error);
@@ -30,6 +30,7 @@ const FinishAuth = () => {
         console.log('Error getToken: ', error);
       }
     };
+
     if (code) {
       getToken();
     }
