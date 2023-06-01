@@ -25,17 +25,16 @@ export default function Post() {
     );
   }
 
-  console.log(router.query.id);
   return (
-    <>
+    <div className="content-wrapper">
+      <div className="l-main">
+        <Logo variant="small" />
+      </div>
       <Grid>
-        <GridItem columnStart={3} columnEnd={11}>
-          <Logo variant="small" />
-        </GridItem>
-        <GridItem columnStart={3} columnEnd={11}>
+        <GridItem columnStart={1} columnEnd={13}>
           <Suspense fallback={<div>Loading...</div>}>
             <ReactMarkdown
-              className="c-markdown"
+              className="c-markdown l-main c-page__interior"
               components={components}
               rehypePlugins={[rehypeRaw]}>
               {pageData}
@@ -53,14 +52,12 @@ export default function Post() {
             <li className="c-markdown__share--item">
               <Link
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://spreadmastodon.org${asPath}`}>
-                rel
                 <Icon iconName="facebook-logo" width="32" height="32" />
               </Link>
             </li>
             <li className="c-markdown__share--item">
               <Link
                 href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
-                rel
                 <Icon iconName="twitter-logo" width="32" height="32" />
               </Link>
             </li>
@@ -73,6 +70,6 @@ export default function Post() {
           </ul>
         </GridItem>
       </Grid>
-    </>
+    </div>
   );
 }

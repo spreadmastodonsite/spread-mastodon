@@ -1,5 +1,14 @@
+.c-markdown {
+  margin: 0 auto;
+}
+
+.c-page__interior.l-main.c-markdown {
+  padding-right: var(--space-5xl);
+  padding-left: var(--space-5xl);
+}
+
 @media all and (max-width: 768px) {
-  .c-markdown {
+  .c-page__interior.l-main.c-markdown {
     padding-right: var(--space-xl);
     padding-left: var(--space-xl);
   }
@@ -8,6 +17,7 @@
 .c-markdown h1 {
   font-size: var(--font-size-7xl);
   margin-bottom: var(--space-xl);
+  line-height: 1.1;
 }
 
 @media all and (max-width: 768px) {

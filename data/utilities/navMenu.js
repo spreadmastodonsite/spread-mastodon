@@ -4,21 +4,39 @@ export const NavMenu = [
     url: '/',
   },
   {
-    title: 'Privacy Policy',
-    url: '/privacy-policy',
+    title: 'Join',
+    url: '/sign-up',
+  },
+  {
+    title: 'Enrich',
+    url: '/follow-suggestions',
     sub: [
       {
-        title: 'lorem',
-        url: '/#',
-      },
-      {
-        title: 'lorem1',
-        url: '/$',
+        title: 'More Ways to Enhance Your Account',
+        url: '/more-ways-to-enhance',
       },
     ],
   },
   {
-    title: 'impsum',
-    url: '/#',
+    title: 'Share',
+    url: '/share-mastodon',
+    sub: [
+      {
+        title: 'More Ways to Spread Mastodon',
+        url: '/more-ways-to-share',
+      },
+    ],
+  },
+  {
+    title: 'About Mastodon',
+    url: '/##',
+  },
+  {
+    title: 'How Mastodon Is Different',
+    url: '/mastodon-explainer',
+  },
+  {
+    title: 'Privacy Policy',
+    url: '/##',
   },
 ];
