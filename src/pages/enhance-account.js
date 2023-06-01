@@ -47,25 +47,6 @@ export default function Join() {
     }
   };
 
-  // Verify the user's account with the provided access token
-  // const verifyUserAccount = async (accessToken) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `/api/verifyAccount?accessToken=${accessToken}`
-  //     );
-  //     setUser(response.data.data.acct);
-  //     console.log('verifyUserAccount', response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     console.log('verifyUserAccount', error.response.data.error);
-  //     throw new Error(
-  //       `Error verifying account: ${JSON.stringify(
-  //         error.response.data.error.error
-  //       )}`
-  //     );
-  //   }
-  // };
-
   // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
     // Store the access token in session storage
@@ -94,10 +75,9 @@ export default function Join() {
     setLoading(false);
   };
 
-  // 1. this will give you the code to exchange for an access token
   const onAuthSubmit = async (data) => {
     window.localStorage.setItem('client', data.server);
-    const redirectUrl = 'https://mastodon.social/enhance-account';
+    const redirectUrl = 'https://join-mastodon-poc.vercel.app/enhance-account';
     try {
       const response = await axios.post('/api/authapp', {
         response_type: 'code',
