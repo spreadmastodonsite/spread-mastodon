@@ -25,15 +25,17 @@ const FinishAuth = () => {
     const getToken = async () => {
       try {
         const res = await axios.post('/api/getToken', { code });
-        if (res.data.access_token) {
-          verifyUserAccount(res.data.access_token);
-        }
+        setStoredAccessToken(res.data.access_token);
       } catch (error) {
         console.log('Error getToken: ', error);
       }
     };
     if (code) {
       getToken();
+    }
+
+    if (storedAccessToken) {
+      verifyUserAccount(storedAccessToken);
     }
   }, [router.query, code]);
 
