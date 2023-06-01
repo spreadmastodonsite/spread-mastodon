@@ -17,11 +17,7 @@ const FinishAuth = () => {
       setUser(response.data.data.acct);
       // return response.data;
     } catch (error) {
-      throw new Error(
-        `Error verifying account: ${JSON.stringify(
-          error.response.data.error.error
-        )}`
-      );
+      throw new Error('Error verifying account:', error);
     }
   };
 
@@ -30,7 +26,7 @@ const FinishAuth = () => {
       try {
         const res = await axios.post('/api/getToken', { code });
         if (res.data.access_token) {
-          setStoredAccessToken(res.data.access_token);
+          verifyUserAccount(res.data.access_token);
         }
       } catch (error) {
         console.log('Error getToken: ', error);
@@ -40,14 +36,6 @@ const FinishAuth = () => {
       getToken();
     }
   }, [router.query, code]);
-
-  useEffect(() => {
-    console.log('moving on to verifyUserAccount');
-    if (storedAccessToken) {
-      console.log('have access token');
-      verifyUserAccount(storedAccessToken);
-    }
-  }, [storedAccessToken]);
 
   return (
     <div>
