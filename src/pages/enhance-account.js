@@ -76,10 +76,12 @@ export default function Join() {
   // Handle auth submit
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
-    console.log('🔥 serverName', serverName);
-
     window.localStorage.setItem('client', serverName);
-    const redirectUrl = 'https://join-mastodon-poc.vercel.app/finish-auth';
+
+    const redirectUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/finish-auth'
+        : 'https://join-mastodon-poc.vercel.app/finish-auth';
 
     try {
       const response = await axios.post('/api/authapp', {
