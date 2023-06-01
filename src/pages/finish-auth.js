@@ -11,6 +11,8 @@ const FinishAuth = () => {
 
   const getToken = async () => {
     try {
+      console.log('🔥 code', code);
+
       const res = await axios.post('/api/getToken', { code });
       setStoredAccessToken(res.data.access_token);
     } catch (error) {
@@ -32,6 +34,8 @@ const FinishAuth = () => {
 
   useEffect(() => {
     if (code) {
+      console.log('🔥 yep, made it here, we have code');
+
       getToken();
     }
   }, [code]);
