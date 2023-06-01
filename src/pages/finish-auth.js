@@ -13,8 +13,8 @@ const FinishAuth = () => {
   const verifyUserAccount = async (accessToken) => {
     try {
       await axios.post(`/api/verifyAccount`, { accessToken });
-      // console.log('verifyUserAccount', response.data);
-      // setUser(response.data.data.acct);
+      console.log('verifyUserAccount', response.data);
+      setUser(response.data.data.acct);
       // return response.data;
     } catch (error) {
       throw new Error(
@@ -52,7 +52,9 @@ const FinishAuth = () => {
   return (
     <div>
       {storedAccessToken ? (
-        <div>Token: {storedAccessToken}</div>
+        <div>
+          Token: {storedAccessToken} {user}
+        </div>
       ) : (
         <div>Getting access token...</div>
       )}
