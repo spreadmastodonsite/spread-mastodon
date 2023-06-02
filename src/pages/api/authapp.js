@@ -1,13 +1,11 @@
 import axios from 'axios';
 
 export default async function authApp(req, res) {
-  console.log('🔥 req.body', req.body);
-
   const { serverName, redirectUri } = req.body;
 
   try {
     const appRegistrationResponse = await axios.post(
-      `https://mastodon.social/api/v1/apps`,
+      `https://${serverName}/api/v1/apps`,
       {
         redirect_uris: redirectUri,
         client_name: serverName,
@@ -19,13 +17,14 @@ export default async function authApp(req, res) {
       appRegistrationResponse.data
     );
 
-    const { client_id, redirect_uri } = appRegistrationResponse.data;
+    const { client_id, redirect_uri, client_secret } =
+      appRegistrationResponse.data;
 
-    const authorizationUrl = `https://mastodon.social/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
+    const authorizationUrl = `https://${serverName}/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
       redirect_uri
     )}&response_type=code`;
 
-    res.json({ authorizationUrl });
+    res.json({ authorizationUrl, client_id, client_secret });
   } catch (error) {
     console.log('Error: ', error);
     res.status(400).json({

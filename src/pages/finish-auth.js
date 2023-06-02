@@ -11,9 +11,9 @@ const FinishAuth = () => {
 
   const getToken = async () => {
     try {
-      console.log('🔥 code', code);
-
-      const res = await axios.post('/api/getToken', { code });
+      const m_sec = window.localStorage.getItem('m_sec');
+      const m_id = window.localStorage.getItem('m_id');
+      const res = await axios.post('/api/getToken', { code, m_sec, m_id });
       setStoredAccessToken(res.data.access_token);
     } catch (error) {
       console.log('Error getToken: ', error);
@@ -26,7 +26,6 @@ const FinishAuth = () => {
         `/api/verifyUserAccount?access_token=${accessToken}`
       );
       console.log('User account verified:', res.data);
-      // Do something with the verified user account data
     } catch (error) {
       console.log('Error verifyUserAccount: ', error);
     }
@@ -34,8 +33,6 @@ const FinishAuth = () => {
 
   useEffect(() => {
     if (code) {
-      console.log('🔥 yep, made it here, we have code');
-
       getToken();
     }
   }, [code]);

@@ -27,24 +27,6 @@ export default function Join() {
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [toggleForm, setToggleForm] = useState(false);
 
-  // Authenticate the user with the provided email and password
-  const authenticateUser = async (email, password) => {
-    try {
-      const response = await axios.post('/api/authenticate', {
-        email,
-        password,
-      });
-
-      return response.data.data.access_token;
-    } catch (error) {
-      throw new Error(
-        `Error authenticating account: ${JSON.stringify(
-          error.response.data.error.error_description
-        )}`
-      );
-    }
-  };
-
   // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
     // Store the access token in session storage
@@ -76,6 +58,8 @@ export default function Join() {
   // Handle auth submit
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
+    console.log('🔥 server name', data.server);
+
     window.localStorage.setItem('client', serverName);
 
     const redirectUrl =
@@ -90,6 +74,9 @@ export default function Join() {
         redirectUri: redirectUrl,
         scope: 'read write follow',
       });
+
+      window.localStorage.setItem('m_sec', response.data.client_secret);
+      window.localStorage.setItem('m_id', response.data.client_id);
 
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
