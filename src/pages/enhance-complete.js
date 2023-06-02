@@ -23,7 +23,7 @@ const EnhanceComplete = () => {
         >
           <GridItem columnStart={1} columnEnd={13}>
             <Logo variant='large' />
-            <div className='u-text-align--center u-margin-top--lg'>
+            <div className='u-text-align--center u-margin-top--xl'>
               <h3>{userData.username}</h3>
               <h3>{userData.url}</h3>
             </div>
