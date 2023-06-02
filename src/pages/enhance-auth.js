@@ -87,7 +87,6 @@ const EnhanceAuth = () => {
               />
             ))}
           </Grid>
-          <Spinner />
         </div>
       ) : (
         <div className='u-text-align--center u-margin-top--lg'>
