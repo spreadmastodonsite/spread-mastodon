@@ -8,8 +8,8 @@ export default async function getToken(req, res) {
     const client_secret = m_sec;
     const redirect_uri =
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/enhance-auth'
-        : 'https://join-mastodon-poc.vercel.app/enhance-auth';
+        ? 'http://localhost:3000/enhance-callback'
+        : 'https://join-mastodon-poc.vercel.app/enhance-callback';
     const grant_type = 'authorization_code';
 
     const response = await axios.post(

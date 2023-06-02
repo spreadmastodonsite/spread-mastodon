@@ -57,8 +57,8 @@ export default function Join() {
 
     const redirectUrl =
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/enhance-auth'
-        : 'https://join-mastodon-poc.vercel.app/enhance-auth';
+        ? 'http://localhost:3000/enhance-callback'
+        : 'https://join-mastodon-poc.vercel.app/enhance-callback';
 
     try {
       const response = await axios.post('/api/createAuthUrl', {
