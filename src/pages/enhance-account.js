@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
-import { OAuth2 } from 'oauth';
+import { useState } from 'react';
 import axios from 'axios'; // Add this import statement
 import Head from 'next/head';
 import Card from '@/components/Organism/Card';
@@ -29,9 +28,7 @@ export default function Join() {
 
   // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
-    // Store the access token in session storage
     sessionStorage.setItem('accessToken', accessToken);
-    // Set the validation message and authenticated state
     setValidationMessage(
       'Verified and authenticated successfully if you do not advance to the next page please click the button below'
     );
@@ -45,8 +42,6 @@ export default function Join() {
     try {
       const accessToken = await authenticateUser(data.email, data.password);
       await verifyUserAccount(accessToken);
-
-      // Call the handle submit success function
       handleSubmitSuccess(accessToken);
     } catch (error) {
       setValidationMessage(error.message);
@@ -58,17 +53,15 @@ export default function Join() {
   // Handle auth submit
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
-    console.log('🔥 server name', data.server);
-
     window.localStorage.setItem('client', serverName);
 
     const redirectUrl =
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/finish-auth'
-        : 'https://join-mastodon-poc.vercel.app/finish-auth';
+        ? 'http://localhost:3000/enhance-auth'
+        : 'https://join-mastodon-poc.vercel.app/enhance-auth';
 
     try {
-      const response = await axios.post('/api/authapp', {
+      const response = await axios.post('/api/createAuthUrl', {
         response_type: 'code',
         serverName: serverName,
         redirectUri: redirectUrl,
@@ -78,6 +71,7 @@ export default function Join() {
       window.localStorage.setItem('m_sec', response.data.client_secret);
       window.localStorage.setItem('m_id', response.data.client_id);
 
+      // Redirect to the authorization url
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
       throw new Error(
@@ -130,7 +124,7 @@ export default function Join() {
           ) : (
             <div className='c-enhance__auth'>
               <h2 className='c-signup-success__sub-title u-text-align--center'>
-                {data.authHeader.text}{' '}
+                {data.authHeader.text}
               </h2>
               <div
                 dangerouslySetInnerHTML={{ __html: data.authSubHeading.text }}
@@ -226,8 +220,11 @@ export default function Join() {
                     <GridItem columnStart={2} columnEnd={12}>
                       <div>
                         <p>
-                          Already have an account{' '}
-                          <span onClick={() => setToggleForm(true)}>
+                          Already have an account
+                          <span
+                            onClick={() => setToggleForm(true)}
+                            className='c-button--link u-margin-left--sm'
+                          >
                             Click here
                           </span>
                         </p>

@@ -132,6 +132,14 @@
   margin-bottom: var(--space-2xl);
 }
 
+.u-margin-left--sm {
+  margin-left: var(--space-sm);
+}
+
+.u-margin-right--sm {
+  margin-right: var(--space-sm);
+}
+
 .u-visually-hidden {
   position: absolute;
   width: 1px;

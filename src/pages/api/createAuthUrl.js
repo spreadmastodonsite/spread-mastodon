@@ -12,11 +12,6 @@ export default async function authApp(req, res) {
       }
     );
 
-    console.log(
-      '🔥 appRegistrationResponse.data',
-      appRegistrationResponse.data
-    );
-
     const { client_id, redirect_uri, client_secret } =
       appRegistrationResponse.data;
 

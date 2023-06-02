@@ -36,3 +36,12 @@
   background-color: var(--c-primary);
   padding: 0.25rem;
 }
+
+.c-button--link {
+  color: var(--c-primary);
+}
+
+.c-button--link:hover {
+  filter: brightness(85%);
+  cursor: pointer;
+}

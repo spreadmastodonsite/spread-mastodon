@@ -16,6 +16,7 @@
 @import url('./atoms/logo.css');
 @import url('./atoms/chip.css');
 @import url('./atoms/button.css');
+@import url('./atoms/loader.css');
 
 /* Molecules */
 @import url('./molecules/animated-header.css');

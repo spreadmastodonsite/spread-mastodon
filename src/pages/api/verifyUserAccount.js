@@ -1,16 +1,15 @@
-// pages/api/verifyUserAccount.js
 import axios from 'axios';
 
 export default async function handler(req, res) {
-  const { access_token } = req.query;
+  const { token, server_name } = req.body;
 
   try {
     // Make a request to the Mastodon API to verify the user account
     const response = await axios.get(
-      'https://mastodon.social/api/v1/accounts/verify_credentials',
+      `https://${server_name}/api/v1/accounts/verify_credentials`,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
+          Authorization: `Bearer ${token}`,
         },
       }
     );

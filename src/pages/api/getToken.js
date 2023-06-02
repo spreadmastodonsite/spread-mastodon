@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default async function getToken(req, res) {
-  const { code, m_sec, m_id } = req.body;
+  const { code, m_sec, m_id, server_name } = req.body;
 
   try {
     const client_id = m_id;
     const client_secret = m_sec;
     const redirect_uri =
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/finish-auth'
-        : 'https://join-mastodon-poc.vercel.app/finish-auth';
+        ? 'http://localhost:3000/enhance-auth'
+        : 'https://join-mastodon-poc.vercel.app/enhance-auth';
     const grant_type = 'authorization_code';
 
     const response = await axios.post(
-      'https://mastodon.world/oauth/token',
+      `https://${server_name}/oauth/token`,
       {
         client_id,
         client_secret,
