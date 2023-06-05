@@ -21,6 +21,7 @@ export default function Join() {
   } = useForm();
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState();
   const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
     useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
@@ -33,6 +34,37 @@ export default function Join() {
       'Verified and authenticated successfully if you do not advance to the next page please click the button below'
     );
     setVerifiedAndAuthenticated(true);
+  };
+
+  const verifyUserAccount = async (accessToken) => {
+    try {
+      const response = await axios.post(`/api/verifyAccount`, { accessToken });
+      console.log('🔥 verifyUserAccount response', response);
+      setUser(response.data.data.acct);
+      // return response.data;
+    } catch (error) {
+      throw new Error(
+        `Error verifying account: ${JSON.stringify(
+          error.response.data.error.error
+        )}`
+      );
+    }
+  };
+
+  const authenticateUser = async (email, password) => {
+    try {
+      const response = await axios.post('/api/authenticate', {
+        email,
+        password,
+      });
+      return response.data.data.access_token;
+    } catch (error) {
+      throw new Error(
+        `Error authenticating account: ${JSON.stringify(
+          error.response.data.error.error_description
+        )}`
+      );
+    }
   };
 
   // Handle form submission
