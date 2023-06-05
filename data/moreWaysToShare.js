@@ -3,30 +3,22 @@ export const moreWaysToShareData = {
     title: 'Spread Mastodon - More Ways To Share',
     name: 'More Ways To Share',
     description:
-      'Here are some top ways to help spread Mastodon & the Fediverse',
-  },
-  heading: {
-    text: 'More Ways To Spread Mastodon',
-  },
-  description: {
-    text: 'Here are even more tips and ideas for getting started on Mastodon! Have a suggestion? ',
-    link: '#',
-    linkText: 'Tell Us!',
+      'Here are more ways to help spread Mastodon and the Fediverse.',
   },
   cards: [
     {
-      description: 'Fully Fill Out Your Mastodon Profile',
-      link: '#',
+      description: 'Share the Spread Mastodon Tool to Help New Users Sign Up!',
+      link: '/share-spread-mastodon',
       linkText: 'Share',
     },
     {
-      description: 'Create and Pin A Welcome Message',
-      link: '#',
+      description: 'Join a Welcoming Group to Encourage New Users',
+      link: '/welcoming-group',
       linkText: 'Share',
     },
     {
-      description: 'Use Search Well: for Hashtags and Account Search',
-      link: '#',
+      description: 'Secure Your Account with Two-Factor Authentication',
+      link: '/secure-account-2fa',
       linkText: 'Share',
     },
   ],
