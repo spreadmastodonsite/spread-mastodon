@@ -1,13 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default async function handler(req, res) {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     const { username, email, password, agreement } = req.body;
     const instanceUrl = process.env.MASTODON_INSTANCE_URL;
 
     try {
       // Get the app access token
-      const appTokenResponse = await axios.post(`${req.headers.origin}/api/app-token`);
+      const appTokenResponse = await axios.post(
+        `${req.headers.origin}/api/app-token`
+      );
       const appAccessToken = appTokenResponse.data.data.access_token;
 
       // Create a new account
@@ -18,8 +20,8 @@ export default async function handler(req, res) {
           email,
           password,
           agreement,
-          locale: "en",
-          reason: "Testing Mastodon signup using Next.js",
+          locale: 'en',
+          reason: 'Testing Mastodon signup using Next.js',
         },
         {
           headers: {
@@ -33,6 +35,6 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false, error: error.response.data });
     }
   } else {
-    res.status(405).json({ success: false, message: "Method not allowed" });
+    res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 }
