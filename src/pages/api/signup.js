@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     try {
       // Get the app access token
       const appTokenResponse = await axios.post(
-        `${req.headers.origin}/api/app-token`
+        `${req.headers.origin}/api/app-token`,
       );
       const appAccessToken = appTokenResponse.data.data.access_token;
 
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
           headers: {
             Authorization: `Bearer ${appAccessToken}`,
           },
-        }
+        },
       );
 
       res.status(200).json({ success: true, id: response.data.id });
