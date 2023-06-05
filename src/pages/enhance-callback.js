@@ -37,7 +37,7 @@ const EnhanceAuth = () => {
         server_name,
       });
       setUserData(res.data);
-      router.push('/enhance-complete');
+      router.push('/enhance-account');
     } catch (error) {
       console.log('Error verifyUserAccount: ', error.request.data);
     }

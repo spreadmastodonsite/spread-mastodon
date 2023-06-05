@@ -3,6 +3,9 @@ import axios from 'axios';
 export default async function handler(req, res) {
   const { token, server_name } = req.body;
 
+  console.log('🔥 token', token);
+  console.log('🔥 server_name', server_name);
+
   try {
     // Make a request to the Mastodon API to verify the user account
     const response = await axios.get(
