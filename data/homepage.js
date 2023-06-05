@@ -29,7 +29,7 @@ export const homepageData = {
       icon: 'enrich',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/follow-suggestions',
+      link: '/enhance-account',
       linkText: 'Enrich',
     },
     {
