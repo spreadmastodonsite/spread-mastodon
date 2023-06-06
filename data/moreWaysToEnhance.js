@@ -17,7 +17,7 @@ export const moreWaysToEnhanceData = {
       icon: 'share',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/share-spread-mastodon',
+      link: '/utilities/share-spread-mastodon',
       linkText: 'Share',
     },
     {
@@ -25,7 +25,7 @@ export const moreWaysToEnhanceData = {
       icon: 'share',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/welcoming-group',
+      link: '/utilities/welcoming-group',
       linkText: 'Share',
     },
     {
@@ -33,7 +33,7 @@ export const moreWaysToEnhanceData = {
       icon: 'share',
       iconWidth: '74',
       iconHeight: '74',
-      link: '/secure-account-2fa',
+      link: '/utilities/secure-account-2fa',
       linkText: 'Share',
     },
   ],

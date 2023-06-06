@@ -10,10 +10,10 @@ To pin a post on Mastodon, we recommend these steps:
 
 1. Log in to Mastodon using the web user interface.
 2. Write your introduction post, and add then add this hashtag to the message: "#Introduction".
-3. Select this new social media post that you now want to pin, and start by selecting the ... icon on the post and then select *Pin to profile*.
-4. **SUCCESS:** You should see that the post is now pinned to your profile. To unpin it, click  ...  on the post again, and then select *Unpin*.
+3. Select this new social media post that you now want to pin, and start by selecting the ... icon on the post and then select _Pin to profile_.
+4. **SUCCESS:** You should see that the post is now pinned to your profile. To unpin it, click ... on the post again, and then select _Unpin_.
 
-To change the order of pinned posts on your Mastodon profile, simply do this:  Unpin a post and repin it to move it up the list of pinned posts. 
+To change the order of pinned posts on your Mastodon profile, simply do this: Unpin a post and repin it to move it up the list of pinned posts.
 
 ![Minion](https://octodex.github.com/images/minion.png)
 

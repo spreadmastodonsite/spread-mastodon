@@ -27,17 +27,17 @@ Each of these services - Gravatar, Flipboard, Medium, and Github - now integrate
 
 This is the most advanced option and would require some HTML coding. But it is also powerful.
 
-To do this you go through this process: 
+To do this you go through this process:
 
 1. Log in using your Mastodon server's web interface.
-2. Click on the “Edit Profile” link under your profile image, and then look at the Verification section. This is found on the lower mid-section of this profile page. *(Warning: This next section will need you to have the ability to edit the HTML code on your website.)*
+2. Click on the “Edit Profile” link under your profile image, and then look at the Verification section. This is found on the lower mid-section of this profile page. _(Warning: This next section will need you to have the ability to edit the HTML code on your website.)_
 3. Copy the HTML code from the Verification section on Mastodon. You will then need to paste and save that code into your website's code in the appropriate place.
 4. Next, you should return to the Mastodon Edit Profile page, and there you enter your official website's URL into the "Profile Metadata" area in your Mastodon profile. And remember you must include https:// at the beginning.
 5. Click the "Save Changes" button for your profile edits.
 
 **Success!** After you've completed all of the Method Three steps above, you'll see a link to your official website on your Mastodon profile that has become green with a check mark beside it, indicating that you are the site's owner.
 
-This green check mark will also be visible in upcoming versions of Mastodon search next to your account name, verifying your account. 
+This green check mark will also be visible in upcoming versions of Mastodon search next to your account name, verifying your account.
 
 ![Minion](https://octodex.github.com/images/minion.png)
 
