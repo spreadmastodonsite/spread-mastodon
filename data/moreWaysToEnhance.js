@@ -21,7 +21,8 @@ export const moreWaysToEnhanceData = {
       linkText: 'Share',
     },
     {
-      title: 'Create a #Introduction Message and Pin It to Your Mastodon Profile Feed',
+      title:
+        'Create a #Introduction Message and Pin It to Your Mastodon Profile Feed',
       icon: 'share',
       iconWidth: '74',
       iconHeight: '74',
