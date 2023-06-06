@@ -29,7 +29,7 @@ export const NavMenu = [
   },
   {
     title: 'About Mastodon',
-    url: '/##',
+    url: '/about-mastodon',
   },
   {
     title: 'How Mastodon Is Different',
@@ -37,6 +37,6 @@ export const NavMenu = [
   },
   {
     title: 'Privacy Policy',
-    url: '/##',
+    url: '/privacy-policy',
   },
 ];
