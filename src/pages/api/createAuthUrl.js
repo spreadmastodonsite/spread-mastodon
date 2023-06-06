@@ -8,12 +8,17 @@ export default async function authApp(req, res) {
       `https://${serverName}/api/v1/apps`,
       {
         redirect_uris: redirectUri,
-        client_name: serverName,
+        client_name: 'Spread Mastodon App Authentication',
       }
     );
 
     const { client_id, redirect_uri, client_secret } =
       appRegistrationResponse.data;
+
+    console.log(
+      '🔥 appRegistrationResponse.data',
+      appRegistrationResponse.data
+    );
 
     const authorizationUrl = `https://${serverName}/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
       redirect_uri

@@ -24,6 +24,10 @@ const EnhanceAuth = () => {
         server_name,
       });
       setStoredAccessToken(res.data.access_token);
+      window.localStorage.setItem(
+        'access_token_enhance',
+        res.data.access_token
+      );
     } catch (error) {
       console.log('Error getToken: ', error);
     }

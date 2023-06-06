@@ -18,8 +18,8 @@ export default async function follow(req, res) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        },
-      ),
+        }
+      )
     );
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {

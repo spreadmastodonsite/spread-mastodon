@@ -4,6 +4,7 @@
   --c-purple-500: #6364ff;
   --c-purple-600: #7a86e6;
   --c-red-500: #ff3838;
+  --c-green-500: #3ffc5c;
 
   /* ** util colors ** */
   --c-white: #ffffff;
@@ -17,6 +18,7 @@
   --c-primary: var(--c-purple-500);
   --c-secondary: var(--c-purple-300);
   --c-error: var(--c-red-500);
+  --c-success: var(--c-green-500);
 
   /* ** tier 2 colors ** */
   --body-color: var(--c-white);

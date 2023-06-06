@@ -108,3 +108,7 @@
 .c-input-error__message {
   color: var(--c-error);
 }
+
+.c-success {
+  color: var(--c-success);
+}

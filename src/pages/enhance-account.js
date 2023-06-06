@@ -27,19 +27,18 @@ export default function Join() {
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [storedServerName, setStoredServerName] = useState('');
 
-  // Handle form submission success
   const handleSubmitSuccess = async (accessToken) => {
     sessionStorage.setItem('accessToken', accessToken);
+    console.log('🐸 session storage set');
+
     setValidationMessage(
-      'Verified and authenticated successfully if you do not advance to the next page please click the button below',
+      'Verified and authenticated successfully if you do not advance to the next page please click the button below'
     );
-    setVerifiedAndAuthenticated(true);
   };
 
   const verifyUserAccount = async (accessToken) => {
     try {
       const response = await axios.post(`/api/verifyAccount`, { accessToken });
-      console.log('🔥 verifyUserAccount response', response);
       setUser(response.data.data.acct);
       // return response.data;
     } catch (error) {
@@ -67,8 +66,7 @@ export default function Join() {
     }
   };
 
-  // Handle form submission
-  const onSubmit = async (data) => {
+  const checkUserAuthentication = async (data) => {
     setLoading(true);
 
     try {
@@ -76,13 +74,14 @@ export default function Join() {
       await verifyUserAccount(accessToken);
       handleSubmitSuccess(accessToken);
     } catch (error) {
+      console.log('🔥 error.message', error.message);
+
       setValidationMessage(error.message);
     }
 
     setLoading(false);
   };
 
-  // Handle auth submit
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
     window.localStorage.setItem('client', serverName);
@@ -92,67 +91,66 @@ export default function Join() {
         ? 'http://localhost:3000/enhance-callback'
         : 'https://join-mastodon-poc.vercel.app/enhance-callback';
 
-    try {
-      const response = await axios.post(
-        '/api/createAuthUrl',
-        {
-          response_type: 'code',
-          serverName: serverName,
-          redirectUri: redirectUrl,
-          scope: 'read write follow',
-        },
+    await checkUserAuthentication(data);
 
-        onSubmit(data),
-      );
+    try {
+      const response = await axios.post('/api/createAuthUrl', {
+        response_type: 'code',
+        serverName: serverName,
+        redirectUri: redirectUrl,
+        scope: 'read write follow',
+      });
 
       window.localStorage.setItem('m_sec', response.data.client_secret);
       window.localStorage.setItem('m_id', response.data.client_id);
-
-      // Redirect to the authorization url
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
       throw new Error(
         `Error authenticating account: ${JSON.stringify(
-          error.response ? error.response.data : error.message,
-        )}`,
+          error.response ? error.response.data : error.message
+        )}`
       );
     }
   };
 
   useEffect(() => {
     const serverName = window.localStorage.getItem('client');
+    const sessionToken = sessionStorage.getItem('accessToken');
+
+    if (sessionToken && serverName) {
+      setStoredAccessToken(sessionToken);
+    }
 
     if (serverName) {
       setStoredServerName(serverName);
     }
   }, []);
-
   return (
-    <div className="content-wrapper c-page__join">
+    <div className='content-wrapper c-page__join'>
       <Head>
         <title>{data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <meta property="og:title" content={data.metaData.name} />
-        <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:url" content={router.pathname} />
-        <meta name="twitter:title" content={data.metaData.name} />
-        <meta name="twitter:description" content={data.metaData.description} />
+        <meta property='og:title' content={data.metaData.name} />
+        <meta property='og:description' content={data.metaData.description} />
+        <meta property='og:url' content={router.pathname} />
+        <meta name='twitter:title' content={data.metaData.name} />
+        <meta name='twitter:description' content={data.metaData.description} />
       </Head>
 
-      <main className="l-main">
-        <Grid className="u-text-align--center">
+      <main className='l-main'>
+        <Grid className='u-text-align--center'>
           <GridItem columnStart={1} columnEnd={13}>
-            <Logo variant="large" />
+            <Logo variant='large' />
             <AnimatedHeader
-              className="u-heading--3xl"
+              className='u-heading--3xl'
               textOne={heading.textOne}
               textRotate={heading.textRotate}
-              rotateLocation="newline"
+              rotateLocation='newline'
             />
           </GridItem>
         </Grid>
 
-        <Grid variant="autoFit" className="c-card__container">
+        <Grid variant='autoFit' className='c-card__container'>
           {verifiedAndAuthenticated || storedAccessToken ? (
             data.cards.map((card) => (
               <Card
@@ -163,65 +161,66 @@ export default function Join() {
                 iconHeight={card.iconHeight}
                 link={card.link}
                 linkText={card.linkText}
-                variant="large"
+                variant='large'
               />
             ))
           ) : (
-            <div className="c-enhance__auth">
-              <h2 className="c-signup-success__sub-title u-text-align--center">
+            <div className='c-enhance__auth'>
+              <h2 className='c-signup-success__sub-title u-text-align--center'>
                 {data.authHeader.text}
               </h2>
               <div
                 dangerouslySetInnerHTML={{ __html: data.authSubHeading.text }}
               />
               <form
-                className="c-authenticate-form"
-                onSubmit={handleSubmit(onAuthSubmit)}>
-                <Grid className="c-grid__signup-form">
+                className='c-authenticate-form'
+                onSubmit={handleSubmit(onAuthSubmit)}
+              >
+                <Grid className='c-grid__signup-form'>
                   {!storedServerName && (
                     <GridItem columnStart={2} columnEnd={12}>
-                      <label className="u-visually-hidden" htmlFor="server">
+                      <label className='u-visually-hidden' htmlFor='server'>
                         Server:
                       </label>
                       {errors.server && (
-                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                        <span className='c-input-error__message u-margin-bottom--sm u-display--inline-block'>
                           {errors.server.message}
                         </span>
                       )}
                       <input
-                        required=""
-                        id="server"
-                        type="text"
-                        className="c-signup-form__input"
-                        placeholder="mastodon.social"
+                        required=''
+                        id='server'
+                        type='text'
+                        className='c-signup-form__input'
+                        placeholder='mastodon.social'
                         {...register('server', {
                           required: 'Server is required',
                         })}
                         onChange={(e) => {
                           e.target.value = e.target.value.replace(
                             /^https?:\/\//i,
-                            '',
+                            ''
                           );
                         }}
                       />
-                      <span className="c-field-note">
+                      <span className='c-field-note'>
                         Server name. Example: mastodon.social
                       </span>
                     </GridItem>
                   )}
                   <GridItem columnStart={2} columnEnd={12}>
-                    <label className="u-visually-hidden" htmlFor="email">
+                    <label className='u-visually-hidden' htmlFor='email'>
                       Email:
                     </label>
                     {errors.email && (
-                      <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                      <span className='c-input-error__message u-margin-bottom--sm u-display--inline-block'>
                         {errors.email.message}
                       </span>
                     )}
                     <input
-                      id="email"
-                      type="email"
-                      placeholder="Email Address"
+                      id='email'
+                      type='email'
+                      placeholder='Email Address'
                       className={`c-signup-form__input ${
                         errors.email && 'c-signup-form__input--error'
                       }`}
@@ -231,18 +230,18 @@ export default function Join() {
                     />
                   </GridItem>
                   <GridItem columnStart={2} columnEnd={12}>
-                    <label className="u-visually-hidden" htmlFor="password">
+                    <label className='u-visually-hidden' htmlFor='password'>
                       Password:
                     </label>
                     {errors.password && (
-                      <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                      <span className='c-input-error__message u-margin-bottom--sm u-display--inline-block'>
                         {errors.password.message}
                       </span>
                     )}
                     <input
-                      id="password"
-                      type="password"
-                      placeholder="Password"
+                      id='password'
+                      type='password'
+                      placeholder='Password'
                       className={`c-signup-form__input ${
                         errors.password && 'c-signup-form__input--error'
                       }`}
@@ -264,14 +263,14 @@ export default function Join() {
                     <GridItem columnStart={2} columnEnd={12}>
                       <div>
                         {validationMessage && (
-                          <p className="c-error u-margin-top--lg u-body--copy">
+                          <p className='c-success u-margin-top--lg u-body--copy'>
                             {validationMessage}
                           </p>
                         )}
                       </div>
                       <Button
-                        className="c-button__auth"
-                        type="submit"
+                        className='c-button__auth'
+                        type='submit'
                         text={data.submitButton.text}
                       />
                     </GridItem>
