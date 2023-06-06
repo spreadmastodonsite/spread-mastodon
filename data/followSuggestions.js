@@ -32,6 +32,11 @@ export const followSuggestionsData = {
       icon: 'trophy',
       accounts: [
         {
+          id: '110498481377658882',
+          username: 'msteimel',
+          url: 'https://mastodon.world/@msteimel',
+        },
+        {
           id: '109390969127442952',
           username: 'FediFollows',
           url: 'https://social.growyourown.services/@FediFollows',

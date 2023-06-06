@@ -75,7 +75,6 @@ export default function Join() {
       handleSubmitSuccess(accessToken);
     } catch (error) {
       console.log('🔥 error.message', error.message);
-
       setValidationMessage(error.message);
     }
 
@@ -90,8 +89,6 @@ export default function Join() {
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/enhance-callback'
         : 'https://join-mastodon-poc.vercel.app/enhance-callback';
-
-    await checkUserAuthentication(data);
 
     try {
       const response = await axios.post('/api/createAuthUrl', {

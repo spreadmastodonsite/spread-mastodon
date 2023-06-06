@@ -38,6 +38,9 @@ export default function FollowSuggestions() {
   // Follow all users in selected categories
   const followAllCategoryUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
+    const accessTokenEnhance = window.localStorage.getItem(
+      'access_token_enhance'
+    );
 
     if (checkedCategories.length === 0) {
       setResponseMessage('Please select at least one category');
@@ -59,7 +62,7 @@ export default function FollowSuggestions() {
                 axios.post('/api/follow', {
                   accessToken,
                   targetAccountId: user.id,
-                }),
+                })
               );
               return user.username;
             } catch (error) {
@@ -133,28 +136,28 @@ export default function FollowSuggestions() {
   }, []);
 
   return (
-    <div className="content-wrapper">
+    <div className='content-wrapper'>
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <meta property="og:title" content={data.metaData.name} />
-        <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:url" content={router.pathname} />
-        <meta name="twitter:title" content={data.metaData.name} />
-        <meta name="twitter:description" content={data.metaData.description} />
+        <meta property='og:title' content={data.metaData.name} />
+        <meta property='og:description' content={data.metaData.description} />
+        <meta property='og:url' content={router.pathname} />
+        <meta name='twitter:title' content={data.metaData.name} />
+        <meta name='twitter:description' content={data.metaData.description} />
       </Head>
       <Logo />
-      <main className="l-main c-page__interior">
-        <div className="u-text-align--center">
+      <main className='l-main c-page__interior'>
+        <div className='u-text-align--center'>
           <StepperHeader
-            iconName="enrich"
-            iconWidth="75"
-            iconHeight="83"
+            iconName='enrich'
+            iconWidth='75'
+            iconHeight='83'
             heading={data.heading.text}
             subHeading={data.subHeading.text}
           />
-          <h2 className="u-heading--2xl">{data.secondHeading.text}</h2>
-          <div className="u-heading--xl u-margin-bottom--lg">
+          <h2 className='u-heading--2xl'>{data.secondHeading.text}</h2>
+          <div className='u-heading--xl u-margin-bottom--lg'>
             <ToolTip
               iconWidth={24}
               iconHeight={24}
@@ -163,19 +166,19 @@ export default function FollowSuggestions() {
             />{' '}
             <span>{data.textCTA.text}</span>
           </div>
-          <p className="c-follow-category__info u-body--lg">
+          <p className='c-follow-category__info u-body--lg'>
             {data.explainerText}
           </p>
-          <Grid className="u-margin-bottom--lg">
+          <Grid className='u-margin-bottom--lg'>
             <GridItem columnStart={5} columnEnd={9}>
               {!hasAccessToken ? (
                 <div>
                   <Button
-                    text="Sign In"
+                    text='Sign In'
                     loading={loading}
-                    className="u-margin-bottom--md"
-                    variant="secondary"
-                    link="enhance-account"
+                    className='u-margin-bottom--md'
+                    variant='secondary'
+                    link='enhance-account'
                   />
                 </div>
               ) : (
@@ -184,8 +187,8 @@ export default function FollowSuggestions() {
                     onClick={handleSelectAll}
                     text={data.followAllButton.text}
                     loading={loading}
-                    className="u-margin-bottom--md"
-                    variant="secondary"
+                    className='u-margin-bottom--md'
+                    variant='secondary'
                   />
                 )
               )}
@@ -194,13 +197,13 @@ export default function FollowSuggestions() {
         </div>
         {/* Render the suggested users list */}
         {hasAccessToken && (
-          <div className="u-margin-bottom--2xl">
+          <div className='u-margin-bottom--2xl'>
             {loading === true ? (
               <Grid>
                 <GridItem>
-                  <Card variant="basic">
-                    <div className="c-follow-category">
-                      <div className="c-follow-category--content">
+                  <Card variant='basic'>
+                    <div className='c-follow-category'>
+                      <div className='c-follow-category--content'>
                         <p>{data.loadingExplainerText}</p>
                       </div>
                     </div>
@@ -210,9 +213,10 @@ export default function FollowSuggestions() {
             ) : (
               <>
                 <Grid
-                  className="u-margin-bottom--xl"
-                  variant="autoFit"
-                  itemMinWidth="lg">
+                  className='u-margin-bottom--xl'
+                  variant='autoFit'
+                  itemMinWidth='lg'
+                >
                   {followedAllUsersSuccess ? (
                     <div>
                       <p>{data.followAllSuccess.text}</p>
@@ -226,7 +230,8 @@ export default function FollowSuggestions() {
                             className={`c-follow-category__card`}
                             active={isChecked.includes(category.title)}
                             key={category.title}
-                            variant="basic">
+                            variant='basic'
+                          >
                             {category.icon && (
                               <Icon
                                 width={28}
@@ -234,8 +239,8 @@ export default function FollowSuggestions() {
                                 iconName={category.icon}
                               />
                             )}
-                            <div className="c-follow-category">
-                              <div className="c-follow-category--content">
+                            <div className='c-follow-category'>
+                              <div className='c-follow-category--content'>
                                 <p>{category.title}</p>
                                 {loading === false ? (
                                   <ToolTip
@@ -243,7 +248,7 @@ export default function FollowSuggestions() {
                                     value={
                                       <div>
                                         <p>{data.categoryTooltip.text}</p>
-                                        <ul className="c-follow-category__tool-tip">
+                                        <ul className='c-follow-category__tool-tip'>
                                           {category.accounts.map((user) => (
                                             <li key={user.id}>
                                               {user.username}
@@ -281,7 +286,7 @@ export default function FollowSuggestions() {
                     )}
                   </h4>
                   {followedCatUsers && <p>{followedCatUsers}</p>}
-                  {errorMessage && <p className="c-error">{errorMessage}</p>}
+                  {errorMessage && <p className='c-error'>{errorMessage}</p>}
                 </Modal>
                 <Button
                   className={
@@ -298,7 +303,7 @@ export default function FollowSuggestions() {
           </div>
         )}
 
-        <Grid className="c-follow-category__button-row" variant="autoFit">
+        <Grid className='c-follow-category__button-row' variant='autoFit'>
           <Button
             text={data.nextStepButton.text}
             link={data.nextStepButton.link}
@@ -306,7 +311,7 @@ export default function FollowSuggestions() {
           <Button
             link={data.skipButton.link}
             text={data.skipButton.text}
-            variant="secondary"
+            variant='secondary'
           />
         </Grid>
       </main>

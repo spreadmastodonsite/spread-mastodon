@@ -12,7 +12,7 @@ export default async function follow(req, res) {
   try {
     const response = await limiter.schedule(() =>
       axios.post(
-        `${process.env.MASTODON_INSTANCE_URL}/api/v1/accounts/${targetAccountId}/follow`,
+        `https://mastodon.social/api/v1/accounts/${targetAccountId}/follow`,
         {},
         {
           headers: {
