@@ -28,6 +28,13 @@ export default function FollowSuggestions() {
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  console.log(
+    '🔥 data',
+    data.suggestedUsers.filter((category) =>
+      checkedCategories.includes(category.title)
+    )
+  );
+
   const limiter = new Bottleneck({
     maxConcurrent: 1,
     minTime: 30,
@@ -61,7 +68,6 @@ export default function FollowSuggestions() {
       setFollowedCatUsers('');
       return;
     }
-
     setLoading(true);
     try {
       const followPromises = data.suggestedUsers
