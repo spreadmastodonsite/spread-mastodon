@@ -89,11 +89,6 @@ export const followSuggestionsData = {
           url: 'https://journa.host/@nickkristof',
         },
         {
-          // id: '109343462594602395',
-          username: 'virginiaheffernan',
-          url: 'https://journa.host/@virginiaheffernan',
-        },
-        {
           id: '21564',
           username: 'jbouie',
           url: 'https://mastodon.social/@jbouie',

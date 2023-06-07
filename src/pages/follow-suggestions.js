@@ -68,13 +68,8 @@ export default function FollowSuggestions() {
         .filter((category) => checkedCategories.includes(category.title))
         .map(async (category) => {
           const categoryFollowPromises = category.accounts.map(async (user) => {
-            console.log('🔥 user', user.username);
-            console.log('🔥 user url', user.url);
-
             try {
               const userID = await getAccountID(user.username, user.url);
-
-              console.log('🔥 userID', userID);
 
               await limiter.schedule(() =>
                 axios.post('/api/follow', {
@@ -85,7 +80,9 @@ export default function FollowSuggestions() {
               );
               return user.username;
             } catch (error) {
-              return Promise.reject(error.response.data.error.error);
+              console.log('🔥 error: ', error);
+
+              return Promise.reject(error);
             }
           });
           return Promise.all(categoryFollowPromises);

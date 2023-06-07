@@ -36,7 +36,6 @@ export default function FollowSuggestions() {
       setFollowedTags('');
       return;
     }
-
     setLoading(true);
     const tagsPromises = tagNames.map(async (tagName) => {
       try {
@@ -51,8 +50,6 @@ export default function FollowSuggestions() {
         return Promise.reject(error.response.data.error.error);
       }
     });
-
-    console.log('🔥 tagsPromises', tagsPromises);
 
     try {
       const results = await Promise.all(tagsPromises);
