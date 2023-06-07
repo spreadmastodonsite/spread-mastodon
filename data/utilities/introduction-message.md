@@ -15,8 +15,8 @@ To pin a post on Mastodon, we recommend these steps:
 
 To change the order of pinned posts on your Mastodon profile, simply do this: Unpin a post and repin it to move it up the list of pinned posts.
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Create a #Introduction Message Screenshot 1](/public/introduction-message-screenshot-600x659-01.jpg)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Create a #Introduction Message Screenshot 2](/public/introduction-message-screenshot-600x455-02.jpg)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Create a #Introduction Message Screenshot 3](/public/introduction-message-screenshot-600x274-03.jpg)
