@@ -10,10 +10,8 @@ const EnhanceAuth = () => {
   const router = useRouter();
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const { userData, setUserData } = useStore();
-  // 1. Code
   const { code } = router.query;
 
-  // 2. Get token
   const getToken = async () => {
     try {
       const m_sec = window.localStorage.getItem('m_sec');
@@ -34,7 +32,6 @@ const EnhanceAuth = () => {
     }
   };
 
-  // 3. Verify user account & redirect to enhance-account
   const verifyUserAccount = async (token) => {
     try {
       const server_name = window.localStorage.getItem('client');

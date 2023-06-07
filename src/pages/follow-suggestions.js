@@ -81,7 +81,6 @@ export default function FollowSuggestions() {
               return user.username;
             } catch (error) {
               console.log('🔥 error: ', error);
-
               return Promise.reject(error);
             }
           });

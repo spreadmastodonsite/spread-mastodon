@@ -8,12 +8,6 @@ const limiter = new Bottleneck({
 
 export default async function getFollowAccountId(req, res) {
   const { accessToken, targetAccountUser, searchUrl, server } = req.body;
-  
-  console.log('🔥 accessToken', accessToken);
-  console.log('🔥 targetAccountUser', targetAccountUser);
-  console.log('🔥 accountUrl', searchUrl);
-  console.log('🔥 server', server);
-
 
   try {
     const response = await limiter.schedule(() =>
@@ -30,7 +24,7 @@ export default async function getFollowAccountId(req, res) {
 
     res.status(200).json({ success: true, data: response.data });
     // TODO: Filter results based on accountUrl
-    console.log("🔥 Search Data: ", response.data.accounts);
+    console.log('🔥 Search Data: ', response.data.accounts);
   } catch (error) {
     console.log('❌ Error on follow: ', error.response.data);
 

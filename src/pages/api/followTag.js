@@ -3,10 +3,6 @@ import axios from 'axios';
 export default async function follow(req, res) {
   const { accessToken, tagName, server } = req.body;
 
-  console.log('🔥 accessToken', accessToken);
-  console.log('🔥 tagName', tagName);
-  console.log('🔥 server', server);
-
   try {
     const response = await axios.post(
       `https://${server}/api/v1/tags/${tagName}/follow`,

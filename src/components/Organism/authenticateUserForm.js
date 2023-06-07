@@ -47,9 +47,6 @@ export default function AuthenticateUserForm() {
   const verifyUserAccount = async (accessToken) => {
     try {
       const response = await axios.post(`/api/verifyAccount`, { accessToken });
-
-      console.log('🔥 response', response);
-
       setUser(response.data.data.acct);
       return response.data;
     } catch (error) {
