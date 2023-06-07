@@ -28,17 +28,6 @@ export const followSuggestionsData = {
   skipButton: { text: 'Skip This Step for Now', link: '/follow-tags' },
   suggestedUsers: [
     {
-      title: 'kakape',
-      icon: 'trophy',
-      accounts: [
-        {
-          id: '109285331599160795',
-          username: 'kakape',
-          url: 'https://mas.to/@kakape',
-        },
-      ],
-    },
-    {
       title: 'Top Posts and Follow Suggestions',
       icon: 'trophy',
       accounts: [
