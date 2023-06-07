@@ -55,6 +55,15 @@ export default function FollowSuggestions() {
         .map(async (category) => {
           const categoryFollowPromises = category.accounts.map(async (user) => {
             try {
+              // Find correct account ID based on authenticated server
+              await limiter.schedule(() => 
+                axios.post('/api/getFollowAccountId', {
+                  accessToken,
+                  targetAccountUser: user.username,
+                  accountUrl: user.url,
+                  server
+                })
+              );
               // Follow the user using the API and return their username
               await limiter.schedule(() =>
                 axios.post('/api/follow', {
