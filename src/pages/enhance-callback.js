@@ -10,8 +10,10 @@ const EnhanceAuth = () => {
   const router = useRouter();
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const { userData, setUserData } = useStore();
+  // 1. Code
   const { code } = router.query;
 
+  // 2. Get token
   const getToken = async () => {
     try {
       const m_sec = window.localStorage.getItem('m_sec');
@@ -23,16 +25,16 @@ const EnhanceAuth = () => {
         m_id,
         server_name,
       });
-      setStoredAccessToken(res.data.access_token);
-      window.localStorage.setItem(
-        'access_token_enhance',
-        res.data.access_token
-      );
+      if (res.data.access_token) {
+        sessionStorage.setItem('accessToken', res.data.access_token);
+        setStoredAccessToken(res.data.access_token);
+      }
     } catch (error) {
       console.log('Error getToken: ', error);
     }
   };
 
+  // 3. Verify user account & redirect to enhance-account
   const verifyUserAccount = async (token) => {
     try {
       const server_name = window.localStorage.getItem('client');
@@ -40,8 +42,12 @@ const EnhanceAuth = () => {
         token,
         server_name,
       });
-      setUserData(res.data);
-      router.push('/enhance-account');
+      if (res.data) {
+        setUserData(res.data);
+        router.push('/enhance-account');
+      } else {
+        console.log('No data from verifyUserAccount');
+      }
     } catch (error) {
       console.log('Error verifyUserAccount: ', error.request.data);
     }
@@ -50,8 +56,6 @@ const EnhanceAuth = () => {
   useEffect(() => {
     if (code) {
       getToken();
-    } else {
-      console.log('No code found');
     }
   }, [code]);
 

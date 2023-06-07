@@ -38,9 +38,7 @@ export default function FollowSuggestions() {
   // Follow all users in selected categories
   const followAllCategoryUsers = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
-    const accessTokenEnhance = window.localStorage.getItem(
-      'access_token_enhance'
-    );
+    const server = localStorage.getItem('client');
 
     if (checkedCategories.length === 0) {
       setResponseMessage('Please select at least one category');
@@ -62,8 +60,11 @@ export default function FollowSuggestions() {
                 axios.post('/api/follow', {
                   accessToken,
                   targetAccountId: user.id,
+                  server,
                 })
               );
+              console.log('🔥 user.username', user.username);
+
               return user.username;
             } catch (error) {
               // If an error occurs, reject the promise with the error message

@@ -20,6 +20,7 @@ export default async function getToken(req, res) {
         redirect_uri,
         grant_type,
         code,
+        scope: 'read write follow',
       },
       {
         headers: {
@@ -27,6 +28,7 @@ export default async function getToken(req, res) {
         },
       }
     );
+    console.log('🔥 ressssponseeeeee', response.data);
 
     const { access_token } = response.data;
     res.status(200).json({ success: true, access_token });
