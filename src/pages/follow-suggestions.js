@@ -14,7 +14,6 @@ import Checkbox from '@/components/atoms/checkbox';
 import Modal from '@/components/Organism/Modal';
 import Icon from '@/components/atoms/icon';
 import { useRouter } from 'next/router';
-import { get } from 'react-hook-form';
 
 export default function FollowSuggestions() {
   const router = useRouter();
