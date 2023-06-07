@@ -30,6 +30,13 @@ export default function FollowSuggestions() {
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  console.log(
+    '🔥 data',
+    data.suggestedUsers.filter((category) =>
+      checkedCategories.includes(category.title)
+    )
+  );
+
   const limiter = new Bottleneck({
     maxConcurrent: 1,
     minTime: 30,
@@ -46,10 +53,8 @@ export default function FollowSuggestions() {
       setFollowedCatUsers('');
       return;
     }
-
     setLoading(true);
     try {
-      // Filter the categories to only include those that are checked and create a list of promises to follow each user in those categories
       const followPromises = data.suggestedUsers
         .filter((category) => checkedCategories.includes(category.title))
         .map(async (category) => {
@@ -63,8 +68,6 @@ export default function FollowSuggestions() {
                   server,
                 })
               );
-              console.log('🔥 user.username', user.username);
-
               return user.username;
             } catch (error) {
               // If an error occurs, reject the promise with the error message
@@ -74,11 +77,9 @@ export default function FollowSuggestions() {
           // Wait for all promises to follow users in the category to resolve
           return Promise.all(categoryFollowPromises);
         });
-      // Wait for all promises to follow users in selected categories to resolve
       const followedUsernames = await Promise.all(followPromises);
 
       setFollowedCatUsers(followedUsernames.flat().join(', '));
-      // Indicate that all users were followed successfully and display a message with their usernames
       setToggleValue(true);
     } catch (error) {
       // If an error occurs, display an error message
