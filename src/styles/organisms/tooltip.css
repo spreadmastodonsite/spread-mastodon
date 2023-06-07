@@ -8,6 +8,7 @@
 
 .c-tooltip__label {
   font-weight: var(--font-semibold);
+  position: relative;
 }
 
 .c-tooltip__box {
@@ -21,7 +22,7 @@
   min-width: 400px;
   transform: translateX(-50%);
   font-size: var(--font-size-lg);
-  z-index: 101;
+  z-index: 102;
   box-shadow: 0 0 51.1px 18.9px rgba(11, 12, 16, 0.7);
 }
 

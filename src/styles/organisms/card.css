@@ -18,6 +18,8 @@
 
 .c-card--active {
   background-color: var(--c-primary);
+  position: relative;
+  z-index: 1;
 }
 
 .c-card--active:hover {
