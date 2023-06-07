@@ -22,18 +22,23 @@ export default function MoreWaysToEnhance() {
       </Head>
       <Logo />
       <main className="l-main c-page__interior c-more-ways-to-share">
-        <StepperHeader
-          iconName="enrich"
-          iconWidth="75"
-          iconHeight="83"
-          heading={data.heading.text}
-        />
-        <Grid className="u-text-align--center u-margin-bottom--xl">
-          <GridItem columnStart={1} columnEnd={13}>
-            <h1 className="u-margin-bottom--lg">{data.heading.text}</h1>
-            <h2>{data.subHeading.text}</h2>
-          </GridItem>
-        </Grid>
+        {data?.heading?.text && (
+          <StepperHeader
+            iconName="enrich"
+            iconWidth="75"
+            iconHeight="83"
+            heading={data.heading.text}
+          />
+        )}
+        {data?.description?.text || data?.description?.link ? (
+          <Grid>
+            <GridItem columnStart={4} columnEnd={10}>
+              <p className="u-heading--xl u-text-align--center">
+                {data.description.text && data.description.text}
+              </p>
+            </GridItem>
+          </Grid>
+        ) : null}
         <Grid
           variant="autoFit"
           itemMinWidth="lg"

@@ -15,49 +15,42 @@
 }
 
 .c-markdown h1 {
-  font-size: var(--font-size-7xl);
+  font-size: var(--font-size-5xl);
   margin-bottom: var(--space-xl);
   line-height: 1.1;
 }
 
 @media all and (max-width: 768px) {
   .c-markdown h1 {
-    font-size: var(--font-size-5xl);
+    font-size: var(--font-size-4xl);
     margin-bottom: var(--space-lg);
   }
 }
 
 .c-markdown h1 + p {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-4xl);
-}
-
-@media all and (max-width: 768px) {
-  .c-markdown h1 + p {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-2xl);
-  }
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .c-markdown h2 {
-  font-size: var(--font-size-5xl);
-  margin-bottom: var(--space-md);
-}
-
-@media all and (max-width: 768px) {
-  .c-markdown h2 {
-    font-size: var(--font-size-4xl);
-  }
-}
-
-.c-markdown h3 {
   font-size: var(--font-size-4xl);
   margin-bottom: var(--space-md);
 }
 
 @media all and (max-width: 768px) {
-  .c-markdown h3 {
+  .c-markdown h2 {
     font-size: var(--font-size-3xl);
+  }
+}
+
+.c-markdown h3 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-md);
+}
+
+@media all and (max-width: 768px) {
+  .c-markdown h3 {
+    font-size: var(--font-size-2xl);
   }
 }
 
@@ -104,11 +97,13 @@
 }
 
 .c-markdown ul {
-  margin-left: var(--space-2xl);
+  margin-left: var(--space-xl);
+  margin-bottom: var(--space-xl);
 }
 
 .c-markdown ol {
-  margin-left: var(--space-2xl);
+  margin-left: var(--space-xl);
+  margin-bottom: var(--space-xl);
 }
 
 .c-markdown ul > li::marker {
@@ -121,16 +116,13 @@
 }
 
 .c-markdown li > ul {
+  margin-bottom: var(--space-md);
   margin-top: 0;
 }
 
 .c-markdown li > ul > li {
   list-style-type: disc;
   font-size: var(--font-size);
-}
-
-.c-markdown ol {
-  margin-left: 0;
 }
 
 .c-markdown li > p {
