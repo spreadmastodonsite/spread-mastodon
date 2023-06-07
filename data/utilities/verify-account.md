@@ -39,12 +39,12 @@ To do this you go through this process:
 
 This green check mark will also be visible in upcoming versions of Mastodon search next to your account name, verifying your account.
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Verify Account Screenshot 1](/public/verify-account-screenshot-600x400-01.jpg)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Verify Account Screenshot 2](/public/verify-account-screenshot-600x168-02.jpg)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Verify Account Screenshot 3](/public/verify-account-screenshot-600x305-03.jpg)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Verify Account Screenshot 4](/public/verify-account-screenshot-600x423-04.png)
 
-![Minion](https://octodex.github.com/images/minion.png)
+![Verify Account Screenshot 5](/public/verify-account-screenshot-600x197-05.jpg)
