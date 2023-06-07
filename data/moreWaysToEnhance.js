@@ -8,9 +8,6 @@ export const moreWaysToEnhanceData = {
   heading: {
     text: 'More Ways to Enhance Your Account',
   },
-  subHeading: {
-    text: 'Here are All Our Tips and Ideas for Getting Started on Mastodon',
-  },
   cards: [
     {
       title: 'Verify Your Mastodon Account (With No $8 Dollars Required)',

@@ -5,6 +5,9 @@ export const moreWaysToShareData = {
     description:
       'Here are more ways to help spread Mastodon and the Fediverse.',
   },
+  heading: {
+    text: 'More Ways To Spread Mastodon',
+  },
   cards: [
     {
       description: 'Share the Spread Mastodon Tool to Help New Users Sign Up!',
