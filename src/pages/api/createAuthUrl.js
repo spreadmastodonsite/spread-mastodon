@@ -16,11 +16,6 @@ export default async function authApp(req, res) {
     const { client_id, redirect_uri, client_secret } =
       appRegistrationResponse.data;
 
-    console.log(
-      '🔥 appRegistrationResponse.data',
-      appRegistrationResponse.data
-    );
-
     const authorizationUrl = `https://${serverName}/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
       redirect_uri
     )}&response_type=code&scope=read+write+follow`;

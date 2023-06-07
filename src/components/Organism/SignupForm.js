@@ -5,11 +5,11 @@ import cx from 'classnames';
 import Button from '../atoms/Button';
 import Grid from '../layout/Grid';
 import GridItem from '../layout/GridItem';
-
 import { signUpData as data } from '/data/signUp.js';
 import StepperHeader from '@/components/molecules/StepperHeader';
 import Icon from '../atoms/icon';
 import AuthenticateUserForm from './authenticateUserForm';
+import { useRouter } from 'next/router';
 
 export default function SignupForm() {
   const {
@@ -18,6 +18,7 @@ export default function SignupForm() {
     formState: { errors },
     watch,
   } = useForm();
+  const router = useRouter();
   const [responseMessage, setResponseMessage] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   // setback to false after testing
@@ -60,6 +61,7 @@ export default function SignupForm() {
 
       setAccountCreated(true);
       setResponseMessage(`Account created successfully`);
+      router.push('/authenticate');
     } catch (error) {
       setResponseMessage(error.response.data.error.error);
     }

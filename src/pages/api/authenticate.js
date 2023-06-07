@@ -2,7 +2,13 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { email, password, clientId, clientSecret, serverName } = req.body;
+    const {
+      email,
+      password,
+      clientId,
+      clientSecret,
+      serverName = 'mastodon.social',
+    } = req.body;
 
     try {
       const response = await axios.post(`https://${serverName}/oauth/token`, {
