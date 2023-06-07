@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function authApp(req, res) {
-  const { serverName, redirectUri } = req.body;
+  const { serverName = 'mastodon.social', redirectUri } = req.body;
 
   try {
     const appRegistrationResponse = await axios.post(
@@ -10,14 +10,14 @@ export default async function authApp(req, res) {
         redirect_uris: redirectUri,
         client_name: 'Spread Mastodon',
         scopes: 'read write follow',
-      }
+      },
     );
 
     const { client_id, redirect_uri, client_secret } =
       appRegistrationResponse.data;
 
     const authorizationUrl = `https://${serverName}/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(
-      redirect_uri
+      redirect_uri,
     )}&response_type=code&scope=read+write+follow`;
 
     res.json({ authorizationUrl, client_id, client_secret });
