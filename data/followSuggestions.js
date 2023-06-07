@@ -84,12 +84,12 @@ export const followSuggestionsData = {
           url: 'https://flipboard.social/@CultureDesk',
         },
         {
-          id: '109343462594602395',
+          // id: '109343462594602395',
           username: 'nickkristof',
           url: 'https://journa.host/@nickkristof',
         },
         {
-          id: '109343462594602395',
+          // id: '109343462594602395',
           username: 'virginiaheffernan',
           url: 'https://journa.host/@virginiaheffernan',
         },
@@ -272,7 +272,7 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@caseynewton',
         },
         {
-          id: '109343462594602395',
+          // id: '109343462594602395',
           username: 'nickkristof',
           url: 'https://journa.host/@nickkristof',
         },

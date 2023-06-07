@@ -15,7 +15,6 @@ import { useRouter } from 'next/router';
 
 export default function FollowSuggestions() {
   const router = useRouter();
-
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [toggleValue, setToggleValue] = useState(false);
@@ -28,6 +27,7 @@ export default function FollowSuggestions() {
 
   const followTags = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
+    const server = localStorage.getItem('client');
     const tagNames = selectedTags;
 
     if (tagNames.length === 0) {
@@ -43,12 +43,16 @@ export default function FollowSuggestions() {
         const response = await axios.post('/api/followTag', {
           accessToken,
           tagName: tagName,
+          server,
         });
         return response.data;
       } catch (error) {
+        console.log('Error:', error.response.data.error.error);
         return Promise.reject(error.response.data.error.error);
       }
     });
+
+    console.log('🔥 tagsPromises', tagsPromises);
 
     try {
       const results = await Promise.all(tagsPromises);
@@ -79,7 +83,7 @@ export default function FollowSuggestions() {
       setSelectedTags(
         updatedTags.filter((tag) => {
           return !tags.includes(tag);
-        }),
+        })
       );
     }
   };
@@ -108,29 +112,29 @@ export default function FollowSuggestions() {
   }, [selectedTags]);
 
   return (
-    <div className="content-wrapper">
+    <div className='content-wrapper'>
       <Head>
         <title>Spread Mastodon - {data.metaData.title}</title>
         <meta name={data.metaData.name} content={data.metaData.description} />
-        <meta property="og:title" content={data.metaData.name} />
-        <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:url" content={router.pathname} />
-        <meta name="twitter:title" content={data.metaData.name} />
-        <meta name="twitter:description" content={data.metaData.description} />
+        <meta property='og:title' content={data.metaData.name} />
+        <meta property='og:description' content={data.metaData.description} />
+        <meta property='og:url' content={router.pathname} />
+        <meta name='twitter:title' content={data.metaData.name} />
+        <meta name='twitter:description' content={data.metaData.description} />
       </Head>
       <Logo />
-      <main className="l-main c-page__interior">
-        <div className="u-text-align--center">
+      <main className='l-main c-page__interior'>
+        <div className='u-text-align--center'>
           <StepperHeader
-            iconName="enrich"
-            iconWidth="75"
-            iconHeight="83"
+            iconName='enrich'
+            iconWidth='75'
+            iconHeight='83'
             heading={data.heading.text}
             subHeading={data.subHeading.text}
           />
 
-          <h2 className="u-heading--2xl">{data.heading2.partOne}</h2>
-          <div className="u-heading--xl c-follow-category__info ">
+          <h2 className='u-heading--2xl'>{data.heading2.partOne}</h2>
+          <div className='u-heading--xl c-follow-category__info '>
             <ToolTip
               iconWidth={24}
               iconHeight={24}
@@ -140,14 +144,14 @@ export default function FollowSuggestions() {
             <span>{data.heading2.partTwo}</span>
           </div>
           {!hasAccessToken ? (
-            <Grid className="u-margin-bottom--lg">
+            <Grid className='u-margin-bottom--lg'>
               <GridItem columnStart={5} columnEnd={9}>
                 <Button
-                  text="Sign In"
+                  text='Sign In'
                   loading={loading}
-                  className="u-margin-bottom--md"
-                  variant="secondary"
-                  link="enhance-account"
+                  className='u-margin-bottom--md'
+                  variant='secondary'
+                  link='enhance-account'
                 />
               </GridItem>
             </Grid>
@@ -156,14 +160,14 @@ export default function FollowSuggestions() {
               <div>
                 {data.suggestTags.map((topic, i) => (
                   <div key={i + topic.category}>
-                    <div className="tag-group">
-                      <div className="tag-group__content">
-                        <h3 className="tag-group__category u-text-align--left u-heading--xl">
+                    <div className='tag-group'>
+                      <div className='tag-group__content'>
+                        <h3 className='tag-group__category u-text-align--left u-heading--xl'>
                           {topic.category}{' '}
                         </h3>
-                        <ul className="c-chip__group">
+                        <ul className='c-chip__group'>
                           {topic.tags.map((tag) => (
-                            <li className="c-chip__group-item" key={tag.name}>
+                            <li className='c-chip__group-item' key={tag.name}>
                               <Chip
                                 active={selectedTags.includes(tag.name)}
                                 text={tag.name}
@@ -173,12 +177,12 @@ export default function FollowSuggestions() {
                           ))}
                         </ul>
                       </div>
-                      <div className="tag-group__input">
+                      <div className='tag-group__input'>
                         <span>Select All</span>
                         <Checkbox
-                          label="Follow"
-                          name="follow"
-                          value="follow"
+                          label='Follow'
+                          name='follow'
+                          value='follow'
                           checked={isChecked}
                           onChange={(e) => handleCheckboxChange(topic, e)}
                         />
@@ -189,7 +193,7 @@ export default function FollowSuggestions() {
               </div>
 
               <Modal toggleValue={toggleValue}>
-                <h4 className="u-margin-bottom--sm">
+                <h4 className='u-margin-bottom--sm'>
                   {responseMessage ? (
                     <span>{responseMessage}</span>
                   ) : (
@@ -197,26 +201,27 @@ export default function FollowSuggestions() {
                   )}
                 </h4>
                 {followedTags && (
-                  <p className="u-capitalize u-margin-bottom--sm">
+                  <p className='u-capitalize u-margin-bottom--sm'>
                     {followedTags}
                   </p>
                 )}
-                {errorMessage && <p className="c-error">{errorMessage}</p>} {''}
+                {errorMessage && <p className='c-error'>{errorMessage}</p>} {''}
                 <p>
                   You will now see posts from the selected hashtag(s) in your
                   main Mastodon feed. Find out more about how to{' '}
                   <a
-                    className="c-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse">
+                    className='c-link'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://fedi.tips/how-do-i-follow-hashtags-on-mastodon-and-the-fediverse'
+                  >
                     follow and unfollow hashtags
                   </a>
                   .
                 </p>
               </Modal>
               <Button
-                className="c-button__follow-tags u-margin-bottom--2xl u-margin-top--md"
+                className='c-button__follow-tags u-margin-bottom--2xl u-margin-top--md'
                 onClick={followTags}
                 loading={loading}
                 text={data.followTagButton.text}
@@ -224,7 +229,7 @@ export default function FollowSuggestions() {
             </>
           )}
         </div>
-        <Grid className="c-follow-category__button-row" variant="autoFit">
+        <Grid className='c-follow-category__button-row' variant='autoFit'>
           <Button
             text={data.nextStepButton.text}
             link={data.nextStepButton.link}
@@ -232,7 +237,7 @@ export default function FollowSuggestions() {
           <Button
             link={data.skipButton.link}
             text={data.skipButton.text}
-            variant="secondary"
+            variant='secondary'
           />
         </Grid>
       </main>

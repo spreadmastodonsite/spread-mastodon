@@ -1,17 +1,21 @@
 import axios from 'axios';
 
 export default async function follow(req, res) {
-  const { accessToken, tagName } = req.body;
+  const { accessToken, tagName, server } = req.body;
+
+  console.log('🔥 accessToken', accessToken);
+  console.log('🔥 tagName', tagName);
+  console.log('🔥 server', server);
 
   try {
     const response = await axios.post(
-      `${process.env.MASTODON_INSTANCE_URL}/api/v1/tags/${tagName}/follow`,
+      `https://${server}/api/v1/tags/${tagName}/follow`,
       {},
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      },
+      }
     );
 
     res.status(200).json({ success: true, data: response.data });
