@@ -2,13 +2,20 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { email, password } = req.body;
-    const instanceUrl = process.env.MASTODON_INSTANCE_URL;
-    const clientId = process.env.MASTODON_CLIENT_ID;
-    const clientSecret = process.env.MASTODON_CLIENT_SECRET;
+    const { email, password, clientId, clientSecret, serverName } = req.body;
+
+    console.log('🔥 email', email);
+    console.log('🔥 password', password);
+    console.log('🔥 clientId', clientId);
+    console.log('🔥 clientSecret', clientSecret);
+    console.log('🔥 serverName', serverName);
+
+    // const instanceUrl = process.env.MASTODON_INSTANCE_URL;
+    // const clientId = process.env.MASTODON_CLIENT_ID;
+    // const clientSecret = process.env.MASTODON_CLIENT_SECRET;
 
     try {
-      const response = await axios.post(`${instanceUrl}/oauth/token`, {
+      const response = await axios.post(`https://${serverName}/oauth/token`, {
         grant_type: 'password',
         username: email,
         password,

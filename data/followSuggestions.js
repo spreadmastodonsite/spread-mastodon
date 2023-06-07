@@ -28,14 +28,20 @@ export const followSuggestionsData = {
   skipButton: { text: 'Skip This Step for Now', link: '/follow-tags' },
   suggestedUsers: [
     {
-      title: 'Top Posts and Follow Suggestions',
+      title: 'kakape',
       icon: 'trophy',
       accounts: [
         {
-          id: '110498481377658882',
-          username: 'msteimel',
-          url: 'https://mastodon.world/@msteimel',
+          id: '109285331599160795',
+          username: 'kakape',
+          url: 'https://mas.to/@kakape',
         },
+      ],
+    },
+    {
+      title: 'Top Posts and Follow Suggestions',
+      icon: 'trophy',
+      accounts: [
         {
           id: '109390969127442952',
           username: 'FediFollows',

@@ -81,9 +81,6 @@ export default function AuthenticateUserForm() {
     try {
       const accessToken = await authenticateUser(data.email, data.password);
 
-      console.log('🔥 accessToken', accessToken);
-      console.log('🔥 made it passed access token');
-
       await verifyUserAccount(accessToken);
 
       // Call the handle submit success function
