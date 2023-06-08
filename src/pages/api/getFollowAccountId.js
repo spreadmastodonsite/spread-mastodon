@@ -6,17 +6,13 @@ const limiter = new Bottleneck({
   minTime: 15,
 });
 
-export default async function follow(req, res) {
-  const { accessToken, targetAccountId, server } = req.body;
-
-  console.log('🔥 accessToken', accessToken);
-  console.log('🔥 targetAccountId', targetAccountId);
-  console.log('🔥 server', server);
+export default async function getFollowAccountId(req, res) {
+  const { accessToken, targetAccountUser, searchUrl, server } = req.body;
 
   try {
     const response = await limiter.schedule(() =>
-      axios.post(
-        `https://${server}/api/v1/accounts/${targetAccountId}/follow`,
+      axios.get(
+        `https://${server}/api/v2/search?q=${targetAccountUser}&type=accounts`,
         {},
         {
           headers: {
@@ -27,6 +23,8 @@ export default async function follow(req, res) {
     );
 
     res.status(200).json({ success: true, data: response.data });
+    // TODO: Filter results based on accountUrl
+    console.log('🔥 Search Data: ', response.data.accounts);
   } catch (error) {
     console.log('❌ Error on follow: ', error.response.data);
 

@@ -21,65 +21,8 @@ export default function Join() {
   } = useForm();
   const [validationMessage, setValidationMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState();
-  const [verifiedAndAuthenticated, setVerifiedAndAuthenticated] =
-    useState(false);
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [storedServerName, setStoredServerName] = useState('');
-
-  const handleSubmitSuccess = async (accessToken) => {
-    sessionStorage.setItem('accessToken', accessToken);
-    console.log('🐸 session storage set');
-
-    setValidationMessage(
-      'Verified and authenticated successfully if you do not advance to the next page please click the button below'
-    );
-  };
-
-  const verifyUserAccount = async (accessToken) => {
-    try {
-      const response = await axios.post(`/api/verifyAccount`, { accessToken });
-      setUser(response.data.data.acct);
-      // return response.data;
-    } catch (error) {
-      throw new Error(
-        `Error verifying account: ${JSON.stringify(
-          error.response.data.error.error
-        )}`
-      );
-    }
-  };
-
-  const authenticateUser = async (email, password) => {
-    try {
-      const response = await axios.post('/api/authenticate', {
-        email,
-        password,
-      });
-      return response.data.data.access_token;
-    } catch (error) {
-      throw new Error(
-        `Error authenticating account: ${JSON.stringify(
-          error.response.data.error.error_description
-        )}`
-      );
-    }
-  };
-
-  const checkUserAuthentication = async (data) => {
-    setLoading(true);
-
-    try {
-      const accessToken = await authenticateUser(data.email, data.password);
-      await verifyUserAccount(accessToken);
-      handleSubmitSuccess(accessToken);
-    } catch (error) {
-      console.log('🔥 error.message', error.message);
-      setValidationMessage(error.message);
-    }
-
-    setLoading(false);
-  };
 
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
@@ -95,9 +38,7 @@ export default function Join() {
         response_type: 'code',
         serverName: serverName,
         redirectUri: redirectUrl,
-        scope: 'read write follow',
       });
-
       window.localStorage.setItem('m_sec', response.data.client_secret);
       window.localStorage.setItem('m_id', response.data.client_id);
       window.location.href = response.data.authorizationUrl;
@@ -111,15 +52,10 @@ export default function Join() {
   };
 
   useEffect(() => {
-    const serverName = window.localStorage.getItem('client');
     const sessionToken = sessionStorage.getItem('accessToken');
 
-    if (sessionToken && serverName) {
+    if (sessionToken) {
       setStoredAccessToken(sessionToken);
-    }
-
-    if (serverName) {
-      setStoredServerName(serverName);
     }
   }, []);
   return (
@@ -148,7 +84,7 @@ export default function Join() {
         </Grid>
 
         <Grid variant='autoFit' className='c-card__container'>
-          {verifiedAndAuthenticated || storedAccessToken ? (
+          {storedAccessToken ? (
             data.cards.map((card) => (
               <Card
                 key={card.title}
@@ -205,48 +141,6 @@ export default function Join() {
                       </span>
                     </GridItem>
                   )}
-                  <GridItem columnStart={2} columnEnd={12}>
-                    <label className='u-visually-hidden' htmlFor='email'>
-                      Email:
-                    </label>
-                    {errors.email && (
-                      <span className='c-input-error__message u-margin-bottom--sm u-display--inline-block'>
-                        {errors.email.message}
-                      </span>
-                    )}
-                    <input
-                      id='email'
-                      type='email'
-                      placeholder='Email Address'
-                      className={`c-signup-form__input ${
-                        errors.email && 'c-signup-form__input--error'
-                      }`}
-                      {...register('email', {
-                        required: 'Email is required',
-                      })}
-                    />
-                  </GridItem>
-                  <GridItem columnStart={2} columnEnd={12}>
-                    <label className='u-visually-hidden' htmlFor='password'>
-                      Password:
-                    </label>
-                    {errors.password && (
-                      <span className='c-input-error__message u-margin-bottom--sm u-display--inline-block'>
-                        {errors.password.message}
-                      </span>
-                    )}
-                    <input
-                      id='password'
-                      type='password'
-                      placeholder='Password'
-                      className={`c-signup-form__input ${
-                        errors.password && 'c-signup-form__input--error'
-                      }`}
-                      {...register('password', {
-                        required: 'Password is required',
-                      })}
-                    />
-                  </GridItem>
                 </Grid>
                 {loading ? (
                   <Grid>

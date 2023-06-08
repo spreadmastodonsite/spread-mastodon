@@ -26,30 +26,12 @@ export default function AuthenticateUser() {
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const [user, setUser] = useState();
 
-  // Authenticate the user with the provided email and password
-  const authenticateUser = async (email, password) => {
-    try {
-      const response = await axios.post('/api/authenticate', {
-        email,
-        password,
-      });
-
-      return response.data.data.access_token;
-    } catch (error) {
-      throw new Error(
-        `Error authenticating account: ${JSON.stringify(
-          error.response.data.error.error_description,
-        )}`,
-      );
-    }
-  };
-
   // Verify the user's account with the provided access token
   const verifyUserAccount = async (accessToken) => {
     try {
-      const response = await axios.get(
-        `/api/verifyAccount?accessToken=${accessToken}`,
-      );
+      const response = await axios.post('/api/verifyAccount', {
+        accessToken,
+      });
       setUser(response.data.data.acct);
       return response.data;
     } catch (error) {
@@ -61,33 +43,31 @@ export default function AuthenticateUser() {
     }
   };
 
-  // Handle form submission success
-  const handleSubmitSuccess = async (accessToken) => {
-    // Store the access token in session storage
-    sessionStorage.setItem('accessToken', accessToken);
-    // Set the validation message and authenticated state
-    setValidationMessage(
-      'Verified and authenticated successfully if you do not advance to the next page please click the button below',
-    );
-    setVerifiedAndAuthenticated(true);
-    // Redirect to the follow suggestions page
-    router.push('/follow-suggestions');
-  };
+  const onAuthSubmit = async (data) => {
+    const serverName = 'mastodon.social';
+    window.localStorage.setItem('client', serverName);
 
-  // Handle form submission
-  const onSubmit = async (data) => {
-    setLoading(true);
+    const redirectUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/authenticate-callback'
+        : 'https://join-mastodon-poc.vercel.app/authenticate-callback';
 
     try {
-      const accessToken = await authenticateUser(data.email, data.password);
-      await verifyUserAccount(accessToken);
-
-      // Call the handle submit success function
-      handleSubmitSuccess(accessToken);
+      const response = await axios.post('/api/createAuthUrl', {
+        response_type: 'code',
+        serverName: serverName,
+        redirectUri: redirectUrl,
+      });
+      window.localStorage.setItem('m_sec', response.data.client_secret);
+      window.localStorage.setItem('m_id', response.data.client_id);
+      window.location.href = response.data.authorizationUrl;
     } catch (error) {
-      setValidationMessage(error.message);
+      throw new Error(
+        `Error authenticating account: ${JSON.stringify(
+          error.response ? error.response.data : error.message,
+        )}`,
+      );
     }
-    setLoading(false);
   };
 
   // Get the access token from session storage on component mount
@@ -139,10 +119,7 @@ export default function AuthenticateUser() {
                   below to continue.
                 </p>
 
-                <Button
-                  link="/follow-suggestions"
-                  text="Step 1: Follow Users"
-                />
+                <Button link="/update-account" text="Step 1: Update Account" />
               </>
             ) : (
               // If not authenticated, display login form
@@ -155,51 +132,7 @@ export default function AuthenticateUser() {
                 />
                 <form
                   className="c-authenticate-form"
-                  onSubmit={handleSubmit(onSubmit)}>
-                  <Grid className="c-grid__signup-form">
-                    <GridItem columnStart={2} columnEnd={12}>
-                      <label className="u-visually-hidden" htmlFor="email">
-                        Email:
-                      </label>
-                      {errors.email && (
-                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
-                          {errors.email.message}
-                        </span>
-                      )}
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="Email Address"
-                        className={`c-signup-form__input ${
-                          errors.email && 'c-signup-form__input--error'
-                        }`}
-                        {...register('email', {
-                          required: 'Email is required',
-                        })}
-                      />
-                    </GridItem>
-                    <GridItem columnStart={2} columnEnd={12}>
-                      <label className="u-visually-hidden" htmlFor="password">
-                        Password:
-                      </label>
-                      {errors.password && (
-                        <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
-                          {errors.password.message}
-                        </span>
-                      )}
-                      <input
-                        id="password"
-                        type="password"
-                        placeholder="Password"
-                        className={`c-signup-form__input ${
-                          errors.password && 'c-signup-form__input--error'
-                        }`}
-                        {...register('password', {
-                          required: 'Password is required',
-                        })}
-                      />
-                    </GridItem>
-                  </Grid>
+                  onSubmit={handleSubmit(onAuthSubmit)}>
                   {loading ? (
                     <Grid>
                       <GridItem columnStart={2} columnEnd={12}>

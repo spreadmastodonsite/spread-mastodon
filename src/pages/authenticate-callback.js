@@ -6,7 +6,7 @@ import Grid from '@/components/layout/Grid';
 import GridItem from '@/components/layout/GridItem';
 import { useStore } from '@/store/store';
 
-const EnhanceAuth = () => {
+const AuthenticateAuth = () => {
   const router = useRouter();
   const [storedAccessToken, setStoredAccessToken] = useState('');
   const { userData, setUserData } = useStore();
@@ -22,7 +22,7 @@ const EnhanceAuth = () => {
         m_sec,
         m_id,
         server_name,
-        url: 'enhance-callback',
+        url: 'authenticate-callback',
       });
       if (res.data.access_token) {
         sessionStorage.setItem('accessToken', res.data.access_token);
@@ -42,7 +42,7 @@ const EnhanceAuth = () => {
       });
       if (res.data) {
         setUserData(res.data);
-        router.push('/enhance-account');
+        router.push('/authenticate');
       } else {
         console.log('No data from verifyUserAccount');
       }
@@ -78,4 +78,4 @@ const EnhanceAuth = () => {
   );
 };
 
-export default EnhanceAuth;
+export default AuthenticateAuth;
