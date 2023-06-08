@@ -25,7 +25,7 @@ export default function Post() {
     );
   }
 
-  const testMEssage = `Join me in the movement to #TakeBackSocial, to find a better social home, and help others do the same.
+  const shareMastodonMessage = `Join me in the movement to #TakeBackSocial, to find a better social home, and help others do the same.
 
 #SpreadMastodon #Mastodon #Fediverse #OpenSocialWeb`;
 
@@ -47,7 +47,7 @@ export default function Post() {
             <li className="c-markdown__share--item">
               <Link
                 href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${encodeURIComponent(
-                  testMEssage,
+                  shareMastodonMessage,
                 )}`}>
                 <Icon iconName="mastodon-logo" width="28" height="28" />
               </Link>
