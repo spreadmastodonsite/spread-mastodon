@@ -46,7 +46,7 @@ export default function Post() {
           <ul className="c-markdown__share">
             <li className="c-markdown__share--item">
               <Link
-                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${encodeURIComponent(
+                href={`https://mastodonshare.com/?url=https://www.spreadmastodon.org${asPath}&text=${encodeURIComponent(
                   shareMastodonMessage,
                 )}`}>
                 <Icon iconName="mastodon-logo" width="28" height="28" />
