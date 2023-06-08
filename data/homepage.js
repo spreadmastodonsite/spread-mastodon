@@ -1,9 +1,8 @@
 export const homepageData = {
   metaData: {
-    title: 'Mastodon Signup',
-    name: 'Mastodon Signup',
-    description:
-      'Sign Up for Mastodon.Social and Join the Fediverse Social Network',
+    title: 'Spread Mastodon',
+    name: 'Spread Mastodon',
+    description: 'Welcome to your better social home.',
   },
   heading: {
     textOne: 'Welcome to your',

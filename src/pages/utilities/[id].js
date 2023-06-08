@@ -27,7 +27,9 @@ export default function Post() {
 
   const shareMastodonMessage = `Join me in the movement to #TakeBackSocial, to find a better social home, and help others do the same.
 
-#SpreadMastodon #Mastodon #Fediverse #OpenSocialWeb`;
+#SpreadMastodon #Mastodon #Fediverse #OpenSocialWeb
+
+`;
 
   return (
     <div className="content-wrapper">
@@ -60,7 +62,9 @@ export default function Post() {
             </li>
             <li className="c-markdown__share--item">
               <Link
-                href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
+                href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${encodeURIComponent(
+                  shareMastodonMessage,
+                )}!`}>
                 <Icon iconName="twitter-logo" width="32" height="32" />
               </Link>
             </li>

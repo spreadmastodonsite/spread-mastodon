@@ -26,7 +26,8 @@ export default function MoreWaysToShare() {
       <main className="l-main c-page__interior c-more-ways-to-share">
         {data?.heading?.text && (
           <StepperHeader
-            iconName="enrich"
+            className="c-more-ways-to-share__header"
+            iconName="share"
             iconWidth="75"
             iconHeight="83"
             heading={data.heading.text}

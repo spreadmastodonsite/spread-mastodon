@@ -1,9 +1,8 @@
 export const authenticateData = {
   metaData: {
-    title: 'Mastodon Signup',
-    name: 'Mastodon Signup',
-    description:
-      'Sign Up for Mastodon.Social and Join the Fediverse Social Network',
+    title: 'Authenticate Account',
+    name: 'Spread Mastodon',
+    description: 'Welcome to your better social home.',
   },
   heading: { text: 'Authenticate Account' },
   confirmed: { text: 'Confirmed' },
