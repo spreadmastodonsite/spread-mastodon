@@ -11,7 +11,7 @@ export default async function follow(req, res) {
 
   console.log('🔥 accessToken', accessToken);
   console.log('🔥 targetAccountId', targetAccountId);
-  console.log('🔥 server', server);
+  console.log('🔥 server__________________', server);
 
   try {
     const response = await limiter.schedule(() =>
@@ -22,8 +22,8 @@ export default async function follow(req, res) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
-      )
+        },
+      ),
     );
 
     res.status(200).json({ success: true, data: response.data });

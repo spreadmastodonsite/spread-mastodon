@@ -646,10 +646,10 @@ export const followSuggestionsData = {
           username: 'fediversereport',
           url: 'https://mastodon.social/@fediversereport',
         },
-        // {
-        //   username: 'spreadmastodon',
-        //   url: 'https://mastodon.online/@spreadmastodon',
-        // },
+        {
+          username: 'spreadmastodon',
+          url: 'https://mastodon.online/@spreadmastodon',
+        },
       ],
     },
   ],

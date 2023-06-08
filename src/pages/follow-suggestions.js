@@ -54,7 +54,7 @@ export default function FollowSuggestions() {
       const account = accounts.filter((account) => account.url === url);
       return account[0].id;
     } catch (error) {
-      setErrorMessage(error.response.data.error);
+      setErrorMessage(error.response);
     }
   };
 
@@ -84,21 +84,27 @@ export default function FollowSuggestions() {
                   server,
                 }),
               );
+              console.log('🔥 followed: ------ ', user.username);
               return user.username;
             } catch (error) {
-              console.log('🔥 error: ', error);
+              console.log('🔥 error: ------ ', user.username);
+              setErrorMessage(`Error following ${user.username} `);
               return Promise.reject(error);
             }
           });
+
           return Promise.all(categoryFollowPromises);
         });
+
       const followedUsernames = await Promise.all(followPromises);
       setFollowedCatUsers(followedUsernames.flat().join(', '));
-      setToggleValue(true);
+      console.log('🔥 followedUsernames', followedUsernames);
     } catch (error) {
-      console.log('🔥 error', error);
-      setErrorMessage(`Error: ${JSON.stringify(error)}`);
+      console.log('🔥 error', error.response);
+
+      console.log(errorMessage);
     }
+    setToggleValue(true);
     setLoading(false);
   };
 
