@@ -25,18 +25,19 @@ export default function Post() {
     );
   }
 
+  const testMEssage = `Join me in the movement to #TakeBackSocial, to find a better social home, and help others do the same.
+
+#SpreadMastodon #Mastodon #Fediverse #OpenSocialWeb`;
+
   return (
     <div className="content-wrapper">
       <div className="l-main">
         <Logo variant="small" />
       </div>
-      <Grid>
+      <Grid className="c-markdown l-main c-page__interior">
         <GridItem columnStart={1} columnEnd={13}>
           <Suspense fallback={<div>Loading...</div>}>
-            <ReactMarkdown
-              className="c-markdown l-main c-page__interior"
-              components={components}
-              rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown components={components} rehypePlugins={[rehypeRaw]}>
               {pageData}
             </ReactMarkdown>
           </Suspense>
@@ -45,7 +46,9 @@ export default function Post() {
           <ul className="c-markdown__share">
             <li className="c-markdown__share--item">
               <Link
-                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${router.query.id}!`}>
+                href={`https://mastodonshare.com/?url=https://spreadmastodon.org${asPath}&text=${encodeURIComponent(
+                  testMEssage,
+                )}`}>
                 <Icon iconName="mastodon-logo" width="28" height="28" />
               </Link>
             </li>
