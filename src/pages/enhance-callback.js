@@ -22,6 +22,7 @@ const EnhanceAuth = () => {
         m_sec,
         m_id,
         server_name,
+        url: 'enhance-callback',
       });
       if (res.data.access_token) {
         sessionStorage.setItem('accessToken', res.data.access_token);
@@ -63,13 +64,12 @@ const EnhanceAuth = () => {
   }, [storedAccessToken]);
 
   return (
-    <main className='l-main'>
+    <main className="l-main">
       <Grid
-        className='u-text-align--center'
-        style={{ marginTop: 200, marginBottom: 400 }}
-      >
+        className="u-text-align--center"
+        style={{ marginTop: 200, marginBottom: 400 }}>
         <GridItem columnStart={1} columnEnd={13}>
-          <div className='u-text-align--center u-margin-top--lg'>
+          <div className="u-text-align--center u-margin-top--lg">
             <Spinner />
           </div>
         </GridItem>

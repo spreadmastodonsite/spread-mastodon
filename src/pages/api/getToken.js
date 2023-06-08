@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 export default async function getToken(req, res) {
-  const { code, m_sec, m_id, server_name } = req.body;
+  const { code, m_sec, m_id, server_name, url } = req.body;
 
   try {
     const client_id = m_id;
     const client_secret = m_sec;
     const redirect_uri =
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/enhance-callback'
-        : 'https://join-mastodon-poc.vercel.app/enhance-callback';
+        ? `http://localhost:3000/${url}`
+        : `https://join-mastodon-poc.vercel.app/${url}'`;
     const grant_type = 'authorization_code';
 
     const response = await axios.post(
@@ -26,7 +26,7 @@ export default async function getToken(req, res) {
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     const { access_token } = response.data;

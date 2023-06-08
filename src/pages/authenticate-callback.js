@@ -22,6 +22,7 @@ const AuthenticateAuth = () => {
         m_sec,
         m_id,
         server_name,
+        url: 'authenticate-callback',
       });
       if (res.data.access_token) {
         sessionStorage.setItem('accessToken', res.data.access_token);
@@ -41,7 +42,7 @@ const AuthenticateAuth = () => {
       });
       if (res.data) {
         setUserData(res.data);
-        router.push('/update-account');
+        router.push('/authenticate');
       } else {
         console.log('No data from verifyUserAccount');
       }

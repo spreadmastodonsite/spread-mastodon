@@ -46,13 +46,13 @@ export default function UpdateAccount() {
     }
   });
 
-  const getAccount = async () => {
-    const accessToken = sessionStorage.getItem('accessToken');
+  const getAccount = async (accessToken) => {
+    console.log('🔥 accessToken', accessToken);
 
     try {
-      const response = await axios.get(
-        `/api/verifyAccount?accessToken=${accessToken}`,
-      );
+      const response = await axios.post('/api/verifyAccount', {
+        accessToken,
+      });
 
       setUser(response.data);
     } catch (error) {
@@ -134,10 +134,11 @@ export default function UpdateAccount() {
     const accessToken = sessionStorage.getItem('accessToken');
     if (accessToken) {
       setTimeout(() => {
-        getAccount();
+        getAccount(accessToken);
       }, 500);
     }
   }, []);
+
   const router = useRouter();
   return (
     <div className="content-wrapper">
