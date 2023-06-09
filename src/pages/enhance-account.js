@@ -31,7 +31,7 @@ export default function Join() {
     const redirectUrl =
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/enhance-callback'
-        : 'https://www.spreadmastodon.org/enhance-callback';
+        : 'https://spreadmastodon.org/enhance-callback';
 
     try {
       const response = await axios.post('/api/createAuthUrl', {
