@@ -64,7 +64,7 @@ export default function Post() {
               <Link
                 href={`https://twitter.com/intent/tweet?url=https://spreadmastodon.org${asPath}&text=${encodeURIComponent(
                   shareMastodonMessage,
-                )}!`}>
+                )}`}>
                 <Icon iconName="twitter-logo" width="32" height="32" />
               </Link>
             </li>
