@@ -1,4 +1,3 @@
-// create a next.js Page component that's a 404 page
 import Head from 'next/head';
 import Logo from '@/components/atoms/Logo';
 import Grid from '@/components/layout/Grid';
@@ -7,9 +6,6 @@ import { errorData as data } from '/data/404.js';
 import { useRouter } from 'next/router';
 
 export default function custom404() {
-  const heading = data.heading;
-  const router = useRouter();
-
   return (
     <div className="content-wrapper">
       <Head>
@@ -17,7 +13,7 @@ export default function custom404() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:url" content={router.pathname} />
+        <meta property="og:url" content="spreadmastodon.org" />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
       </Head>
