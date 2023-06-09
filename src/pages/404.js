@@ -5,7 +5,9 @@ import GridItem from '@/components/layout/GridItem';
 import { errorData as data } from '/data/404.js';
 import { useRouter } from 'next/router';
 
-export default function custom404() {
+export default function Custom404() {
+  const router = useRouter();
+
   return (
     <div className="content-wrapper">
       <Head>
@@ -13,7 +15,7 @@ export default function custom404() {
         <meta name={data.metaData.name} content={data.metaData.description} />
         <meta property="og:title" content={data.metaData.name} />
         <meta property="og:description" content={data.metaData.description} />
-        <meta property="og:url" content="spreadmastodon.org" />
+        <meta property="og:url" content={router.pathname} />
         <meta name="twitter:title" content={data.metaData.name} />
         <meta name="twitter:description" content={data.metaData.description} />
       </Head>
