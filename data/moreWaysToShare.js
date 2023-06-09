@@ -1,7 +1,7 @@
 export const moreWaysToShareData = {
   metaData: {
-    title: 'More Ways To Share',
-    name: 'More Ways To Share',
+    title: 'More Ways to Share',
+    name: 'More Ways to Share',
     description:
       'Here are more ways to help spread Mastodon and the Fediverse.',
   },
