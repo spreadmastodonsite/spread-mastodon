@@ -22,8 +22,8 @@ export const moreWaysToShareData = {
       link: '/utilities/secure-account-2fa',
     },
     {
-      description: '4th Box',
-      link: '#',
+      description: 'Suggest a New Way to Take Back Social!',
+      link: '/utilities/suggestions',
     },
   ],
 };
