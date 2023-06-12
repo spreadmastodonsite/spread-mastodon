@@ -6,10 +6,6 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:type" content="article" />
-        {/* <meta
-          name="twitter:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
-        /> */}
         <meta
           property="og:image"
           content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
