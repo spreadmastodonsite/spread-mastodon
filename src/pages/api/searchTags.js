@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 export default async function searchAccounts(req, res) {
-  console.log('MASTODON_INSTANCE_URL:', process.env.MASTODON_INSTANCE);
-
   const { tagName } = req.query;
 
   try {

@@ -643,13 +643,13 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@Mastodon',
         },
         {
+          username: 'spreadmastodon',
+          url: 'https://mastodon.online/@spreadmastodon',
+        },
+        {
           username: 'fediversereport',
           url: 'https://mastodon.social/@fediversereport',
         },
-        // {
-        //   username: 'spreadmastodon',
-        //   url: 'https://mastodon.online/@spreadmastodon',
-        // },
       ],
     },
   ],

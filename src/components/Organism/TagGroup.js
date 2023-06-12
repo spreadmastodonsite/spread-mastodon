@@ -17,7 +17,6 @@ export default function TagGroup({ topic, onChange }) {
     } else {
       setSelectedTags([]);
     }
-    console.log('selectedTags', selectedTags);
   };
 
   const handleChipClick = (tag) => {
@@ -29,12 +28,10 @@ export default function TagGroup({ topic, onChange }) {
       updatedTags.splice(index, 1);
       setSelectedTags(updatedTags);
     }
-    console.log('selectedTags', selectedTags);
   };
 
   useEffect(() => {
     setIsChipChecked(selectedTags.length > 0);
-    console.log('selectedTags', selectedTags);
   }, [selectedTags]);
 
   return (
