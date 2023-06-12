@@ -27,6 +27,8 @@ export default function FollowSuggestions() {
   const [hasAccessToken, setHasAccessToken] = useState(false);
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [accountsError, setAccountsError] = useState([]);
+  const [accountsSuccess, setAccountsSuccess] = useState([]);
 
   console.log(
     '🔥 data',
@@ -61,6 +63,8 @@ export default function FollowSuggestions() {
   const followAllCategoryUsers = async () => {
     const accessToken = window.sessionStorage.getItem('accessToken');
     const server = localStorage.getItem('client');
+    const errorArray = [];
+    const successArray = [];
 
     if (checkedCategories.length === 0) {
       setResponseMessage('Please select at least one category');
@@ -77,32 +81,42 @@ export default function FollowSuggestions() {
             try {
               const userID = await getAccountID(user.username, user.url);
 
-              await limiter.schedule(() =>
+              const response = await limiter.schedule(() =>
                 axios.post('/api/follow', {
                   accessToken,
                   targetAccountId: userID,
                   server,
                 }),
               );
-              console.log('🔥 followed: ------ ', user.username);
+
+              successArray.push(user.username);
               return user.username;
             } catch (error) {
-              console.log('🔥 error: ------ ', user.username);
-              setErrorMessage(`Error following ${user.username} `);
-              return Promise.reject(error);
+              setErrorMessage(`Error following user ${user.username}`);
+              return { status: 'rejected', reason: error };
             }
           });
 
-          return Promise.all(categoryFollowPromises);
+          setAccountsSuccess(successArray);
+          setAccountsError(errorArray);
+          return Promise.allSettled(categoryFollowPromises);
         });
 
       const followedUsernames = await Promise.all(followPromises);
-      setFollowedCatUsers(followedUsernames.flat().join(', '));
-      console.log('🔥 followedUsernames', followedUsernames);
-    } catch (error) {
-      console.log('🔥 error', error.response);
+      const updatedFollowedUsernames = followedUsernames
+        .flat()
+        .map((result) => {
+          if (result.status === 'fulfilled') {
+            return result.value;
+          } else if (result.status === 'rejected') {
+            return;
+          }
+        });
 
-      console.log(errorMessage);
+      console.log('🔥🔥🔥 updatedFollowedUsernames', updatedFollowedUsernames);
+      setFollowedCatUsers(updatedFollowedUsernames.flat().join(', '));
+    } catch (error) {
+      setErrorMessage(error.response);
     }
     setToggleValue(true);
     setLoading(false);
