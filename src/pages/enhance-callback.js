@@ -29,7 +29,7 @@ const EnhanceAuth = () => {
         setStoredAccessToken(res.data.access_token);
       }
     } catch (error) {
-      console.log('Error getToken: ', error);
+      new alert('Error getToken: ', error);
     }
   };
 
@@ -44,10 +44,10 @@ const EnhanceAuth = () => {
         setUserData(res.data);
         router.push('/enhance-account');
       } else {
-        console.log('No data from verifyUserAccount');
+        new alert('No data from verifyUserAccount');
       }
     } catch (error) {
-      console.log('Error verifyUserAccount: ', error.request.data);
+      new alert('Error verifyUserAccount: ', error.request.data);
     }
   };
 

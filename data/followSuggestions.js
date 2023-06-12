@@ -1,8 +1,8 @@
 export const followSuggestionsData = {
   metaData: {
-    title: 'Mastodon Signup',
-    name: 'Mastodon Signup',
-    description: 'Follow some great accounts to get started on Mastodon.',
+    title: 'Follow Accounts',
+    name: 'Spread Mastodon',
+    description: 'Welcome to your better social home.',
   },
   heading: { text: 'Getting Started on Mastodon' },
   subHeading: { text: '(Step 1 of 5)' },
@@ -643,13 +643,13 @@ export const followSuggestionsData = {
           url: 'https://mastodon.social/@Mastodon',
         },
         {
+          username: 'spreadmastodon',
+          url: 'https://mastodon.online/@spreadmastodon',
+        },
+        {
           username: 'fediversereport',
           url: 'https://mastodon.social/@fediversereport',
         },
-        // {
-        //   username: 'spreadmastodon',
-        //   url: 'https://mastodon.online/@spreadmastodon',
-        // },
       ],
     },
   ],

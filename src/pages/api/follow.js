@@ -9,10 +9,6 @@ const limiter = new Bottleneck({
 export default async function follow(req, res) {
   const { accessToken, targetAccountId, server } = req.body;
 
-  console.log('🔥 accessToken', accessToken);
-  console.log('🔥 targetAccountId', targetAccountId);
-  console.log('🔥 server', server);
-
   try {
     const response = await limiter.schedule(() =>
       axios.post(
@@ -22,14 +18,12 @@ export default async function follow(req, res) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
-      )
+        },
+      ),
     );
 
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {
-    console.log('❌ Error on follow: ', error.response.data);
-
     res.status(400).json({ success: false, error: error.response.data });
   }
 }

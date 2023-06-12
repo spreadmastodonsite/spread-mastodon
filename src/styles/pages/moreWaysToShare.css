@@ -20,6 +20,12 @@
   filter: brightness(0) invert(1);
 }
 
+@media all and (min-width: 1080px) {
+  .c-more-ways-to-share__header .c-stepper-header__icon {
+    left: var(--space-2xl);
+  }
+}
+
 .c-more-ways-to-share__card .c-card__link:before {
   content: '';
   width: 100%;

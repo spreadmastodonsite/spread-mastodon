@@ -57,8 +57,6 @@ export default function SignupForm() {
         agreement: acceptedTerms,
       });
 
-      console.log('🔥 response', response);
-
       setAccountCreated(true);
       setResponseMessage(`Account created successfully`);
       router.push('/authenticate');

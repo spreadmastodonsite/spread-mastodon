@@ -28,13 +28,6 @@ export default function FollowSuggestions() {
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  console.log(
-    '🔥 data',
-    data.suggestedUsers.filter((category) =>
-      checkedCategories.includes(category.title),
-    ),
-  );
-
   const limiter = new Bottleneck({
     maxConcurrent: 1,
     minTime: 30,
@@ -54,7 +47,7 @@ export default function FollowSuggestions() {
       const account = accounts.filter((account) => account.url === url);
       return account[0].id;
     } catch (error) {
-      setErrorMessage(error.response.data.error);
+      setErrorMessage(error.response);
     }
   };
 
@@ -77,28 +70,40 @@ export default function FollowSuggestions() {
             try {
               const userID = await getAccountID(user.username, user.url);
 
-              await limiter.schedule(() =>
+              const response = await limiter.schedule(() =>
                 axios.post('/api/follow', {
                   accessToken,
                   targetAccountId: userID,
                   server,
                 }),
               );
+
               return user.username;
             } catch (error) {
-              console.log('🔥 error: ', error);
-              return Promise.reject(error);
+              setErrorMessage(`Error following user ${user.username}`);
+              return { status: 'rejected', reason: error };
             }
           });
-          return Promise.all(categoryFollowPromises);
+
+          return Promise.allSettled(categoryFollowPromises);
         });
+
       const followedUsernames = await Promise.all(followPromises);
-      setFollowedCatUsers(followedUsernames.flat().join(', '));
-      setToggleValue(true);
+      const updatedFollowedUsernames = followedUsernames
+        .flat()
+        .map((result) => {
+          if (result.status === 'fulfilled') {
+            return result.value;
+          } else if (result.status === 'rejected') {
+            return;
+          }
+        });
+
+      setFollowedCatUsers(updatedFollowedUsernames.flat().join(', '));
     } catch (error) {
-      console.log('🔥 error', error);
-      setErrorMessage(`Error: ${JSON.stringify(error)}`);
+      setErrorMessage(error.response);
     }
+    setToggleValue(true);
     setLoading(false);
   };
 

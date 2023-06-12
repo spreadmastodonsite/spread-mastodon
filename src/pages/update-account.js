@@ -47,8 +47,6 @@ export default function UpdateAccount() {
   });
 
   const getAccount = async (accessToken) => {
-    console.log('🔥 accessToken', accessToken);
-
     try {
       const response = await axios.post('/api/verifyAccount', {
         accessToken,
@@ -89,7 +87,7 @@ export default function UpdateAccount() {
       setbase64(reader.result);
     };
     reader.onerror = function (error) {
-      console.log('Error: ', error);
+      new alert('Error uploading image');
     };
   }
 
@@ -106,7 +104,7 @@ export default function UpdateAccount() {
       setBgBase64(reader.result);
     };
     reader.onerror = function (error) {
-      console.log('Error: ', error);
+      new alert('Error uploading image');
     };
   }
 

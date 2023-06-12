@@ -1,7 +1,7 @@
 export const followTagsData = {
   metaData: {
-    title: 'Mastodon Signup',
-    name: 'Mastodon Signup',
+    title: 'Follow Topics',
+    name: 'Spread Mastodon',
     description: 'Follow Topics You Care About',
   },
   heading: { text: 'Getting Started on Mastodon' },

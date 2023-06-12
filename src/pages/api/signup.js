@@ -21,7 +21,7 @@ export default async function handler(req, res) {
           password,
           agreement,
           locale: 'en',
-          reason: 'Testing Mastodon signup using Next.js',
+          reason: 'Spread Mastodon Account sign-up',
         },
         {
           headers: {
