@@ -14,7 +14,7 @@ export default function Document() {
           property="og:image"
           content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
         />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
       </Head>
       <body>
         <Main />
