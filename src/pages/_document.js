@@ -8,7 +8,7 @@ export default function Document() {
         <meta property="og:type" content="article" />
         <meta
           property="og:image"
-          content="https://join-mastodon-poc.vercel.app/spread_mastodon_share.jpg"
+          content="https://spreadmastodon.org/spread_mastodon_share.jpg"
         />
         <meta name="twitter:card" content="summary" />
       </Head>
