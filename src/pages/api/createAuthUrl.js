@@ -22,7 +22,6 @@ export default async function authApp(req, res) {
 
     res.json({ authorizationUrl, client_id, client_secret });
   } catch (error) {
-    console.log('Error: ', error);
     res.status(400).json({
       success: false,
       error: error.response ? error.response.data : error.message,

@@ -18,16 +18,12 @@ export default async function getFollowAccountId(req, res) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
-      )
+        },
+      ),
     );
 
     res.status(200).json({ success: true, data: response.data });
-    // TODO: Filter results based on accountUrl
-    console.log('🔥 Search Data: ', response.data.accounts);
   } catch (error) {
-    console.log('❌ Error on follow: ', error.response.data);
-
     res.status(400).json({ success: false, error: error.response.data });
   }
 }

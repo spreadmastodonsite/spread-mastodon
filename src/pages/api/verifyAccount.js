@@ -3,8 +3,6 @@ import axios from 'axios';
 export default async function verifyCredentials(req, res) {
   const { accessToken } = req.body;
 
-  console.log('accessToken: ', accessToken);
-
   try {
     const response = await axios.get(
       `https://mastodon.social/api/v1/accounts/verify_credentials`,
@@ -16,6 +14,6 @@ export default async function verifyCredentials(req, res) {
     );
     res.status(200).json({ success: true, data: response.data });
   } catch (error) {
-    console.log('Error ❌: ', error.response.data.error);
+    res.status(400).json({ success: false, error: error.response.data });
   }
 }

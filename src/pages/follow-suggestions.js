@@ -27,15 +27,6 @@ export default function FollowSuggestions() {
   const [hasAccessToken, setHasAccessToken] = useState(false);
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [accountsError, setAccountsError] = useState([]);
-  const [accountsSuccess, setAccountsSuccess] = useState([]);
-
-  console.log(
-    '🔥 data',
-    data.suggestedUsers.filter((category) =>
-      checkedCategories.includes(category.title),
-    ),
-  );
 
   const limiter = new Bottleneck({
     maxConcurrent: 1,
@@ -63,8 +54,6 @@ export default function FollowSuggestions() {
   const followAllCategoryUsers = async () => {
     const accessToken = window.sessionStorage.getItem('accessToken');
     const server = localStorage.getItem('client');
-    const errorArray = [];
-    const successArray = [];
 
     if (checkedCategories.length === 0) {
       setResponseMessage('Please select at least one category');
@@ -89,7 +78,6 @@ export default function FollowSuggestions() {
                 }),
               );
 
-              successArray.push(user.username);
               return user.username;
             } catch (error) {
               setErrorMessage(`Error following user ${user.username}`);
@@ -97,8 +85,6 @@ export default function FollowSuggestions() {
             }
           });
 
-          setAccountsSuccess(successArray);
-          setAccountsError(errorArray);
           return Promise.allSettled(categoryFollowPromises);
         });
 
@@ -113,7 +99,6 @@ export default function FollowSuggestions() {
           }
         });
 
-      console.log('🔥🔥🔥 updatedFollowedUsernames', updatedFollowedUsernames);
       setFollowedCatUsers(updatedFollowedUsernames.flat().join(', '));
     } catch (error) {
       setErrorMessage(error.response);
