@@ -13,6 +13,7 @@ import { followSuggestionsData as data } from '/data/followSuggestions';
 import Checkbox from '@/components/atoms/checkbox';
 import Modal from '@/components/Organism/Modal';
 import Icon from '@/components/atoms/icon';
+import Spinner from '@/components/atoms/Loader';
 import { useRouter } from 'next/router';
 
 export default function FollowSuggestions() {
@@ -226,6 +227,7 @@ export default function FollowSuggestions() {
                   <Card variant="basic">
                     <div className="c-follow-category">
                       <div className="c-follow-category--content">
+                        <Spinner />
                         <p>{data.loadingExplainerText}</p>
                       </div>
                     </div>
