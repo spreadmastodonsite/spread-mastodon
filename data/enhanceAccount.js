@@ -9,11 +9,17 @@ export const EnhanceAccount = {
     textOne: "You're in! Now what?",
     textRotate: ['Follow People', 'Find Your Friends', 'Get Started'],
   },
-  authHeader: {
-    text: 'Authenticate Account',
+  headingTwo: {
+    text: 'New User?',
   },
-  authSubHeading: {
+  subHeadingTwo: {
     text: '<p class="u-body--lg u-text-align--center">Please check your email and click the Mastodon confirmation link. Once you get to this message - <i>Your email address has been successfully confirmed.</i> - come back to this window to continue through the steps.</p>',
+  },
+  headingThree: {
+    text: 'Existing User?',
+  },
+  subHeadingThree: {
+    text: '<p class="u-body--lg u-text-align--center">If you already have a Mastodon account set up, just log in and authenticate with your account:</p>',
   },
   submitButton: {
     text: 'Log In & Authenticate',

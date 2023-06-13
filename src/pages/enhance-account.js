@@ -99,12 +99,28 @@ export default function Join() {
             ))
           ) : (
             <div className="c-enhance__auth">
-              <h2 className="c-signup-success__sub-title u-text-align--center">
-                {data.authHeader.text}
-              </h2>
-              <div
-                dangerouslySetInnerHTML={{ __html: data.authSubHeading.text }}
-              />
+              {data.headingTwo && (
+                <h2 className="c-signup-success__sub-title u-text-align--center">
+                  {data.headingTwo.text}
+                </h2>
+              )}
+              {data.subHeadingTwo && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.subHeadingTwo.text }}
+                />
+              )}
+              {data.headingThree && (
+                <h2 className="c-signup-success__sub-title u-text-align--center u-margin-top--xl">
+                  {data.headingThree.text}
+                </h2>
+              )}
+              {data.subHeadingThree && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data.subHeadingThree.text,
+                  }}
+                />
+              )}
               <form
                 className="c-authenticate-form"
                 onSubmit={handleSubmit(onAuthSubmit)}>
