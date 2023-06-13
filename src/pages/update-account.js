@@ -331,7 +331,7 @@ export default function UpdateAccount() {
                         </form>
                       </GridItem>
                       {errorMessage && (
-                        <GridItem columnStart={9} columnEnd={12}>
+                        <GridItem columnStart={8} columnEnd={13}>
                           <p className="c-input-error__message u-margin-bottom--sm">
                             {errorMessage}
                           </p>
