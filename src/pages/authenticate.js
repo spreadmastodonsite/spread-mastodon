@@ -50,7 +50,7 @@ export default function AuthenticateUser() {
     const redirectUrl =
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/authenticate-callback'
-        : 'https://join-mastodon-poc.vercel.app/authenticate-callback';
+        : 'https://spreadmastodon.org/authenticate-callback';
 
     try {
       const response = await axios.post('/api/createAuthUrl', {

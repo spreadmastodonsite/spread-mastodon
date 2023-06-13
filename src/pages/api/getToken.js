@@ -9,7 +9,7 @@ export default async function getToken(req, res) {
     const redirect_uri =
       process.env.NODE_ENV === 'development'
         ? `http://localhost:3000/${url}`
-        : `https://join-mastodon-poc.vercel.app/${url}`;
+        : `https://spreadmastodon.org/${url}`;
     const grant_type = 'authorization_code';
 
     const response = await axios.post(
