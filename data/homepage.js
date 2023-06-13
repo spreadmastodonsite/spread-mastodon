@@ -10,7 +10,7 @@ export const homepageData = {
     textTwo: 'social home',
   },
   subHeading: {
-    text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon with your friends and social networks.",
+    text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon and the larger Fediverse with your friends and social networks. Join the movement to take back the open social web!",
   },
   cards: [
     {
