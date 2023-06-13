@@ -30,7 +30,7 @@ export default function FollowSuggestions() {
 
   const limiter = new Bottleneck({
     maxConcurrent: 1,
-    minTime: 30,
+    minTime: 333,
   });
 
   const getAccountID = async (username, url) => {
@@ -62,6 +62,7 @@ export default function FollowSuggestions() {
       return;
     }
     setLoading(true);
+    setErrorMessage(``);
     try {
       const followPromises = data.suggestedUsers
         .filter((category) => checkedCategories.includes(category.title))
