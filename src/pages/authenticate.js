@@ -114,10 +114,6 @@ export default function AuthenticateUser() {
               // If already authenticated, display appropriate message
               <>
                 {validationMessage && <p>{validationMessage}</p>}
-                <p className="u-margin-bottom--2xl u-text-align--center u-body--lg">
-                  You are already authenticated as {user}. Please click a button
-                  below to continue.
-                </p>
 
                 <Button link="/update-account" text="Step 1: Update Account" />
               </>
