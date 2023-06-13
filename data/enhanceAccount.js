@@ -13,13 +13,13 @@ export const EnhanceAccount = {
     text: 'New User?',
   },
   subHeadingTwo: {
-    text: '<p class="u-body--lg u-text-align--center">Please check your email and click the Mastodon confirmation link. Once you get to this message - <i>Your email address has been successfully confirmed.</i> - come back to this window to continue through the steps.</p>',
+    text: '<p class="u-body--lg u-text-align--center">If you just created a Mastodon account with our tool, please check your email and click the Mastodon confirmation link. Once you get to this message - <i>Your email address has been successfully confirmed.</i> - come back here to continue.</p>',
   },
   headingThree: {
     text: 'Existing User?',
   },
   subHeadingThree: {
-    text: '<p class="u-body--lg u-text-align--center">If you already have a Mastodon account set up, just log in and authenticate with your account:</p>',
+    text: '<p class="u-body--lg u-text-align--center">If you already have a Mastodon account set up, just log in and authenticate with your account credentials:</p>',
   },
   submitButton: {
     text: 'Log In & Authenticate',
