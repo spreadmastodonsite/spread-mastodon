@@ -8,7 +8,7 @@ export const NavMenu = [
     url: '/sign-up',
   },
   {
-    title: 'Enrich',
+    title: 'Enhance',
     url: '/follow-suggestions',
     sub: [
       {

@@ -31,4 +31,4 @@ Servers in the round-robin would commit to everything in the Mastodon Server Cov
 - Is well Federated - over 20,000 connections or more, as counted by instances.social.
 - Have a #Fediblock policy in sync with Mastodon.social - and agree to a system of submitting new Fediblock candidates to everyone in the round-robin.
 
-Falling out of any of these requirements or of any of the requirements of the Mastodon Server Covenant would be grounds for removal from the round-robin and replacement with another server that does meet these criteria. 
+Falling out of any of these requirements or of any of the requirements of the Mastodon Server Covenant would be grounds for removal from the round-robin and replacement with another server that does meet these criteria.

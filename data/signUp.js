@@ -14,6 +14,7 @@ export const signUpData = {
   },
   description: {
     text: 'Join the whole Mastodon network via this trusted community server.',
+    textTwo: `<p class="u-heading--lg u-text-align--center italic"><i>We're <a class="c-link" href="/utilities/round-robin">exploring ways</a> to add more trusted servers soon!</i></p>`,
   },
   formButton: {
     text: 'Great, Let’s Get You Set Up',

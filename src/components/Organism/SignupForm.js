@@ -74,38 +74,6 @@ export default function SignupForm() {
   };
 
   return (
-    //   <div className={`${componentClassName}, `}>
-    //     <Grid className='c-grid__signup-success'>
-    //       <GridItem columnStart={1} columnEnd={13}>
-    //         <Icon iconName='check' width='100' height='100' />
-    //       </GridItem>
-    //       <GridItem columnStart={1} columnEnd={13}>
-    //         <div className='c-signup-success__content u-text-align--center'>
-    //           <h2 className='c-signup-success__title u-heading--2xl'>
-    //             {data.successHeading.textOne}
-    //             <br /> {data.successHeading.textTwo}{' '}
-    //             {displayName ? displayName : username}!
-    //           </h2>
-    //           <p className='c-signup-success__sub-title'>
-    //             {data.successSubHeading.text}
-    //           </p>
-    //         </div>
-    //       </GridItem>
-    //     </Grid>
-    //     <AuthenticateUserForm />
-    //     <Grid className='c-signup-success__buttons' variant='autoFit'>
-    //       <Button
-    //         link={data.successButtonOne.link}
-    //         text={data.successButtonOne.text}
-    //       />
-    //       <Button
-    //         link={data.successButtonTwo.link}
-    //         text={data.successButtonTwo.text}
-    //         variant='secondary'
-    //       />
-    //     </Grid>
-    //   </div>
-    // ) : (
     <>
       <StepperHeader
         iconName="join"
@@ -115,9 +83,12 @@ export default function SignupForm() {
         subHeading={data.subHeading.text}
       />
       <div className={componentClassName}>
-        <p className="u-heading--lg u-text-align--center">
+        <p
+          className="u-heading--lg u-text-align--center u-margin-bottom--sm
+        ">
           {data.description.text}
         </p>
+        <div dangerouslySetInnerHTML={{ __html: data.description.textTwo }} />
         <form
           className="c-form c-form__signup"
           onSubmit={handleSubmit(onSubmit)}>

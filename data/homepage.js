@@ -10,7 +10,7 @@ export const homepageData = {
     textTwo: 'social home',
   },
   subHeading: {
-    text: "We can help you easily join Mastodon, enrich your experience if you've already joined, and share Mastodon and the larger Fediverse with your friends and social networks. Join the movement to take back the open social web!",
+    text: "We can help you easily join Mastodon, enhance your experience if you've already joined, and share Mastodon and the larger Fediverse with your friends and social networks. Join the movement to take back the open social web!",
   },
   cards: [
     {
@@ -29,7 +29,7 @@ export const homepageData = {
       iconWidth: '74',
       iconHeight: '74',
       link: '/enhance-account',
-      linkText: 'Enrich',
+      linkText: 'Enhance',
     },
     {
       title: 'Want to help grow Mastodon?',
