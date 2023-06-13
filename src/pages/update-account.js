@@ -34,6 +34,7 @@ export default function UpdateAccount() {
   const [BgBase64, setBgBase64] = useState('');
   const [user, setUser] = useState();
   const [bio, setBio] = useState(dataContent.bio.text);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const updateBio = (event) => {
     setBio(event.target.value);
@@ -64,6 +65,7 @@ export default function UpdateAccount() {
 
   const onSubmit = async (data) => {
     const accessToken = sessionStorage.getItem('accessToken');
+    setErrorMessage('');
     setLoading(true);
 
     try {
@@ -74,7 +76,15 @@ export default function UpdateAccount() {
         header: BgBase64,
       });
       setSuccess(true);
-    } catch (error) {}
+    } catch (error) {
+      if (error?.response.data?.error?.error) {
+        setErrorMessage(
+          `There was an Error: ${error.response.data.error.error}`,
+        );
+      } else {
+        setErrorMessage(`There was an Error: ${error.response.data}`);
+      }
+    }
 
     setLoading(false);
   };
@@ -266,6 +276,11 @@ export default function UpdateAccount() {
                               name="avatar"
                               id="avatar"
                             />
+                            {errors.avatar && (
+                              <span className="c-input-error__message u-margin-bottom--sm u-display--inline-block">
+                                {errors.avatar.message}
+                              </span>
+                            )}
                             <Button
                               className="c-profile-box__button"
                               text={dataContent.uploadAvatarButton.text}
@@ -315,6 +330,13 @@ export default function UpdateAccount() {
                           </div>
                         </form>
                       </GridItem>
+                      {errorMessage && (
+                        <GridItem columnStart={9} columnEnd={12}>
+                          <p className="c-input-error__message u-margin-bottom--sm">
+                            {errorMessage}
+                          </p>
+                        </GridItem>
+                      )}
                     </Grid>
                     <Grid className="c-profile-box__buttons" variant="autoFit">
                       <Button
