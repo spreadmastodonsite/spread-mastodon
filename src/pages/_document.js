@@ -11,6 +11,10 @@ export default function Document() {
           content="https://spreadmastodon.org/spread_mastodon_share.jpg"
         />
         <meta name="twitter:card" content="summary" />
+        <script
+          defer
+          data-domain="spreadmastodon.org"
+          src="https://plausible.io/js/script.js"></script>
       </Head>
       <body>
         <Main />
