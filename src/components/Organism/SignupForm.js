@@ -58,6 +58,8 @@ export default function SignupForm() {
       });
 
       setAccountCreated(true);
+
+      sessionStorage.setItem('username', username);
       setResponseMessage(`Account created successfully`);
       router.push('/authenticate');
     } catch (error) {

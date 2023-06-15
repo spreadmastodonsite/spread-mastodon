@@ -13,6 +13,6 @@ export const authenticateData = {
   },
   logInButton: { text: 'Log In & Authenticate' },
   profile: { text: 'Add Your Profile Basics' },
-  skip: { text: 'Skip this Step for now', link: '/follow-suggestions' },
+  skip: { text: 'Skip This Step for Now', link: '/follow-suggestions' },
   button: { text: 'I have validated my email, proceed' },
 };
