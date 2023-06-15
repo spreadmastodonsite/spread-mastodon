@@ -3,6 +3,10 @@
   margin-bottom: var(--space-2xl);
 }
 
+.c-grid__signup-success .c-authenticate-form {
+  margin-bottom: 0;
+}
+
 .c-button__auth {
   margin-top: var(--space-xl);
 }

@@ -73,9 +73,15 @@ export default function AuthenticateUser() {
   // Get the access token from session storage on component mount
   useEffect(() => {
     const accessToken = sessionStorage.getItem('accessToken');
+    const username = sessionStorage.getItem('username');
+
     if (accessToken) {
       setStoredAccessToken(accessToken);
       verifyUserAccount(accessToken);
+    }
+
+    if (username) {
+      setUser(username);
     }
   }, []);
 
@@ -115,7 +121,10 @@ export default function AuthenticateUser() {
               <>
                 {validationMessage && <p>{validationMessage}</p>}
 
-                <Button link="/update-account" text="Step 1: Update Account" />
+                <Button
+                  link="/update-account"
+                  text="Step 2: Add Your Profile Basics"
+                />
               </>
             ) : (
               // If not authenticated, display login form
@@ -138,14 +147,16 @@ export default function AuthenticateUser() {
                   ) : (
                     // Shows the validation message if there the page doesn't redirect
                     <Grid>
-                      <GridItem columnStart={2} columnEnd={12}>
-                        <div>
-                          {validationMessage && (
+                      {validationMessage && (
+                        <GridItem columnStart={2} columnEnd={12}>
+                          <div>
                             <p className="c-error u-margin-top--lg u-body--copy">
                               {validationMessage}
                             </p>
-                          )}
-                        </div>
+                          </div>
+                        </GridItem>
+                      )}
+                      <GridItem columnStart={1} columnEnd={13}>
                         <Button
                           className="c-button__auth"
                           type="submit"
