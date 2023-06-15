@@ -160,7 +160,7 @@ export default function AuthenticateUser() {
                         <Button
                           className="c-button__auth"
                           type="submit"
-                          text="Log in &amp; Authenticate"
+                          text="Log In &amp; Authenticate"
                         />
                       </GridItem>
                     </Grid>
