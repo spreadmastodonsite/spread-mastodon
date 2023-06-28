@@ -1,4 +1,6 @@
+const year = new Date().getFullYear();
+
 export const disclaimer = {
   lineOne: "This site is not affiliated with Mastodon gGmbH.",
-  lineTwo: "© 2023 Spread Mastodon",
+  lineTwo: `© ${year} Spread Mastodon`,
 };
