@@ -1,15 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
-import axios from 'axios'; // Add this import statement
-import Head from 'next/head';
-import Card from '@/components/Organism/Card';
-import Grid from '@/components/layout/Grid';
-import GridItem from '@/components/layout/GridItem';
-import AnimatedHeader from '@/components/molecules/animatedHeader';
-import Logo from '@/components/atoms/Logo';
-import { EnhanceAccount as data } from '/data/enhanceAccount.js';
-import Button from '@/components/atoms/Button';
-import { useRouter } from 'next/router';
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import axios from "axios"; // Add this import statement
+import Head from "next/head";
+import Card from "@/components/Organism/Card";
+import Grid from "@/components/layout/Grid";
+import GridItem from "@/components/layout/GridItem";
+import AnimatedHeader from "@/components/molecules/animatedHeader";
+import Logo from "@/components/atoms/Logo";
+import { EnhanceAccount as data } from "/data/enhanceAccount.js";
+import Button from "@/components/atoms/Button";
+import { useRouter } from "next/router";
 
 export default function Join() {
   const router = useRouter();
@@ -19,28 +19,28 @@ export default function Join() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [validationMessage, setValidationMessage] = useState('');
+  const [validationMessage, setValidationMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [storedAccessToken, setStoredAccessToken] = useState('');
-  const [storedServerName, setStoredServerName] = useState('');
+  const [storedAccessToken, setStoredAccessToken] = useState("");
+  const [storedServerName, setStoredServerName] = useState("");
 
   const onAuthSubmit = async (data) => {
     const serverName = data.server;
-    window.localStorage.setItem('client', serverName);
+    window.localStorage.setItem("client", serverName);
 
     const redirectUrl =
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000/enhance-callback'
-        : 'https://spreadmastodon.org/enhance-callback';
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/enhance-callback"
+        : "https://spreadmastodon.org/enhance-callback";
 
     try {
-      const response = await axios.post('/api/createAuthUrl', {
-        response_type: 'code',
+      const response = await axios.post("/api/createAuthUrl", {
+        response_type: "code",
         serverName: serverName,
         redirectUri: redirectUrl,
       });
-      window.localStorage.setItem('m_sec', response.data.client_secret);
-      window.localStorage.setItem('m_id', response.data.client_id);
+      window.localStorage.setItem("m_sec", response.data.client_secret);
+      window.localStorage.setItem("m_id", response.data.client_id);
       window.location.href = response.data.authorizationUrl;
     } catch (error) {
       throw new Error(
@@ -52,7 +52,7 @@ export default function Join() {
   };
 
   useEffect(() => {
-    const sessionToken = sessionStorage.getItem('accessToken');
+    const sessionToken = sessionStorage.getItem("accessToken");
 
     if (sessionToken) {
       setStoredAccessToken(sessionToken);
@@ -140,19 +140,19 @@ export default function Join() {
                         id="server"
                         type="text"
                         className="c-signup-form__input"
-                        placeholder="mastodon.social"
-                        {...register('server', {
-                          required: 'Server is required',
+                        placeholder="Enter your home server name"
+                        {...register("server", {
+                          required: "Server is required",
                         })}
                         onChange={(e) => {
                           e.target.value = e.target.value.replace(
                             /^https?:\/\//i,
-                            '',
+                            "",
                           );
                         }}
                       />
                       <span className="c-field-note">
-                        Server name. Example: mastodon.social
+                        Example: mastodon.social
                       </span>
                     </GridItem>
                   )}

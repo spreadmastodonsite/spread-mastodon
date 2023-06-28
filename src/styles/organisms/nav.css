@@ -4,6 +4,7 @@
   justify-content: flex-end;
   margin: 0 auto;
   max-width: calc(var(--max-width) - var(--space-2xl));
+  z-index: 101;
 }
 
 .u-nav-button {
