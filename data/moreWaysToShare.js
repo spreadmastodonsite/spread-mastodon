@@ -18,7 +18,7 @@ export const moreWaysToShareData = {
       link: "/utilities/welcoming-group",
     },
     {
-      description: "Suggest a New Way to Enhance Mastodon!",
+      description: "Suggest a New Way to Take Back Social!",
       link: "/utilities/suggestions",
     },
   ],

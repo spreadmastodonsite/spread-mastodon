@@ -23,7 +23,7 @@ export const moreWaysToEnhanceData = {
       link: "/utilities/introduction-message",
     },
     {
-      title: "Suggest a New Way to Take Back Social!",
+      title: "Suggest a New Way to Enhance Mastodon!",
       link: "/utilities/suggestions",
     },
   ],
