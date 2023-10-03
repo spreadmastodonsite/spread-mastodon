@@ -43,4 +43,8 @@ export const NavMenu = [
     title: 'Contact Us',
     url: '/utilities/suggestions',
   },
+  {
+    title: 'Github',
+    url: '/utilities/github',
+  },
 ];
