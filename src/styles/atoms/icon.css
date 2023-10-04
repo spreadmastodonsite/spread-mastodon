@@ -6,3 +6,7 @@
   align-items: center;
   vertical-align: middle;
 }
+
+.c-icon--twitter-logo {
+  transform: scale(0.75);
+}
